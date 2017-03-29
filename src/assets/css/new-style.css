@@ -1,0 +1,267 @@
+@font-face{
+font-family: 'RalewayBold';
+src: url('../fonts/RalewayBold.eot');
+src: url('../fonts/RalewayBold.eot') format('embedded-opentype'),
+url('../fonts/RalewayBold.woff2') format('woff2'),
+url('../fonts/RalewayBold.woff') format('woff'),
+url('../fonts/RalewayBold.ttf') format('truetype'),
+url('../fonts/RalewayBold.svg#RalewayBold') format('svg');
+}
+
+
+.inner_nav{ width:100%; height:40px; float:left; text-align:center; background: #4d86ac; /* Old browsers */
+background: -moz-linear-gradient(left, #4d86ac 0%, #4d98a7 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, #4d86ac 0%,#4d98a7 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, #4d86ac 0%,#4d98a7 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d86ac', endColorstr='#4d98a7',GradientType=1 ); /* IE6-9 */ }
+.inner_nav ul li{ display:inline-block; margin:0px 5px; }
+.inner_nav ul li a{ float:left; font-size:14px; color:#cdcdcd; font-family: 'RalewayBold'; letter-spacing:2px; padding:10px 5px; }
+.inner_nav ul li a:hover{ color:#fff; }
+.timmer_main{ width:100%; float:left; }
+.timmer{ width:100%; float:left; padding:40px 0px; text-align:center; font-family: 'Montserrat', sans-serif; }
+.timmer h2{ font-size:26px; color:#fff; margin:13px 0px 0px; font-family: 'Montserrat', sans-serif; font-weight:700; }
+.timmer span{ width:100%; max-width:37px; display:inline-block; font-size:40px; color:#363636; background:#fff; border-radius:5px; padding:7px 5px; box-shadow:0px 3px 1px #244c51; line-height:54px; margin:0px 2px; text-shadow:0px 2px 1px #244c51; }
+.blue{ background:url(../images/blue.jpg) repeat; }
+.orange{ background:url(../images/orange.jpg) repeat; }
+.chart_main{ width:100%; float:left; background:#f0f0f0; padding:40px; position:relative; }
+.chart_main h2{ font-size:26px; color:#929292; margin:0px; font-weight:700; text-transform:uppercase; }
+.chart{ width:100%; float:left; position:relative; margin-top:60px; }
+#chart #numbers{ height:100%; margin:0; padding:0; display:inline-block; float:left; position:absolute; left:0px; right:0px; }
+#chart #numbers li{ text-align:left; padding:5px 0px; list-style:none; height:40px; border-bottom:1px solid #ccc; position:relative; bottom:30px; color:#6d6c6c; font-size:14.11px; font-weight:400; }
+#chart #numbers li span { color: #6d6c6c; position: absolute; bottom: 0; right: 10px; }
+#chart #bars { float:right; display: inline-block; width:auto; padding:0px 0px 0px 40px; margin: 0; }
+#chart #bars li { display: table-cell; width: 40px; height: 409px; margin: 0; text-align: center; position: relative; margin-left:10px; float:left; }
+#chart #bars li .bar { display: block; width:40px; background:#0ef00e; position: absolute; bottom: 0; }
+#chart #bars li .bar:hover { background: #07d707; cursor: pointer; }
+#chart #bars li .bar:hover:before { color: #555; content: attr(data-percentage) '%'; position: relative; bottom: 20px; }
+#chart #bars li span { color: #eee; width: 100%; position: absolute; bottom: -2em; left: 0; text-align: center; }
+.explorebtn{ width:100%; float:left; }
+.years{ width:100%; float:left; }
+.years h2{ width:100%; float:left; font-size:22px; color:#6d6c6c; text-align:right; padding-right:70px; font-weight:400; }
+.years h3{ float:left; font-size:14.11px; color:#6d6c6c; font-weight:400; margin:10px 0px; }
+.years h4{ float:right; font-size:14.11px; color:#6d6c6c; font-weight:400; margin:10px 0px; }
+.prograsbar_main{ width:100%; float:left; background:#f0f0f0; padding:25px; position:relative; border-top:1px solid #fff; }
+.prograsbar_main h2{ font-size:40px; color:#929292; margin:0px 0px 40px; text-align:center; text-transform:uppercase; font-family: 'Montserrat Light'; }
+.progressDiv { width:100%; float:left; }
+.statChartHolder { width:33%; height:90%; position:relative; display:inline-block; text-align:center; }
+.statRightHolder { display: inline-block; height: 90%; width: 64%; position: relative; top: -32px; margin: 0; }
+.statRightHolder ul { list-style: none; margin: 0; }
+.statRightHolder li { border-bottom: 1px solid #ccc; height: 85px; width: 95%; position: relative; top: -25px; }
+.statRightHolder h3 { display: inline-block; margin-right: 15px; color: #B6B5B5; font-weight: 300; font-size: 38px; }
+.statRightHolder span { display: inline-block; color: #B6B5B5; font-size: 21px; font-weight: 300; }
+.statsLeft { list-style:none; display:inline-block; width:45%; }
+.statsLeft li { width: 100%; height: 14px; border: none; top: 5px; margin-bottom: 25px; }
+.statsLeft h3 { font-size:17px; display: inline-block; }
+.statsLeft span { font-size: 17px; display:inline-block; }
+.statsRight { width: 45%; display: inline-block; position: absolute; }
+.statsRight li { width: 100%; height: 14px; border: none; top: 5px; margin-bottom: 25px; }
+.statsRight h3 { font-size:17px; display: inline-block; }
+.statsRight span { font-size: 17px; display:inline-block; }
+
+/* Pie Chart */
+.progress-pie-chart { width:200px; height: 200px; border-radius: 50%; background-color: #E5E5E5; position: relative; display:inline-block; }
+.progress-pie-chart.gt-50 { background-color:#fa742c; }
+.ppc-progress { content: ""; position: absolute; border-radius: 50%; left: calc(50% - 100px); top: calc(50% - 100px); width: 200px; height: 200px; clip: rect(0, 200px, 200px, 100px); }
+.ppc-progress .ppc-progress-fill { content: ""; position: absolute; border-radius: 50%; left: calc(50% - 100px); top: calc(50% - 102px); width: 200px; height: 200px; clip: rect(0, 100px, 200px, 0); background: #81CE97; transform: rotate(60deg); }
+.gt-50 .ppc-progress { clip: rect(0, 100px, 200px, 0); }
+.gt-50 .ppc-progress .ppc-progress-fill { clip: rect(0, 200px, 200px, 100px); background: #E5E5E5; }
+.ppc-percents { content: ""; position: absolute; border-radius: 50%; left: calc(50% - 173.91304px/2); top: calc(50% - 173.91304px/2); width: 173.91304px; height: 173.91304px; background:#f0f0f0; text-align: center; display: table; }
+.ppc-percents span { display: block; font-size: 2.6em; font-weight: bold; color: #81CE97; }
+.pcc-percents-wrapper { display: table-cell; vertical-align: middle; font-size:40px; color:#fa742c; }
+.pcc-percents-wrapper h6{ font-size:20px; color:#999; }
+.statChartHolder h3{ font-size:22px; color:#5a5a5a; margin:10px 0px; font-family: 'RalewayBold'; text-transform:uppercase; }
+.statChartHolder p{ font-size:22px; color:#888484; margin:0px 0px 40px; line-height:20px; font-family: 'Montserrat Light'; }
+.leaderboard{ width:100%; float:left; background:#f0f0f0; padding:40px; position:relative; border-top:1px solid #fff; text-align:center; }
+.leaderboard h2{ font-size:26px; color:#929292; margin:0px; text-transform:uppercase; font-family: 'Montserrat'; font-weight:bold; text-align:left; }
+.leaderboard .img-responsive{ display:inline-block; }
+.round_main{ width:80%; display:inline-block; position:relative; }
+.round_main p{ width:200px; float:right; font-size:22px; color:#6d6c6c; margin:0px; font-family: 'Montserrat Light'; position:absolute; right:0px; bottom:100px; }
+.leaderboard .round{ width:100%; max-width:465px; height:465px; float:left; background:url(../images/round1.png) no-repeat; text-align:center; padding:70px 0px; }
+.leaderboard .round h4{ font-size:40px; color:#fff; margin:0px; font-family: 'Montserrat Light'; text-transform:uppercase; }
+.leaderboard .round h3{ font-size:140px; color:#fff; margin:0px; font-family: 'RalewayBold'; }
+.leaderboard .round h3 strong{ font-size:80px; font-family: 'Montserrat Light'; font-weight:normal; }
+.leaderboard .round2{ width:100%; max-width:374px; height:382px; float:left; background:url(../images/round2.png) no-repeat; text-align:center; padding:70px 0px; }
+.leaderboard .round2 h4{ font-size:27px; color:#fff; margin:0px; font-family: 'Montserrat Light'; text-transform:uppercase; }
+.leaderboard .round2 h3{ font-size:140px; color:#fff; margin:0px; font-family: 'RalewayBold'; }
+.leaderboard .round2 h3 strong{ font-size:80px; font-family: 'Montserrat Light'; font-weight:normal; }
+.leaderboard .round3{ width:100%; max-width:260px; height:268px; float:left; background:url(../images/round3.png) no-repeat; text-align:center; padding:70px 0px; position:relative; top:-120px; left:-120px; }
+.leaderboard .round3 h4{ font-size:20px; color:#fff; margin:0px; font-family: 'Montserrat Light'; text-transform:uppercase; }
+.leaderboard .round3 h3{ font-size:120px; color:#fff; margin:0px; font-family: 'RalewayBold'; line-height:110px; }
+.leaderboard .round3 h3 strong{ font-size:80px; font-family: 'Montserrat Light'; font-weight:normal; }
+
+/* FAQ */
+.faq_banner{ width:100%; float:left; background:url(../images/blue.jpg) repeat; padding:70px 0px; text-align:center; }
+.faq_banner h2{ font-size:30px; color:#fff; margin:0px; font-family: 'MontserratBlack'; }
+.faq_banner form{ width:100%; max-width:370px; display:inline-block; background:#fff; border:1px solid #ccc; border-radius:20px; margin-top:30px; }
+.faq_banner form input{ width:87%; height:28px; float:left; background:none; border:none; font-size:14px; color:#3b3b3b; padding:0px 20px; }
+.faq_banner form button{ width:auto; height:28px; float:right; background:none; border:none; padding:0px 15px 2px 5px; }
+.faq_detail{ width:100%; float:left; background:url(../images/grey.jpg) repeat; padding:70px 0px; }
+.faq_qus h2{ font-size:22px; color:#4fb4b8; margin:0px 0px 40px; font-family: 'Montserrat'; font-weight:bold; text-transform:uppercase; }
+.faq_qus h3{ font-size:18px; color:#4fb4b8; margin:0px 0px 5px; font-family: 'Montserrat'; font-weight:bold; }
+.faq_qus p{ font-size:12px; color:#4fb4b8; margin:0px 0px 40px; font-family: 'Montserrat'; font-weight:normal; line-height:20px; }
+.faq_link h3{ font-size:15px; color:#4fb4b8; margin:0px; font-family: 'Montserrat'; font-weight:bold; text-transform:uppercase; }
+.faq_link h4{ font-size:12px; color:#4fb4b8; margin:30px 0px 5px; font-family: 'Montserrat'; font-weight:bold; }
+.faq_link ul li{ margin:5px 0px; }
+.faq_link ul li a{ font-size:12px; color:#4fb4b8; margin:0px; font-family: 'Montserrat'; font-weight:normal; }
+.faq_link ul li a:hover{ color:#333; }
+.still_button{ width:100%; float:left; text-align:center; margin-top:20px; }
+.still_button a{ width:100%; max-width:568px; display:inline-block; background:#35de14; border-radius:40px; font-size:18px; color:#fff; padding:20px; }
+.still_button a:hover{ background:#41a7b3; }
+.still_button a strong{ font-weight:bold; font-family: 'Montserrat'; }
+
+/* Rewards */
+.rewards_banner{ width:100%; float:left; background:url(../images/rewards-banner.jpg) no-repeat; background-size:100% 100%; padding:170px 0px 170px 0px; display:inline-block; text-align:center; color:#FFF;}
+.rewards_banner h2{ width:auto; float:none; display:inline-block; text-align:center; font-size:40px; line-height:40px; background:url(../images/pricing-borderimg.jpg) no-repeat bottom center; padding:0px 0px 15px 0px; font-family: 'MontserratBlack'; text-transform:uppercase; text-shadow:0px 2px 2px #555; }
+.rewards_section{ width:100%; float:left; background:url(../images/grey.jpg) repeat; padding:40px 0px; }
+.campaign_button{ width:100%; float:left; text-align:center; }
+.campaign_button a{ width:100%; max-width:370px; display:inline-block; background:#b7b7b7; border-radius:24px; padding:7px 10px; font-size:18px; color:#fff; font-family: 'RalewayBold'; text-transform:uppercase; }
+.campaign_button a:hover{ background:#555; }
+.rewards_box{ width:100%; float:left; background:#ebf2f3; padding:30px; border:1px solid #acacac; margin-top:30px; }
+.rewards_box h2{ font-size:20px; color:#42a7b3; margin:0px; }
+.rewards_box h3{ font-size:13px; color:#292929; margin:0px; }
+.rewards_box p{ font-size:13px; color:#292929; margin:20px 0px; font-family: 'Montserrat Light'; }
+.rewards_box a{ width:100%; float:left; font-size:18px; color:#fff; background:#5cc5d3; border-radius:24px; padding:7px 10px; font-family: 'RalewayBold'; text-transform:uppercase; text-align:center; }
+.rewards_box a:hover{ background:#555; }
+.choose_section{ width:100%; float:left; background:#ebf2f3; padding:30px; border:1px solid #acacac; margin-top:40px; }
+.choose_section .left{ width:25%; float:left; }
+.choose_section .left h2{ font-size:20px; color:#42a7b3; margin:0px; }
+.choose_section .left p{ font-size:14px; color:#292929; margin:0px; }
+.choose_section .right{ width:75%; float:left; padding:2px 0px; }
+.choose_section .right input{ width:100%; height:38px; float:left; background:#fff; border-radius:20px; padding:0px 10px; font-size:18px; color:#c1c1c1; border:1px solid #acacac; }
+.proceed_button{ width:100%; float:left; text-align:center; margin-top:40px; }
+.proceed_button a{ width:100%; max-width:370px; display:inline-block; background:#7ae84f; border-radius:24px; padding:7px 10px; font-size:18px; color:#fff; font-family: 'RalewayBold'; text-transform:uppercase; text-shadow:0px 2px 2px #777; }
+.proceed_button a:hover{ background:#555; }
+
+/* Partners */
+.maintitle{ text-transform:uppercase; }
+.partners #myCarousel .carousel-caption{ padding-bottom:100px; }
+.partners #myCarousel .carousel-indicators{ bottom:170px; }
+.partners .carousel-caption{ bottom:140px; }
+.partners_details{ width:100%; float:left; background:url(../images/blue.jpg) repeat; padding:40px 0px; }
+.partners_details .right h2{ font-size:20px; color:#fff; margin:0px 0px 15px; text-transform:uppercase; }
+.partners_details .right h3{ font-size:22px; color:#fff; margin:0px 0px 5px; font-weight:bold; }
+.partners_details .right h4{ font-size:18px; color:#fff; margin:0px; }
+.partners_details .right p{ font-size:16px; color:#fff; margin:15px 0px; }
+.partners_details .right a{ display:inline-block; padding:7px 25px; background:#fa742c; border-radius:20px; text-transform:uppercase; font-size:16px; color:#fff; margin:0px; font-weight:bold; }
+.partners_details .right a:hover{ background:#555; }
+.partners_details .left .img{ float:left; margin-right:15px; margin-bottom:15px; }
+.partners_details .left .img2{ float:left; margin:0px 10px 20px 0px; position:relative; top:5px; }
+.partners_details .left h2{ font-size:20px; color:#fff; margin:0px; text-transform:uppercase; font-weight:bold; }
+.partners_details .left h3{ font-size:20px; color:#fff; margin:15px 0px; font-weight:normal; }
+.partners_details .left h4{ font-size:16px; color:#fff; margin:0px; line-height:28px; font-weight:bold; }
+.partners_details .left a{ font-size:20px; color:#fff; text-transform:uppercase; font-weight:bold; text-decoration:underline; }
+.full{ width:100%; float:left; }
+.our_partnership{ width:100%; float:left; background:#f0f0f0; padding:40px 0px; }
+.our_partnership h2{ font-size:24px; color:#292929; margin:0px 0px 25px; font-family: 'RalewayBold'; text-transform:uppercase; }
+.our_partnership h2 .all{ font-size:16px; color:#848484; padding:5px 20px; background:#f0f0f0; border:2px solid #fff; border-radius:20px; margin-left:10px; position:relative; top:-4px; }
+.our_partnership h2 .all:hover{ background:#848484; color:#fff; border:2px solid #848484; }
+.partnership_box{ width:100%; float:left; border:1px solid #a7a7a7; border-radius:5px; background:#fff; padding-bottom:15px; }
+.partnership_box .partnership_img{ width:100%; border-radius:6px; }
+.partnership_box .full{ margin:15px 0px 4px; padding:0px 15px; }
+.partnership_box h3{ font-size:14px; color:#292929; margin:0px; font-weight:bold; float:left; }
+.partnership_box h4{ font-size:14px; color:#292929; margin:0px; font-weight:bold; float:right; padding-left:20px; background:url(../images/location2.png) no-repeat; }
+.partnership_box h5{ font-size:12px; color:#292929; margin:0px; padding:0px 15px; }
+.partnership_box p{ font-size:10px; color:#4c4c4c; margin:15px 0px; padding:0px 15px; }
+.partnership_box a{ width:100%; float:left; font-size:20px; color:#fa742c; margin:0px; padding:0px 15px; text-decoration:underline; font-weight:bold; text-transform:uppercase; text-align:center; }
+.partnership_box a:hover{ color:#333; }
+.ngo_map_main{ width:100%; float:left; background:url(../images/event-map-bg.jpg) repeat; padding:40px 0px; }
+.ngo_map{ width:100%; float:left; position:relative; }
+.ngo_map img{ width:100%; float:left; }
+.ngo_map_input{ left:00px; right:00px; background:rgba(104,130,178,0.8); padding:8px 10px 8px 25px ; position:absolute; bottom:0px;  }
+.ngo_map_input h2{ width:100%; float:left; font-size:20px; color:#FFF; font-family: 'Montserrat'; font-weight:700; margin:0; }
+.ngo_map_input p{ font-size:14px; color:#FFF;	 font-family: 'Montserrat'; font-weight:400;margin:0; }
+.ngo_map_input input{ max-width:240px; width:100%; float:right; border-radius:50px; background:rgba(225,226,231,0.7); padding:10px 15px; border:none; color:#000; } 
+
+@media(max-width:1200px){
+.round_main{ width:100%; }
+.partnership_box a{ font-size:14px; }
+.partners_details .left h2{ font-size:14px; }
+.partners_details .left .img{ max-width:200px; }
+.partners_details .left h3{ font-size:14px; margin:5px 0px; }
+.partners_details .left h4{ font-size:14px; }
+}
+@media(max-width:992px){
+#chart #bars li{ width:32px; }
+#chart #bars li .bar{ width:32px; }
+.prograsbar_main{ text-align:center; }
+.statChartHolder{ width:100%; }
+.leaderboard{ text-align:center; }
+.leaderboard h2{ text-align:center; }
+.round_main{ text-align:center; margin-top:20px; }
+.leaderboard .round{ float:none; display:inline-block; }
+.leaderboard .round2{ float:none; display:inline-block; }
+.leaderboard .round3{ float:none; display:inline-block; left:auto; top:auto; }
+.round_main p{ position:inherit; bottom:auto; width:100%; float:left; margin-top:20px; }
+.sp{ width:100%; height:10px; float:left; }
+.round_main p br{ display:none; }
+.rewards_banner h2{ font-size:24px; line-height:normal; }
+.rewards_box{ padding:15px; }
+.partners_details .right h2{ margin-top:25px; }
+.partners_details .left h4 br{ display:none; }
+.partners #myCarousel .carousel-indicators{ bottom:40px; }
+.partners .carousel-caption{ bottom:0px; padding:0px 0px 40px; }
+.partnership_box h3{ width:100%; }
+.partnership_box h4{ width:100%; margin:10px 0px; }
+.partnership_box a{ font-size:10px; }
+}
+@media(max-width:767px){
+#chart #bars li{ width:25px; margin-left:5px; }
+#chart #bars li .bar{ width:25px; }
+.timmer span{ font-size:30px; padding:5px 2px; max-width:30px; line-height:40px; }
+.timmer h2{ font-size:20px; }
+.prograsbar_main h2{ font-size:22px; }
+.chart_main{ padding:25px 15px; }
+.years h2{ font-size:18px; text-align:center; padding:5px 0px; }
+.inner_nav{ display:none; }
+.rewards_banner{ padding:100px 0px; }
+.rewards_banner h2{ font-size:20px; line-height:normal; }
+.choose_section{ padding:20px; }
+.choose_section .left{ width:100%; margin-bottom:10px; }
+.choose_section .right{ width:100%; }
+.partnership_box{ margin-bottom:25px; }
+.ngo_map_input{ width:100%; float:left; position:initial; }
+.ngo_map_input input{ max-width:100%; margin-top:15px; }
+.ngo_map_input{ padding:20px 15px; }
+}
+@media(max-width:600px){
+.leaderboard{ padding:25px 15px; }
+.leaderboard .round{ max-width:100%; height:auto; width:100%; float:left; background:#0ef00e; padding:25px 15px; border-radius:10px; }
+.leaderboard .round2{ max-width:100%; height:auto; width:100%; float:left; background:#0ef00e; padding:25px 15px; border-radius:10px; }
+.leaderboard .round3{ max-width:100%; height:auto; width:100%; float:left; background:#0ef00e; padding:25px 15px; border-radius:10px; }
+.leaderboard .round h3{ font-size:100px; margin-bottom:25px; }
+.leaderboard .round2 h3{ font-size:100px; }
+.leaderboard .round3 h3{ font-size:100px; }
+.leaderboard .round h4 {font-size:22px; }
+.leaderboard .round2 h4{ font-size:22px; }
+.leaderboard .round h3 strong{ font-size:40px; }
+.leaderboard .round2 h3 strong{ font-size:40px; }
+.leaderboard .round3 h3 strong{ font-size:40px; }
+.faq_banner h2{ font-size:20px; font-weight:normal; font-family: 'Montserrat'; }
+.faq_banner form input{ font-size:12px; }
+.still_button a{ font-size:14px; padding:10px; }
+.rewards_banner h2{ font-size:16px; }
+.our_partnership h2{ font-size:18px; }
+.partners #myCarousel .carousel-indicators{ bottom:10px; }
+.partners #myCarousel .carousel-caption{ padding:0px 0px 50px; }
+.maintitle{ padding:5px 0px; margin-bottom:0px; }
+.space20{ margin-top:5px; }
+.partners_details .left a{ font-size:16px; }
+.partners_details .right h2{ font-size:16px; }
+}
+@media(max-width:500px){
+#chart #bars li{ width:10px; }
+#chart #bars li .bar{ width:10px; }
+.timmer span{ font-size:18px; max-width:17px; line-height:25px; margin:0px 1px; }
+.timmer h2{ font-size:18px; }
+.leaderboard .round h3{ font-size:70px; }
+.leaderboard .round2 h3{ font-size:70px; }
+.leaderboard .round3 h3{ font-size:70px; }
+.leaderboard .round h4 {font-size:22px; }
+.round_main p{ font-size:18px; }
+.rewards_banner h2{ font-size:14px; }
+.rewards_box a{ font-size:16px; }
+.campaign_button a{ font-size:16px; }
+.proceed_button a{ font-size:16px; }
+.partners_details .left .img{ max-width:100%; width:100%; margin:0px 0px 20px 0px; }
+.our_partnership h2 .all{ width:100%; float:left; text-align:center; margin:15px 0px; }
+}

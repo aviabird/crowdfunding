@@ -8,21 +8,21 @@
 
         <ul>
 
-          <li><a href="#">About Us</a></li>
+          <li><a href="#">{{'FOOTER.ABOUT_US' | translate}}</a></li>
 
-          <li><a href="#">Jobs</a></li>
+          <li><a href="#">{{'FOOTER.JOBS' | translate}}</a></li>
 
-          <li><a href="#">Press</a></li>
+          <li><a href="#">{{'FOOTER.PRESS' | translate}}</a></li>
 
-          <li><a href="#">Statistics</a></li>
+          <li><a href="#">{{'FOOTER.STATISTICS' | translate}}</a></li>
 
-          <li><a href="#">Newsletter</a></li>
+          <li><a href="#">{{'FOOTER.NEWSLETTER' | translate}}</a></li>
 
-          <li><a href="#">Support</a></li>
+          <li><a href="#">{{'FOOTER.SUPPORT' | translate}}</a></li>
 
-          <li><a href="#">Partners</a></li>
+          <li><a href="#">{{'FOOTER.PARTNERS' | translate}}</a></li>
 
-          <li><a href="#">Tutorial</a></li>
+          <li><a href="#">{{'FOOTER.TUTORIAL' | translate}}</a></li>
 
         </ul>
 
@@ -32,15 +32,15 @@
 
         <ul class="space20">
 
-          <li><a href="#">Blog</a></li>
+          <li><a href="#">{{'FOOTER.BLOG' | translate}}</a></li>
 
-          <li><a href="#">FAQ</a></li>
+          <li><a href="#">{{'FOOTER.FAQ' | translate}}</a></li>
 
-          <li><a href="#">Rulebook</a></li>
+          <li><a href="#">{{'FOOTER.RULEBOOK' | translate}}</a></li>
 
-          <li><a href="#">Events</a></li>
+          <li><a href="#">{{'FOOTER.EVENTS' | translate}}</a></li>
 
-          <li><a href="#">Trust &amp; Safety</a></li>
+          <li><a href="#">{{'FOOTER.TRUST' | translate}} &amp; {{'FOOTER.SAFETY' | translate}}</a></li>
 
         </ul>
 
@@ -60,13 +60,13 @@
 
           <li class="space20">
 
-            <button type="button" class="pricingbtn">Pricing</button>
+            <button type="button" class="pricingbtn">{{'FOOTER.PRICING' | translate}}</button>
 
           </li>
 
           <li class="space20">
 
-            <p>Folow us on</p>
+            <p>{{'FOOTER.FOLLOW' | translate}}</p>
 
             <a href="#" class="space5"><img src="assets/img/icon3.png" alt="icon"></a>&nbsp;&nbsp;
 
@@ -79,8 +79,9 @@
           </li>
 
           <li class="space20">
+            <i [ngClass]="['flag', language[translate.currentLang].class]"></i>
             <select class="form-control mydropdown" #langSelect (change)="translate.use(langSelect.value)">
-			<option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+			<option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ language[lang].longLan }}</option>
 		</select>
 
 
@@ -111,7 +112,6 @@
         <img src="assets/img/Bitmap.png" alt="icon">
 
       </div>
-
     </dir>
 
   </div>

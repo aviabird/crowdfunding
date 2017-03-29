@@ -1,9 +1,27 @@
 {
 	"HEADER": {
-		"SEARCH": "Search by Name,Category or Title"
+		"SEARCH": "Search by Name,Category or Title",
+		"GET_STARTED": "Get Started",
+		"ABOUT_US": "About Us",
+		"LOGIN": "Login",
+		"SIGNUP": "SIGNUP"
 	},
-	"HOME": {
-		"TITLE": "Hello Angular with ngx-translate!",
-		"SELECT": "Change language"
+	"FOOTER": {
+		"ABOUT_US": "About Us",
+		"JOBS": "Jobs",
+		"PRESS": "Press",
+		"STATISTICS": "Statistics",
+		"NEWSLETTER": "Newsletter",
+		"SUPPORT": "Support",
+		"PARTNERS": "Partners",
+		"TUTORIAL": "Tutorial",
+		"BLOG": "Blog",
+		"FAQ": "FAQ",
+		"RULEBOOK": "Rulebook",
+		"EVENTS": "Events",
+		"TRUST": "Trust",
+		"SAFETY": "Safety",
+		"PRICING": "Pricing",
+		"FOLLOW": "Follow us on"
 	}
 }

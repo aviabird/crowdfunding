@@ -1,3 +1,119 @@
-<p>
-  footer works!
-</p>
+<footer>
+
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-md-4 col-sm-4">
+
+        <ul>
+
+          <li><a href="#">About Us</a></li>
+
+          <li><a href="#">Jobs</a></li>
+
+          <li><a href="#">Press</a></li>
+
+          <li><a href="#">Statistics</a></li>
+
+          <li><a href="#">Newsletter</a></li>
+
+          <li><a href="#">Support</a></li>
+
+          <li><a href="#">Partners</a></li>
+
+          <li><a href="#">Tutorial</a></li>
+
+        </ul>
+
+      </div>
+
+      <div class="col-md-6 col-sm-4">
+
+        <ul class="space20">
+
+          <li><a href="#">Blog</a></li>
+
+          <li><a href="#">FAQ</a></li>
+
+          <li><a href="#">Rulebook</a></li>
+
+          <li><a href="#">Events</a></li>
+
+          <li><a href="#">Trust &amp; Safety</a></li>
+
+        </ul>
+
+      </div>
+
+      <div class="col-md-2 col-sm-4">
+
+        <ul class="textleft space20">
+
+          <li>
+            <a href="#">
+
+              <img src="assets/img/logo2.png" alt="icon">
+
+            </a>
+          </li>
+
+          <li class="space20">
+
+            <button type="button" class="pricingbtn">Pricing</button>
+
+          </li>
+
+          <li class="space20">
+
+            <p>Folow us on</p>
+
+            <a href="#" class="space5"><img src="assets/img/icon3.png" alt="icon"></a>&nbsp;&nbsp;
+
+            <a href="#"><img src="assets/img/icon4.png" alt="icon"></a>&nbsp;&nbsp;
+
+            <a href="#"><img src="assets/img/icon5.png" alt="icon"></a>&nbsp;&nbsp;
+
+            <a href="#"><img src="assets/img/icon6.png" alt="icon"></a>
+
+          </li>
+
+          <li class="space20">
+            <select class="form-control mydropdown" #langSelect (change)="translate.use(langSelect.value)">
+			<option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+		</select>
+
+
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+    <dir class="row">
+
+      <div class="col-md-10 col-sm-9 space20">
+
+        <p><strong>Copyright 2017 crowdpouch UG</strong><br>
+
+          <a href="#">Privacy Policy</a>
+
+          <a href="#">Term &amp; Condition</a>
+
+          <a href="#">Cookie Policy</a> </p>
+
+      </div>
+
+      <div class="col-md-2 col-sm-3 space20">
+
+        <img src="assets/img/Bitmap.png" alt="icon">
+
+      </div>
+
+    </dir>
+
+  </div>
+
+</footer>

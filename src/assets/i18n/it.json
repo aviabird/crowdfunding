@@ -1,4 +1,7 @@
 {
+	"HEADER": {
+		"SEARCH": "Cerca per nome, categoria o Titolo"
+	},
 	"HOME": {
 		"TITLE": "Ciao Angular con ngx-translate!",
 		"SELECT": "Change language"

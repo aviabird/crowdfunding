@@ -1,11 +1,10 @@
+import { SharedModule } from './shared/shared.module';
 import { LayoutModule } from './layout/layout.module';
 import { CoreModule } from './core/core.module';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule, Http } from '@angular/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpModule, Http } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
@@ -18,9 +17,6 @@ export function HttpLoaderFactory(http: Http) {
     AppComponent
   ],
   imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
     CoreModule,
     LayoutModule,
     TranslateModule.forRoot({
@@ -29,7 +25,9 @@ export function HttpLoaderFactory(http: Http) {
         useFactory: HttpLoaderFactory,
         deps: [Http]
       }
-    })
+    }),
+    SharedModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

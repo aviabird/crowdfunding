@@ -12,14 +12,14 @@ body{
      font-family: 'Montserrat';
     src: url(../fonts/Montserrat-Regular.otf);
 }
-@font-face {
+/*@font-face {
      font-family: 'Montserrat';
     src: url(../fonts/Montserrat-Bold.ttf);
-}
-@font-face {
+}*/
+/*@font-face {
      font-family: 'Montserrat';
     src: url(../fonts/Montserrat-black.ttf);
-}
+}*/
 @font-face {
      font-family: 'Gadugi';
     src: url(../fonts/gadugi.ttf);

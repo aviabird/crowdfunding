@@ -1,3 +1,4 @@
+import { LayoutModule } from './layout/layout.module';
 import { CoreModule } from './core/core.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -21,6 +22,7 @@ export function HttpLoaderFactory(http: Http) {
     FormsModule,
     HttpModule,
     CoreModule,
+    LayoutModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

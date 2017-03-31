@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectCreateComponent implements OnInit {
 
-  constructor() { }
+  selectedTab: number;
+
+  constructor() {
+    this.selectedTab = 1;
+  }
 
   ngOnInit() {
+  }
+
+  changeTab(tab: number) {
+    this.selectedTab = tab;
   }
 
 }

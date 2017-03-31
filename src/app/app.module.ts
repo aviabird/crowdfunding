@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
 import { LayoutModule } from './layout/layout.module';
 import { CoreModule } from './core/core.module';
@@ -6,6 +7,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpModule, Http } from '@angular/http';
 
+import { routes } from './app.routes';
 import { AppComponent } from './app.component';
 
 export function HttpLoaderFactory(http: Http) {
@@ -17,6 +19,7 @@ export function HttpLoaderFactory(http: Http) {
     AppComponent
   ],
   imports: [
+    RouterModule.forRoot(routes),
     CoreModule,
     LayoutModule,
     TranslateModule.forRoot({

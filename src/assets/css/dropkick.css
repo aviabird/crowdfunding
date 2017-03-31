@@ -1,0 +1,62 @@
+.dk_toggle { bottom:0; float:left; left:0; width:320px !important; height:41px; line-height:41px; text-indent:10px; background:url(../images/select.png) no-repeat 0 0; cursor:default; z-index:1; color:#777; position: relative; outline: 0; }
+.dk_toggle:hover { }
+.dk_toggle:after { *position: absolute;*/
+    /*top: 45%;*/
+    /*right: 10px;*/
+    /*content: '';*/
+    /*border-left: 5px solid transparent;*/
+    /*border-right: 5px solid transparent;*/
+    /*border-top: 5px solid #4B4B4B;*/
+ }
+/* Applied when the dropdown is focused */
+.dk_focus .dk_toggle { backgrond-color: #000; }
+/* Applied whenever the dropdown is open */
+.dk_open { /*box-shadow: 0 0 5px #40b5e2;*/
+  /*-moz-box-shadow: 0 0 5px #40b5e2;*/
+  /*-webkit-box-shadow: 0 0 5px #40b5e2;*/
+  /**
+   * Help: Dropdown menu is covered by something
+   * Try setting this value higher
+   */
+  z-index: 100; }
+.dk_open .dk_toggle { background:url(../images/selectclicked2.png) no-repeat 0 0; }
+/* The outer container of the options */
+.dk_options { /*background:#fff;*/
+  /*border: 1px solid #999;*/
+  /* Removes transparent background on iOS5+ scroll */
+  /*box-shadow: rgba(0, 0, 0, 0.2) 0 2px 8px;*/
+  /*-moz-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 8px;*/
+  /*-webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 8px;*/
+  /*border-radius: 5px 5px 5px 5px;*/
+  /*-moz-border-radius: 0 0 5px 5px;*/
+  /*-webkit-border-radius: 0 0 5px 5px;*/
+}
+.dk_options a { background-color: #fff; border-bottom: 1px solid #cccccc; padding: 12px 8px 12px 13px; color: #666666; font-size: 14px; }
+.dk_options_inner li { padding: 0px; list-style-type: none; list-style-position:inside; }
+.dk_options a:hover { background-color: #999999; color: #fff; text-decoration: none;/*text-shadow: rgba(0, 0, 0, 0.5) 0 1px 0;*/ }
+.dk_options li:last-child a { border-bottom: none; }
+.dk_options .disabled { cursor: default; }
+.dk_options .disabled a { color: #aaa; }
+.dk_options .disabled:hover, .dk_options .disabled:hover a { cursor: default; background-color: #fff; border-bottom-color: #999; text-shadow: none; }
+/* Inner container for options, this is what makes the scrollbar possible. */
+.dk_options_inner { margin-top: 4px; padding: 0px; max-height: 450px; border: 1px solid #999; /*border-bottom-width: 2px;*/
+  /*border-bottom-color: #999;*/
+  color: #333; text-shadow: #fff 0 1px 0; border-radius: 5px 5px 5px 5px; -moz-border-radius: 5px 5px 5px 5px; -webkit-border-radius: 5px 5px 5px 5px; }
+/******  End Theme ******/
+/***** Critical to the continued enjoyment of working dropdowns ******/
+.dk_container { display: none; float: left; }
+.dk_container a { outline: 0; }
+.dk_toggle { display: -moz-inline-stack; display: inline-block;  *display: inline;
+position: relative; zoom: 1; }
+.dk_open { position: relative; }
+.dk_open .dk_options { display: block; }
+.dk_open .dk_label { color: inherit; }
+.dk_options { display: none; margin-top: -1px; position: absolute; right: 0; width: 100%; }
+.dk_options a, .dk_options a:link, .dk_options a:visited { display: block; }
+.dk_options_inner { overflow: auto; position: relative; -webkit-overflow-scrolling: touch; }
+/* Hides only dropkick <select> instances */
+.dk_container select { position: absolute; top: -99999em; visibility: hidden; }
+/*  nativeMobile override */
+.dk_mobile { position: relative; }
+.dk_mobile select { display: block; width: 100%; height: 100%; top: 0; left: 0; visibility: visible; opacity: 0; appearance:none; -moz-appearance:none; -webkit-appearance:none; }
+/***** End Critical to the continued enjoyment of working dropdowns ******/

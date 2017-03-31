@@ -8,6 +8,8 @@ url('../fonts/RalewayBold.ttf') format('truetype'),
 url('../fonts/RalewayBold.svg#RalewayBold') format('svg');
 }
 
+a,img{ outline:none; }
+a:focus{ outline:none; }
 
 .inner_nav{ width:100%; height:40px; float:left; text-align:center; background: #4d86ac; /* Old browsers */
 background: -moz-linear-gradient(left, #4d86ac 0%, #4d98a7 100%); /* FF3.6-15 */
@@ -170,7 +172,137 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d86ac', end
 .ngo_map_input{ left:00px; right:00px; background:rgba(104,130,178,0.8); padding:8px 10px 8px 25px ; position:absolute; bottom:0px;  }
 .ngo_map_input h2{ width:100%; float:left; font-size:20px; color:#FFF; font-family: 'Montserrat'; font-weight:700; margin:0; }
 .ngo_map_input p{ font-size:14px; color:#FFF;	 font-family: 'Montserrat'; font-weight:400;margin:0; }
-.ngo_map_input input{ max-width:240px; width:100%; float:right; border-radius:50px; background:rgba(225,226,231,0.7); padding:10px 15px; border:none; color:#000; } 
+.ngo_map_input input{ max-width:240px; width:100%; float:right; border-radius:50px; background:rgba(225,226,231,0.7); padding:10px 15px; border:none; color:#000; }
+
+/* Dashboard */ 
+.dashboard_main{ width:100%; float:left; border-top:1px solid #ccc; }
+.dashboard_nav{ width:100%; float:left; background:url(../images/blue.jpg) repeat; padding:0px; }
+.dashboard_nav h2{ font-size:22px; color:#fff; margin:25px 0px; font-family: 'Montserrat Light'; text-transform:uppercase; text-align:center; }
+
+.nav-side-menu { overflow:auto; font-size:12px; font-weight:200; width:100%; height:100%; color:#e1ffff; padding-bottom:240px;
+background: #4c83ac; /* Old browsers */
+background: -moz-linear-gradient(left, #4c83ac 0%, #4e97a9 60%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, #4c83ac 0%,#4e97a9 60%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, #4c83ac 0%,#4e97a9 60%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c83ac', endColorstr='#4e97a9',GradientType=1 ); /* IE6-9 */ }
+.nav-side-menu .toggle-btn { display: none; }
+.nav-side-menu ul, .nav-side-menu li { width:100%; list-style: none; padding: 0px; margin: 0px; cursor: pointer; }
+.nav-side-menu ul :not(collapsed) .arrow:before, .nav-side-menu li :not(collapsed) .arrow:before {
+ font-family: FontAwesome; content: "\f078"; display: inline-block; padding-left: 10px; padding-right: 10px; vertical-align: middle; float: right; }
+.nav-side-menu ul .active, .nav-side-menu li .active { background-color: #333; }
+.nav-side-menu ul .sub-menu li.active, .nav-side-menu li .sub-menu li.active { color: #d19b3d; }
+.nav-side-menu ul .sub-menu li.active a, .nav-side-menu li .sub-menu li.active a { color: #d19b3d; }
+.nav-side-menu ul .sub-menu li, .nav-side-menu li .sub-menu li { border: none; margin-left: 0px; padding:10px 20px; font-size:15px; color:#7aaac0; }
+.nav-side-menu ul .sub-menu li:hover, .nav-side-menu li .sub-menu li:hover { color:#fff; }
+.nav-side-menu li { padding:0px; }
+.nav-side-menu li a { padding:25px 0px; text-decoration:none; color:#7aaac0; font-size:16px; border-bottom:1px solid #7aaac0; }
+.nav-side-menu li a:hover{ color:#fff; border-bottom:1px solid #7aaac0; }
+.nav-side-menu li a i { padding-left:20px; width:20px; padding-right:30px; text-align:center; }
+.nav-side-menu li:hover { color:#fff; -webkit-transition: all 1s ease; -moz-transition: all 1s ease; -o-transition: all 1s ease; -ms-transition: all 1s ease; transition: all 1s ease; }
+#menu-content .sub-menu{ margin-top:15px; padding-left:15px; }
+
+.dashboard_title{ width:100%; float:left; padding:20px 0px 40px; }
+.dashboard_title h2{ font-size:27px; color:#565656; margin:0px; font-family: 'Montserrat Light'; }
+.dashboard_title p{ font-size:14px; color:#aeaeae; margin:0px; font-family: 'Montserrat Light'; }
+.profile_pic{ width:100%; float:left; margin:5px 0px 10px; }
+.profile_pic .left{ width:auto; float:left; font-size:13px; color:#999999; text-transform:uppercase; font-weight:bold; padding:4px 0px; }
+.profile_pic .right{ width:auto; float:right; }
+.profile_pic .right a{ float:left; font-size:20px; color:#999999; }
+.basic_info h4{ font-size:13px; font-weight:bold; color:#999; margin:0px 0px 15px; text-transform:uppercase; }
+.basic_info h4 a{ float:right; font-size:20px; color:#999999; position:relative; top:-4px; }
+.basic_info h2{ font-size:30px; font-weight:bold; color:#999; margin:0px; }
+.basic_info h3{ font-size:14px; color:#999; margin:0px; font-weight:bold; }
+.basic_info p{ font-size:13px; font-family: 'Montserrat Light'; color:#999; margin:0px 0px 15px; }
+.payment_info h4{ font-size:13px; font-weight:bold; color:#999; margin:0px 0px 15px; text-transform:uppercase; }
+.payment_info h4 a{ float:right; font-size:20px; color:#999999; position:relative; top:-4px; }
+.payment_info h3{ font-size:15px; color:#999; margin:20px 0px 0px; font-weight:bold; }
+.payment_info p{ font-size:13px; font-family: 'Montserrat Light'; color:#999; margin:0px; }
+.payment_info .payment_img{ width:100%; float:left; margin:20px 0px 10px; }
+.payment_info .payment_img img{ float:left; margin-right:10px; }
+.profile_edit h3{ font-size:13px; font-weight:bold; color:#999; margin:20px 0px 15px; text-transform:uppercase; }
+.profile_edit h3 a{ float:right; font-size:20px; color:#999999; position:relative; top:-4px; }
+.profile_edit h2{ font-size:18px; color:#999; margin:20px 0px 0px; font-weight:bold; }
+.profile_edit h4{ font-size:14px; color:#999; margin:20px 0px 0px; }
+.profile_edit p{ font-size:13px; font-family: 'Montserrat Light'; color:#999; margin:0px; }
+.social_media h4{ font-size:13px; font-weight:bold; color:#999; margin:20px 0px 15px; text-transform:uppercase; }
+.social_media h4 a{ float:right; font-size:20px; color:#999999; position:relative; top:-4px; }
+.social_media p{ font-size:20px; font-family: 'Montserrat Light'; color:#999; margin:0px; }
+.social_media_box{ width:100%; float:left; text-align:center; margin:10px 0px 20px; }
+.social_media_box a{ width:25%; float:left; }
+.social_media_box a span{ width:50px; height:50px; display:inline-block; background:#999999; border-radius:50%; text-align:center; line-height:50px; color:#fff; font-size:27px; }
+.social_media_box a p{ width:100%; float:left; font-size:13px; color:#999999; font-family: 'Montserrat Light'; margin:7px 0px 0px; }
+.social_media_box a:hover span{ background:#ff8e00; }
+.nav-side-menu h3{ float:left; display:none; font-size:22px; color:#fff; margin:13px 0px; font-family: 'Montserrat Light'; text-transform:uppercase; text-align:center; padding-left:15px; }
+#myheader #ds #bs-example-navbar-collapse-1{ width:auto; float:right; padding:17px 15px 17px 0px; }
+#myheader #ds #bs-example-navbar-collapse-1 .ds{ margin:0px; padding:0px; }
+#myheader #ds #bs-example-navbar-collapse-1 .ds li{ float:left; margin:0px; padding:0px; text-align:center; line-height:44px; }
+#myheader #ds #bs-example-navbar-collapse-1 .ds li a{ float:left; padding:0px 13px; position:relative; line-height:44px; }
+#myheader #ds #bs-example-navbar-collapse-1 .ds li a span{ position:absolute; right:13px; bottom:-13px; font-size:16px; color:#fff; text-shadow:0px 2px 1px #555; }
+#myheader #ds{ padding:0px; }
+
+#dashboard_tabs{ border:none; }
+#dashboard_tabs > li.active > a, #dashboard_tabs > li.active > a:hover, #dashboard_tabs > li.active > a:focus{ background:none; border:none; color:#fff; border-bottom:1px solid #7aaac0 !important; }
+.backers{ width:100%; float:left; padding:90px 0px 0px; }
+.backers .table th{ text-transform:uppercase; font-size:13px; color:#999999; }
+.backers .table td{ font-size:13px; color:#999999; padding:10px 8px; }
+.events{ width:100%; float:left; padding:40px 0px 0px; }
+.events .table th{ text-transform:uppercase; font-size:13px; color:#999999; }
+.events .table td{ font-size:13px; color:#999999; padding:10px 8px; }
+.events .click{ font-size:14px; color:#aeaeae; margin:15px 0px 25px; font-family: 'Montserrat Light'; }
+.events h2{ font-size:17px; color:#999999; margin:25px 0px 25px; font-weight:bold; text-transform:uppercase; }
+.table .center{ text-align:center; }
+.table .right{ text-align:right; }
+.where h6{ font-size:12px; color:#999; margin:0px 0px 5px; font-family: 'Montserrat Light'; }
+.where h3{ font-size:26px; color:#ff9107; margin:0px; font-weight:bold; }
+.where h4{ font-size:16px; color:#999; margin:0px; font-family: 'Montserrat Light'; }
+.where p{ font-size:12px; color:#999; margin:7px 0px 0px; font-family: 'Montserrat Light'; }
+.invitations_row{ width:100%; float:left; margin-bottom:40px; }
+.invitations_row .box{ width:33.3333%; float:left; text-align:center; }
+.invitations_row .box h3{ font-size:30px; color:#39df12; margin:0px; font-weight:bold; }
+.invitations_row .box h5{ font-size:11px; color:#999; margin:0px; font-family: 'Montserrat Light'; }
+.invitations p{ font-size:12px; color:#999; margin:0px; font-family: 'Montserrat Light'; line-height:13.24px; }
+.mails{ width:100%; float:left; padding:20px 0px 0px; }
+.mails .table th{ text-transform:uppercase; font-size:13px; color:#999999; }
+.mails .table td{ font-size:13px; color:#999999; padding:10px 8px; }
+.mails .table tr:last-child{ border-bottom:1px solid #ddd; }
+.mails h2{ font-size:27px; color:#565656; margin:0px 0px 5px; text-transform:uppercase; font-family: 'Montserrat Light'; }
+.mails h3{ font-size:11px; color:#aeaeae; margin:10px 0px 0px; text-transform:uppercase; font-weight:bold; text-align:right; }
+.mails .click{ font-size:14px; color:#aeaeae; margin:0px 0px 25px; font-family: 'Montserrat Light'; }
+.mail_section{ width:100%; float:left; padding-top:20px; }
+.mail_section h3{ font-size:17px; color:#999; margin:0px 0px 10px; text-transform:uppercase; font-weight:bold; }
+.mail_section h4{ font-size:12px; color:#999; margin:0px 0px 25px; font-family: 'Montserrat Light'; }
+.mail_section p{ font-size:16px; color:#999; margin:0px; font-family: 'Montserrat Light'; line-height:25px; }
+.chat{ width:100%; float:left; padding:20px 0px 0px; }
+.chat .table th{ text-transform:uppercase; font-size:13px; color:#999999; }
+.chat .table td{ font-size:13px; color:#999999; padding:10px 8px; }
+.chat .table tr:last-child{ border-bottom:1px solid #ddd; }
+.chat h2{ font-size:27px; color:#565656; margin:0px 0px 5px; text-transform:uppercase; font-family: 'Montserrat Light'; }
+.chat h3{ font-size:11px; color:#aeaeae; margin:10px 0px 0px; text-transform:uppercase; font-weight:bold; text-align:right; }
+.chat .click{ font-size:14px; color:#aeaeae; margin:0px 0px 25px; font-family: 'Montserrat Light'; }
+.chat_section{ width:100%; float:left; padding-top:20px; }
+.chat_section h3{ font-size:17px; color:#999; margin:0px 0px 10px; text-transform:uppercase; font-weight:bold; }
+.chat_section h4{ font-size:12px; color:#999; margin:0px 0px 25px; font-family: 'Montserrat Light'; }
+.chat_section p{ font-size:13px; color:#999; margin:20px 0px 0px; font-family: 'Montserrat Light'; line-height:25px; }
+.chat_section h5{ font-size:16px; color:#999; margin:0px; font-family: 'Montserrat Light'; }
+.table_img img{ display:inline-block; margin:0px 5px; }
+
+/* Press */
+.press{ width:100%; float:left; background:url(../images/blue.jpg) repeat; }
+.press #myCarousel .carousel-caption{ padding-bottom:190px; }
+.press #myCarousel .carousel-indicators{ bottom:140px; }
+.press .maintitle{ text-transform:none; font-size:37px; }
+.press .space20{ font-size:26px; text-transform:uppercase; }
+.press p{ font-size:26px; text-transform:uppercase; }
+.our_press{ width:100%; float:left; text-align:center; position:relative; }
+.our_press img{ width:100%; }
+.our_press span{ position:absolute; left:0px; right:0px; top:40%; }
+.our_press h2{ font-size:40px; color:#fff; margin:0px 0px 15px; font-weight:bold; text-transform:uppercase; padding-bottom:15px; background:url(../images/border.png) no-repeat center bottom; text-shadow:0px 2px 2px #333; }
+.our_press p{ font-size:18px; color:#fff; margin:0px; text-transform:uppercase; text-shadow:0px 2px 2px #333; }
+.brand_logo{ width:100%; float:left; }
+.brand_logo .row{ margin:0px; }
+.brand_logo .col-sm-4{ padding:0px; }
+.brand_logo .col-sm-4 img{ width:100%; }
+
 
 @media(max-width:1200px){
 .round_main{ width:100%; }
@@ -179,6 +311,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d86ac', end
 .partners_details .left .img{ max-width:200px; }
 .partners_details .left h3{ font-size:14px; margin:5px 0px; }
 .partners_details .left h4{ font-size:14px; }
+.basic_info h2{ font-size:20px; }
+.basic_info h3{ font-size:12px; }
+.backers .table th{ font-size:10px; }
+.backers .table td{ padding:7px 15px; font-size:10px; }
+.events .table th{ font-size:10px; }
+.events .table td{ padding:7px 15px; font-size:10px; }
+.mails .table th{ font-size:10px; }
+.mails .table td{ padding:7px 15px; font-size:10px; }
+.chat .table th{ font-size:10px; }
+.chat .table td{ padding:7px 15px; font-size:10px; }
+.press #myCarousel .carousel-caption{ padding-bottom:70px; }
+.press #myCarousel .carousel-indicators{ bottom:20px; }
 }
 @media(max-width:992px){
 #chart #bars li{ width:32px; }
@@ -203,6 +347,25 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d86ac', end
 .partnership_box h3{ width:100%; }
 .partnership_box h4{ width:100%; margin:10px 0px; }
 .partnership_box a{ font-size:10px; }
+.nav-side-menu li a i{ padding-right:20px; padding-left:15px; }
+#menu-content .sub-menu{ padding:0px; }
+.nav-side-menu ul .sub-menu li, .nav-side-menu li .sub-menu li{ font-size:11px; }
+.payment_info h4{ margin:25px 0px 0px; }
+.profile_edit h3{ margin:40px 0px 10px; }
+.social_media h4{ margin:40px 0px 10px; }
+.social_media p{ margin-bottom:40px; }
+.invitations p{ margin-bottom:25px; }
+.press #myCarousel .item .img-responsive{ min-height:240px; }
+.press .timmer{ padding:10px 0px; }
+.press #myCarousel .carousel-caption{ padding-bottom:40px; }
+.press .space20{ font-size:16px; margin-top:0px; }
+.press p{ font-size:16px; margin-top:0px; }
+.press .maintitle{ font-size:28px; margin-bottom:7px; padding-bottom:7px; }
+.our_press h2{ font-size:28px; margin-bottom:10px; }
+.press .maintitle{ font-size:20px; }
+}
+@media(min-width:767px){
+.nav-side-menu .menu-list .menu-content{ display:block; }
 }
 @media(max-width:767px){
 #chart #bars li{ width:25px; margin-left:5px; }
@@ -222,6 +385,35 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d86ac', end
 .ngo_map_input{ width:100%; float:left; position:initial; }
 .ngo_map_input input{ max-width:100%; margin-top:15px; }
 .ngo_map_input{ padding:20px 15px; }
+
+.nav-side-menu{ position: relative; width: 100%; margin-bottom: 10px; }
+.nav-side-menu .toggle-btn{ display:block; cursor:pointer; position:absolute; right:10px; top:10px; z-index:10 !important; padding:3px; background-color:#ffffff; color:#000; width:40px; text-align:center; }
+.brand{ text-align:left !important; font-size:22px; padding-left:20px; line-height:50px !important; }
+.nav-side-menu{ padding:0px; margin:0px; }
+.nav-side-menu h3{ display:block; }
+.dashboard_nav h2{ display:none; }
+.menu-list{ width:100%; float:left; }
+.cntr{ text-align:center; }
+.img-responsive{ display:inline-block; }
+.basic_info h4{ padding:40px 0px 10px; border-bottom:1px solid #ccc; }
+.payment_info .payment_img{ margin-top:10px; }
+.profile_pic{ border-bottom:1px solid #ccc; padding-bottom:4px; }
+.social_media h4{ padding:10px 0px; border-bottom:1px solid #ccc; }
+.profile_edit h3{ padding:10px 0px; border-bottom:1px solid #ccc; }
+.payment_info h4{ padding:10px 0px; border-bottom:1px solid #ccc; }
+.social_media p{ font-size:16px; }
+#myheader #ds{ margin:25px 0px 0px; }
+.backers{ overflow:scroll; }
+.events_table{ overflow:scroll; }
+.mails_table{ overflow:scroll; }
+.mail_section{ margin-bottom:40px; }
+.chat_table{ overflow:scroll; }
+.chat_section{ margin-bottom:40px; }
+.table_img img{ max-width:10px; }
+.our_press h2{ font-size:20px; }
+.our_press p{ font-size:14px; }
+.our_press span{ top:30%; }
+.brand_logo .container{ padding:0px; }
 }
 @media(max-width:600px){
 .leaderboard{ padding:25px 15px; }
@@ -247,6 +439,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d86ac', end
 .space20{ margin-top:5px; }
 .partners_details .left a{ font-size:16px; }
 .partners_details .right h2{ font-size:16px; }
+.press .carousel-caption p{ font-size:10px !important; }
+.press #myCarousel .item .img-responsive{ min-height:200px; }
+.our_press .img-responsive{ min-height:170px; }
+.our_press span{ left:15px; right:15px; }
 }
 @media(max-width:500px){
 #chart #bars li{ width:10px; }
@@ -264,4 +460,5 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d86ac', end
 .proceed_button a{ font-size:16px; }
 .partners_details .left .img{ max-width:100%; width:100%; margin:0px 0px 20px 0px; }
 .our_partnership h2 .all{ width:100%; float:left; text-align:center; margin:15px 0px; }
+.our_press h2{ font-size:16px; }
 }

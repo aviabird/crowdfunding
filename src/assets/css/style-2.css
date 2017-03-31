@@ -504,8 +504,9 @@ background:url(../img/tutorals-bannerimg.png) no-repeat scroll 100% center / cov
 
 
 .partnership_box .partnership_img2{ width:100%; border-radius: 6px 6px 0px 0px; }
-#explorebtn{ width:100%; float:left; }
-footer{ float:left; }
+/*#explorebtn{ width:100%; float:left; }*/
+#explorebtn{ width:100% }
+/*footer{ float:left; }*/
 #myCarousel .carousel-caption{ left:18% !important; right:18% !important; }
 
 

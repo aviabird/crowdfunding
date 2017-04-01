@@ -6,9 +6,12 @@ import { NgModule } from '@angular/core';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpModule, Http } from '@angular/http';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { routes } from './app.routes';
 import { AppComponent } from './app.component';
+import { reducer } from './app.reducers';
 
 export function HttpLoaderFactory(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -20,6 +23,10 @@ export function HttpLoaderFactory(http: Http) {
   ],
   imports: [
     RouterModule.forRoot(routes),
+    StoreModule.provideStore(reducer),
+    StoreDevtoolsModule.instrumentStore({
+      maxAge: 5
+    }),
     CoreModule,
     LayoutModule,
     TranslateModule.forRoot({

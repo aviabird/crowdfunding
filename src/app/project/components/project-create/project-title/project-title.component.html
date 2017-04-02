@@ -8,25 +8,27 @@
 			</div>
 			<div class="form-group">
 				<label for="comment">Campaign Category</label>
-				<textarea class="form-control" rows="3" placeholder="Enter overview"></textarea>
+				<select class="form-control" formControlName="category_id">
+					<option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+				</select>
 			</div>
 			<h2>Upload your Campaign Image</h2>
 			<!-- <div class="camp_upload_img"> -->
-			<input type="file" name="pic" accept="image/*">
+			<input type="file" name="pic" accept="image/*" (change)="handleOnChange($event)">
 			<!-- <h4>Upload Image</h4> -->
 			<!-- </div> -->
 			<br>
 			<h2>Video URL</h2>
 			<p>Enter a URL to appear at the top of your campaign page.</p>
 			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Http:\\.." >
+				<input type="text" class="form-control" placeholder="Http:\\.." formControlName="video_url">
 			</div>
 			<h2>Campaign Goal</h2>
 			<p>How much money would you like to raise for this campaign? </p>
 			<div class="row">
 				<div class="col-xs-6">
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="$ 500">
+						<input type="text" class="form-control" placeholder="$ 500" formControlName="goal_amount">
 					</div>
 				</div>
 				<div class="col-xs-6">
@@ -42,12 +44,14 @@
 			<p>Lorem Ipsum</p>
 			<div class="camp_flexi">
 				<div class="col-xs-6">
+					<input type="radio" name="funding_model" checked formControlName="funding_model" value="flexi">
 					<h2>FLEXI 
 						<img src="assets/img/qstion-iconimg.png" alt="img">
 					</h2>
 				</div>
 				<div class="col-xs-6">
-					<h2>ALL/NOTHING 
+					<input type="radio" name="funding_model" formControlName="funding_model" value="fixed">
+					<h2>FIXED
 						<img src="assets/img/qstion-iconimg.png" alt="img">
 					</h2>
 				</div>
@@ -85,7 +89,7 @@
 				</select>
 			</div>
 			<div class="camp_link">
-				<a class="btnNext">NEXT</a>
+				<a (click)="submitProject()" class="btnNext">NEXT</a>
 			</div>
 		</form>
 	</div>

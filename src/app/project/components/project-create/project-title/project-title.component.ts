@@ -48,8 +48,9 @@ export class ProjectTitleComponent implements OnInit {
 
   submitProject() {
     const project = this.projectForm.value;
-    console.log('project', project);
-    // this.projectService.createProject(project).subscribe();
+    this.projectService.createProject(project).subscribe((res) => {
+      localStorage.setItem('current_project_id', res.id);
+    });
   }
 
   private fetchCategories() {

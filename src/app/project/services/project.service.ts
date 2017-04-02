@@ -9,6 +9,7 @@ export class ProjectService {
   initProjectForm() {
     return this.fb.group({
       'id': [''],
+      'type': ['project', Validators.required],
       'title': ['', Validators.required],
       'category_id': ['', Validators.required],
       'image_url': ['', Validators.required],
@@ -17,12 +18,23 @@ export class ProjectService {
       'goal_amount': ['', Validators.required],
       'funding_model': ['', Validators.required],
       'start_date': ['', Validators.required],
-      'duration': ['', Validators.required],
-      'story': this.fb.group({}),
-      'rewards': this.fb.array([]),
-      'faqs': this.fb.array([]),
-      'links': this.fb.array([]),
-      'events': this.fb.array([])
+      'duration': ['', Validators.required]
+    });
+  }
+
+  initStoryForm() {
+    return this.fb.group({
+      'id': [''],
+      'type': ['story', Validators.required],
+      'project_id': ['', Validators.required],
+      'section_attributes': this.fb.array([
+        this.fb.group({
+          'heading': ['', Validators.required],
+          'description': ['', Validators.required],
+          'image_url': ['', Validators.required],
+          'image_data': ['', Validators.required]
+        })
+      ])
     });
   }
 
@@ -34,12 +46,13 @@ export class ProjectService {
     });
   }
 
-  createProject(project) {
+  createProject(params) {
     return this.http.post(
       'api/v1/projects',
-      project
+      params
     ).map((res) => {
       console.log('response', res.json());
+      return res.json();
     });
   }
 

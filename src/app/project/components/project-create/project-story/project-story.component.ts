@@ -51,7 +51,9 @@ export class ProjectStoryComponent implements OnInit {
     (<FormArray>this.storyForm.controls['section_attributes']).push(
       this.fb.group({
         'heading': ['', Validators.required],
-        'description': ['', Validators.required]
+        'description': ['', Validators.required],
+        'image_url': ['', Validators.required],
+        'image_data': ['', Validators.required]
       })
     );
   }
@@ -62,6 +64,7 @@ export class ProjectStoryComponent implements OnInit {
     const data = this.storyForm.value;
     console.log('data', data);
     // this.projectService.createProject(data).subscribe((res) => {
+    //   console.log('res', res);
     // });
   }
 

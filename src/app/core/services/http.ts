@@ -1,6 +1,6 @@
 /**
  * Http Intercepter Service
- * TODO: Add Loader and Toasty Service currently using console log 
+ * TODO: Add Loader and Toasty Service currently using console log
  * for showing errors and response and request completion;
  */
 import { Injectable } from '@angular/core';

@@ -1,4 +1,6 @@
+import { ProjectService } from './../../../services/project.service';
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-project-title',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectTitleComponent implements OnInit {
 
-  constructor() { }
+  projectForm: FormGroup;
+
+  constructor(private projectService: ProjectService) {
+    this.projectForm = this.projectService.initProjectForm();
+  }
 
   ngOnInit() {
   }

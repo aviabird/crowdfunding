@@ -1,3 +1,5 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProjectService } from './services/project.service';
 import { routes } from './project.routes';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -16,7 +18,9 @@ import { ProjectEventComponent } from './components/project-create/project-event
 @NgModule({
   imports: [
     RouterModule.forChild(routes),
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     ProjectDetailComponent,
@@ -29,6 +33,9 @@ import { ProjectEventComponent } from './components/project-create/project-event
     ProjectReviewComponent,
     ProjectProfileComponent,
     ProjectEventComponent
+  ],
+  providers: [
+    ProjectService
   ]
 })
 export class ProjectModule { }

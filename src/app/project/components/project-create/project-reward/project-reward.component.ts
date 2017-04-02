@@ -43,7 +43,7 @@ export class ProjectRewardComponent implements OnInit {
   private handleReaderLoaded(e) {
     const reader = e.target;
     const imageUrl = reader.result;
-    (<FormArray>this.rewardForm.controls['reward_attributes']).controls[this.currentIndex].patchValue({
+    (<FormArray>this.rewardForm.controls['rewards_attributes']).controls[this.currentIndex].patchValue({
       'image_data': imageUrl
     });
     // this.uploadMedia(imageUrl);
@@ -51,7 +51,7 @@ export class ProjectRewardComponent implements OnInit {
 
 
   onAddReward() {
-    (<FormArray>this.rewardForm.controls['reward_attributes']).push(
+    (<FormArray>this.rewardForm.controls['rewards_attributes']).push(
       this.fb.group({
         'id': [''],
         'title': ['', Validators.required],

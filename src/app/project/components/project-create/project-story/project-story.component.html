@@ -3,8 +3,8 @@
 	<div class="camp_create_box">
 		<div class="panel-group" id="accordion">
 			<form [formGroup]="storyForm">
-				<div formArrayName="section_attributes">
-					<div *ngFor="let section of storyForm.controls['section_attributes'].controls; let i = index">
+				<div formArrayName="sections_attributes">
+					<div *ngFor="let section of storyForm.controls['sections_attributes'].controls; let i = index">
 						<div class="panel panel-default" formGroupName="{{i}}">
 							<div class="panel-heading">
 								<span class="fa fa-times pull-right "></span>

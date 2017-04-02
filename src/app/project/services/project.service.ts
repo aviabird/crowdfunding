@@ -27,7 +27,7 @@ export class ProjectService {
       'id': [''],
       'type': ['story', Validators.required],
       'project_id': ['', Validators.required],
-      'section_attributes': this.fb.array([
+      'sections_attributes': this.fb.array([
         this.fb.group({
           'heading': ['', Validators.required],
           'description': ['', Validators.required],
@@ -41,7 +41,7 @@ export class ProjectService {
   initRewardForm(project_id: number) {
     return this.fb.group({
       'type': ['reward', Validators.required],
-      'reward_attributes': this.fb.array([
+      'rewards_attributes': this.fb.array([
         this.fb.group({
           'id': [''],
           'title': ['', Validators.required],
@@ -49,6 +49,20 @@ export class ProjectService {
           'image_url': [''],
           'image_data': [''],
           'amount': ['', Validators.required],
+          'project_id': [project_id, Validators.required]
+        })
+      ])
+    });
+  }
+
+  initFaqForm(project_id: number) {
+    return this.fb.group({
+      'type': ['faq', Validators.required],
+      'faqs_attributes': this.fb.array([
+        this.fb.group({
+          'id': [''],
+          'question': ['', Validators.required],
+          'answer': ['', Validators.required],
           'project_id': [project_id, Validators.required]
         })
       ])

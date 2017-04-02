@@ -41,14 +41,14 @@ export class ProjectStoryComponent implements OnInit {
   private handleReaderLoaded(e) {
     const reader = e.target;
     const imageUrl = reader.result;
-    (<FormArray>this.storyForm.controls['section_attributes']).controls[this.currentIndex].patchValue({
+    (<FormArray>this.storyForm.controls['sections_attributes']).controls[this.currentIndex].patchValue({
       'image_data': imageUrl
     });
     // this.uploadMedia(imageUrl);
   }
 
   onAddSection() {
-    (<FormArray>this.storyForm.controls['section_attributes']).push(
+    (<FormArray>this.storyForm.controls['sections_attributes']).push(
       this.fb.group({
         'heading': ['', Validators.required],
         'description': ['', Validators.required],

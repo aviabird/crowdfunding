@@ -3,8 +3,8 @@
 	<div class="camp_create_box">
 		<div class="panel-group" id="accordionReward">
 			<form [formGroup]="rewardForm">
-				<div formArrayName="reward_attributes">
-					<div *ngFor="let reward of rewardForm.controls['reward_attributes'].controls; let i = index">
+				<div formArrayName="rewards_attributes">
+					<div *ngFor="let reward of rewardForm.controls['rewards_attributes'].controls; let i = index">
 						<div class="panel panel-default" formGroupName="{{i}}">
 							<div class="panel-heading">
 								<span class="fa fa-times pull-right "></span>
@@ -69,74 +69,3 @@
 		</div>
 	</div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-						<!--<div class="panel panel-default templateReward">
-									<div class="panel-heading">
-										<span class="fa fa-times pull-right "></span>
-										<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionReward" href="#collapseTwo">
-											<h4 class="panel-title">
-                Section #2 
-             </h4>
-										</a>
-									</div>
-									<div id="collapseTwo" class="panel-collapse collapse">
-										<div class="panel-body">
-											<div class="camp_mrg2"></div>-->
-											<!-- Reward body -->
-											<!--<form>
-												<div class="form-group">
-													<label for="usr">Reward Title</label>
-													<input type="text" class="form-control" placeholder="Enter title">
-													</div>
-													<div class="form-group">
-														<label for="comment">Reward Description</label>
-														<textarea class="form-control" rows="3" placeholder="Enter description"></textarea>
-													</div>
-												</form>
-												<h2>Upload your Reward Image</h2>
-												<div class="camp_upload_img">
-													<img src="images/camera-img.png" alt="img">
-														<input type="file" name="pic" accept="image/*">
-															<h4>Upload Image</h4>
-														</div>
-														<br>
-															<h2>Reward Amount</h2>
-															<p>How much money for this reward? </p>
-															<div class="row">
-																<div class="col-xs-6">
-																	<form>
-																		<div class="form-group">
-																			<input type="text" class="form-control" placeholder="$ 500">
-																			</div>
-																		</form>
-																	</div>
-																	<div class="col-xs-6">
-																		<div class="camp_select slate">
-																			<select>
-																				<option>USA</option>
-																				<option>USA</option>
-																			</select>
-																		</div>
-																	</div>
-																</div>-->
-																<!-- Reward body -->
-															<!--</div>
-														</div>
-													</div>
-												</div>-->

@@ -10,12 +10,41 @@ import { Component, OnInit } from '@angular/core';
 export class ProjectStoryComponent implements OnInit {
 
   storyForm: FormGroup;
+  currentIndex: number;
 
   constructor(private projectService: ProjectService, private fb: FormBuilder) {
     this.storyForm = this.projectService.initStoryForm();
   }
 
   ngOnInit() {
+  }
+
+  handleOnChange(event, index) {
+    this.currentIndex = index;
+    const files: any = event.dataTransfer ? event.dataTransfer.files : event.target.files;
+    const files_list = [];
+    const pattern = /image-*/;
+    for (let i = 0; i < files.length; i++) {
+      files_list.push(files[i]);
+    }
+    files_list.forEach((file: File) => {
+      if (!file.type.match(pattern)) {
+        alert('Remove non image format files');
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = this.handleReaderLoaded.bind(this);
+      reader.readAsDataURL(file);
+    });
+  }
+
+  private handleReaderLoaded(e) {
+    const reader = e.target;
+    const imageUrl = reader.result;
+    (<FormArray>this.storyForm.controls['section_attributes']).controls[this.currentIndex].patchValue({
+      'image_data': imageUrl
+    });
+    // this.uploadMedia(imageUrl);
   }
 
   onAddSection() {

@@ -2,60 +2,91 @@
 	<h1>Reward</h1>
 	<div class="camp_create_box">
 		<div class="panel-group" id="accordionReward">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<span class="fa fa-times pull-right "></span>
-					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionReward" href="#collapseReward">
-						<h4 class="panel-title">
-               Section #1
-             </h4>
-					</a>
-				</div>
-				<div id="collapseReward" class="panel-collapse collapse in">
-					<div class="panel-body">
-						<div class="camp_mrg2"></div>
-						<!-- Reward body -->
-						<form>
-							<div class="form-group">
-								<label for="usr">Reward Title</label>
-								<input type="text" class="form-control" placeholder="Enter title">
-								</div>
-								<div class="form-group">
-									<label for="comment">Reward Description</label>
-									<textarea class="form-control" rows="3" placeholder="Enter description"></textarea>
-								</div>
-							</form>
-							<h2>Upload your Reward Image</h2>
-							<div class="camp_upload_img">
-								<img src="assets/img/camera-img.png" alt="img">
-									<input type="file" name="pic" accept="image/*">
+			<form [formGroup]="rewardForm">
+				<div formArrayName="reward_attributes">
+					<div *ngFor="let reward of rewardForm.controls['reward_attributes'].controls; let i = index">
+						<div class="panel panel-default" formGroupName="{{i}}">
+							<div class="panel-heading">
+								<span class="fa fa-times pull-right "></span>
+								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionReward" href="#collapseReward">
+									<h4 class="panel-title">
+										Section #{{i+1}}
+									</h4>
+								</a>
+							</div>
+							<div id="collapseReward" class="panel-collapse collapse in">
+								<div class="panel-body">
+									<div class="camp_mrg2"></div>
+									<!-- Reward body -->
+									<div class="form-group">
+										<label for="usr">Reward Title</label>
+										<input type="text" class="form-control" placeholder="Enter title" formControlName="title">
+									</div>
+									<div class="form-group">
+										<label for="comment">Reward Description</label>
+										<textarea class="form-control" rows="3" placeholder="Enter description" formControlName="description"></textarea>
+									</div>
+									<h2>Upload your Reward Image</h2>
+									<div class="camp_upload_img">
+										<img src="assets/img/camera-img.png" alt="img">
+										<input type="file" name="pic" accept="image/*" (change)="handleOnChange($event, i)">
 										<h4>Upload Image</h4>
 									</div>
 									<br>
-										<h2>Reward Amount</h2>
-										<p>How much money for this reward? </p>
-										<div class="row">
-											<div class="col-xs-6">
-												<form>
-													<div class="form-group">
-														<input type="text" class="form-control" placeholder="$ 500">
-														</div>
-													</form>
-												</div>
-												<div class="col-xs-6">
-													<div class="camp_select slate">
-														<select>
-															<option>USA</option>
-															<option>USA</option>
-														</select>
-													</div>
-												</div>
+									<h2>Reward Amount</h2>
+									<p>How much money for this reward? </p>
+									<div class="row">
+										<div class="col-xs-6">
+											<div class="form-group">
+												<input type="text" class="form-control" placeholder="$ 500" formControlName="amount">
 											</div>
-											<!-- Reward body -->
+										</div>
+										<div class="col-xs-6">
+											<div class="camp_select slate">
+												<select>
+													<option>USA</option>
+													<option>USA</option>
+												</select>
+											</div>
 										</div>
 									</div>
+									<!-- Reward body -->
 								</div>
-								<div class="panel panel-default templateReward">
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+			<br>
+			<div class="camp_mrg"></div>
+			<div class="camp_link">
+				<a (click)="onSubmit()" class="btnNext pull-right" style="width:250px">NEXT</a>
+				<a (click)="onAddReward()" class="camp_btn btn-default reward-add-panel" style="width:250px">
+					<i class="fa fa-plus"></i> Add New Reward
+				</a>
+				<!-- <button class="btn btn-lg btn-primary btn-add-panel" ></button> -->
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+						<!--<div class="panel panel-default templateReward">
 									<div class="panel-heading">
 										<span class="fa fa-times pull-right "></span>
 										<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionReward" href="#collapseTwo">
@@ -66,9 +97,9 @@
 									</div>
 									<div id="collapseTwo" class="panel-collapse collapse">
 										<div class="panel-body">
-											<div class="camp_mrg2"></div>
+											<div class="camp_mrg2"></div>-->
 											<!-- Reward body -->
-											<form>
+											<!--<form>
 												<div class="form-group">
 													<label for="usr">Reward Title</label>
 													<input type="text" class="form-control" placeholder="Enter title">
@@ -103,20 +134,9 @@
 																			</select>
 																		</div>
 																	</div>
-																</div>
+																</div>-->
 																<!-- Reward body -->
-															</div>
+															<!--</div>
 														</div>
 													</div>
-												</div>
-												<br>
-													<div class="camp_mrg"></div>
-													<div class="camp_link">
-														<a class="btnNext pull-right" style="width:250px">NEXT</a>
-														<a class="camp_btn btn-default reward-add-panel" style="width:250px">
-															<i class="fa fa-plus"></i> Add New Reward
-														</a>
-														<!-- <button class="btn btn-lg btn-primary btn-add-panel" ></button> -->
-													</div>
-												</div>
-											</div>
+												</div>-->

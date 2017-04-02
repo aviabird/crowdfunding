@@ -38,6 +38,23 @@ export class ProjectService {
     });
   }
 
+  initRewardForm(project_id: number) {
+    return this.fb.group({
+      'type': ['reward', Validators.required],
+      'reward_attributes': this.fb.array([
+        this.fb.group({
+          'id': [''],
+          'title': ['', Validators.required],
+          'description': ['', Validators.required],
+          'image_url': [''],
+          'image_data': [''],
+          'amount': ['', Validators.required],
+          'project_id': [project_id, Validators.required]
+        })
+      ])
+    });
+  }
+
   fetchAllCategories() {
     return this.http.get(
       'api/v1/category'

@@ -4,7 +4,7 @@
 		<div class="panel-group" id="accordionReward">
 			<form [formGroup]="rewardForm">
 				<div formArrayName="rewards_attributes">
-					<div *ngFor="let reward of rewardForm.get('rewards_attributes'); let i = index">
+					<div *ngFor="let reward of rewardForm.get('rewards_attributes').controls; let i = index">
 						<div class="panel panel-default" formGroupName="{{i}}">
 							<div class="panel-heading">
 								<span class="fa fa-times pull-right "></span>
@@ -60,8 +60,8 @@
 			<br>
 			<div class="camp_mrg"></div>
 			<div class="camp_link">
-				<a (click)="onSubmit()" class="btnNext pull-right" style="width:250px">NEXT</a>
-				<a (click)="onAddReward()" class="camp_btn btn-default reward-add-panel" style="width:250px">
+				<a (click)="onSubmit()" class="btnNext pull-right" style="width:48%">NEXT</a>
+				<a (click)="onAddReward()" class="camp_btn btn-default reward-add-panel" style="width:48%">
 					<i class="fa fa-plus"></i> Add New Reward
 				</a>
 				<!-- <button class="btn btn-lg btn-primary btn-add-panel" ></button> -->

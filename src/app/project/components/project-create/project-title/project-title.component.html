@@ -62,20 +62,21 @@
 				<div class="form-group">
 					<div class="col-xs-3 camp_date_width">
 						<select class="form-control">
-							<option>Date</option>
-							<option>Sunday</option>
+							<option disabled class="hide">Day</option>
+							<option *ngFor="let day of days">{{day}}</option>
 						</select>
 					</div>
 					<div class="col-xs-3 camp_date_width">
 						<select class="form-control">
-							<option>Month</option>
-							<option>January</option>
+							<option disabled class="hide">Month</option>
+							<option *ngFor="let month of months">{{month}}</option>
 						</select>
 					</div>
 					<div class="col-xs-3 camp_date_width">
 						<select class="form-control">
-							<option>Year</option>
-							<option>2001</option>
+							<option disabled class="hide">Year</option>
+							<option>2017</option>
+							<option>2018</option>
 						</select>
 					</div>
 					<div class="col-xs-3"></div>
@@ -84,9 +85,7 @@
 			<h2>Begin Duration</h2>
 			<p>Lorem ipsum begin date end date</p>
 			<div class="camp_duration">
-				<select class="form-control" formControlName="duration">
-					<option>45</option>
-				</select>
+				<input type="number" placeholder="Duration" class="form-control" formControlName="duration">
 			</div>
 			<div class="camp_link">
 				<a (click)="submitProject()" class="btnNext">NEXT</a>

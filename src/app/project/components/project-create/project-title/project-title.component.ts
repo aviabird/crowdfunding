@@ -14,6 +14,9 @@ export class ProjectTitleComponent implements OnInit {
   categories = [];
   project_id: string;
   @Output() nextTab: EventEmitter<boolean> = new EventEmitter<boolean>();
+  days = Array.from(new Array(31), ( val, index) => index + 1);
+  months = new Array('January', 'February', 'March', 'April', 'May', 'June',
+                      'July', 'August', 'September', 'October', 'November', 'December');
 
   constructor(private projectService: ProjectService) {
     this.project_id = localStorage.getItem('current_project_id');

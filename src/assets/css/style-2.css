@@ -306,7 +306,7 @@ padding:9px 23px; margin-top:33px;  }
 /*** campaign_tabs ***/
 .campaign_create{ width:100%; float:left; } 
 .campaign_create h1{ width:100%; float:left; font-size:39.16px; color:#292929; line-height:8px; font-weight:700; font-family: 'Raleway', sans-serif; text-transform:uppercase; text-align:left; background:#f3f3f3; border-top:1px solid #efefef; border-bottom:1px solid #efefef; padding: 29px 0 18px 71px; margin:0; height:72px;} 
-.camp_create_box{ width:100%; float:left; padding:30px 0px 0px 50px; font-family: 'Montserrat'; font-weight:300; line-height:17px;  color:#565656; }
+.camp_create_box{ width:100%; float:left; padding:30px 50px 0px 50px; font-family: 'Montserrat'; font-weight:300; line-height:17px;  color:#565656; }
 .camp_create_box h2{ width:100%; float:left; font-size:20px; margin:0px 0px 12px 0px; }
 .camp_create_box p{  font-size:11px; color:#aeaeae;  }
 .camp_create_box h3{ width:100%; float:left; color:#c4c4c4; font-size:16px;  margin:25px 0px 30px 0px; padding: 0 0 0 19px; }
@@ -322,7 +322,7 @@ padding:9px 23px; margin-top:33px;  }
 .camp_date{ width:100%; float:left; margin-top:25px; margin-bottom:40px; }
 .camp_duration{ width:auto; float:left; margin-top:25px; margin-bottom:40px; }
 .camp_link{ width:100%; float:left;  margin-bottom:35px; }
-.camp_link a{ width:370px; float:left; background:#35de14; color:#FFF; font-size:26px; line-height:25px; border-radius:50px; text-align:center;
+.camp_link a{ width:370px; float:left; background:#35de14; color:#FFF; font-size:20px; line-height:25px; border-radius:50px; text-align:center;
 font-weight:600; font-family: 'Raleway', sans-serif; padding:16px 0px; }
 .camp_link a:hover{ background:#42a7b3; color:#FFF; }
 .camp_right{ width:100%; float:left; background:url(../img/blue.jpg) repeat; padding:35px 30px 25px 30px; color:#FFF;  font-family: 'Gadugi'; }

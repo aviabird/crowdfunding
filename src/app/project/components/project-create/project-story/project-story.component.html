@@ -4,7 +4,7 @@
 		<div class="panel-group" id="accordion">
 			<form [formGroup]="storyForm">
 				<div formArrayName="sections_attributes">
-					<div *ngFor="let section of storyForm.get('sections_attributes'); let i = index">
+					<div *ngFor="let section of storyForm.get('sections_attributes').controls; let i = index">
 						<div class="panel panel-default" formGroupName="{{i}}">
 							<div class="panel-heading">
 								<span class="fa fa-times pull-right "></span>
@@ -64,8 +64,8 @@
 		<br>
 		<div class="camp_mrg"></div>
 		<div class="camp_link">
-			<a (click)="onSubmit()" class="btnNext pull-right" style="width:250px">NEXT</a>
-			<a (click)="onAddSection()" class="camp_btn btn-default btn-add-panel" style="width:250px">
+			<a (click)="onSubmit()" class="btnNext pull-right" style="width:48%">NEXT</a>
+			<a (click)="onAddSection()" class="camp_btn btn-default btn-add-panel" style="width:48%">
 				<i class="fa fa-plus"></i> Add New Section
 			</a>
 			<!-- <button class="btn btn-lg btn-primary btn-add-panel" ></button> -->

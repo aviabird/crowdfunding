@@ -2,7 +2,7 @@
 	<h1>add links</h1>
 	<form [formGroup]="linkForm">
 		<div formArrayName="links_attributes">
-			<div *ngFor="let link of linkForm.get('links_attributes'); let i = index">
+			<div *ngFor="let link of linkForm.get('links_attributes').controls; let i = index">
 				<div class="camp_create_box" formGroupName="{{i}}">
 					<div class="camp_add_png">
 						<h2>Add a Link</h2>
@@ -25,8 +25,8 @@
 	</form>
 	<div class="camp_mrg"></div>
 	<div class="camp_link">
-		<a (click)="onSubmit()" class="btnNext pull-right" style="width:250px">NEXT</a>
-		<a (click)="onAddLink()" class="camp_btn btn-default faq-add-panel" style="width:250px">
+		<a (click)="onSubmit()" class="btnNext pull-right" style="width:48%">NEXT</a>
+		<a (click)="onAddLink()" class="camp_btn btn-default faq-add-panel" style="width:48%">
 			<i class="fa fa-plus"></i> Add New Link
 		</a>
 	</div>

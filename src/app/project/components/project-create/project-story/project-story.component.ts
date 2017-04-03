@@ -63,9 +63,9 @@ export class ProjectStoryComponent implements OnInit {
     this.storyForm.controls['project_id'].setValue(project_id);
     const data = this.storyForm.value;
     console.log('data', data);
-    // this.projectService.createProject(data).subscribe((res) => {
-    //   console.log('res', res);
-    // });
+    this.projectService.createProject(data).subscribe((res) => {
+      console.log('res', res);
+    });
   }
 
 

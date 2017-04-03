@@ -8,7 +8,7 @@ export class ProjectService {
 
   initProjectForm() {
     return this.fb.group({
-      'id': [''],
+      'project_id': [''],
       'type': ['project', Validators.required],
       'title': ['', Validators.required],
       'category_id': ['', Validators.required],

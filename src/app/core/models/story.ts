@@ -1,5 +1,8 @@
+import { Section } from './section';
 import { Base } from './base';
 
 export class Story extends Base {
-  project_id: number;
+  id = '';
+  sections: Section[] = [new Section];
+  project_id: string;
 }

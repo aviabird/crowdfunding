@@ -1,5 +1,8 @@
 import { UUID } from 'angular2-uuid';
 
 export class Base {
-  id: string = UUID.UUID();
+
+  get generate_uid() {
+    return UUID.UUID();
+  }
 }

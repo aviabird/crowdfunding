@@ -1,3 +1,4 @@
+import { Project } from './../../../../core/models/project';
 import { ProjectService } from './../../../services/project.service';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -11,11 +12,11 @@ export class ProjectStoryComponent implements OnInit {
 
   storyForm: FormGroup;
   currentIndex: number;
-  project_id: number;
+  project_id: string;
 
   constructor(private projectService: ProjectService, private fb: FormBuilder) {
-    this.storyForm = this.projectService.initStoryForm();
-    this.project_id = JSON.parse(localStorage.getItem('current_project_id'));
+    this.project_id = localStorage.getItem('current_project_id');
+    this.fetchOrInitProject();
   }
 
   ngOnInit() {
@@ -64,6 +65,7 @@ export class ProjectStoryComponent implements OnInit {
     // this.storyForm.controls['project_id'].setValue(project_id);
     const data = {
       'id': this.project_id,
+      'type': 'story',
       'story_attributes': this.storyForm.value
     };
 
@@ -73,5 +75,13 @@ export class ProjectStoryComponent implements OnInit {
     });
   }
 
+  private fetchOrInitProject() {
+    this.storyForm = this.projectService.initStoryForm();
+    if (this.project_id) {
+      this.projectService.fetchProject(this.project_id).subscribe((project) => {
+        this.storyForm = this.projectService.initStoryForm(project);
+      });
+    }
+  }
 
 }

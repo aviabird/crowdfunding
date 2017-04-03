@@ -5,18 +5,21 @@ import { Link } from './link';
 import { Faq } from './faq';
 import { Reward } from './reward';
 
+import { UUID } from 'angular2-uuid';
+
 export class Project extends Base {
-  title: string;
-  category_id: number;
-  image_url: string;
-  video_url: string;
-  goal_amount: number;
-  funding_model: string;
-  start_date: Date;
-  duration: number;
-  rewards: Reward[];
-  faqs: Faq[];
-  links: Link[];
-  events: Event[];
-  story: Story;
+  id = UUID.UUID();
+  title = '';
+  category_id: string;
+  image_url = '';
+  video_url = '';
+  goal_amount = '';
+  funding_model = '';
+  start_date = new Date();
+  duration = '';
+  rewards: Reward[] = [];
+  faqs: Faq[] = [];
+  links: Link[] = [];
+  events: Event[] = [];
+  story: Story = new Story;
 }

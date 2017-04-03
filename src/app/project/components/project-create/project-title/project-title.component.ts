@@ -12,12 +12,12 @@ export class ProjectTitleComponent implements OnInit {
 
   projectForm: FormGroup;
   categories = [];
-  project_id: number;
+  project_id: string;
 
   constructor(private projectService: ProjectService) {
-    this.project_id = JSON.parse(localStorage.getItem('current_project_id'));
-    this.projectForm = this.projectService.initProjectForm(this.project_id);
+    this.project_id = localStorage.getItem('current_project_id');
     this.fetchCategories();
+    this.fetchOrInitProject();
   }
 
   ngOnInit() {
@@ -61,6 +61,15 @@ export class ProjectTitleComponent implements OnInit {
       this.categories = data;
       (<FormControl>this.projectForm.controls['category_id']).setValue(data[0].id);
     });
+  }
+
+  private fetchOrInitProject() {
+    this.projectForm = this.projectService.initProjectForm();
+    if (this.project_id) {
+      this.projectService.fetchProject(this.project_id).subscribe((project) => {
+        this.projectForm = this.projectService.initProjectForm(project);
+      });
+    }
   }
 
 }

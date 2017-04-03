@@ -11,9 +11,11 @@ export class ProjectStoryComponent implements OnInit {
 
   storyForm: FormGroup;
   currentIndex: number;
+  project_id: number;
 
   constructor(private projectService: ProjectService, private fb: FormBuilder) {
     this.storyForm = this.projectService.initStoryForm();
+    this.project_id = JSON.parse(localStorage.getItem('current_project_id'));
   }
 
   ngOnInit() {
@@ -59,9 +61,12 @@ export class ProjectStoryComponent implements OnInit {
   }
 
   onSubmit() {
-    const project_id = JSON.parse(localStorage.getItem('current_project_id'));
-    this.storyForm.controls['project_id'].setValue(project_id);
-    const data = this.storyForm.value;
+    // this.storyForm.controls['project_id'].setValue(project_id);
+    const data = {
+      'id': this.project_id,
+      'story_attributes': this.storyForm.value
+    };
+
     console.log('data', data);
     this.projectService.createProject(data).subscribe((res) => {
       console.log('res', res);

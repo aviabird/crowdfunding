@@ -1,10 +1,11 @@
+import { Base } from './base';
 import { Story } from './story';
 import { Event } from './event';
 import { Link } from './link';
 import { Faq } from './faq';
 import { Reward } from './reward';
-export class Project {
-  id: number;
+
+export class Project extends Base {
   title: string;
   category_id: number;
   image_url: string;

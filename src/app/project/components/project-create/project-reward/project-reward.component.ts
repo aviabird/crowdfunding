@@ -66,7 +66,9 @@ export class ProjectRewardComponent implements OnInit {
 
   onSubmit() {
     const data = this.rewardForm.value;
-    console.log('data', data);
+    this.projectService.createProject(data).subscribe((res) => {
+      console.log('res', res);
+    });
   }
 
 }

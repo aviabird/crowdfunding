@@ -1,5 +1,6 @@
-export class Event {
-  id: number;
+import { Base } from './base';
+
+export class Event extends Base {
   title: string;
   country: string;
   date: Date;

@@ -6,9 +6,9 @@ import { Injectable } from '@angular/core';
 export class ProjectService {
   constructor(private fb: FormBuilder, private http: HttpService) {}
 
-  initProjectForm() {
+  initProjectForm(id) {
     return this.fb.group({
-      'project_id': [''],
+      'id': [id],
       'type': ['project', Validators.required],
       'title': ['', Validators.required],
       'category_id': ['', Validators.required],
@@ -26,7 +26,6 @@ export class ProjectService {
     return this.fb.group({
       'id': [''],
       'type': ['story', Validators.required],
-      'project_id': ['', Validators.required],
       'sections_attributes': this.fb.array([
         this.fb.group({
           'heading': ['', Validators.required],
@@ -40,6 +39,7 @@ export class ProjectService {
 
   initRewardForm(project_id: number) {
     return this.fb.group({
+      'id': [project_id, Validators.required],
       'type': ['reward', Validators.required],
       'rewards_attributes': this.fb.array([
         this.fb.group({
@@ -49,7 +49,6 @@ export class ProjectService {
           'image_url': [''],
           'image_data': [''],
           'amount': ['', Validators.required],
-          'project_id': [project_id, Validators.required]
         })
       ])
     });
@@ -63,7 +62,6 @@ export class ProjectService {
           'id': [''],
           'question': ['', Validators.required],
           'answer': ['', Validators.required],
-          'project_id': [project_id, Validators.required]
         })
       ])
     });
@@ -76,7 +74,6 @@ export class ProjectService {
         this.fb.group({
           'id': [''],
           'url': ['', Validators.required],
-          'project_id': [project_id, Validators.required]
         })
       ])
     });

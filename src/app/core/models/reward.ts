@@ -1,5 +1,6 @@
-export class Reward {
-  id: number;
+import { Base } from './base';
+
+export class Reward extends Base {
   title: string;
   description: string;
   image_url: string;

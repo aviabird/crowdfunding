@@ -1,3 +1,4 @@
+import { Project } from './../../../../core/models/project';
 import { ProjectService } from './../../../services/project.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
@@ -11,9 +12,11 @@ export class ProjectTitleComponent implements OnInit {
 
   projectForm: FormGroup;
   categories = [];
+  project_id: number;
 
   constructor(private projectService: ProjectService) {
-    this.projectForm = this.projectService.initProjectForm();
+    this.project_id = JSON.parse(localStorage.getItem('current_project_id'));
+    this.projectForm = this.projectService.initProjectForm(this.project_id);
     this.fetchCategories();
   }
 

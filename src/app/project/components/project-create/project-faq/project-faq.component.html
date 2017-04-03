@@ -4,7 +4,7 @@
 		<div class="panel-group" id="accordionFaq">
 			<form [formGroup]="faqForm">
 				<div formArrayName="faqs_attributes">
-					<div *ngFor="let faq of faqForm.controls['faqs_attributes'].controls; let i = index">
+					<div *ngFor="let faq of faqForm.get('faqs_attributes').controls; let i = index">
 						<div class="panel panel-default" formGroupName="{{i}}">
 							<div class="panel-heading">
 								<span class="fa fa-times pull-right "></span>

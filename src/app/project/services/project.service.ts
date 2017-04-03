@@ -69,6 +69,19 @@ export class ProjectService {
     });
   }
 
+  initLinkForm(project_id: number) {
+    return this.fb.group({
+      'type': ['link', Validators.required],
+      'links_attributes': this.fb.array([
+        this.fb.group({
+          'id': [''],
+          'url': ['', Validators.required],
+          'project_id': [project_id, Validators.required]
+        })
+      ])
+    });
+  }
+
   fetchAllCategories() {
     return this.http.get(
       'api/v1/category'

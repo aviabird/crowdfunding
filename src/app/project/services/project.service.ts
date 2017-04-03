@@ -1,3 +1,5 @@
+import { Link } from './../../core/models/link';
+import { Faq } from './../../core/models/faq';
 import { Reward } from './../../core/models/reward';
 import { Story } from './../../core/models/story';
 import { Project } from './../../core/models/project';
@@ -73,28 +75,50 @@ export class ProjectService {
     });
   }
 
-  initFaqForm(project_id: number) {
-    return this.fb.group({
-      'type': ['faq', Validators.required],
-      'faqs_attributes': this.fb.array([
+  initFaqForm(project = new Project) {
+    let faqs = project.faqs;
+    if (!faqs.length) {
+      faqs = [new Faq];
+    }
+
+    const faq_attributes_array = [];
+    faqs.forEach((faq: any) => {
+      faq_attributes_array.push(
         this.fb.group({
-          'id': [''],
-          'question': ['', Validators.required],
-          'answer': ['', Validators.required],
+          'id': faq.id,
+          'question': faq.question,
+          'answer': faq.answer
         })
-      ])
+      );
+    });
+
+    return this.fb.group({
+      'id': [project.id, Validators.required],
+      'type': ['faq', Validators.required],
+      'faqs_attributes': this.fb.array(faq_attributes_array)
     });
   }
 
-  initLinkForm(project_id: number) {
-    return this.fb.group({
-      'type': ['link', Validators.required],
-      'links_attributes': this.fb.array([
+  initLinkForm(project = new Project) {
+    let links = project.links;
+    if (!links.length) {
+      links = [new Link];
+    }
+
+    const link_attributes_array = [];
+    links.forEach((link: any) => {
+      link_attributes_array.push(
         this.fb.group({
-          'id': [''],
-          'url': ['', Validators.required],
+          'id': link.id,
+          'url': link.url
         })
-      ])
+      );
+    });
+
+    return this.fb.group({
+      'id': [project.id, Validators.required],
+      'type': ['link', Validators.required],
+      'links_attributes': this.fb.array(link_attributes_array)
     });
   }
 

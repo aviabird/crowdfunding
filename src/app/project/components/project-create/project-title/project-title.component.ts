@@ -1,6 +1,6 @@
 import { Project } from './../../../../core/models/project';
 import { ProjectService } from './../../../services/project.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -13,6 +13,7 @@ export class ProjectTitleComponent implements OnInit {
   projectForm: FormGroup;
   categories = [];
   project_id: string;
+  @Output() nextTab: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private projectService: ProjectService) {
     this.project_id = localStorage.getItem('current_project_id');
@@ -50,6 +51,7 @@ export class ProjectTitleComponent implements OnInit {
 
 
   submitProject() {
+    this.nextTab.emit(true);
     const project = this.projectForm.value;
     this.projectService.createProject(project).subscribe((res) => {
       localStorage.setItem('current_project_id', res.id);

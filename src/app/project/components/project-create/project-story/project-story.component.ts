@@ -1,7 +1,7 @@
 import { Project } from './../../../../core/models/project';
 import { ProjectService } from './../../../services/project.service';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-project-story',
@@ -13,6 +13,7 @@ export class ProjectStoryComponent implements OnInit {
   storyForm: FormGroup;
   currentIndex: number;
   project_id: string;
+  @Output() nextTab: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private projectService: ProjectService, private fb: FormBuilder) {
     this.project_id = localStorage.getItem('current_project_id');
@@ -62,7 +63,7 @@ export class ProjectStoryComponent implements OnInit {
   }
 
   onSubmit() {
-    // this.storyForm.controls['project_id'].setValue(project_id);
+    this.nextTab.emit(true);
     const data = {
       'id': this.project_id,
       'type': 'story',

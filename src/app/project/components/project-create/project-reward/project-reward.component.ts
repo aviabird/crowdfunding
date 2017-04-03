@@ -1,6 +1,6 @@
 import { ProjectService } from './../../../services/project.service';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-project-reward',
@@ -12,6 +12,7 @@ export class ProjectRewardComponent implements OnInit {
   rewardForm: FormGroup;
   project_id: string;
   currentIndex: number;
+  @Output() nextTab: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private projectService: ProjectService, private fb: FormBuilder) {
     this.project_id = localStorage.getItem('current_project_id');
@@ -65,6 +66,7 @@ export class ProjectRewardComponent implements OnInit {
   }
 
   onSubmit() {
+    this.nextTab.emit(true);
     const data = this.rewardForm.value;
     this.projectService.createProject(data).subscribe((res) => {
       console.log('res', res);

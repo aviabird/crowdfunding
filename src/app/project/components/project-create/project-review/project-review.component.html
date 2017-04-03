@@ -2,26 +2,30 @@
 	<h1>review</h1>
 	<div class="camp_review">
 		<h2>Campaign Name</h2>
-		<p>Campaign Name Lorem Ipsum</p>
+		<p>{{project?.title}}</p>
 		<div class="camp_mrg"></div>
 		<h2>Pledge
-			<span>$200</span>
+			<span>${{project?.goal_amount}}</span>
 		</h2>
 		<div class="camp_mrg"></div>
 		<h3>Campaign Main Image</h3>
-		<img class="img-responsive" src="assets/img/reviwe-img.jpg" alt="img">
-			<h3>Link and other Info</h3>
-			<p>Your Name and Surname</p>
-			<div class="camp_mrg"></div>
-			<h2>Reward n.1
-				<span>$10</span>
+		<img class="img-responsive" [src]="project?.image_url" alt="img">
+		<h3>Link and other Info</h3>
+		<div *ngFor="let link of project?.links">
+			<a [href]="link.url" target="_blank">{{link.url}}</a>
+		</div>
+		<div>
+			<a [href]="project?.video_url" target="_blank">{{project?.video_url}}</a>
+		</div>
+		<div class="camp_mrg"></div>
+		<div *ngFor="let reward of project?.rewards">
+			<h2>{{reward.description}}
+				<span>${{reward.amount}}</span>
 			</h2>
-			<h2>Reward n.2
-				<span>$200</span>
-			</h2>
-			<div class="camp_review_link">
-				<a href="#">back to the editor</a>
-				<a href="#">review and launch</a>
-			</div>
+		</div>
+		<div class="camp_review_link">
+			<a href="#">back to the editor</a>
+			<a (click)="onLaunch()" href="#">review and launch</a>
 		</div>
 	</div>
+</div>

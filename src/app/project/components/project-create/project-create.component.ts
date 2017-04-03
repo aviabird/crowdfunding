@@ -20,4 +20,8 @@ export class ProjectCreateComponent implements OnInit {
     this.selectedTab = tab;
   }
 
+  incrementTab() {
+    this.selectedTab++;
+  }
+
 }

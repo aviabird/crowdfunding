@@ -1,6 +1,6 @@
 import { ProjectService } from './../../../services/project.service';
 import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-project-faq',
@@ -10,11 +10,12 @@ import { Component, OnInit } from '@angular/core';
 export class ProjectFaqComponent implements OnInit {
 
   faqForm: FormGroup;
-  project_id: number;
+  project_id: string;
+  @Output() nextTab: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private projectService: ProjectService, private fb: FormBuilder) {
-    this.project_id = JSON.parse(localStorage.getItem('current_project_id'));
-    this.faqForm = this.projectService.initFaqForm(this.project_id);
+    this.project_id = localStorage.getItem('current_project_id');
+    this.fetchOrInitProject();
   }
 
   ngOnInit() {
@@ -32,8 +33,22 @@ export class ProjectFaqComponent implements OnInit {
   }
 
   onSubmit() {
+    this.nextTab.emit(true);
     const data = this.faqForm.value;
-    console.log('data', data);
+    this.projectService.createProject(data).subscribe((res) => {
+      console.log('res', res);
+      this.faqForm = this.projectService.initFaqForm(res);
+    });
+
+  }
+
+  private fetchOrInitProject() {
+    this.faqForm = this.projectService.initFaqForm();
+    if (this.project_id) {
+      this.projectService.fetchProject(this.project_id).subscribe((project) => {
+        this.faqForm = this.projectService.initFaqForm(project);
+      });
+    }
   }
 
 }

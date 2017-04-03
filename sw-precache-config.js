@@ -3,7 +3,7 @@ module.exports = {
     'dist/**.html',
     'dist/**.js',
     'dist/**.css',
-    'dist/assets/**/*',
+    'dist/assets/images/*',
     'dist/*.eot',
     'dist/*.woff2',
     'dist/*.ttf',

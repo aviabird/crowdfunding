@@ -17,9 +17,9 @@ export class Project extends Base {
   funding_model = '';
   start_date = new Date();
   duration = '';
-  rewards: Reward[] = [];
-  faqs: Faq[] = [];
-  links: Link[] = [];
-  events: Event[] = [];
+  rewards: Reward[] = [new Reward];
+  faqs: Faq[] = [new Faq];
+  links: Link[] = [new Link];
+  events: Event[] = [new Event];
   story: Story = new Story;
 }

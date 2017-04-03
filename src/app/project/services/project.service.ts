@@ -1,3 +1,4 @@
+import { Reward } from './../../core/models/reward';
 import { Story } from './../../core/models/story';
 import { Project } from './../../core/models/project';
 import { HttpService } from './../../core/services/http';
@@ -45,20 +46,30 @@ export class ProjectService {
     });
   }
 
-  initRewardForm(project_id: number) {
-    return this.fb.group({
-      'id': [project_id, Validators.required],
-      'type': ['reward', Validators.required],
-      'rewards_attributes': this.fb.array([
+  initRewardForm(project = new Project) {
+    let rewards = project.rewards;
+    if (!rewards.length) {
+      rewards = [new Reward];
+    }
+
+    const reward_attributes_array = [];
+    rewards.forEach((reward: any) => {
+      reward_attributes_array.push(
         this.fb.group({
-          'id': [''],
-          'title': ['', Validators.required],
-          'description': ['', Validators.required],
-          'image_url': [''],
-          'image_data': [''],
-          'amount': ['', Validators.required],
+          'id': reward.id,
+          'title': reward.title,
+          'description': reward.description,
+          'image_url': reward.image_url,
+          'image_data': '',
+          'amount': reward.amount,
         })
-      ])
+      );
+    });
+
+    return this.fb.group({
+      'id': [project.id, Validators.required],
+      'type': ['reward', Validators.required],
+      'rewards_attributes': this.fb.array(reward_attributes_array)
     });
   }
 

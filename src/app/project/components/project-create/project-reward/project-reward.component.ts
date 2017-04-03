@@ -10,12 +10,12 @@ import { Component, OnInit } from '@angular/core';
 export class ProjectRewardComponent implements OnInit {
 
   rewardForm: FormGroup;
-  project_id: number;
+  project_id: string;
   currentIndex: number;
 
   constructor(private projectService: ProjectService, private fb: FormBuilder) {
-    this.project_id = JSON.parse(localStorage.getItem('current_project_id'));
-    this.rewardForm = this.projectService.initRewardForm(this.project_id);
+    this.project_id = localStorage.getItem('current_project_id');
+    this.fetchOrInitProject();
   }
 
   ngOnInit() {
@@ -68,7 +68,18 @@ export class ProjectRewardComponent implements OnInit {
     const data = this.rewardForm.value;
     this.projectService.createProject(data).subscribe((res) => {
       console.log('res', res);
+      this.rewardForm = this.projectService.initRewardForm(res);
     });
   }
+
+  private fetchOrInitProject() {
+    this.rewardForm = this.projectService.initRewardForm();
+    if (this.project_id) {
+      this.projectService.fetchProject(this.project_id).subscribe((project) => {
+        this.rewardForm = this.projectService.initRewardForm(project);
+      });
+    }
+  }
+
 
 }

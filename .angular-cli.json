@@ -8,7 +8,9 @@
       "root": "src",
       "outDir": "dist",
       "assets": [
-        "assets",
+        "assets/fonts",
+        "assets/img",
+        "assets/i18n",
         "favicon.ico"
       ],
       "index": "index.html",
@@ -19,7 +21,14 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.scss"
+      "../node_modules/font-awesome/css/font-awesome.min.css",
+      "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+      "../node_modules/flexslider/flexslider.css",
+      "assets/css/style.css",
+      "assets/css/style-2.css",
+      "assets/css/flags.css",
+      "assets/css/dropkick.css",
+      "styles.scss"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",

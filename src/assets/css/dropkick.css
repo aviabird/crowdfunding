@@ -1,6 +1,6 @@
-.dk_toggle { bottom:0; float:left; left:0; width:320px !important; height:41px; line-height:41px; text-indent:10px; background:url(../images/select.png) no-repeat 0 0; cursor:default; z-index:1; color:#777; position: relative; outline: 0; }
+.dk_toggle { bottom:0; float:left; left:0; width:320px !important; height:41px; line-height:41px; text-indent:10px; background:url(../img/select.png) no-repeat 0 0; cursor:default; z-index:1; color:#777; position: relative; outline: 0; }
 .dk_toggle:hover { }
-.dk_toggle:after { *position: absolute;*/
+.dk_toggle:after { *position: absolute;
     /*top: 45%;*/
     /*right: 10px;*/
     /*content: '';*/
@@ -9,7 +9,7 @@
     /*border-top: 5px solid #4B4B4B;*/
  }
 /* Applied when the dropdown is focused */
-.dk_focus .dk_toggle { backgrond-color: #000; }
+.dk_focus .dk_toggle { background-color: #000; }
 /* Applied whenever the dropdown is open */
 .dk_open { /*box-shadow: 0 0 5px #40b5e2;*/
   /*-moz-box-shadow: 0 0 5px #40b5e2;*/
@@ -19,7 +19,9 @@
    * Try setting this value higher
    */
   z-index: 100; }
-.dk_open .dk_toggle { background:url(../images/selectclicked2.png) no-repeat 0 0; }
+/*.dk_open .dk_toggle { background:url(../img/selectclicked2.png) no-repeat 0 0; }*/
+.dk_open .dk_toggle { background:url(../img/select.png) no-repeat 0 0; }
+
 /* The outer container of the options */
 .dk_options { /*background:#fff;*/
   /*border: 1px solid #999;*/

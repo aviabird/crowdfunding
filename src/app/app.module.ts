@@ -11,7 +11,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { routes } from './app.routes';
 import { AppComponent } from './app.component';
-import { reducer } from './app.reducers';
 
 export function HttpLoaderFactory(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -23,7 +22,7 @@ export function HttpLoaderFactory(http: Http) {
   ],
   imports: [
     RouterModule.forRoot(routes),
-    StoreModule.provideStore(reducer),
+    // StoreModule.provideStore(reducer),
     StoreDevtoolsModule.instrumentStore({
       maxAge: 5
     }),

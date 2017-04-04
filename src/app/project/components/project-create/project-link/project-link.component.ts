@@ -21,6 +21,10 @@ export class ProjectLinkComponent implements OnInit {
   ngOnInit() {
   }
 
+  getLinks() {
+    return (<FormArray>this.linkForm.get('links_attributes')).controls;
+  }
+
   onAddLink() {
     (<FormArray>this.linkForm.controls['links_attributes']).push(
       this.fb.group({

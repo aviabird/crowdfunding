@@ -22,6 +22,10 @@ export class ProjectRewardComponent implements OnInit {
   ngOnInit() {
   }
 
+  getRewards() {
+    return (<FormArray>this.rewardForm.get('rewards_attributes')).controls;
+  }
+
   handleOnChange(event, index) {
     this.currentIndex = index;
     const files: any = event.dataTransfer ? event.dataTransfer.files : event.target.files;

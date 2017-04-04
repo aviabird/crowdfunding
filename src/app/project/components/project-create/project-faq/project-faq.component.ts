@@ -18,6 +18,10 @@ export class ProjectFaqComponent implements OnInit {
     this.fetchOrInitProject();
   }
 
+  getFaqs() {
+    return (<FormArray>this.faqForm.get('faqs_attributes')).controls;
+  }
+
   ngOnInit() {
   }
 

@@ -23,6 +23,10 @@ export class ProjectStoryComponent implements OnInit {
   ngOnInit() {
   }
 
+  getSections() {
+    return (<FormArray>this.storyForm.get('sections_attributes')).controls;
+  }
+
   handleOnChange(event, index) {
     this.currentIndex = index;
     const files: any = event.dataTransfer ? event.dataTransfer.files : event.target.files;

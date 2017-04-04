@@ -4,7 +4,7 @@
 		<div class="panel-group" id="accordion">
 			<form [formGroup]="storyForm">
 				<div formArrayName="sections_attributes">
-					<div *ngFor="let section of storyForm.get('sections_attributes').controls; let i = index">
+					<div *ngFor="let section of getSections(); let i = index">
 						<div class="panel panel-default" formGroupName="{{i}}">
 							<div class="panel-heading">
 								<span class="fa fa-times pull-right "></span>

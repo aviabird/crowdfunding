@@ -2,7 +2,7 @@
 	<h1>add links</h1>
 	<form [formGroup]="linkForm">
 		<div formArrayName="links_attributes">
-			<div *ngFor="let link of linkForm.get('links_attributes').controls; let i = index">
+			<div *ngFor="let link of getLinks(); let i = index">
 				<div class="camp_create_box" formGroupName="{{i}}">
 					<div class="camp_add_png">
 						<h2>Add a Link</h2>

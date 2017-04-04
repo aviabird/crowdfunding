@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  API_ENDPOINT: 'https://crowdpouch.herokuapp.com/',
+  API_ENDPOINT: 'http://localhost:4200/',
   AppName: 'CrowdPouch'
 };

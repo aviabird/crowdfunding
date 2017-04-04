@@ -6,7 +6,7 @@ import { ActionReducer, combineReducers } from '@ngrx/store';
 import { projectReducer } from './project/reducers/project.reducer';
 
 const reducers = {
-  counter: projectReducer
+  project: projectReducer
 };
 
 export const developmentReducer: ActionReducer<AppState> = compose(storeFreeze, combineReducers)(reducers); ;

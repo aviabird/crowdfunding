@@ -1,3 +1,7 @@
+import { getDraftProject } from './../../../reducers/selectors';
+import { AppState } from './../../../../app.state';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
 import { Project } from './../../../../core/models/project';
 import { ProjectService } from './../../../services/project.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
@@ -10,18 +14,19 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 })
 export class ProjectTitleComponent implements OnInit {
 
+  @Output() nextTab: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   projectForm: FormGroup;
   categories = [];
-  project_id: string;
-  @Output() nextTab: EventEmitter<boolean> = new EventEmitter<boolean>();
   days = Array.from(new Array(31), ( val, index) => index + 1);
   months = new Array('January', 'February', 'March', 'April', 'May', 'June',
                       'July', 'August', 'September', 'October', 'November', 'December');
 
-  constructor(private projectService: ProjectService) {
-    this.project_id = localStorage.getItem('current_project_id');
+  constructor(private projectService: ProjectService, private store: Store<AppState>) {
     this.fetchCategories();
-    this.fetchOrInitProject();
+    this.store.select(getDraftProject).subscribe((project) => {
+      this.initProjectForm(project);
+    });
   }
 
   ngOnInit() {
@@ -68,13 +73,8 @@ export class ProjectTitleComponent implements OnInit {
     });
   }
 
-  private fetchOrInitProject() {
-    this.projectForm = this.projectService.initProjectForm();
-    if (this.project_id) {
-      this.projectService.fetchProject(this.project_id).subscribe((project) => {
-        this.projectForm = this.projectService.initProjectForm(project);
-      });
-    }
+  private initProjectForm(project) {
+    this.projectForm = this.projectService.initProjectForm(project);
   }
 
 }

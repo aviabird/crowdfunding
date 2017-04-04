@@ -11,8 +11,7 @@ import { Injectable } from '@angular/core';
 export class ProjectService {
   constructor(private fb: FormBuilder, private http: HttpService) { }
 
-  initProjectForm(project = new Project) {
-    // console.log('project_id', project.get_id);
+  initProjectForm(project) {
     return this.fb.group({
       'id': [project.id],
       'type': ['project', Validators.required],

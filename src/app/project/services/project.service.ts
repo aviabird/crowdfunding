@@ -144,9 +144,23 @@ export class ProjectService {
     return this.http.get(
       `/api/v1/projects/${id}`
     ).map((res) => {
-      console.log('response', res.json());
       return res.json();
     });
+  }
+
+  initDraftProject() {
+    const id = localStorage.getItem('current_project_id');
+    return this.http.get(
+      `/api/v1/projects/draft/${id}`
+    ).map((res) => {
+      const project = res.json();
+      this.setDraftToLocalStorage(project.id);
+      return project;
+    });
+  }
+
+  setDraftToLocalStorage(id) {
+    localStorage.setItem('current_project_id', id);
   }
 
 }

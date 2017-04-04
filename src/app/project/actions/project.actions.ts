@@ -1,18 +1,16 @@
+import { Project } from './../../core/models/project';
 export class ProjectActions {
-  static INCREMENT = 'INCREMENT';
-  static DECREMENT = 'DECREMENT';
-  static RESET = 'RESET';
+  static INIT_DRAFT_PROJECT = 'INIT_DRAFT_PROJECT';
+  static INIT_DRAFT_SUCCESS = 'INIT_DRAFT_SUCCESS';
 
-  increment() {
-    return { type: ProjectActions.INCREMENT };
+  initDraftProject() {
+    return { type: ProjectActions.INIT_DRAFT_PROJECT };
   }
 
-  decrement() {
-    return { type: ProjectActions.DECREMENT };
+  initDraftSuccess(project: Project) {
+    return {
+      type: ProjectActions.INIT_DRAFT_SUCCESS,
+      payload: project
+    };
   }
-
-  reset() {
-    return { type: ProjectActions.RESET };
-  }
-
 }

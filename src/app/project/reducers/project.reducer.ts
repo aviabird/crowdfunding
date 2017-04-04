@@ -1,16 +1,17 @@
+import { ProjectState, ProjectStateRecored } from './project.state';
 import { ProjectActions } from './../actions/project.actions';
 import { ActionReducer, Action } from '@ngrx/store';
 
-export function projectReducer(state: number = 0, action: Action): number {
+const initialState: ProjectState = new ProjectStateRecored() as ProjectState;
+
+export function projectReducer(state: ProjectState = initialState, action: Action): ProjectState {
   switch (action.type) {
-    case ProjectActions.INCREMENT:
-      return state + 1;
+    case ProjectActions.INIT_DRAFT_SUCCESS:
+      const project = action.payload;
 
-    case ProjectActions.DECREMENT:
-      return state - 1;
-
-    case ProjectActions.RESET:
-      return 0;
+      return state.merge({
+        draftProject: project
+      }) as ProjectState;
 
     default:
       return state;

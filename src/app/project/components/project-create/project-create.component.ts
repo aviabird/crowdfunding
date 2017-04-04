@@ -1,3 +1,6 @@
+import { getDraftProject } from './../../reducers/selectors';
+import { Project } from './../../../core/models/project';
+import { Observable } from 'rxjs/Observable';
 import { AppState } from './../../../app.state';
 import { ProjectActions } from './../../actions/project.actions';
 import { ProjectState } from './../../reducers/project.state';
@@ -11,13 +14,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectCreateComponent implements OnInit {
 
+  draftProject$: Observable<Project>;
   selectedTab: number;
 
   constructor(private store: Store<AppState>, private actions: ProjectActions) {
     this.selectedTab = 1;
+    this.draftProject$ = this.store.select(getDraftProject);
   }
 
   ngOnInit() {
+    this.store.dispatch(this.actions.initDraftProject());
   }
 
   changeTab(tab: number) {
@@ -27,18 +33,5 @@ export class ProjectCreateComponent implements OnInit {
   incrementTab() {
     this.selectedTab++;
   }
-
-  increment() {
-    this.store.dispatch(this.actions.increment());
-  }
-
-  decrement() {
-    this.store.dispatch(this.actions.decrement());
-  }
-
-  reset() {
-    this.store.dispatch(this.actions.reset());
-  }
-
 
 }

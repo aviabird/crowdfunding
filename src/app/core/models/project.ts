@@ -5,10 +5,8 @@ import { Link } from './link';
 import { Faq } from './faq';
 import { Reward } from './reward';
 
-import { UUID } from 'angular2-uuid';
-
 export class Project extends Base {
-  id = UUID.UUID();
+  id = '';
   title = '';
   category_id: string;
   image_url = '';

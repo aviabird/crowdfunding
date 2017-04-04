@@ -1,3 +1,5 @@
+import { ProjectEffects } from './effects/project.effects';
+import { EffectsModule } from '@ngrx/effects';
 import { ProjectActions } from './actions/project.actions';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProjectService } from './services/project.service';
@@ -19,6 +21,7 @@ import { ProjectEventComponent } from './components/project-create/project-event
 @NgModule({
   imports: [
     RouterModule.forChild(routes),
+    EffectsModule.run(ProjectEffects),
     CommonModule,
     FormsModule,
     ReactiveFormsModule

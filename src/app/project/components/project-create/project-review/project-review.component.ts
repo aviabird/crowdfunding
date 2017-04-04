@@ -31,7 +31,7 @@ export class ProjectReviewComponent implements OnInit {
 
   onLaunch() {
     alert('Your Project is sent for review');
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
   }
 
 }

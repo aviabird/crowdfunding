@@ -1,0 +1,122 @@
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/bin/nodejs /usr/bin/firebase deploy
+[debug] CLI Version:  3.5.0
+[debug] Platform:     linux
+[debug] Node Version: v6.9.4
+[debug] Time:         Tue Apr 04 2017 12:27:01 GMT+0530 (IST)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/crd-test  
+ Tue Apr 04 2017 12:27:01 GMT+0530 (IST)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/crd-test/tokens  
+ Tue Apr 04 2017 12:27:04 GMT+0530 (IST)
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'crd-test'...
+[info] 
+[info] i  deploying database, functions, hosting
+[info] ✔  database: rules ready to deploy.
+[debug] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "dependencies": {
+    "firebase-admin": "^4.1.2",
+    "firebase-functions": "^0.5"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[info] i  runtimeconfig: ensuring necessary APIs are enabled...
+[debug] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/crd-test?view=CONSUMER_VIEW  
+ Tue Apr 04 2017 12:27:08 GMT+0530 (IST)
+[debug] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/crd-test?view=CONSUMER_VIEW  
+ Tue Apr 04 2017 12:27:08 GMT+0530 (IST)
+[debug] <<< HTTP RESPONSE 200
+[info] ✔  runtimeconfig: all necessary APIs are enabled
+[debug] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/crd-test  
+ Tue Apr 04 2017 12:27:10 GMT+0530 (IST)
+[debug] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/crd-test/apiKeys  
+ Tue Apr 04 2017 12:27:10 GMT+0530 (IST)
+[debug] <<< HTTP RESPONSE 200
+[debug] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/crd-test/configs  
+ Tue Apr 04 2017 12:27:13 GMT+0530 (IST)
+[debug] <<< HTTP RESPONSE 200
+[debug] > [functions] runtime config materialized as: {
+  "firebase": {
+    "databaseURL": "https://crd-test.firebaseio.com",
+    "storageBucket": "crd-test.appspot.com",
+    "apiKey": "AIzaSyC08QiwlO01VMYM86uIXGZ4AOmxex54LKI",
+    "authDomain": "crd-test.firebaseapp.com"
+  }
+}
+[debug] > [functions] parsed triggers: []
+[info] i  hosting: preparing dist directory for upload...
+[debug] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/crd-test/uploads/-KgrkBUQ9B0KcpJh2uub?fileCount=254&message=  
+ Tue Apr 04 2017 12:27:18 GMT+0530 (IST)
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/bin/nodejs /usr/bin/firebase deploy
+[debug] CLI Version:  3.5.0
+[debug] Platform:     linux
+[debug] Node Version: v6.9.4
+[debug] Time:         Tue Apr 04 2017 12:35:23 GMT+0530 (IST)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/crd-test  
+ Tue Apr 04 2017 12:35:23 GMT+0530 (IST)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/crd-test/tokens  
+ Tue Apr 04 2017 12:35:25 GMT+0530 (IST)
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'crd-test'...
+[info] 
+[info] i  deploying database, functions, hosting
+[info] ✔  database: rules ready to deploy.
+[debug] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "dependencies": {
+    "firebase-admin": "^4.1.2",
+    "firebase-functions": "^0.5"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[info] i  runtimeconfig: ensuring necessary APIs are enabled...
+[debug] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/crd-test?view=CONSUMER_VIEW  
+ Tue Apr 04 2017 12:35:30 GMT+0530 (IST)
+[debug] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/crd-test?view=CONSUMER_VIEW  
+ Tue Apr 04 2017 12:35:30 GMT+0530 (IST)
+[debug] <<< HTTP RESPONSE 200
+[info] ✔  runtimeconfig: all necessary APIs are enabled
+[debug] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/crd-test  
+ Tue Apr 04 2017 12:35:32 GMT+0530 (IST)
+[debug] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/crd-test/apiKeys  
+ Tue Apr 04 2017 12:35:32 GMT+0530 (IST)
+[debug] <<< HTTP RESPONSE 200
+[debug] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/crd-test/configs  
+ Tue Apr 04 2017 12:35:35 GMT+0530 (IST)
+[debug] <<< HTTP RESPONSE 200
+[debug] > [functions] runtime config materialized as: {
+  "firebase": {
+    "databaseURL": "https://crd-test.firebaseio.com",
+    "storageBucket": "crd-test.appspot.com",
+    "apiKey": "AIzaSyC08QiwlO01VMYM86uIXGZ4AOmxex54LKI",
+    "authDomain": "crd-test.firebaseapp.com"
+  }
+}
+[debug] > [functions] parsed triggers: []
+[info] i  hosting: preparing dist directory for upload...
+[debug] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/crd-test/uploads/-Kgrm6-aQqvOwPgn773_?fileCount=254&message=  
+ Tue Apr 04 2017 12:35:41 GMT+0530 (IST)

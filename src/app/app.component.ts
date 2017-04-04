@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { Router, NavigationEnd } from '@angular/router';
 import { Component } from '@angular/core';
 
@@ -7,9 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-constructor(
-    private router: Router,
-    ) {
+
+  counter: Observable<number>;
+
+  constructor(
+    private router: Router
+  ) {
     router
       .events
       .filter(e => e instanceof NavigationEnd)
@@ -17,4 +21,6 @@ constructor(
         window.scrollTo(0, 0);
       });
   }
+
 }
+

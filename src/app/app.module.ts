@@ -8,6 +8,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpModule, Http } from '@angular/http';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { reducer } from './app.reducer';
 
 import { routes } from './app.routes';
 import { AppComponent } from './app.component';
@@ -22,6 +23,7 @@ export function HttpLoaderFactory(http: Http) {
   ],
   imports: [
     RouterModule.forRoot(routes),
+    StoreModule.provideStore(reducer),
     // StoreModule.provideStore(reducer),
     StoreDevtoolsModule.instrumentStore({
       maxAge: 5

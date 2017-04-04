@@ -1,3 +1,4 @@
+import { ProjectActions } from './actions/project.actions';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProjectService } from './services/project.service';
 import { routes } from './project.routes';
@@ -35,6 +36,7 @@ import { ProjectEventComponent } from './components/project-create/project-event
     ProjectEventComponent
   ],
   providers: [
+    ProjectActions,
     ProjectService
   ]
 })

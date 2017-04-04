@@ -1,3 +1,7 @@
+import { AppState } from './../../../app.state';
+import { ProjectActions } from './../../actions/project.actions';
+import { ProjectState } from './../../reducers/project.state';
+import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,7 +13,7 @@ export class ProjectCreateComponent implements OnInit {
 
   selectedTab: number;
 
-  constructor() {
+  constructor(private store: Store<AppState>, private actions: ProjectActions) {
     this.selectedTab = 1;
   }
 
@@ -23,5 +27,18 @@ export class ProjectCreateComponent implements OnInit {
   incrementTab() {
     this.selectedTab++;
   }
+
+  increment() {
+    this.store.dispatch(this.actions.increment());
+  }
+
+  decrement() {
+    this.store.dispatch(this.actions.decrement());
+  }
+
+  reset() {
+    this.store.dispatch(this.actions.reset());
+  }
+
 
 }

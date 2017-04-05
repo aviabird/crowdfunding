@@ -4,17 +4,20 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Project } from './../../../../core/models/project';
 import { ProjectService } from './../../../services/project.service';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-project-title',
   templateUrl: './project-title.component.html',
   styleUrls: ['./project-title.component.scss']
 })
-export class ProjectTitleComponent implements OnInit {
+export class ProjectTitleComponent implements OnInit, OnDestroy {
 
   @Output() nextTab: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  private projectSub: Subscription = new Subscription();
 
   projectForm: FormGroup;
   categories = [];
@@ -39,7 +42,6 @@ export class ProjectTitleComponent implements OnInit {
   submitProject() {
     this.nextTab.emit(true);
     const project = this.projectForm.value;
-    console.log('project', project);
     this.projectService.createProject(project).subscribe((res) => {
       localStorage.setItem('current_project_id', res.id);
     });
@@ -54,6 +56,10 @@ export class ProjectTitleComponent implements OnInit {
 
   private initProjectForm(project) {
     this.projectForm = this.projectService.initProjectForm(project);
+  }
+
+  ngOnDestroy() {
+    this.projectSub.unsubscribe();
   }
 
 }

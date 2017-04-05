@@ -47,9 +47,9 @@ export class ProjectService {
     });
   }
 
-  initRewardForm(project = new Project) {
+  initRewardForm(project) {
     let rewards = project.rewards;
-    if (!rewards.length) {
+    if (!rewards) {
       rewards = [new Reward];
     }
 

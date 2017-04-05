@@ -1,3 +1,4 @@
+import { Subject } from 'rxjs/Rx';
 import { Link } from './../../core/models/link';
 import { Faq } from './../../core/models/faq';
 import { Reward } from './../../core/models/reward';
@@ -9,6 +10,9 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ProjectService {
+
+  public savingDraft = new Subject();
+
   constructor(private fb: FormBuilder, private http: HttpService) { }
 
   initProjectForm(project) {
@@ -130,11 +134,12 @@ export class ProjectService {
   }
 
   createProject(params) {
+    this.savingDraft.next(true);
     return this.http.post(
       'api/v1/projects',
       params
     ).map((res) => {
-      console.log('response', res.json());
+      this.savingDraft.next(false);
       return res.json();
     });
   }

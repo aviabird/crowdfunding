@@ -1,0 +1,15 @@
+.loading {
+	z-index: 999;
+	position: fixed;
+	height: 100vh;
+	width: 100vw;
+	background: rgba(255, 255, 255, 0.7);
+	top: 0;
+	left: 0;
+	img {
+		position: fixed;
+    top: 45%;
+    left: 45%;
+    height: 10%;
+	}
+}

@@ -43,7 +43,7 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
   submitProject() {
     const project = this.projectForm.value;
     this.store.dispatch(this.actions.saveDraft(project));
-    this.nextTab.emit(true);
+    // this.nextTab.emit(true);
   }
 
   private fetchCategories() {

@@ -53,6 +53,9 @@
 				</div>
 			</div>
 			<div class="col-sm-6 camp_pdng">
+				<div *ngIf="showLoader" class="loading">
+					<img src="assets/img/loading.svg">
+				</div>
 				<div class="tab-content responsive">
 					<div class="" [ngSwitch]="selectedTab">
 						<ng-template [ngSwitchCase]="'1'" ngSwitchDefault> 

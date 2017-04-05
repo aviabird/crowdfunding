@@ -1,19 +1,22 @@
+import { Subscription } from 'rxjs/Subscription';
 import { ProjectActions } from './../../../actions/project.actions';
 import { AppState } from './../../../../app.state';
 import { Store } from '@ngrx/store';
 import { getDraftProject } from './../../../reducers/selectors';
 import { ProjectService } from './../../../services/project.service';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-project-reward',
   templateUrl: './project-reward.component.html',
   styleUrls: ['./project-reward.component.scss']
 })
-export class ProjectRewardComponent implements OnInit {
+export class ProjectRewardComponent implements OnInit, OnDestroy {
 
   @Output() nextTab: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  private projectSub: Subscription = new Subscription();
 
   rewardForm: FormGroup;
 
@@ -62,6 +65,10 @@ export class ProjectRewardComponent implements OnInit {
   private initRewardForm(project) {
     this.rewardForm = this.projectService.initRewardForm(project);
 
+  }
+
+  ngOnDestroy() {
+    this.projectSub.unsubscribe();
   }
 
 

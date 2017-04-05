@@ -59,19 +59,19 @@
 				<div class="tab-content responsive">
 					<div class="" [ngSwitch]="selectedTab">
 						<ng-template [ngSwitchCase]="'1'" ngSwitchDefault> 
-							<app-project-title (nextTab)="incrementTab()"></app-project-title>
+							<app-project-title></app-project-title>
 						</ng-template>      
 						<ng-template [ngSwitchCase]="'2'">
-							<app-project-reward (nextTab)="incrementTab()"></app-project-reward> 
+							<app-project-reward></app-project-reward> 
 						</ng-template>
 						<ng-template [ngSwitchCase]="'3'">
-							<app-project-story (nextTab)="incrementTab()"></app-project-story>
+							<app-project-story></app-project-story>
 						</ng-template>
 						<ng-template [ngSwitchCase]="'4'">
-							<app-project-faq (nextTab)="incrementTab()"></app-project-faq> 
+							<app-project-faq></app-project-faq> 
 						</ng-template>
 						<ng-template [ngSwitchCase]="'5'">
-							<app-project-link (nextTab)="incrementTab()"></app-project-link> 
+							<app-project-link></app-project-link> 
 						</ng-template>
 						<ng-template [ngSwitchCase]="'6'">
 							<app-project-review></app-project-review> 

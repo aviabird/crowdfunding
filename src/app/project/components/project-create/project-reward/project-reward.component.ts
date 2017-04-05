@@ -57,7 +57,6 @@ export class ProjectRewardComponent implements OnInit {
   onSubmit() {
     const data = this.rewardForm.value;
     this.store.dispatch(this.actions.saveDraft(data));
-    this.nextTab.emit(true);
   }
 
   private initRewardForm(project) {

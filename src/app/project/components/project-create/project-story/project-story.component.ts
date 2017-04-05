@@ -15,7 +15,6 @@ import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/cor
 })
 export class ProjectStoryComponent implements OnInit, OnDestroy {
 
-  @Output() nextTab: EventEmitter<boolean> = new EventEmitter<boolean>();
   private projectSub: Subscription = new Subscription();
 
   storyForm: FormGroup;

@@ -74,7 +74,7 @@
 							<app-project-link></app-project-link> 
 						</ng-template>
 						<ng-template [ngSwitchCase]="'6'">
-							<app-project-review></app-project-review> 
+							<app-project-review (backToEditor)="changeTab(1)"></app-project-review> 
 						</ng-template>
 						<ng-template [ngSwitchCase]="'7'">
 							<app-project-profile></app-project-profile> 

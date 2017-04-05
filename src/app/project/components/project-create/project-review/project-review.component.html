@@ -1,31 +1,65 @@
 <div class="campaign_create">
 	<h1>review</h1>
 	<div class="camp_review">
-		<h2>Campaign Name</h2>
-		<p>{{project?.title}}</p>
-		<div class="camp_mrg"></div>
-		<h2>Pledge
-			<span>${{project?.goal_amount}}</span>
-		</h2>
-		<div class="camp_mrg"></div>
-		<h3>Campaign Main Image</h3>
-		<img class="img-responsive" [src]="project?.image_url" alt="img">
-		<h3>Link and other Info</h3>
-		<div *ngFor="let link of project?.links">
-			<a [href]="link.url" target="_blank">{{link.url}}</a>
+		<div *ngIf="project.title">
+			<h3>Campaign Name</h3>
+			<p>{{project.title}}</p>
 		</div>
-		<div>
-			<a [href]="project?.video_url" target="_blank">{{project?.video_url}}</a>
+		<div *ngIf="project.goal_amount" class="camp_mrg">
+			<h3>Campaign Pledge</h3>
+			<p>$ {{project.goal_amount}}</p>
 		</div>
-		<div class="camp_mrg"></div>
-		<div *ngFor="let reward of project?.rewards">
-			<h2>{{reward.description}}
-				<span>${{reward.amount}}</span>
-			</h2>
+		<div *ngIf="project.image_url" class="camp_mrg">
+			<h3>Campaign Main Image</h3>
+			<img class="img-responsive" [src]="project.image_url" alt="img">
 		</div>
-		<div class="camp_review_link">
-			<a href="#">back to the editor</a>
-			<a (click)="onLaunch()" href="#">review and launch</a>
+		<div *ngIf="project.video_url">
+			<h3>Campaign Video</h3>
+			<a [href]="project.video_url">{{project.video_url}}</a>
 		</div>
+		<div *ngIf="project.funding_model" class="camp_mrg">
+			<h3>Campaign Funding Model</h3>
+			<p>{{project.funding_model}}</p>
+		</div>
+		<div *ngIf="project.duration" class="camp_mrg">
+			<h3>Campaign Duration</h3>
+			<p>{{project.duration}} Days</p>
+		</div>
+		<div *ngIf="isStoryPresent()" class="camp_mrg">
+			<h3 style="margin-bottom: 16px;">Campaign Story</h3>
+			<div *ngFor="let section of project?.story.sections">
+				<h3 *ngIf="section.heading">{{section.heading}}</h3>
+				<p *ngIf="section.description">{{section.description}}</p>
+				<img *ngIf="section.image_url" class="img-responsive" [src]="section.image_url" alt="img">
+			</div>
+		</div>
+		<div *ngIf="isRewardsPresent()" class="camp_mrg">
+			<h3 style="margin-bottom: 16px;">Campaign Rewards</h3>
+			<div *ngFor="let reward of project?.rewards">
+				<h3 *ngIf="reward.title">{{reward.title}}</h3>
+				<h3 *ngIf="reward.amount">$ {{reward.amount}}</h3>
+				<p *ngIf="reward.description">{{reward.description}}</p>
+				<img *ngIf="reward.image_url" class="img-responsive" [src]="reward.image_url" alt="img">
+			</div>
+		</div>
+		<div *ngIf="isLinksPresent()" class="camp_mrg">
+			<h3>Campaign Links and other Info</h3>
+			<div *ngFor="let link of project?.links">
+				<a *ngIf="link.url" [href]="link.url" target="_blank">{{link.url}}</a>
+			</div>
+		</div>
+		<div *ngIf="isFaqsPresent()" class="camp_mrg">
+			<h3 style="margin-bottom: 16px;">Campaign FAQ's</h3>
+			<div style="margin-bottom: 15px;" *ngFor="let faq of project?.faqs; let i = index">
+				<h3 *ngIf="faq.question">{{i+1}}.) {{faq.question}}</h3>
+				<p *ngIf="faq.answer">{{faq.answer}}</p>
+			</div>
+		</div>
+			<div class="camp_link">
+				<a (click)="onLaunch()" class="btnNext pull-right" style="width:48%">Review and Launch</a>
+				<a (click)="onBackToEditor()" class="camp_btn btn-default" style="width:48%">
+					Back to the Editor
+				</a>
+			</div>
 	</div>
 </div>

@@ -1,3 +1,8 @@
+import { getDraftProject } from './../../../reducers/selectors';
+import { Store } from '@ngrx/store';
+import { AppState } from './../../../../app.state';
+import { ProjectActions } from './../../../actions/project.actions';
+import { Subscription } from 'rxjs/Subscription';
 import { ProjectService } from './../../../services/project.service';
 import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
@@ -9,13 +14,19 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ProjectLinkComponent implements OnInit {
 
-  linkForm: FormGroup;
-  project_id: string;
-  @Output() nextTab: EventEmitter<boolean> = new EventEmitter<boolean>();
+  private projectSub: Subscription = new Subscription();
 
-  constructor(private projectService: ProjectService, private fb: FormBuilder) {
-    this.project_id = localStorage.getItem('current_project_id');
-    this.fetchOrInitProject();
+  linkForm: FormGroup;
+
+  constructor(
+    private projectService: ProjectService,
+    private fb: FormBuilder,
+    private actions: ProjectActions,
+    private store: Store<AppState>
+    ) {
+    this.projectSub = this.store.select(getDraftProject).subscribe((project) => {
+      this.initLinkForm(project);
+    });
   }
 
   ngOnInit() {
@@ -30,27 +41,17 @@ export class ProjectLinkComponent implements OnInit {
       this.fb.group({
         'id': [''],
         'url': ['', Validators.required],
-        'project_id': [this.project_id, Validators.required]
       })
     );
   }
 
   onSubmit() {
-    this.nextTab.emit(true);
     const data = this.linkForm.value;
-    this.projectService.createProject(data).subscribe((res) => {
-      console.log('res', res);
-      this.linkForm = this.projectService.initLinkForm(res);
-    });
+    this.store.dispatch(this.actions.saveDraft(data));
   }
 
-  private fetchOrInitProject() {
-    this.linkForm = this.projectService.initLinkForm();
-    if (this.project_id) {
-      this.projectService.fetchProject(this.project_id).subscribe((project) => {
-        this.linkForm = this.projectService.initLinkForm(project);
-      });
-    }
+  private initLinkForm(project) {
+    this.linkForm = this.projectService.initLinkForm(project);
   }
 
 }

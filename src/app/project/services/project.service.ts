@@ -88,9 +88,9 @@ export class ProjectService {
     });
   }
 
-  initFaqForm(project = new Project) {
+  initFaqForm(project) {
     let faqs = project.faqs;
-    if (!faqs.length) {
+    if (!faqs) {
       faqs = [new Faq];
     }
 
@@ -112,9 +112,9 @@ export class ProjectService {
     });
   }
 
-  initLinkForm(project = new Project) {
+  initLinkForm(project) {
     let links = project.links;
-    if (!links.length) {
+    if (!links) {
       links = [new Link];
     }
 

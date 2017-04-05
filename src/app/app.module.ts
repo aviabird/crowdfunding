@@ -1,3 +1,4 @@
+import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
 import { LayoutModule } from './layout/layout.module';
@@ -22,6 +23,7 @@ export function HttpLoaderFactory(http: Http) {
     AppComponent
   ],
   imports: [
+    BrowserModule,
     RouterModule.forRoot(routes),
     StoreModule.provideStore(reducer),
     // StoreModule.provideStore(reducer),

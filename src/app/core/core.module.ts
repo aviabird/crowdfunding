@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { HttpService } from './services/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -12,7 +13,6 @@ export function httpInterceptor(
 
 @NgModule({
   imports: [
-    CommonModule,
   ],
   declarations: [],
   providers: [

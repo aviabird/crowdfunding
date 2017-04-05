@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { ProjectEffects } from './effects/project.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { ProjectActions } from './actions/project.actions';
@@ -22,9 +23,7 @@ import { ProjectEventComponent } from './components/project-create/project-event
   imports: [
     RouterModule.forChild(routes),
     EffectsModule.run(ProjectEffects),
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule
+    SharedModule
   ],
   declarations: [
     ProjectDetailComponent,

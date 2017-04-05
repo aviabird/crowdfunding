@@ -14,7 +14,7 @@
 			</div>
 			<h2>Upload your Campaign Image</h2>
 			<!-- <div class="camp_upload_img"> -->
-			<input type="file" name="pic" accept="image/*" (change)="handleOnChange($event)">
+			<app-image-upload (image)="setImageData($event)"></app-image-upload>
 			<!-- <h4>Upload Image</h4> -->
 			<!-- </div> -->
 			<br>

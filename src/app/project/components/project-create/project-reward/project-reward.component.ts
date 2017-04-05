@@ -26,7 +26,7 @@ export class ProjectRewardComponent implements OnInit, OnDestroy {
     private store: Store<AppState>,
     private actions: ProjectActions
   ) {
-    this.store.select(getDraftProject).subscribe((project) => {
+    this.projectSub = this.store.select(getDraftProject).subscribe((project) => {
       this.initRewardForm(project);
     });
   }

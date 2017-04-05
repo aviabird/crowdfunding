@@ -26,7 +26,7 @@
 										<textarea class="form-control" rows="2" formControlName="description" placeholder="Enter description"></textarea>
 									</div>
 									<h2>Upload your Image</h2>
-									<input type="file" name="pic" accept="image/*" (change)="handleOnChange($event, i)">
+									<app-image-upload (image)="setImageData($event, i)"></app-image-upload>
 								</div>
 							</div>
 						</div>

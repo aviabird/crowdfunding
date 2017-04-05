@@ -31,8 +31,13 @@ export class ProjectService {
     });
   }
 
-  initStoryForm(project = new Project) {
-    const story = project.story || new Story;
+  initStoryForm(project) {
+    let story = project.story;
+    if (!story) {
+      story = new Story;
+    }
+
+
     const section_attributes_array = [];
     story.sections.forEach(section => {
       section_attributes_array.push(
@@ -40,14 +45,19 @@ export class ProjectService {
           'id': section.id,
           'heading': section.heading,
           'description': section.description,
+          'image_data': section.image_data,
           'image_url': section.image_url
         })
       );
     });
 
     return this.fb.group({
-      'id': [story && story.id, Validators.required],
-      'sections_attributes': this.fb.array(section_attributes_array)
+      'id': [project.id, Validators.required],
+      'type': ['story', Validators.required],
+      'story_attributes': this.fb.group({
+        'id': [story.id, Validators.required],
+        'sections_attributes': this.fb.array(section_attributes_array)
+      })
     });
   }
 

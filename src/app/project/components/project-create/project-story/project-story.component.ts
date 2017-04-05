@@ -1,23 +1,35 @@
+import { ProjectActions } from './../../../actions/project.actions';
+import { Subscription } from 'rxjs/Subscription';
+import { getDraftProject } from './../../../reducers/selectors';
+import { AppState } from './../../../../app.state';
+import { Store } from '@ngrx/store';
 import { Project } from './../../../../core/models/project';
 import { ProjectService } from './../../../services/project.service';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-project-story',
   templateUrl: './project-story.component.html',
   styleUrls: ['./project-story.component.scss']
 })
-export class ProjectStoryComponent implements OnInit {
+export class ProjectStoryComponent implements OnInit, OnDestroy {
+
+  @Output() nextTab: EventEmitter<boolean> = new EventEmitter<boolean>();
+  private projectSub: Subscription = new Subscription();
 
   storyForm: FormGroup;
-  currentIndex: number;
-  project_id: string;
-  @Output() nextTab: EventEmitter<boolean> = new EventEmitter<boolean>();
+  projectForm: FormGroup;
 
-  constructor(private projectService: ProjectService, private fb: FormBuilder) {
-    this.project_id = localStorage.getItem('current_project_id');
-    this.fetchOrInitProject();
+  constructor(
+    private projectService: ProjectService,
+    private fb: FormBuilder,
+    private store: Store<AppState>,
+    private actions: ProjectActions
+  ) {
+    this.projectSub = this.store.select(getDraftProject).subscribe((project) => {
+      this.initStoryForm(project);
+    });
   }
 
   ngOnInit() {
@@ -27,66 +39,36 @@ export class ProjectStoryComponent implements OnInit {
     return (<FormArray>this.storyForm.get('sections_attributes')).controls;
   }
 
-  handleOnChange(event, index) {
-    this.currentIndex = index;
-    const files: any = event.dataTransfer ? event.dataTransfer.files : event.target.files;
-    const files_list = [];
-    const pattern = /image-*/;
-    for (let i = 0; i < files.length; i++) {
-      files_list.push(files[i]);
-    }
-    files_list.forEach((file: File) => {
-      if (!file.type.match(pattern)) {
-        alert('Remove non image format files');
-        return;
-      }
-      const reader = new FileReader();
-      reader.onload = this.handleReaderLoaded.bind(this);
-      reader.readAsDataURL(file);
+  setImageData(image, index) {
+    (<FormArray>this.storyForm.get('sections_attributes')).controls[index].patchValue({
+      'image_data': image
     });
-  }
-
-  private handleReaderLoaded(e) {
-    const reader = e.target;
-    const imageUrl = reader.result;
-    (<FormArray>this.storyForm.controls['sections_attributes']).controls[this.currentIndex].patchValue({
-      'image_data': imageUrl
-    });
-    // this.uploadMedia(imageUrl);
   }
 
   onAddSection() {
-    (<FormArray>this.storyForm.controls['sections_attributes']).push(
+    (<FormArray>this.storyForm.get('sections_attributes')).push(
       this.fb.group({
+        'id': [''],
         'heading': ['', Validators.required],
         'description': ['', Validators.required],
-        'image_url': ['', Validators.required],
+        'image_url': [''],
         'image_data': ['', Validators.required]
       })
     );
   }
 
   onSubmit() {
-    this.nextTab.emit(true);
-    const data = {
-      'id': this.project_id,
-      'type': 'story',
-      'story_attributes': this.storyForm.value
-    };
-
-    console.log('data', data);
-    this.projectService.createProject(data).subscribe((res) => {
-      console.log('res', res);
-    });
+    const data = this.projectForm.value;
+    this.store.dispatch(this.actions.saveDraft(data));
   }
 
-  private fetchOrInitProject() {
-    this.storyForm = this.projectService.initStoryForm();
-    if (this.project_id) {
-      this.projectService.fetchProject(this.project_id).subscribe((project) => {
-        this.storyForm = this.projectService.initStoryForm(project);
-      });
-    }
+  private initStoryForm(project) {
+    this.projectForm = this.projectService.initStoryForm(project);
+    this.storyForm = <FormGroup>this.projectForm.get('story_attributes');
+  }
+
+  ngOnDestroy() {
+    this.projectSub.unsubscribe();
   }
 
 }

@@ -29,7 +29,7 @@
 									<h2>Upload your Reward Image</h2>
 									<div class="camp_upload_img">
 										<img src="assets/img/camera-img.png" alt="img">
-										<input type="file" name="pic" accept="image/*" (change)="handleOnChange($event, i)">
+										<app-image-upload (image)="setImageData($event, i)"></app-image-upload>
 										<h4>Upload Image</h4>
 									</div>
 									<br>

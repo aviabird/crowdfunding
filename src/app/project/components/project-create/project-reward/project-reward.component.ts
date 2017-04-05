@@ -1,3 +1,7 @@
+import { ProjectActions } from './../../../actions/project.actions';
+import { AppState } from './../../../../app.state';
+import { Store } from '@ngrx/store';
+import { getDraftProject } from './../../../reducers/selectors';
 import { ProjectService } from './../../../services/project.service';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
@@ -9,14 +13,19 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ProjectRewardComponent implements OnInit {
 
-  rewardForm: FormGroup;
-  project_id: string;
-  currentIndex: number;
   @Output() nextTab: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor(private projectService: ProjectService, private fb: FormBuilder) {
-    this.project_id = localStorage.getItem('current_project_id');
-    this.fetchOrInitProject();
+  rewardForm: FormGroup;
+
+  constructor(
+    private projectService: ProjectService,
+    private fb: FormBuilder,
+    private store: Store<AppState>,
+    private actions: ProjectActions
+  ) {
+    this.store.select(getDraftProject).subscribe((project) => {
+      this.initRewardForm(project);
+    });
   }
 
   ngOnInit() {
@@ -26,34 +35,11 @@ export class ProjectRewardComponent implements OnInit {
     return (<FormArray>this.rewardForm.get('rewards_attributes')).controls;
   }
 
-  handleOnChange(event, index) {
-    this.currentIndex = index;
-    const files: any = event.dataTransfer ? event.dataTransfer.files : event.target.files;
-    const files_list = [];
-    const pattern = /image-*/;
-    for (let i = 0; i < files.length; i++) {
-      files_list.push(files[i]);
-    }
-    files_list.forEach((file: File) => {
-      if (!file.type.match(pattern)) {
-        alert('Remove non image format files');
-        return;
-      }
-      const reader = new FileReader();
-      reader.onload = this.handleReaderLoaded.bind(this);
-      reader.readAsDataURL(file);
+  setImageData(image, index) {
+    (<FormArray>this.rewardForm.controls['rewards_attributes']).controls[index].patchValue({
+      'image_data': image
     });
   }
-
-  private handleReaderLoaded(e) {
-    const reader = e.target;
-    const imageUrl = reader.result;
-    (<FormArray>this.rewardForm.controls['rewards_attributes']).controls[this.currentIndex].patchValue({
-      'image_data': imageUrl
-    });
-    // this.uploadMedia(imageUrl);
-  }
-
 
   onAddReward() {
     (<FormArray>this.rewardForm.controls['rewards_attributes']).push(
@@ -64,27 +50,19 @@ export class ProjectRewardComponent implements OnInit {
         'image_url': [''],
         'image_data': [''],
         'amount': ['', Validators.required],
-        'project_id': [this.project_id, Validators.required]
       })
     );
   }
 
   onSubmit() {
-    this.nextTab.emit(true);
     const data = this.rewardForm.value;
-    this.projectService.createProject(data).subscribe((res) => {
-      console.log('res', res);
-      this.rewardForm = this.projectService.initRewardForm(res);
-    });
+    this.store.dispatch(this.actions.saveDraft(data));
+    this.nextTab.emit(true);
   }
 
-  private fetchOrInitProject() {
-    this.rewardForm = this.projectService.initRewardForm();
-    if (this.project_id) {
-      this.projectService.fetchProject(this.project_id).subscribe((project) => {
-        this.rewardForm = this.projectService.initRewardForm(project);
-      });
-    }
+  private initRewardForm(project) {
+    this.rewardForm = this.projectService.initRewardForm(project);
+
   }
 
 

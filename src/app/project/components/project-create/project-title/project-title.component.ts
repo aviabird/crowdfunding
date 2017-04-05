@@ -1,3 +1,4 @@
+import { ProjectActions } from './../../../actions/project.actions';
 import { getDraftProject } from './../../../reducers/selectors';
 import { AppState } from './../../../../app.state';
 import { Store } from '@ngrx/store';
@@ -25,7 +26,7 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
   months = new Array('January', 'February', 'March', 'April', 'May', 'June',
                       'July', 'August', 'September', 'October', 'November', 'December');
 
-  constructor(private projectService: ProjectService, private store: Store<AppState>) {
+  constructor(private projectService: ProjectService, private actions: ProjectActions, private store: Store<AppState>) {
     this.fetchCategories();
     this.store.select(getDraftProject).subscribe((project) => {
       this.initProjectForm(project);
@@ -40,11 +41,9 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
   }
 
   submitProject() {
-    this.nextTab.emit(true);
     const project = this.projectForm.value;
-    this.projectService.createProject(project).subscribe((res) => {
-      localStorage.setItem('current_project_id', res.id);
-    });
+    this.store.dispatch(this.actions.saveDraft(project));
+    this.nextTab.emit(true);
   }
 
   private fetchCategories() {

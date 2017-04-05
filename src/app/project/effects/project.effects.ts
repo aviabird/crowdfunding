@@ -16,12 +16,21 @@ export class ProjectEffects {
 
   // tslint:disable-next-line:member-ordering
   @Effect()
-    initDraft$ = this.actions$
-      .ofType(ProjectActions.INIT_DRAFT_PROJECT)
-      .switchMap((action: Action) => {
-        console.log('in effects');
-        return this.projectService.initDraftProject();
-      })
-      .map((project: Project) => this.projectActions.initDraftSuccess(project));
+  initDraft$ = this.actions$
+    .ofType(ProjectActions.INIT_DRAFT_PROJECT)
+    .switchMap((action: Action) => {
+      return this.projectService.initDraftProject();
+    })
+    .map((project: Project) => this.projectActions.initDraftSuccess(project));
+
+  // tslint:disable-next-line:member-ordering
+  @Effect()
+  saveDraft$ = this.actions$
+    .ofType(ProjectActions.SAVE_DRAFT)
+    .switchMap((action: Action) => {
+      return this.projectService.createProject(action.payload);
+    })
+    .map((project: Project) => this.projectActions.initDraftSuccess(project));
+
 
 }

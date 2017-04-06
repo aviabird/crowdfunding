@@ -5,7 +5,7 @@ import { Reward } from './../../core/models/reward';
 import { Story } from './../../core/models/story';
 import { Project } from './../../core/models/project';
 import { HttpService } from './../../core/services/http';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -18,16 +18,16 @@ export class ProjectService {
   initProjectForm(project) {
     return this.fb.group({
       'id': [project.id],
-      'type': ['project', Validators.required],
+      'type': ['project'],
       'title': [project.title, Validators.required],
       'category_id': [project.category_id, Validators.required],
-      'image_url': [project.image_url, Validators.required],
+      'image_url': [project.image_url],
       'image_data': ['', Validators.required],
-      'video_url': [project.video_url, Validators.required],
+      'video_url': [project.video_url],
       'goal_amount': [project.goal_amount, Validators.required],
-      'funding_model': [project.funding_model, Validators.required],
-      'start_date': [project.start_date, Validators.required],
-      'duration': [project.duration, Validators.required]
+      'funding_model': [project.funding_model || 'flexi', Validators.required],
+      'start_date': [project.start_date],
+      'duration': [project.duration, Validators.compose([Validators.required, this.validateNumber])]
     });
   }
 
@@ -176,5 +176,9 @@ export class ProjectService {
   setDraftToLocalStorage(id) {
     localStorage.setItem('current_project_id', id);
   }
+
+  validateNumber(c: FormControl) {
+    return c.value > 0 && c.value <= 60 ? null : {validateNumber: true};
+  };
 
 }

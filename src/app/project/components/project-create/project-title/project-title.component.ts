@@ -16,10 +16,9 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class ProjectTitleComponent implements OnInit, OnDestroy {
 
-  @Output() nextTab: EventEmitter<boolean> = new EventEmitter<boolean>();
-
   private projectSub: Subscription = new Subscription();
 
+  formSubmit = false;
   projectForm: FormGroup;
   categories = [];
   days = Array.from(new Array(31), ( val, index) => index + 1);
@@ -40,10 +39,22 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
     (<FormControl>this.projectForm.controls['image_data']).setValue(image);
   }
 
+  isImagePresent() {
+    const imageUrl = this.projectForm.get('image_url').value;
+    const imageData = this.projectForm.get('image_data').value;
+    if (imageUrl || imageData) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   submitProject() {
+    this.formSubmit = true;
     const project = this.projectForm.value;
-    this.store.dispatch(this.actions.saveDraft(project));
-    // this.nextTab.emit(true);
+    if (this.projectForm.valid && this.isImagePresent()) {
+      this.store.dispatch(this.actions.saveDraft(project));
+    }
   }
 
   private fetchCategories() {

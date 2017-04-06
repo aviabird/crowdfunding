@@ -14,6 +14,16 @@ import { reducer } from './app.reducer';
 import { routes } from './app.routes';
 import { AppComponent } from './app.component';
 
+// adding rx operators
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/finally';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/throw';
+
 export function HttpLoaderFactory(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }

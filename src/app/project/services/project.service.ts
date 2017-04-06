@@ -43,19 +43,19 @@ export class ProjectService {
       section_attributes_array.push(
         this.fb.group({
           'id': section.id,
-          'heading': section.heading,
-          'description': section.description,
-          'image_data': section.image_data,
-          'image_url': section.image_url
+          'heading': [section.heading, Validators.required],
+          'description': [section.description, Validators.required],
+          'image_data': [section.image_data],
+          'image_url': [section.image_url]
         })
       );
     });
 
     return this.fb.group({
-      'id': [project.id, Validators.required],
-      'type': ['story', Validators.required],
+      'id': [project.id],
+      'type': ['story'],
       'story_attributes': this.fb.group({
-        'id': [story.id, Validators.required],
+        'id': [story.id],
         'sections_attributes': this.fb.array(section_attributes_array)
       })
     });

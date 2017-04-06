@@ -20,10 +20,12 @@
 									<div class="form-group">
 										<label for="usr">Story Heading</label>
 										<input type="text" class="form-control" formControlName="heading" placeholder="Enter title">
+										<p *ngIf="section.get('heading').hasError('required') && (section.get('heading').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
 									</div>
 									<div class="form-group">
 										<label for="comment">Story Description</label>
 										<textarea class="form-control" rows="2" formControlName="description" placeholder="Enter description"></textarea>
+										<p *ngIf="section.get('description').hasError('required') && (section.get('description').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
 									</div>
 									<h2>Upload your Image</h2>
 									<app-image-upload (image)="setImageData($event, i)"></app-image-upload>

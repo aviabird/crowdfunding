@@ -17,6 +17,7 @@ export class ProjectStoryComponent implements OnInit, OnDestroy {
 
   private projectSub: Subscription = new Subscription();
 
+  formSubmit = false;
   storyForm: FormGroup;
   projectForm: FormGroup;
 
@@ -57,8 +58,11 @@ export class ProjectStoryComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    this.formSubmit = true;
     const data = this.projectForm.value;
-    this.store.dispatch(this.actions.saveDraft(data));
+    if (this.storyForm.valid) {
+      this.store.dispatch(this.actions.saveDraft(data));
+    }
   }
 
   private initStoryForm(project) {

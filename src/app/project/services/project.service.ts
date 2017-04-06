@@ -71,12 +71,12 @@ export class ProjectService {
     rewards.forEach((reward: any) => {
       reward_attributes_array.push(
         this.fb.group({
-          'id': reward.id,
-          'title': reward.title,
-          'description': reward.description,
-          'image_url': reward.image_url,
-          'image_data': '',
-          'amount': reward.amount,
+          'id': [reward.id],
+          'title': [reward.title, Validators.required],
+          'description': [reward.description, Validators.required],
+          'image_url': [reward.image_url],
+          'image_data': [''],
+          'amount': [reward.amount, Validators.required],
         })
       );
     });
@@ -98,16 +98,16 @@ export class ProjectService {
     faqs.forEach((faq: any) => {
       faq_attributes_array.push(
         this.fb.group({
-          'id': faq.id,
-          'question': faq.question,
-          'answer': faq.answer
+          'id': [faq.id],
+          'question': [faq.question, Validators.required],
+          'answer': [faq.answer, Validators.required]
         })
       );
     });
 
     return this.fb.group({
-      'id': [project.id, Validators.required],
-      'type': ['faq', Validators.required],
+      'id': [project.id],
+      'type': ['faq'],
       'faqs_attributes': this.fb.array(faq_attributes_array)
     });
   }
@@ -122,15 +122,15 @@ export class ProjectService {
     links.forEach((link: any) => {
       link_attributes_array.push(
         this.fb.group({
-          'id': link.id,
-          'url': link.url
+          'id': [link.id],
+          'url': [link.url, Validators.required]
         })
       );
     });
 
     return this.fb.group({
-      'id': [project.id, Validators.required],
-      'type': ['link', Validators.required],
+      'id': [project.id],
+      'type': ['link'],
       'links_attributes': this.fb.array(link_attributes_array)
     });
   }

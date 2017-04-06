@@ -13,6 +13,7 @@
 					<p>Introduce yourself,, your campaign and why it's important to you. </p>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Http:\\.." formControlName="url">
+						<p *ngIf="link.get('url').hasError('required') && (link.get('url').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
 					</div>
 					<!--<div class="camp_mrg"></div>
 					<div class="camp_add_png">

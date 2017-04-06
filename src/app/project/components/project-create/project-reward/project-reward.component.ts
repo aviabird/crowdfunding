@@ -16,6 +16,7 @@ export class ProjectRewardComponent implements OnInit, OnDestroy {
 
   private projectSub: Subscription = new Subscription();
 
+  formSubmit = false;
   rewardForm: FormGroup;
 
   constructor(
@@ -56,8 +57,11 @@ export class ProjectRewardComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    this.formSubmit = true;
     const data = this.rewardForm.value;
-    this.store.dispatch(this.actions.saveDraft(data));
+    if (this.rewardForm.valid) {
+      this.store.dispatch(this.actions.saveDraft(data));
+    }
   }
 
   private initRewardForm(project) {

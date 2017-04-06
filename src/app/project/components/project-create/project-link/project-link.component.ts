@@ -16,6 +16,7 @@ export class ProjectLinkComponent implements OnInit {
 
   private projectSub: Subscription = new Subscription();
 
+  formSubmit = false;
   linkForm: FormGroup;
 
   constructor(
@@ -46,8 +47,11 @@ export class ProjectLinkComponent implements OnInit {
   }
 
   onSubmit() {
+    this.formSubmit = true;
     const data = this.linkForm.value;
-    this.store.dispatch(this.actions.saveDraft(data));
+    if (this.linkForm.valid) {
+      this.store.dispatch(this.actions.saveDraft(data));
+    }
   }
 
   private initLinkForm(project) {

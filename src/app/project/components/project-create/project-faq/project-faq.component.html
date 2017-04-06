@@ -20,10 +20,12 @@
 									<div class="form-group">
 										<label for="">Question</label>
 										<textarea class="form-control" rows="2" placeholder="Enter question" formControlName="question"></textarea>
+										<p *ngIf="faq.get('question').hasError('required') && (faq.get('question').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
 									</div>
 									<div class="form-group">
 										<label for="">Answer</label>
 										<textarea class="form-control" rows="2" placeholder="Enter Answer" formControlName="answer"></textarea>
+										<p *ngIf="faq.get('answer').hasError('required') && (faq.get('answer').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
 									</div>
 								</div>
 							</div>

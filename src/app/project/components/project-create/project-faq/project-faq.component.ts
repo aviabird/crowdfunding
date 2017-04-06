@@ -16,6 +16,7 @@ export class ProjectFaqComponent implements OnInit, OnDestroy {
 
   private projectSub: Subscription = new Subscription();
 
+  formSubmit = false;
   faqForm: FormGroup;
 
   constructor(
@@ -47,8 +48,11 @@ export class ProjectFaqComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    this.formSubmit = true;
     const data = this.faqForm.value;
-    this.store.dispatch(this.actions.saveDraft(data));
+    if (this.faqForm.valid) {
+      this.store.dispatch(this.actions.saveDraft(data));
+    }
   }
 
   private initFaqForm(project) {

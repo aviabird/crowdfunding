@@ -52,7 +52,7 @@ export class ProjectStoryComponent implements OnInit, OnDestroy {
         'heading': ['', Validators.required],
         'description': ['', Validators.required],
         'image_url': [''],
-        'image_data': ['', Validators.required]
+        'image_data': ['']
       })
     );
   }

@@ -21,10 +21,12 @@
 									<div class="form-group">
 										<label for="usr">Reward Title</label>
 										<input type="text" class="form-control" placeholder="Enter title" formControlName="title">
+										<p *ngIf="reward.get('title').hasError('required') && (reward.get('title').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
 									</div>
 									<div class="form-group">
 										<label for="comment">Reward Description</label>
 										<textarea class="form-control" rows="3" placeholder="Enter description" formControlName="description"></textarea>
+										<p *ngIf="reward.get('description').hasError('required') && (reward.get('description').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
 									</div>
 									<h2>Upload your Reward Image</h2>
 									<div class="camp_upload_img">
@@ -39,6 +41,7 @@
 										<div class="col-xs-6">
 											<div class="form-group">
 												<input type="text" class="form-control" placeholder="$ 500" formControlName="amount">
+												<p *ngIf="reward.get('amount').hasError('required') && (reward.get('amount').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
 											</div>
 										</div>
 										<div class="col-xs-6">

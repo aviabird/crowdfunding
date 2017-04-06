@@ -3,17 +3,17 @@
 	<div class="camp_create_box">
 		<form [formGroup]="projectForm">
 			<div class="form-group">
-				<label for="usr">Campaign Title:</label>
+				<label for="usr">Campaign Title *</label>
 				<input type="text" class="form-control" placeholder="Enter title" formControlName="title">
 				<p *ngIf="projectForm.get('title').hasError('required') && (projectForm.get('title').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
 			</div>
 			<div class="form-group">
-				<label for="comment">Campaign Category</label>
+				<label for="comment">Campaign Category *</label>
 				<select class="form-control" formControlName="category_id">
 					<option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
 				</select>
 			</div>
-			<h2>Upload your Campaign Image</h2>
+			<h2>Upload your Campaign Image *</h2>
 			<!-- <div class="camp_upload_img"> -->
 			<app-image-upload (image)="setImageData($event)"></app-image-upload>
 			<p *ngIf="!isImagePresent() && formSubmit" class="value-err show">Campaign image is required</p>
@@ -25,7 +25,7 @@
 			<div class="form-group">
 				<input type="text" class="form-control" placeholder="Http:\\.." formControlName="video_url">
 			</div>
-			<h2>Campaign Goal</h2>
+			<h2>Campaign Goal *</h2>
 			<p>How much money would you like to raise for this campaign? </p>
 			<div class="row">
 				<div class="col-xs-6">
@@ -59,7 +59,7 @@
 					</h2>
 				</div>
 			</div>
-			<h2>Begin Date</h2>
+			<h2>Begin Date *</h2>
 			<p>Lorem ipsum begin date end date</p>
 			<div class="camp_date">
 				<div class="form-group">
@@ -85,7 +85,7 @@
 					<div class="col-xs-3"></div>
 				</div>
 			</div>
-			<h2>Begin Duration</h2>
+			<h2>Begin Duration *</h2>
 			<p>Lorem ipsum begin date end date</p>
 			<div class="camp_duration">
 				<input type="number" placeholder="Duration" min="1" max="60" class="form-control" formControlName="duration">

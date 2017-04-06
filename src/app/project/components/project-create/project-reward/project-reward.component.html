@@ -19,12 +19,12 @@
 									<div class="camp_mrg2"></div>
 									<!-- Reward body -->
 									<div class="form-group">
-										<label for="usr">Reward Title</label>
+										<label for="usr">Reward Title *</label>
 										<input type="text" class="form-control" placeholder="Enter title" formControlName="title">
 										<p *ngIf="reward.get('title').hasError('required') && (reward.get('title').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
 									</div>
 									<div class="form-group">
-										<label for="comment">Reward Description</label>
+										<label for="comment">Reward Description *</label>
 										<textarea class="form-control" rows="3" placeholder="Enter description" formControlName="description"></textarea>
 										<p *ngIf="reward.get('description').hasError('required') && (reward.get('description').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
 									</div>
@@ -35,7 +35,7 @@
 										<h4>Upload Image</h4>
 									</div>
 									<br>
-									<h2>Reward Amount</h2>
+									<h2>Reward Amount *</h2>
 									<p>How much money for this reward? </p>
 									<div class="row">
 										<div class="col-xs-6">

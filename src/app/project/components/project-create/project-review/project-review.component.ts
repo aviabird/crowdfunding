@@ -17,6 +17,7 @@ export class ProjectReviewComponent implements OnInit {
   @Output() backToEditor: EventEmitter<number> = new EventEmitter<number>();
   private projectSub: Subscription = new Subscription();
 
+  errors: Array<string> = [];
   project: Project;
 
   constructor(
@@ -80,9 +81,38 @@ export class ProjectReviewComponent implements OnInit {
   }
 
   onLaunch() {
-    alert('Your Project is sent for review');
-    this.router.navigate(['/']);
-    localStorage.setItem('current_project_id', null);
+    const isValid = this.checkIfProjectIsValid();
+    if (isValid) {
+      alert('Your Project is sent for review');
+      this.router.navigate(['/']);
+      localStorage.setItem('current_project_id', null);
+    }
+  }
+
+  private checkIfProjectIsValid() {
+    let status = true;
+    this.errors = [];
+    if (!this.project.title) {
+      this.errors.push("Campaign Title is missing");
+      status = false;
+    }
+    if (!this.project.goal_amount) {
+      this.errors.push("Campaign Goal Amount is Missing");
+      status = false;
+    }
+    if (!this.project.duration) {
+      this.errors.push("Campaign Duration is missing");
+      status = false;
+    }
+    if (!this.project.image_url) {
+      this.errors.push("Campaign Image is missing");
+      status = false;
+    }
+    if (!this.isStoryPresent()) {
+      this.errors.push("Campaign Story is missing");
+      status = false;      
+    }
+    return status;
   }
 
 }

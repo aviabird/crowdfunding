@@ -55,11 +55,18 @@
 				<p *ngIf="faq.answer">{{faq.answer}}</p>
 			</div>
 		</div>
-			<div class="camp_link">
-				<a (click)="onLaunch()" class="btnNext pull-right" style="width:48%">Review and Launch</a>
-				<a (click)="onBackToEditor()" class="camp_btn btn-default" style="width:48%">
-					Back to the Editor
-				</a>
-			</div>
+		<div class="camp_mrg">
+			<ul>
+				<li class="value-err" *ngFor="let error of errors">
+					{{error}}
+				</li>
+			</ul>
+		</div>
+		<div class="camp_link">
+			<a (click)="onLaunch()" class="btnNext pull-right" style="width:48%">Review and Launch</a>
+			<a (click)="onBackToEditor()" class="camp_btn btn-default" style="width:48%">
+				Back to the Editor
+			</a>
+		</div>
 	</div>
 </div>

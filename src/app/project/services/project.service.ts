@@ -1,3 +1,4 @@
+import { AppConstants } from './../../app.constants';
 import { Subject } from 'rxjs/Subject';
 import { Link } from './../../core/models/link';
 import { Faq } from './../../core/models/faq';
@@ -23,7 +24,7 @@ export class ProjectService {
       'category_id': [project.category_id, Validators.required],
       'image_url': [project.image_url],
       'image_data': ['', Validators.required],
-      'video_url': [project.video_url],
+      'video_url': [project.video_url, this.validateURL],
       'goal_amount': [project.goal_amount, Validators.required],
       'funding_model': [project.funding_model || 'flexi', Validators.required],
       'start_date': [project.start_date],
@@ -178,7 +179,12 @@ export class ProjectService {
   }
 
   validateNumber(c: FormControl) {
-    return c.value > 0 && c.value <= 60 ? null : {validateNumber: true};
+    return c.value > 0 && c.value <= 60 ? null : { validateNumber: true };
   };
+
+  validateURL(c: FormControl) {
+    const URL_REGEXP = AppConstants.URL_REGEX;
+    return URL_REGEXP.test(c.value) ? null : { validateURL: true };
+  }
 
 }

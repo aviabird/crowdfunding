@@ -93,24 +93,24 @@ export class ProjectReviewComponent implements OnInit {
     let status = true;
     this.errors = [];
     if (!this.project.title) {
-      this.errors.push("Campaign Title is missing");
+      this.errors.push('Campaign Title is missing');
       status = false;
-    }
+   }
     if (!this.project.goal_amount) {
-      this.errors.push("Campaign Goal Amount is Missing");
+      this.errors.push('Campaign Goal Amount is Mising');
       status = false;
-    }
+   }
     if (!this.project.duration) {
-      this.errors.push("Campaign Duration is missing");
+      this.errors.push('Campaign Duration is missig');
       status = false;
-    }
+   }
     if (!this.project.image_url) {
-      this.errors.push("Campaign Image is missing");
+      this.errors.push('Campaign Image is missing');
       status = false;
-    }
+   }
     if (!this.isStoryPresent()) {
-      this.errors.push("Campaign Story is missing");
-      status = false;      
+      this.errors.push('Campaign Story is missing');
+      status = false;
     }
     return status;
   }

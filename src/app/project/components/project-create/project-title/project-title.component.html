@@ -24,6 +24,7 @@
 			<p>Enter a URL to appear at the top of your campaign page.</p>
 			<div class="form-group">
 				<input type="text" class="form-control" placeholder="Http:\\.." formControlName="video_url">
+				<p *ngIf="projectForm.get('video_url').hasError('validateURL') && projectForm.get('video_url').touched" class="value-err show">Video Url is invalid</p>
 			</div>
 			<h2>Campaign Goal *</h2>
 			<p>How much money would you like to raise for this campaign? </p>

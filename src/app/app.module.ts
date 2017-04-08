@@ -10,6 +10,7 @@ import { HttpModule, Http } from '@angular/http';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducer } from './app.reducer';
+import { Angular2TokenService } from 'angular2-token';
 
 import { routes } from './app.routes';
 import { AppComponent } from './app.component';
@@ -52,7 +53,7 @@ export function HttpLoaderFactory(http: Http) {
     SharedModule,
     HttpModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ Angular2TokenService ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

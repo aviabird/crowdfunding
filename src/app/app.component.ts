@@ -17,21 +17,21 @@ export class AppComponent {
     private router: Router,
     private authToken: Angular2TokenService
   ) {
-    this.authToken.init(environment.token_auth_config);
-    console.log('in construtcor');
-    this.authToken.signIn({email: 'user@example.com', password: 'monkey67'}).subscribe(
+    // this.authToken.init(environment.token_auth_config);
+    // console.log('in construtcor');
+    // this.authToken.signIn({email: 'user@example.com', password: 'monkey67'}).subscribe(
 
-        res => {
+    //     res => {
 
-          console.log('auth response:', res);
-          console.log('auth response headers: ', res.headers.toJSON());
-          console.log('auth response body:', res.json());
-        },
+    //       console.log('auth response:', res);
+    //       console.log('auth response headers: ', res.headers.toJSON());
+    //       console.log('auth response body:', res.json());
+    //     },
 
-        err => {
-          console.error('auth error:', err);
-        }
-    );
+    //     err => {
+    //       console.error('auth error:', err);
+    //     }
+    // );
 
 
 

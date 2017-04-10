@@ -2,10 +2,10 @@
 
 <app-modal #customModal>
   <div *ngIf="modalType === 'login'">
-    <app-login></app-login>
+    <app-login (closeModal)="closeModal()"></app-login>
   </div>
   <div *ngIf="modalType === 'signup'">
-  <app-signup></app-signup>
+  <app-signup (closeModal)="closeModal()"></app-signup>
   </div>
 </app-modal>
 

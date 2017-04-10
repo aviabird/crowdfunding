@@ -51,5 +51,9 @@ export class AppComponent {
     this.customModal.showModal();
   }
 
+  closeModal() {
+    this.customModal.hideModal();
+  }
+
 }
 

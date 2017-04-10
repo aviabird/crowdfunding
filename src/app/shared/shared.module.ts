@@ -3,6 +3,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { CommonModule } from '@angular/common';
     ImageUploadComponent
   ],
   declarations: [
-    ImageUploadComponent
+    ImageUploadComponent,
+    ModalComponent
   ]
 })
 export class SharedModule { }

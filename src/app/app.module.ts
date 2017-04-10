@@ -9,6 +9,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpModule, Http } from '@angular/http';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 import { reducer } from './app.reducer';
 import { Angular2TokenService } from 'angular2-token';
 
@@ -36,6 +38,7 @@ export function HttpLoaderFactory(http: Http) {
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
+    ModalModule.forRoot(),
     StoreModule.provideStore(reducer),
     // StoreModule.provideStore(reducer),
     StoreDevtoolsModule.instrumentStore({

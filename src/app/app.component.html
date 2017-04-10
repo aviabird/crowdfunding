@@ -1,4 +1,14 @@
-<app-header></app-header>
+<app-header (modal)="setModalType($event)"></app-header>
+
+<app-modal #customModal>
+  <div *ngIf="modalType === 'login'">
+    <app-login></app-login>
+  </div>
+  <div *ngIf="modalType === 'signup'">
+  <app-signup></app-signup>
+  </div>
+</app-modal>
+
 <section class="main">
 	<router-outlet></router-outlet>
 </section>

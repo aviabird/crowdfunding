@@ -28,9 +28,8 @@
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Get Started</a></li>
                 <li><a href="#">About Us</a></li>
-                <!--<li><a [routerLink]="['/auth','login']" data-toggle="modal" data-target="#myModal1">Login</a></li>-->
-                <li><a [routerLink]="['/auth','login']">Login</a></li>
-                <li><button [routerLink]="['/auth','signup']" type="button" class="signupbtn" data-toggle="modal" data-target="#myModal">SIGNUP</button></li>                  
+                <li><a (click)="showModal('login')">Login</a></li>
+                <li><button (click)="showModal('signup')" type="button" class="signupbtn" data-toggle="modal" data-target="#myModal">SIGNUP</button></li>                  
               </ul>
             </div>
         </nav>

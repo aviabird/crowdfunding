@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from './components/modal/modal.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   imports: [
@@ -20,8 +22,7 @@ import { ModalComponent } from './components/modal/modal.component';
     ImageUploadComponent
   ],
   declarations: [
-    ImageUploadComponent,
-    ModalComponent
+    ImageUploadComponent
   ]
 })
 export class SharedModule { }

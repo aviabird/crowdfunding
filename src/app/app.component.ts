@@ -1,8 +1,9 @@
+import { ModalComponent } from './shared/components/modal/modal.component';
 import { environment } from './../environments/environment';
 import { Angular2TokenService } from 'angular2-token';
 import { Observable } from 'rxjs/Observable';
 import { Router, NavigationEnd } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   counter: Observable<number>;
+  modalType: string;
+  @ViewChild('customModal') customModal: ModalComponent;
 
   constructor(
     private router: Router,
@@ -41,6 +44,11 @@ export class AppComponent {
       .subscribe((e: NavigationEnd) => {
         window.scrollTo(0, 0);
       });
+  }
+
+  setModalType(type) {
+    this.modalType = type;
+    this.customModal.showModal();
   }
 
 }

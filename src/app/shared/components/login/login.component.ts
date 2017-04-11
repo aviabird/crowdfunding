@@ -1,3 +1,6 @@
+import { AuthActions } from './../../../core/actions/auth.actions';
+import { AppState } from './../../../app.state';
+import { Store } from '@ngrx/store';
 import { environment } from './../../../../environments/environment';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
@@ -16,7 +19,12 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   formSubmit = false;
 
-  constructor(private fb: FormBuilder, private authToken: Angular2TokenService) {
+  constructor(
+    private fb: FormBuilder,
+    private authToken: Angular2TokenService,
+    private store: Store<AppState>,
+    private authActions: AuthActions
+  ) {
     this.loginForm = this.initLoginForm();
   }
 
@@ -48,9 +56,8 @@ export class LoginComponent implements OnInit {
     this.authToken.signIn(credentials).subscribe(
       res => {
         this.onCloseModal();
-        console.log('auth response:', res);
+        this.store.dispatch(this.authActions.loginSuccess(res.json()));
         console.log('auth response headers: ', res.headers.toJSON());
-        console.log('auth response body:', res.json());
       },
       err => {
         console.error('auth error:', err);

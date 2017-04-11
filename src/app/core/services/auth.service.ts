@@ -28,14 +28,15 @@ export class AuthService {
 
   validateToken() {
     this.authService.validateToken().subscribe((res) => {
-      console.log('validate token', res.json());
       if (res.status === 200) {
         const data = res.json().data;
         this.store.dispatch(this.authActions.loginSuccess(data));
       } else {
         this.store.dispatch(this.authActions.logoutSuccess());
       }
-    });
+    },
+    (error => console.log('error', error))
+    );
   }
 
   logOutUser() {

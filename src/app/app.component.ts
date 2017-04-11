@@ -16,7 +16,7 @@ export class AppComponent {
 
   constructor(
     private router: Router,
-    private authService: AuthService // Don't remove this as it will initialise the AuthService.
+    private authService: AuthService // Don't remove this as it will initialise the AuthService before anything else, to check for login.
   ) {
     router
       .events

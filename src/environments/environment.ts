@@ -6,7 +6,14 @@
 export const environment = {
   production: false,
   token_auth_config: {
-    apiBase: 'http://localhost:3000'
+    apiBase: 'http://localhost:3000',
+    oAuthBase:                  window.location.origin,
+    oAuthPaths: {
+      google:                 'auth/google'
+    },
+    oAuthCallbackPath:          'oauth_callback',
+    oAuthWindowType:            'newWindow',
+    oAuthWindowOptions:         null,
   },
   API_ENDPOINT: 'http://localhost:3000/',
   AppName: 'CrowdPouch'

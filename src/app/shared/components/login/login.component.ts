@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.authToken.init(environment.token_auth_config);
   }
 
   onCloseModal() {
@@ -44,7 +45,6 @@ export class LoginComponent implements OnInit {
 
   login() {
     const credentials = this.loginForm.value;
-    this.authToken.init(environment.token_auth_config);
     this.authToken.signIn(credentials).subscribe(
       res => {
         this.onCloseModal();
@@ -55,6 +55,15 @@ export class LoginComponent implements OnInit {
       err => {
         console.error('auth error:', err);
       }
+    );
+  }
+
+  loginWithGoogle() {
+    this.authToken.signInOAuth(
+    'google'
+    ).subscribe(
+        res =>      console.log(res),
+        error =>    console.log(error)
     );
   }
 

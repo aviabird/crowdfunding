@@ -9,11 +9,17 @@ export const authReducer: ActionReducer<AuthState> =
     switch (type) {
 
       case AuthActions.LOGIN_SUCCESS:
-      const _payload = payload;
-        return state.merge({ isAuthenticated: true }) as AuthState;
+        const user = payload;
+        return state.merge({
+          isAuthenticated: true,
+          user: user
+        }) as AuthState;
 
       case AuthActions.LOGOUT_SUCCESS:
-        return state.merge({ isAuthenticated: false }) as AuthState;
+        return state.merge({
+          isAuthenticated: false,
+          user: {}
+        }) as AuthState;
 
       default:
         return state;

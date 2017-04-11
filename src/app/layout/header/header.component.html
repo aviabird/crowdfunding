@@ -28,8 +28,13 @@
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Get Started</a></li>
                 <li><a href="#">About Us</a></li>
-                <li><a (click)="showModal('login')">Login</a></li>
-                <li><button (click)="showModal('signup')" type="button" class="signupbtn" data-toggle="modal" data-target="#myModal">SIGNUP</button></li>                  
+                <li *ngIf="authStatus$ | async">
+                  <a (click)="onLogout()">Logout</a>
+                </li>
+                <li *ngIf="!(authStatus$ | async)">
+                  <a style="display: inline;" (click)="showModal('login')">Login</a>
+                  <button (click)="showModal('signup')" type="button" class="signupbtn">SIGNUP</button>                  
+                </li>
               </ul>
             </div>
         </nav>

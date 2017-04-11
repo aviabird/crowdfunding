@@ -1,12 +1,13 @@
 <app-header (modal)="setModalType($event)"></app-header>
 
 <ng2-toasty [position]="'top-center'"></ng2-toasty>
+
 <app-modal #customModal>
   <div *ngIf="modalType === 'login'">
-    <app-login (closeModal)="closeModal()"></app-login>
+    <app-login></app-login>
   </div>
   <div *ngIf="modalType === 'signup'">
-  <app-signup (closeModal)="closeModal()"></app-signup>
+  <app-signup></app-signup>
   </div>
 </app-modal>
 

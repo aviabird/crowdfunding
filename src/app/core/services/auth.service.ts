@@ -8,6 +8,7 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { Response } from '@angular/http';
 import { ToastyService, ToastyConfig, ToastOptions, ToastData } from 'ng2-toasty';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
@@ -19,7 +20,8 @@ export class AuthService {
     private toastyService: ToastyService,
     private toastyConfig: ToastyConfig,
     private store: Store<AppState>,
-    private authActions: AuthActions
+    private authActions: AuthActions,
+    private router: Router,
   ) {
     this.authService.init(environment.token_auth_config);
     this.validateToken();
@@ -42,13 +44,29 @@ export class AuthService {
   logOutUser() {
     this.authService.signOut().subscribe(res => {
       this.store.dispatch(this.authActions.logoutSuccess());
+      this.router.navigate(['/']);
     });
   }
 
   registerUser(signUpData) {
-    this.authService.registerAccount(signUpData).subscribe(res => {
+    this.authService.registerAccount(signUpData)
+    .subscribe(res => {
       this.modalShow$.next(false);
       this.toastyService.success('Please Confirm Your Email to Complete your SignUp Process');
+    }, (error) => {
+
+      const errors = error.json().errors.full_messages;
+      let message = '';
+      errors.forEach(err => {
+        message += err;
+      });
+      console.log('errors', error.json());
+
+        const toastOptions: ToastOptions = {
+            title: 'SignUp Error',
+            msg: message
+        };
+        this.toastyService.error(toastOptions);
     });
   }
 
@@ -57,6 +75,19 @@ export class AuthService {
       const data = res.json().data;
       this.modalShow$.next(false);
       this.store.dispatch(this.authActions.loginSuccess(data));
+    }, (error) => {
+      const errors = error.json().errors;
+      let message = '';
+      errors.forEach(err => {
+        message += err;
+      });
+      console.log('errors', error.json());
+
+        const toastOptions: ToastOptions = {
+            title: 'Login Error',
+            msg: message
+        };
+        this.toastyService.error(toastOptions);
     });
   }
 

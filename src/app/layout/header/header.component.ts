@@ -18,6 +18,13 @@ export class HeaderComponent implements OnInit {
 
   constructor(private store: Store<AppState>, private authService: AuthService) {
     this.authStatus$ = this.store.select(getAuthStatus);
+    this.authService.modalShow$.subscribe((status) => {
+      console.log('status', status);
+      if (status === true) {
+        console.log('inside');
+        this.showModal('login');
+      }
+    });
   }
 
   ngOnInit() {

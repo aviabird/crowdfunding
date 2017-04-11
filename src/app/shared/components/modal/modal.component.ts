@@ -25,7 +25,6 @@ export class ModalComponent implements OnInit {
   }
 
   showModal() {
-    this.authService.modalShow$.next(true);
     this.lgModal.show();
   }
 

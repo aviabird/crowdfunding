@@ -5,6 +5,7 @@ import { HttpService } from './services/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpModule, XHRBackend, RequestOptions, Http } from '@angular/http';
+import { AuthGuard } from './guards/auth.guard';
 
 export function httpInterceptor(
   backend: XHRBackend,
@@ -24,7 +25,8 @@ export function httpInterceptor(
       deps: [ XHRBackend, RequestOptions]
     },
     AuthService,
-    AuthActions
+    AuthActions,
+    AuthGuard
   ]
 })
 export class CoreModule { }

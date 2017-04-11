@@ -1,3 +1,5 @@
+import { AuthActions } from './actions/auth.actions';
+import { AuthService } from './services/auth.service';
 import { SharedModule } from './../shared/shared.module';
 import { HttpService } from './services/http';
 import { NgModule } from '@angular/core';
@@ -20,7 +22,9 @@ export function httpInterceptor(
       provide: HttpService,
       useFactory: httpInterceptor,
       deps: [ XHRBackend, RequestOptions]
-    }
+    },
+    AuthService,
+    AuthActions
   ]
 })
 export class CoreModule { }

@@ -2,6 +2,7 @@ import { environment } from './../../../../environments/environment';
 import { Angular2TokenService } from 'angular2-token';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { ToastyService, ToastyConfig, ToastOptions, ToastData } from 'ng2-toasty';
 
 @Component({
   selector: 'app-signup',
@@ -14,8 +15,14 @@ export class SignupComponent implements OnInit {
 
   signupForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authToken: Angular2TokenService) {
+  constructor(
+    private fb: FormBuilder,
+    private authToken: Angular2TokenService,
+    private toastyService: ToastyService,
+    private toastyConfig: ToastyConfig
+  ) {
     this.signupForm = this.initSignupForm();
+    this.toastyConfig.theme = 'bootstrap';
   }
 
   ngOnInit() {
@@ -47,6 +54,7 @@ export class SignupComponent implements OnInit {
     this.authToken.registerAccount(credentials).subscribe(
       res => {
         this.onCloseModal();
+        this.toastyService.success('Please confirm your Email to complete signup process');
         console.log('auth response:', res);
         console.log('auth response headers: ', res.headers.toJSON());
         console.log('auth response body:', res.json());

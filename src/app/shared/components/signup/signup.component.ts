@@ -37,4 +37,8 @@ export class SignupComponent implements OnInit {
     });
   }
 
+  onCloseModal() {
+    this.authService.modalShow$.next(false);
+  }
+
 }

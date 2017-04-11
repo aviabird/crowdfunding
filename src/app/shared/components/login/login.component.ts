@@ -38,4 +38,8 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  onCloseModal() {
+    this.authService.modalShow$.next(false);
+  }
+
 }

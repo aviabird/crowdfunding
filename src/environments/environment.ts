@@ -7,9 +7,10 @@ export const environment = {
   production: false,
   token_auth_config: {
     apiBase: 'http://localhost:3000',
-    oAuthBase:                  window.location.origin,
+    oAuthBase:                'http://localhost:3000',
     oAuthPaths: {
-      google:                 'auth/google'
+      google:                 'auth/google_oauth2',
+      facebook:               'auth/facebook'
     },
     oAuthCallbackPath:          'oauth_callback',
     oAuthWindowType:            'newWindow',

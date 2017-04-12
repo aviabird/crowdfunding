@@ -10,11 +10,12 @@
       <form [formGroup]="loginForm">
         <div class="input-group">
           <input type="email" class="form-control loc2" formControlName="email" placeholder="Your email address" required="">
-          <p *ngIf="loginForm.get('email').hasError('required') && (loginForm.get('email').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
+          <p *ngIf="loginForm.get('email').hasError('validateEMAIL') && (loginForm.get('email').touched || formSubmit)" class="value-err show">Email is not valid</p>
         </div>
         <div class="input-group">
           <input type="password" class="form-control loc" formControlName="password" placeholder="Your Password" required="">
-          <p *ngIf="loginForm.get('password').hasError('required') && (loginForm.get('password').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
+          <p *ngIf="loginForm.get('password').hasError('minlength') && (loginForm.get('password').touched || formSubmit)" class="value-err show">Password should have min 8 Characters</p>
+          <p *ngIf="loginForm.get('password').hasError('required') && (loginForm.get('password').touched || formSubmit)" class="value-err show">Password is required</p>
         </div>
         <p class="pull-right space10">Forgot your password? </p>
         <div class="form-group">
@@ -29,10 +30,10 @@
     </div>
     <div class="modal-footer">
       <p>
-        <button class="btn fb">
+        <button class="btn fb" (click)="oAuthLogin('facebook')">
           <i class="fa fa-facebook" aria-hidden="true"></i>facebook
         </button>
-        <button class="btn go">
+        <button class="btn go" (click)="oAuthLogin('google')">
           <i class="fa fa-google" aria-hidden="true"></i>Google
         </button>
       </p>

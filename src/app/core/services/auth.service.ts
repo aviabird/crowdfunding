@@ -54,13 +54,11 @@ export class AuthService {
       this.toastyService.success('Please Confirm Your Email to Complete your SignUp Process');
     }, (error) => {
 
-      const errors = error.json().errors.full_messages;
+      const errors = error.json().errors;
       let message = '';
       errors.forEach(err => {
         message += err;
       });
-      console.log('errors', error.json());
-
         const toastOptions: ToastOptions = {
             title: 'SignUp Error',
             msg: message
@@ -80,13 +78,21 @@ export class AuthService {
       errors.forEach(err => {
         message += err;
       });
-      console.log('errors', error.json());
-
         const toastOptions: ToastOptions = {
             title: 'Login Error',
             msg: message
         };
         this.toastyService.error(toastOptions);
+    });
+  }
+
+  socialLogin(provider) {
+    this.authService.signInOAuth(
+    provider
+    ).subscribe((res) => {
+      const data = res;
+      this.modalShow$.next(false);
+      this.store.dispatch(this.authActions.loginSuccess(data));
     });
   }
 

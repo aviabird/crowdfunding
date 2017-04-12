@@ -10,18 +10,24 @@
       <form [formGroup]="signupForm">
         <div class="input-group ">
           <input type="text" class="form-control loc1" formControlName="name" placeholder="Name">
+            <p *ngIf="signupForm.get('name').hasError('required') && (signupForm.get('name').touched || formSubmit)" class="value-err show">Name is required</p>
         </div>
         <div class="input-group">
           <input type="email" class="form-control loc2" formControlName="email" placeholder="Your email address">
+          <p *ngIf="signupForm.get('email').hasError('validateEMAIL') && (signupForm.get('email').touched || formSubmit)" class="value-err show">Email is not valid</p>
         </div>
         <!--<div class="input-group">
           <input type="password" class="form-control" formControlName="reEmail" placeholder="Re-enter email address">
         </div>-->
         <div class="input-group">
           <input type="password" class="form-control loc" formControlName="password" placeholder="Password">
+          <p *ngIf="signupForm.get('password').hasError('minlength') && (signupForm.get('password').touched || formSubmit)" class="value-err show">Password must hav min 8 characters</p>
+          <p *ngIf="signupForm.get('password').hasError('required') && (signupForm.get('password').touched || formSubmit)" class="value-err show">Password is required</p>
         </div>
         <div class="input-group">
           <input type="password" class="form-control" formControlName="passwordConfirmation" placeholder="Re-enter Password">
+          <p *ngIf="signupForm.get('passwordConfirmation').hasError('validateConfirmPassword') && (signupForm.get('passwordConfirmation').touched || formSubmit)" class="value-err show">Password do not match</p>
+          <p *ngIf="signupForm.get('passwordConfirmation').hasError('required') && (signupForm.get('passwordConfirmation').touched || formSubmit)" class="value-err show">Confirm Password is required</p>
         </div>
         <div class="form-group our">
           <input type="checkbox" id="custom_checkbox1">
@@ -43,10 +49,10 @@
     </div>
     <div class="modal-footer">
       <p>
-        <button class="btn fb">
+        <button class="btn fb" (click)="oAuthLogin('facebook')">
           <i class="fa fa-facebook" aria-hidden="true"></i>facebook
         </button>
-        <button class="btn go">
+        <button class="btn go" (click)="oAuthLogin('google')">
           <i class="fa fa-google" aria-hidden="true"></i>Google
         </button>
       </p>

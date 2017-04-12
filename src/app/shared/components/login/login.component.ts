@@ -1,3 +1,4 @@
+import { AppConstants } from './../../../app.constants';
 import { AuthService } from './../../../core/services/auth.service';
 import { Store } from '@ngrx/store';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
@@ -31,15 +32,25 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  oAuthLogin(provider) {
+    this.authService.socialLogin(provider);
+  }
+
   initLoginForm() {
     return this.fb.group({
-      'email': ['', Validators.required],
-      'password': ['', Validators.required]
+      'email': ['', this.validateEMAIL],
+      'password': ['', Validators.compose([Validators.required, Validators.minLength(8)])]
     });
   }
 
   onCloseModal() {
     this.authService.modalShow$.next(false);
   }
+
+  validateEMAIL(c: FormControl) {
+    const EMAIL_REGEXP = AppConstants.EMAIL_REGEX;
+    return EMAIL_REGEXP.test(c.value) ? null : { validateEMAIL: true };
+  }
+
 
 }

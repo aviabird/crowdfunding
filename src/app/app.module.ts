@@ -14,6 +14,8 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ModalModule } from 'ngx-bootstrap';
 import { ToastyModule } from 'ng2-toasty';
+import { RecaptchaModule } from 'ng-recaptcha';
+import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 
 import { reducer } from './app.reducer';
 import { Angular2TokenService } from 'angular2-token';
@@ -46,6 +48,8 @@ export function HttpLoaderFactory(http: Http) {
     BrowserModule,
     RouterModule.forRoot(routes),
     ModalModule.forRoot(),
+    RecaptchaModule.forRoot(),
+    RecaptchaFormsModule,
     StoreModule.provideStore(reducer),
     // StoreModule.provideStore(reducer),
     StoreDevtoolsModule.instrumentStore({

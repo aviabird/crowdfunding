@@ -3,6 +3,10 @@ import { AuthService } from './../../../core/services/auth.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
+export interface FormModel {
+  captcha?: string;
+}
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -12,6 +16,7 @@ export class SignupComponent implements OnInit {
 
   formSubmit = false;
   signupForm: FormGroup;
+  formModel: FormModel = {};
 
   constructor(
     private fb: FormBuilder,
@@ -25,7 +30,7 @@ export class SignupComponent implements OnInit {
 
   onSignUp() {
     this.formSubmit = true;
-    if (this.signupForm.valid) {
+    if (this.signupForm.valid && this.formModel.captcha) {
       const data = this.signupForm.value;
       this.authService.registerUser(data);
     }

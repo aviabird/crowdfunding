@@ -232,6 +232,10 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
+angular2-token@^0.2.0-beta.11:
+  version "0.2.0-beta.11"
+  resolved "https://registry.yarnpkg.com/angular2-token/-/angular2-token-0.2.0-beta.11.tgz#171b3923b6fd8299945bbd2e347ff01e3962c4c5"
+
 ansi-align@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/ansi-align/-/ansi-align-1.1.0.tgz#2f0c1658829739add5ebb15e6b0c6e3423f016ba"
@@ -3222,6 +3226,10 @@ mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkd
   dependencies:
     minimist "0.0.8"
 
+moment@2.18.1:
+  version "2.18.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
+
 morgan@^1.6.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/morgan/-/morgan-1.8.1.tgz#f93023d3887bd27b78dfd6023cea7892ee27a4b1"
@@ -3258,11 +3266,21 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
+ng2-toasty@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/ng2-toasty/-/ng2-toasty-4.0.0.tgz#953709d191d8a266aeb3f32f4f71e484e388e16a"
+
 ngrx-store-freeze@^0.1.9:
   version "0.1.9"
   resolved "https://registry.yarnpkg.com/ngrx-store-freeze/-/ngrx-store-freeze-0.1.9.tgz#b20f18f21fd5efc4e1b1e05f6f279674d0f70c81"
   dependencies:
     deep-freeze-strict "^1.1.1"
+
+ngx-bootstrap@^1.6.5:
+  version "1.6.6"
+  resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-1.6.6.tgz#0057141cfbdd7e8a50e81bda735fad8e95acb0dd"
+  dependencies:
+    moment "2.18.1"
 
 no-case@^2.2.0:
   version "2.3.1"

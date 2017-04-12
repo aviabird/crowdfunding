@@ -13,7 +13,7 @@ function fetchAuthStatus(state: AuthState) {
 }
 
 function fetchAuthUser(state: AuthState) {
-  return state.user;
+  return state.user.toJS();
 }
 
 // *************************** PUBLIC API's ****************************

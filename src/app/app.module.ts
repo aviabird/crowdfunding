@@ -1,3 +1,6 @@
+import { SignupComponent } from './shared/components/signup/signup.component';
+import { LoginComponent } from './shared/components/login/login.component';
+import { ModalComponent } from './shared/components/modal/modal.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
@@ -9,7 +12,11 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpModule, Http } from '@angular/http';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ModalModule } from 'ngx-bootstrap';
+import { ToastyModule } from 'ng2-toasty';
+
 import { reducer } from './app.reducer';
+import { Angular2TokenService } from 'angular2-token';
 
 import { routes } from './app.routes';
 import { AppComponent } from './app.component';
@@ -30,11 +37,15 @@ export function HttpLoaderFactory(http: Http) {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ModalComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
+    ModalModule.forRoot(),
     StoreModule.provideStore(reducer),
     // StoreModule.provideStore(reducer),
     StoreDevtoolsModule.instrumentStore({
@@ -50,9 +61,10 @@ export function HttpLoaderFactory(http: Http) {
       }
     }),
     SharedModule,
-    HttpModule
+    HttpModule,
+    ToastyModule.forRoot()
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ Angular2TokenService ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -1,6 +1,8 @@
+import { AuthService } from './core/services/auth.service';
+import { ModalComponent } from './shared/components/modal/modal.component';
 import { Observable } from 'rxjs/Observable';
 import { Router, NavigationEnd } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +11,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  counter: Observable<number>;
+  modalType: string;
+  @ViewChild('customModal') customModal: ModalComponent;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private authService: AuthService // Don't remove this as it will initialise the AuthService before anything else, to check for login.
   ) {
     router
       .events
@@ -20,6 +24,11 @@ export class AppComponent {
       .subscribe((e: NavigationEnd) => {
         window.scrollTo(0, 0);
       });
+  }
+
+  setModalType(type) {
+    this.modalType = type;
+    this.customModal.showModal();
   }
 
 }

@@ -136,10 +136,18 @@ export class HttpService extends Http {
     }
 
     if (options.headers == null) {
-      // const user = JSON.parse(localStorage.getItem('user'));
+      const token = localStorage.getItem('accessToken');
+      const expiry = localStorage.getItem('expiry');
+      const tokenType = localStorage.getItem('tokenType');
+      const client = localStorage.getItem('client');
+      const uid = localStorage.getItem('uid');
       options.headers = new Headers({
-        'Content-Type': 'application/json'
-        // 'X-Spree-Token': user && user.spree_api_key
+        'Content-Type': 'application/json',
+        'access-token': token,
+        'client': client,
+        'expiry': expiry,
+        'uid': uid,
+        'token-type': tokenType
       });
     }
     return options;

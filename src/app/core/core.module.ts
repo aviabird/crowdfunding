@@ -1,8 +1,11 @@
+import { AuthActions } from './actions/auth.actions';
+import { AuthService } from './services/auth.service';
 import { SharedModule } from './../shared/shared.module';
 import { HttpService } from './services/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpModule, XHRBackend, RequestOptions, Http } from '@angular/http';
+import { AuthGuard } from './guards/auth.guard';
 
 export function httpInterceptor(
   backend: XHRBackend,
@@ -20,7 +23,10 @@ export function httpInterceptor(
       provide: HttpService,
       useFactory: httpInterceptor,
       deps: [ XHRBackend, RequestOptions]
-    }
+    },
+    AuthService,
+    AuthActions,
+    AuthGuard
   ]
 })
 export class CoreModule { }

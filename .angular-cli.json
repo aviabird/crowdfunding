@@ -21,14 +21,15 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-      "../node_modules/font-awesome/css/font-awesome.min.css",
-      "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-      "../node_modules/flexslider/flexslider.css",
-      "assets/css/style.css",
-      "assets/css/style-2.css",
-      "assets/css/flags.css",
-      "assets/css/dropkick.css",
-      "styles.scss"
+        "../node_modules/font-awesome/css/font-awesome.min.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "../node_modules/flexslider/flexslider.css",
+        "../node_modules/ng2-toasty/style-bootstrap.css",
+        "assets/css/style.css",
+        "assets/css/style-2.css",
+        "assets/css/flags.css",
+        "assets/css/dropkick.css",
+        "styles.scss"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",

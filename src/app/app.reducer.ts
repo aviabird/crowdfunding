@@ -1,3 +1,4 @@
+import { authReducer } from './core/reducers/auth.reducer';
 import { environment } from './../environments/environment';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { compose } from '@ngrx/core/compose';
@@ -6,7 +7,8 @@ import { ActionReducer, combineReducers } from '@ngrx/store';
 import { projectReducer } from './project/reducers/project.reducer';
 
 const reducers = {
-  project: projectReducer
+  project: projectReducer,
+  auth: authReducer
 };
 
 export const developmentReducer: ActionReducer<AppState> = compose(storeFreeze, combineReducers)(reducers); ;

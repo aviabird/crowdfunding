@@ -164,19 +164,17 @@ export class ProjectService {
   }
 
   initDraftProject() {
-    const id = localStorage.getItem('current_project_id');
     return this.http.get(
-      `/api/v1/projects/draft/${id}`
+      `/api/v1/projects/draft`
     ).map((res) => {
       const project = res.json();
-      this.setDraftToLocalStorage(project.id);
       return project;
     });
   }
 
-  setDraftToLocalStorage(id) {
-    localStorage.setItem('current_project_id', id);
-  }
+  // setDraftToLocalStorage(id) {
+  //   localStorage.setItem('current_project_id', id);
+  // }
 
   validateNumber(c: FormControl) {
     return c.value > 0 && c.value <= 60 ? null : { validateNumber: true };

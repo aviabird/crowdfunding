@@ -9,7 +9,7 @@ function getProjectState(state: AppState): ProjectState {
 
 // ******************** Individual selectors ***************************
 function fetchDraftProject(state: ProjectState) {
-  return state.draftProject.toJS();
+  return state.draftProject ? state.draftProject.toJS() : {};
 }
 
 // *************************** PUBLIC API's ****************************

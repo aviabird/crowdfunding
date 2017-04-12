@@ -24,7 +24,6 @@ export class AuthService {
     private router: Router,
   ) {
     this.authService.init(environment.token_auth_config);
-    this.validateToken();
     this.toastyConfig.theme = 'bootstrap';
   }
 

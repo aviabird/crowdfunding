@@ -16,8 +16,10 @@ export class AppComponent {
 
   constructor(
     private router: Router,
-    private authService: AuthService // Don't remove this as it will initialise the AuthService before anything else, to check for login.
+    private authService: AuthService
   ) {
+
+    this.authService.validateToken();
     router
       .events
       .filter(e => e instanceof NavigationEnd)

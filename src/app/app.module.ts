@@ -1,3 +1,4 @@
+import { MyAuthConfig } from './auth.config';
 import { SignupComponent } from './shared/components/signup/signup.component';
 import { LoginComponent } from './shared/components/login/login.component';
 import { ModalComponent } from './shared/components/modal/modal.component';
@@ -16,6 +17,7 @@ import { ModalModule } from 'ngx-bootstrap';
 import { ToastyModule } from 'ng2-toasty';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
+import { Ng2UiAuthModule, CustomConfig } from 'ng2-ui-auth';
 
 import { reducer } from './app.reducer';
 import { Angular2TokenService } from 'angular2-token';
@@ -50,6 +52,7 @@ export function HttpLoaderFactory(http: Http) {
     ModalModule.forRoot(),
     RecaptchaModule.forRoot(),
     RecaptchaFormsModule,
+    Ng2UiAuthModule.forRoot(MyAuthConfig),
     StoreModule.provideStore(reducer),
     // StoreModule.provideStore(reducer),
     StoreDevtoolsModule.instrumentStore({

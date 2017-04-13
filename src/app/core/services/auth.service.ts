@@ -98,7 +98,7 @@ export class AuthService {
       console.log('data', data);
       this.modalShow$.next(false);
       this.store.dispatch(this.authActions.loginSuccess(data));
-      this.setHeadersInLocalStorage(res.headers.toJSON());
+      this.setHeadersInLocalStorage(data.headers);
     });
   }
 

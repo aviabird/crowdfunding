@@ -41,6 +41,7 @@ export class ModalComponent implements OnInit {
     if (this.redirectUrl !== '') {
       this.router.navigate([this.redirectUrl]);
     }
+    this.authguard.redirectUrl = '';
   }
 
 }

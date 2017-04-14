@@ -68,13 +68,12 @@ export class AuthService {
     });
   }
 
-  socialLogin(provider: string): Observable<any> {
-    return this.socialAuth.authenticate(provider)
-      .map((res: Response) => {
-      const data = res.json().data;
-      console.log('data', data);
-      this.modalShow$.next(false);
+  socialLogin(provider: string) {
+    return this.socialAuth.authenticate(provider).subscribe((res: Response) => {
+      const data: User = res.json();
       this.store.dispatch(this.authActions.loginSuccess(data));
+      this.modalShow$.next(false);
+      this.setTokenInLocalStorage(res.headers.toJSON());
     });
   }
 

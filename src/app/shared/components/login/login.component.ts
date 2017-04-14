@@ -33,9 +33,7 @@ export class LoginComponent implements OnInit {
   }
 
   oAuthLogin(provider) {
-    this.authService.socialLogin(provider).subscribe((res) => {
-      console.log('social', res);
-    });
+    this.authService.socialLogin(provider);
   }
 
   initLoginForm() {

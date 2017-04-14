@@ -149,6 +149,10 @@
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/@ngx-translate/http-loader/-/http-loader-0.0.3.tgz#8346c8d2d6f630254601029668f17abe2afe8a9b"
 
+"@types/grecaptcha@^2.0.31":
+  version "2.0.31"
+  resolved "https://registry.yarnpkg.com/@types/grecaptcha/-/grecaptcha-2.0.31.tgz#a73d914c1aeead106c94f14cf367def9b98974af"
+
 "@types/jasmine@2.5.38":
   version "2.5.38"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-2.5.38.tgz#a4379124c4921d4e21de54ec74669c9e9b356717"
@@ -231,10 +235,6 @@ alphanum-sort@^1.0.1, alphanum-sort@^1.0.2:
 amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
-
-angular2-token@^0.2.0-beta.11:
-  version "0.2.0-beta.11"
-  resolved "https://registry.yarnpkg.com/angular2-token/-/angular2-token-0.2.0-beta.11.tgz#171b3923b6fd8299945bbd2e347ff01e3962c4c5"
 
 ansi-align@^1.1.0:
   version "1.1.0"
@@ -3266,9 +3266,19 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
+ng-recaptcha@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/ng-recaptcha/-/ng-recaptcha-2.0.2.tgz#4a3fe966c390956f48feeff2a35d0b78c1a3fed4"
+  optionalDependencies:
+    "@types/grecaptcha" "^2.0.31"
+
 ng2-toasty@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/ng2-toasty/-/ng2-toasty-4.0.0.tgz#953709d191d8a266aeb3f32f4f71e484e388e16a"
+
+ng2-ui-auth@^6.1.4:
+  version "6.1.4"
+  resolved "https://registry.yarnpkg.com/ng2-ui-auth/-/ng2-ui-auth-6.1.4.tgz#308adb7781239b9303c079a89d468d5e36567dcf"
 
 ngrx-store-freeze@^0.1.9:
   version "0.1.9"

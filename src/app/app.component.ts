@@ -1,4 +1,3 @@
-import { Angular2TokenService } from 'angular2-token';
 import { AuthService } from './core/services/auth.service';
 import { ModalComponent } from './shared/components/modal/modal.component';
 import { Observable } from 'rxjs/Observable';
@@ -18,10 +17,7 @@ export class AppComponent {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private tokenService: Angular2TokenService
   ) {
-    this.tokenService.processOAuthCallback();
-    this.authService.validateToken();
     router
       .events
       .filter(e => e instanceof NavigationEnd)

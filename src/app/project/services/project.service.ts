@@ -138,7 +138,7 @@ export class ProjectService {
 
   fetchAllCategories() {
     return this.http.get(
-      'api/v1/category'
+      '/api/v1/category'
     ).map(res => {
       return res.json();
     });
@@ -147,7 +147,7 @@ export class ProjectService {
   createProject(params) {
     this.savingDraft.next(true);
     return this.http.post(
-      'api/v1/projects',
+      '/api/v1/projects',
       params
     ).map((res) => {
       this.savingDraft.next(false);

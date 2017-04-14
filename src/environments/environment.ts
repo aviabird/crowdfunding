@@ -8,6 +8,6 @@ export const environment = {
   token_auth_config: {
     apiBase: 'http://localhost:3000'
   },
-  API_ENDPOINT: 'http://localhost:3000/',
+  API_ENDPOINT: 'http://localhost:3000',
   AppName: 'CrowdPouch'
 };

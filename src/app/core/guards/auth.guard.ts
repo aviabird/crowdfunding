@@ -4,7 +4,6 @@ import { getAuthStatus } from './../reducers/auth.selector';
 import { AuthActions } from './../actions/auth.actions';
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { Angular2TokenService } from 'angular2-token';
 import { AuthService } from '../services/auth.service';
 import { ToastyService } from 'ng2-toasty';
 
@@ -16,7 +15,6 @@ export class AuthGuard implements CanActivate {
   isLoggedIn: boolean;
 
   constructor(
-    private authTokenService: Angular2TokenService,
     private router: Router,
     private authService: AuthService,
     private toastyService: ToastyService,

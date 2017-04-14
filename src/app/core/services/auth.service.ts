@@ -1,9 +1,10 @@
+import { User } from './../models/user';
+import { HttpService } from './http';
 import { AuthActions } from './../actions/auth.actions';
 import { AppState } from './../../app.state';
 import { Store } from '@ngrx/store';
 import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
-import { Angular2TokenService } from 'angular2-token';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { Response } from '@angular/http';
@@ -17,77 +18,53 @@ export class AuthService {
   modalShow$: Subject<boolean> = new Subject();
 
   constructor(
-    private authService: Angular2TokenService,
     private toastyService: ToastyService,
     private toastyConfig: ToastyConfig,
     private store: Store<AppState>,
     private authActions: AuthActions,
     private router: Router,
-    private socialAuth: SocialAuth
+    private socialAuth: SocialAuth,
+    private http: HttpService
   ) {
-    this.authService.init(environment.token_auth_config);
     this.toastyConfig.theme = 'bootstrap';
+    this.validateToken();
   }
 
+
   validateToken() {
-    this.authService.validateToken().subscribe((res) => {
+    this.http.get(
+    `/api/v1/validate_token`
+    ).subscribe((res) => {
       if (res.status === 200) {
-        const data = res.json().data;
+        const data: User = res.json();
         this.store.dispatch(this.authActions.loginSuccess(data));
-      } else {
-        this.store.dispatch(this.authActions.logoutSuccess());
       }
-    },
-    (error => console.log('error', error))
-    );
+    }, (err) => {
+    });
   }
 
   logOutUser() {
     localStorage.clear();
     this.store.dispatch(this.authActions.logoutSuccess());
     this.router.navigate(['/']);
-
-    // this.authService.signOut().subscribe(res => {
-    // });
   }
 
   registerUser(signUpData) {
-    this.authService.registerAccount(signUpData)
-    .subscribe(res => {
+    this.http.post(
+      '/api/v1/users', { user: signUpData }
+    ).subscribe((res: Response) => {
       this.modalShow$.next(false);
-      this.toastyService.success('Please Confirm Your Email to Complete your SignUp Process');
-    }, (error) => {
-
-      const errors = error.json().errors.full_messages;
-      console.log('errors', errors);
-      let message = '';
-      errors.forEach(err => {
-        message += err;
-      });
-        const toastOptions: ToastOptions = {
-            title: 'SignUp Error',
-            msg: message
-        };
-        this.toastyService.error(toastOptions);
     });
   }
 
   logInUser(signInData) {
-    this.authService.signIn(signInData).subscribe(res => {
-      const data = res.json().data;
-      this.modalShow$.next(false);
+    this.http.post(
+      '/api/v1/authenticate', { credentials: signInData }
+    ).subscribe((res: Response) => {
+      const data: User = res.json();
       this.store.dispatch(this.authActions.loginSuccess(data));
-    }, (error) => {
-      const errors = error.json().errors;
-      let message = '';
-      errors.forEach(err => {
-        message += err;
-      });
-        const toastOptions: ToastOptions = {
-            title: 'Login Error',
-            msg: message
-        };
-        this.toastyService.error(toastOptions);
+      this.modalShow$.next(false);
+      this.setTokenInLocalStorage(res.headers.toJSON());
     });
   }
 
@@ -98,17 +75,12 @@ export class AuthService {
       console.log('data', data);
       this.modalShow$.next(false);
       this.store.dispatch(this.authActions.loginSuccess(data));
-      this.setHeadersInLocalStorage(res.json().headers);
     });
   }
 
-  setHeadersInLocalStorage(headers) {
-    console.log('headers', headers);
-    localStorage.setItem('accessToken', headers['access-token']);
-    localStorage.setItem('client', headers.client);
-    localStorage.setItem('expiry', headers.expiry);
-    localStorage.setItem('tokenType', headers['token-type']);
-    localStorage.setItem('uid', headers.uid);
+  setTokenInLocalStorage(headers) {
+    const token = headers.Authorization[0];
+    localStorage.setItem('accessToken', token);
   }
 
 }

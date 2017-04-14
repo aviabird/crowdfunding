@@ -20,7 +20,6 @@ import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 import { Ng2UiAuthModule, CustomConfig } from 'ng2-ui-auth';
 
 import { reducer } from './app.reducer';
-import { Angular2TokenService } from 'angular2-token';
 
 import { routes } from './app.routes';
 import { AppComponent } from './app.component';
@@ -71,7 +70,7 @@ export function HttpLoaderFactory(http: Http) {
     HttpModule,
     ToastyModule.forRoot()
   ],
-  providers: [ Angular2TokenService ],
+  providers: [ ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

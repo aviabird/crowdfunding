@@ -28,7 +28,6 @@
     "@ngrx/store": "^2.2.1",
     "@ngx-translate/core": "^6.0.1",
     "@ngx-translate/http-loader": "0.0.3",
-    "angular2-token": "^0.2.0-beta.11",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "flexslider": "^2.6.3",

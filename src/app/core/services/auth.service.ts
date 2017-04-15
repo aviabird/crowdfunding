@@ -53,18 +53,32 @@ export class AuthService {
     this.http.post(
       '/api/v1/users', { user: signUpData }
     ).subscribe((res: Response) => {
-      this.modalShow$.next(false);
-    });
+      const data = res.json();
+      if (data.error) {
+        const message = 'Email' + data.error.email[0];
+        this.toastyService.error(message);
+      } else {
+        const message = data.message;
+        this.modalShow$.next(false);
+        this.toastyService.success(message);
+      }
+    }, (error) => {});
   }
 
   logInUser(signInData) {
     this.http.post(
       '/api/v1/authenticate', { credentials: signInData }
     ).subscribe((res: Response) => {
-      const data: User = res.json();
-      this.store.dispatch(this.authActions.loginSuccess(data));
-      this.modalShow$.next(false);
-      this.setTokenInLocalStorage(res.headers.toJSON());
+      const data = res.json();
+      if (data.error) {
+        const message = data.error.user_authentication[0];
+        this.toastyService.error(message);
+      } else {
+        this.store.dispatch(this.authActions.loginSuccess(data));
+        this.modalShow$.next(false);
+        this.toastyService.success('Login Success');
+        this.setTokenInLocalStorage(res.headers.toJSON());
+      }
     });
   }
 

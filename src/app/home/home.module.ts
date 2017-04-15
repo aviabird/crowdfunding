@@ -7,7 +7,8 @@ import { CommonModule } from '@angular/common';
 @NgModule({
   imports: [
     RouterModule.forChild(routes),
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   declarations: [
     HomeComponent

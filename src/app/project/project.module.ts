@@ -18,6 +18,12 @@ import { ProjectLinkComponent } from './components/project-create/project-link/p
 import { ProjectReviewComponent } from './components/project-create/project-review/project-review.component';
 import { ProjectProfileComponent } from './components/project-create/project-profile/project-profile.component';
 import { ProjectEventComponent } from './components/project-create/project-event/project-event.component';
+import { CampaignComponent } from './components/project-detail/campaign/campaign.component';
+import { UpdatesComponent } from './components/project-detail/updates/updates.component';
+import { CommentsComponent } from './components/project-detail/comments/comments.component';
+import { CommunityComponent } from './components/project-detail/community/community.component';
+import { AlreadyPledgedComponent } from './components/project-detail/already-pledged/already-pledged.component';
+import { PledgeMoreComponent } from './components/project-detail/pledge-more/pledge-more.component';
 
 @NgModule({
   imports: [
@@ -35,7 +41,13 @@ import { ProjectEventComponent } from './components/project-create/project-event
     ProjectLinkComponent,
     ProjectReviewComponent,
     ProjectProfileComponent,
-    ProjectEventComponent
+    ProjectEventComponent,
+    CampaignComponent,
+    UpdatesComponent,
+    CommentsComponent,
+    CommunityComponent,
+    AlreadyPledgedComponent,
+    PledgeMoreComponent,
   ],
   providers: [
     ProjectActions,

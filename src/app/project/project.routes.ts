@@ -3,8 +3,9 @@ import { ProjectDetailComponent } from './components/project-detail/project-deta
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../core/guards/auth.guard';
 
+import { routes as detailRoutes } from './components/project-detail/project-detail.routes';
 
 export const routes: Routes = [
   { path: 'new', component: ProjectCreateComponent, canActivate: [AuthGuard] },
-  { path: ':id', component: ProjectDetailComponent }
+  { path: ':id', component: ProjectDetailComponent, children: detailRoutes }
 ];

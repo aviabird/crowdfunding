@@ -27,20 +27,24 @@ export class AuthService {
     private http: HttpService
   ) {
     this.toastyConfig.theme = 'bootstrap';
-    this.validateToken();
+    this.validateToken().subscribe();
   }
 
 
-  validateToken() {
-    this.http.get(
-    `/api/v1/validate_token`
-    ).subscribe((res) => {
-      if (res.status === 200) {
-        const data: User = res.json();
-        this.store.dispatch(this.authActions.loginSuccess(data));
-      }
-    }, (err) => {
-    });
+  validateToken(): Observable<any> {
+    return this.http.get(
+      `/api/v1/validate_token`
+    ).do(
+      (res) => {
+        // console.log('res', res);
+        if (res.status === 200) {
+          const data: User = res.json();
+          this.store.dispatch(this.authActions.loginSuccess(data));
+        }
+      },
+      (err) => {
+        // console.log('error', err);
+      });
   }
 
   logOutUser() {
@@ -62,7 +66,7 @@ export class AuthService {
         this.modalShow$.next(false);
         this.toastyService.success(message);
       }
-    }, (error) => {});
+    }, (error) => { });
   }
 
   logInUser(signInData) {

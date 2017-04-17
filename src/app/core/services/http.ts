@@ -178,10 +178,10 @@ export class HttpService extends Http {
    * @returns {ErrorObservable}
    */
   private onCatch(error: any, caught: Observable<any>): Observable<any> {
-    console.log('Something went terrible wrong and error is', error);
+    // console.log('Something went terrible wrong and error is', error);
     // this.loaderService.popError();
     this.loading.next({loading: false, hasError: true});
-    return Observable.throw(caught);
+    return Observable.throw(error);
   }
 
   /**
@@ -197,7 +197,7 @@ export class HttpService extends Http {
    * @param error
    */
   private onSubscribeError(error: any): void {
-    console.log('Something Went wrong while subscribing', error);
+    // console.log('Something Went wrong while subscribing', error);
     // this.loaderService.popError();
     this.loading.next({loading: false, hasError: true});
   }

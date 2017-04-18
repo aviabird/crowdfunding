@@ -155,6 +155,15 @@ export class ProjectService {
     });
   }
 
+  getProjects() {
+    return this.http.get(
+      `/api/v1/projects`
+    ).map((res) => {
+      console.log('projects response', res);
+      return res.json();
+    });
+  }
+
   fetchProject(id) {
     return this.http.get(
       `/api/v1/projects/${id}`

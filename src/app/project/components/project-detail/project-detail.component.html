@@ -4,10 +4,10 @@
       <div class="col-md-8">
         <div class="row">
           <div class="col-md-12">
-            <h2 class="title">Azimuth Climate Data Backup Project</h2>
+            <h2 class="title">{{project?.title}}</h2>
           </div>
           <div class="col-md-12 space20">
-            <img src="assets/img/img17.png" width="100%" class="img-responsive center-block" alt="image">
+            <img [src]="project?.image_url" width="100%" class="img-responsive center-block" alt="image">
           </div>
         </div>
         <div class="row space10">
@@ -25,14 +25,25 @@
           <div class="col-md-12">
             <div class="mytabs">
               <ul class="tab">
-              <li><a [routerLink]="['campaign']">Campaign</a></li>
-              <li><a [routerLink]="['updates']">Updates</a></li>
-              <li><a [routerLink]="['comments']">Comments</a></li>
-              <li><a [routerLink]="['community']">Community</a></li>
-            </ul>
+                <li [ngClass]="{'active': selectedTab == 1}"><a class="tablinks" (click)="changeTab(1)">Campaign</a></li>
+                <li [ngClass]="{'active': selectedTab == 2}"><a class="tablinks" (click)="changeTab(2)">Updates</a></li>
+                <li [ngClass]="{'active': selectedTab == 3}"><a class="tablinks" (click)="changeTab(3)">Comments</a></li>
+                <li [ngClass]="{'active': selectedTab == 4}"><a class="tablinks" (click)="changeTab(4)">Community</a></li>
+              </ul>
             </div>
-            <div>
-              <router-outlet></router-outlet>
+            <div class="" [ngSwitch]="selectedTab">
+						  <ng-template [ngSwitchCase]="'1'" ngSwitchDefault> 
+							  <app-campaign [story]="project?.story"></app-campaign>
+						  </ng-template>
+						  <ng-template [ngSwitchCase]="'2'" ngSwitchDefault> 
+							  <app-updates></app-updates>
+						  </ng-template>
+						  <ng-template [ngSwitchCase]="'3'" ngSwitchDefault> 
+                <app-comments></app-comments>
+						  </ng-template>
+						  <ng-template [ngSwitchCase]="'4'" ngSwitchDefault> 
+							  <app-community></app-community>
+						  </ng-template>
             </div>
           </div>
         </div>

@@ -1,3 +1,5 @@
+import { ProjectService } from './../project/services/project.service';
+import { ProjectActions } from './../project/actions/project.actions';
 import { AuthActions } from './actions/auth.actions';
 import { AuthService } from './services/auth.service';
 import { SharedModule } from './../shared/shared.module';
@@ -24,6 +26,8 @@ export function httpInterceptor(
       useFactory: httpInterceptor,
       deps: [ XHRBackend, RequestOptions]
     },
+    ProjectActions,
+    ProjectService,
     AuthService,
     AuthActions,
     AuthGuard

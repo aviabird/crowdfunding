@@ -1,23 +1,7 @@
 <div id="Campaign" class="tabcontent">
-	<h3 class="subtitle3">STORY</h3>
-	<img src="assets/img/img18.png" width="100%" class="img-responsive center-block" alt="image">
-
-	<p class="space30">The safety of US government climate data is at risk. Trump will have climate change deniers running every agency concerned with this subject.   When he took office at noon January 20th, all mentions of "climate change" were deleted from the White House website.   Scientists are rushing to back up US government climate databases before it's too late.</p>
-	<p class="space30">The Azimuth Climate Data Backup Project is part of this effort. So far our volunteers have backed up over 20 terabytes of climate data from NASA and other agencies. We'll do a lot more!  We just need some funds to pay for storage space and a server until larger institutions take over this task.</p>
-	<p class="space30">Here are the databases we've finished backing up so far:</p>
-	<div class="">
-		<h2 class="subtitle3 space30">Our Progress</h2>
-		<p>More are coming!</p>
-		<p class="space30">Extra money will let us save more data for longer, create a better interface for getting it, and put more work into making sure it's error-free and authenticated.  You can see how we're spending your contributions here:</p>
-		<h2 class="subtitle3">Budget and Spending</h2>
-		<p>Our team is headed by four people: </p>
-		<p>Jan Galkowski is a statistician with a strong interest in climate science. He works at Akamai Technologies, a company responsible for serving at least 15% of all web traffic. He began downloading climate data on the 11th of December.<br>Shortly thereafter John Baez, a mathematician and well-known science blogger at U. C. Riverside, joined in to publicize the project. He’d already founded an organization called the Azimuth Project, which helps scientists and engineers cooperate on environmental issues.<br>When Jan started running out of storage space, Scott Maxwell jumped in. He used to work for NASA — driving a Mars rover among other things — and now he works for Google. He set up a 10-terabyte account on Google Drive and started backing up data himself.<br>A couple of days later Sakari Maaranen joined the team. He’s a systems architect at Ubisecure, a Finnish firm, with access to a high-bandwidth connection. He set up a server, he's downloading lots of data, he showed us how to authenticate it with SHA-256 hashes, and he's managing many other technical aspects of this project.<br>You can watch the nitty-gritty details of our progress here:</p>
-
-		<h2 class="subtitle3 space30">Issue Tracker</h2>
-		<p>and you can learn more here:</p>
-		<p class="space20">We are downloading climate databases now, and we're nearing 40 terabytes.</p>
-		<p class="space20">The challenge is to back up as many of the most important databases as possible. Some databases are on ftp sites and are comparatively easy to download. Others have more complicated formats and require more care. We want not only to back them up, but to be able to prove our copies are correct.</p>
-		<p class="space20">Our team includes experts on these issues, and we have a website devoted to tracking these issues and working through them.</p>
-		<p class="space20"><a href="#" class="clr42a7b3">Learn about accountability on CrowdPouch</a></p>
+	<div *ngFor="let section of story.sections">
+		<h3 class="subtitle3">{{section.heading}}</h3>
+		<img *ngIf="section.image_url" [src]="section.image_url" width="100%" class="img-responsive center-block" alt="image">
+		<p class="space30">{{section.description}}</p>
 	</div>
 </div>

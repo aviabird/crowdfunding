@@ -49,9 +49,6 @@ import { PledgeMoreComponent } from './components/project-detail/pledge-more/ple
     AlreadyPledgedComponent,
     PledgeMoreComponent,
   ],
-  providers: [
-    ProjectActions,
-    ProjectService
-  ]
+  providers: []
 })
 export class ProjectModule { }

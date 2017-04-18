@@ -1,3 +1,8 @@
+import { ProjectService } from './../project/services/project.service';
+import { ProjectActions } from './../project/actions/project.actions';
+import { AppState } from './../app.state';
+import { Store } from '@ngrx/store';
+import { Project } from './../core/models/project';
 import { ToastyConfig, ToastyService } from 'ng2-toasty';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -9,20 +14,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  trendingProject: Project;
   message = '';
 
   constructor(private route: ActivatedRoute,
     private toastyService: ToastyService,
-    private toastyConfig: ToastyConfig
+    private toastyConfig: ToastyConfig,
+    private projectService: ProjectService,
+    private store: Store<AppState>,
+    private projectActions: ProjectActions
   ) {
     this.toastyConfig.theme = 'bootstrap';
     this.route.queryParams.subscribe((params) => this.message = params['message']);
+    this.projectService.getProjects().subscribe((projects) => {
+      this.trendingProject = projects[0];
+    });
   }
 
   ngOnInit() {
+
     if (this.message) {
       this.toastyService.success(this.message);
     }
+  }
+
+  selectProject(project: Project) {
+    this.store.dispatch(this.projectActions.selectProject(project));
   }
 
 }

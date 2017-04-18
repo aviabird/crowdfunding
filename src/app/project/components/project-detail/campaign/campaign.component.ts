@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Story } from './../../../../core/models/story';
+import { Subscription } from 'rxjs/Subscription';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 
 @Component({
   selector: 'app-campaign',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CampaignComponent implements OnInit {
 
-  constructor() { }
+  @Input() story: Story;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
+
 
 }

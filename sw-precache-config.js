@@ -15,8 +15,8 @@ module.exports = {
   root: 'dist',
   stripPrefix: 'dist/',
   navigateFallback: '/index.html',
-  runtimeCaching: [{
-    urlPattern: /crowdpouch\.herokuapp\.com/,
-    handler: 'networkFirst'
-  }]
+  // runtimeCaching: [{
+  //   urlPattern: /crowdpouch\.herokuapp\.com/,
+  //   handler: 'networkFirst'
+  // }]
 };

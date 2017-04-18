@@ -12,5 +12,10 @@ function fetchDraftProject(state: ProjectState) {
   return state.draftProject ? state.draftProject.toJS() : {};
 }
 
+function fetchSelectedProject(state: ProjectState) {
+  return state.selectedProject ? state.selectedProject.toJS() : {};
+}
+
 // *************************** PUBLIC API's ****************************
 export const getDraftProject = createSelector(getProjectState, fetchDraftProject);
+export const getSelectedProject = createSelector(getProjectState, fetchSelectedProject);

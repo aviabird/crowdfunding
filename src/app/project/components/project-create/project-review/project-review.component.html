@@ -5,9 +5,9 @@
 			<h3>Campaign Name</h3>
 			<p>{{project.title}}</p>
 		</div>
-		<div *ngIf="project.goal_amount" class="camp_mrg">
+		<div *ngIf="project.pledged_amount" class="camp_mrg">
 			<h3>Campaign Pledge</h3>
-			<p>$ {{project.goal_amount}}</p>
+			<p>$ {{project.pledged_amount}}</p>
 		</div>
 		<div *ngIf="project.image_url" class="camp_mrg">
 			<h3>Campaign Main Image</h3>

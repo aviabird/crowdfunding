@@ -1,3 +1,4 @@
+import { ToastyService } from 'ng2-toasty';
 import { Subscription } from 'rxjs/Subscription';
 import { getDraftProject } from './../../../reducers/selectors';
 import { AppState } from './../../../../app.state';
@@ -23,7 +24,8 @@ export class ProjectReviewComponent implements OnInit {
   constructor(
     private projectService: ProjectService,
     private router: Router,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private toastyService: ToastyService
   ) {
     this.projectSub = this.store.select(getDraftProject).subscribe((project) => {
       this.project = project;
@@ -83,8 +85,15 @@ export class ProjectReviewComponent implements OnInit {
   onLaunch() {
     const isValid = this.checkIfProjectIsValid();
     if (isValid) {
-      alert('Your Project is sent for review');
-      this.router.navigate(['/']);
+      this.projectService.launchProject(this.project.id).subscribe((status) => {
+        console.log('status');
+        if (status) {
+          this.router.navigate(['/']);
+          this.toastyService.success('Your Project is Pending for Approval, We Will notify you once your project is approved');
+        } else {
+          this.toastyService.error('Something went wrong!');
+        }
+      });
       localStorage.setItem('current_project_id', null);
     }
   }
@@ -96,7 +105,7 @@ export class ProjectReviewComponent implements OnInit {
       this.errors.push('Campaign Title is missing');
       status = false;
    }
-    if (!this.project.goal_amount) {
+    if (!this.project.pledged_amount) {
       this.errors.push('Campaign Goal Amount is Mising');
       status = false;
    }

@@ -25,7 +25,7 @@ export class ProjectService {
       'image_url': [project.image_url],
       'image_data': ['', Validators.required],
       'video_url': [project.video_url, this.validateURL],
-      'goal_amount': [project.goal_amount, Validators.required],
+      'pledged_amount': [project.pledged_amount, Validators.required],
       'funding_model': [project.funding_model || 'flexi', Validators.required],
       'start_date': [project.start_date],
       'duration': [project.duration, Validators.compose([Validators.required, this.validateNumber])]
@@ -181,9 +181,14 @@ export class ProjectService {
     });
   }
 
-  // setDraftToLocalStorage(id) {
-  //   localStorage.setItem('current_project_id', id);
-  // }
+  launchProject(id: string) {
+    return this.http.post(
+      `/api/v1/projects/launch`, { id: id }
+    ).map((res) => {
+      console.log('launched', res.json());
+      return res.json();
+    });
+  }
 
   validateNumber(c: FormControl) {
     return c.value > 0 && c.value <= 60 ? null : { validateNumber: true };

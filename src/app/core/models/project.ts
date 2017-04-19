@@ -11,7 +11,8 @@ export class Project extends Base {
   category_id: string;
   image_url = '';
   video_url = '';
-  goal_amount = '';
+  pledged_amount = '';
+  funded_amount = '';
   funding_model = '';
   start_date = new Date();
   duration = '';

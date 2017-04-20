@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Project } from './../../../../core/models/project';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-already-pledged',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./already-pledged.component.scss']
 })
 export class AlreadyPledgedComponent implements OnInit {
+
+  @Input() project: Project;
 
   constructor() { }
 

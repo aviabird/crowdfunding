@@ -1,6 +1,6 @@
 <div class="col-md-12">
   <div class="pledged_div">
-    <p><span class="fsize40 f500">$3,519</span>&nbsp;<span>pledged of $7,999 goal</span></p>
+    <p><span class="fsize40 f500">${{project?.funded_amount}}</span>&nbsp;<span>pledged of ${{project?.pledged_amount}} goal</span></p>
     <div class="progress space10">
       <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width:45%">
         <span class="sr-only"></span>
@@ -14,10 +14,10 @@
         </a>
       </div>
       <div class="media-body">
-        <h4 class="media-heading">Brina Wingo<span class="padleft50"><a href="#" class="whiteclr"><img src="assets/img/icon2.png" alt="icon">&nbsp;Hey, I am online</a></span></h4>
+        <h4 class="media-heading">{{project?.user_name}}<span class="padleft50"><a href="#" class="whiteclr"><img src="assets/img/icon2.png" alt="icon">&nbsp;Hey, I am online</a></span></h4>
         <p class="space20">on behalf of Victor Brockwell</p>
         <p class="space15"><span><i class="fa fa-map-marker fsize30" aria-hidden="true"></i>&nbsp;&nbsp;Newyork, United States of America</span></p>
-        <p class="space15"><span><i class="fa fa-tag fsize30" aria-hidden="true"></i>&nbsp;&nbsp;Tabletop Games</span></p>
+        <p class="space15"><span><i class="fa fa-tag fsize30" aria-hidden="true"></i>&nbsp;&nbsp;{{project?.category_name}}</span></p>
       </div>
     </div>
   </div> 
@@ -26,16 +26,16 @@
       <div class="col-md-12">
         <div class="row">
           <div class="col-md-3 col-sm-6 col-xs-6 space15">
-            <p>44%<br>funded </p>
+            <p>{{project?.percent_funded}}%<br>funded </p>
           </div>
           <div class="col-md-3 col-sm-6 col-xs-6 space15">
-            <p>$7,999<br>plegded</p>
+            <p>${{project?.pledged_amount}}<br>plegded</p>
           </div>
           <div class="col-md-3 col-sm-6 col-xs-6 space15">
-            <p>175<br>backers</p>
+            <p>{{project?.total_backers}}<br>backers</p>
           </div>
           <div class="col-md-3 col-sm-6 col-xs-6 space15">
-            <p>31<br>days to go</p>
+            <p>{{project?.duration}}<br>days to go</p>
           </div>
         </div>
       </div>                  

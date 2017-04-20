@@ -1,3 +1,4 @@
+import { StripeFormComponent } from './components/stripe-form/stripe-form.component';
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -19,10 +20,12 @@ import { SignupComponent } from './components/signup/signup.component';
     TranslateModule,
     FormsModule,
     ReactiveFormsModule,
-    ImageUploadComponent
+    ImageUploadComponent,
+    StripeFormComponent
   ],
   declarations: [
-    ImageUploadComponent
+    ImageUploadComponent,
+    StripeFormComponent
   ]
 })
 export class SharedModule { }

@@ -4,6 +4,8 @@ export class ProjectActions {
   static INIT_DRAFT_SUCCESS = 'INIT_DRAFT_SUCCESS';
   static SAVE_DRAFT = 'SAVE_DRAFT';
   static SELECT_PROJECT = 'SELECT_PROJECT';
+  static FETCH_PROJECT = 'FETCH_PROJECT';
+  static FETCH_PROJECT_SUCCESS = 'FETCH_PROJECT_SUCCESS';
 
   initDraftProject() {
     return { type: ProjectActions.INIT_DRAFT_PROJECT };
@@ -12,6 +14,20 @@ export class ProjectActions {
   initDraftSuccess(project: Project) {
     return {
       type: ProjectActions.INIT_DRAFT_SUCCESS,
+      payload: project
+    };
+  }
+
+  fetchProject(id: number) {
+    return {
+      type: ProjectActions.FETCH_PROJECT,
+      payload: id
+    };
+  }
+
+  fetchProjectSuccess(project: Project) {
+    return {
+      type: ProjectActions.FETCH_PROJECT_SUCCESS,
       payload: project
     };
   }

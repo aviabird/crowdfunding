@@ -159,7 +159,6 @@ export class ProjectService {
     return this.http.get(
       `/api/v1/projects`
     ).map((res) => {
-      console.log('projects response', res);
       return res.json();
     });
   }
@@ -185,7 +184,6 @@ export class ProjectService {
     return this.http.post(
       `/api/v1/projects/launch`, { id: id }
     ).map((res) => {
-      console.log('launched', res.json());
       return res.json();
     });
   }

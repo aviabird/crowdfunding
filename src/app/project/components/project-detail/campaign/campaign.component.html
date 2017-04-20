@@ -1,5 +1,5 @@
 <div id="Campaign" class="tabcontent">
-	<div *ngFor="let section of story.sections">
+	<div *ngFor="let section of story?.sections">
 		<h3 class="subtitle3">{{section.heading}}</h3>
 		<img *ngIf="section.image_url" [src]="section.image_url" width="100%" class="img-responsive center-block" alt="image">
 		<p class="space30">{{section.description}}</p>

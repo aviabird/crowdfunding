@@ -7,7 +7,7 @@
             <h2 class="title">{{project?.title}}</h2>
           </div>
           <div class="col-md-12 space20">
-            <img [src]="project?.image_url" width="100%" class="img-responsive center-block" alt="image">
+            <img *ngIf="project?.image_url" [src]="project?.image_url" width="100%" class="img-responsive center-block" alt="image">
           </div>
         </div>
         <div class="row space10">
@@ -51,11 +51,12 @@
       <div class="col-md-4">
         <div class="right_detail2">
           <div class="row">
-            <app-already-pledged></app-already-pledged>
+            <app-already-pledged [project]="project"></app-already-pledged>
           </div>
           <div class="row">
             <div class="col-md-12">
-              <button type="button" class="back_probtn">BACK THIS PROJECT</button>
+              <app-stripe-form [projectId]="project?.id"></app-stripe-form>
+              <!--<button type="button" class="back_probtn">BACK THIS PROJECT</button>-->
             </div>
             <div class="col-md-6 col-sm-6 col-xs-6 space30">
               <button type="button" class="linksbtn bgclr5cc5d3"><i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;Remind Me</button>

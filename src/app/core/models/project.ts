@@ -14,6 +14,9 @@ export class Project extends Base {
   pledged_amount = '';
   funded_amount = '';
   funding_model = '';
+  category_name = '';
+  user_name = '';
+  total_backers = '';
   start_date = new Date();
   duration = '';
   rewards: Reward[] = [new Reward];

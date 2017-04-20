@@ -1,3 +1,5 @@
+import { ProjectResolveGuard } from './guards/project-resolve.guard';
+import { StripeService } from './services/stripe.service';
 import { ProjectService } from './../project/services/project.service';
 import { ProjectActions } from './../project/actions/project.actions';
 import { AuthActions } from './actions/auth.actions';
@@ -30,7 +32,9 @@ export function httpInterceptor(
     ProjectService,
     AuthService,
     AuthActions,
-    AuthGuard
+    StripeService,
+    AuthGuard,
+    ProjectResolveGuard
   ]
 })
 export class CoreModule { }

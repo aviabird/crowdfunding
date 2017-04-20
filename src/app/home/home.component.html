@@ -45,79 +45,82 @@
 					</div>
 				</section>
 
-<section *ngIf="trendingProject" id="spinagogue">
-	<div class="container">
-		<div class="spinagogue_bg">
-			<div class="row">
-				<div class="col-md-4 padleft50">
-					<a (click)="selectProject(trendingProject)" [routerLink]="['/projects', '1']">
-						<img [src]="trendingProject.image_url" class="img-responsive center-block" alt="image">
-					</a>
-					</div>
-					<div class="col-md-8 padright50">
-						<div class="">
-							<h3>{{trendingProject.title}}</h3>
-							<p>by Eric Pavony&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<a href="#" class="whiteclr">
-									<img src="assets/img/icon2.png" alt="icon">&nbsp; Online
-								</a>
-								</p>
-								<p class="space15">Dreidel is now a tabletop game of skill, played competitively and socially by spinners of all ages. No Gelt, No Glory!</p>
-								<p class="space15">
-									<span>
-										<i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;Newyork, United States of America
-									</span>
-									<span class="padleft50">
-										<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;&nbsp;Tabletop Games
-									</span>
-								</p>
-								<div class="progress space10">
-									<div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%">
-										<span class="sr-only"></span>
+<div *ngIf="trendingProject">
+
+	<section id="spinagogue">
+		<div class="container">
+			<div class="spinagogue_bg">
+				<div class="row">
+					<div class="col-md-4 padleft50">
+						<a (click)="selectProject(trendingProject)" [routerLink]="['/projects', trendingProject.id]">
+							<img [src]="trendingProject.image_url" class="img-responsive center-block" alt="image">
+						</a>
+						</div>
+						<div class="col-md-8 padright50">
+							<div class="">
+								<h3>{{trendingProject.title}}</h3>
+								<p>by {{trendingProject.user_name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<a href="#" class="whiteclr">
+										<img src="assets/img/icon2.png" alt="icon">&nbsp; Online
+									</a>
+									</p>
+									<p class="space15">Dreidel is now a tabletop game of skill, played competitively and socially by spinners of all ages. No Gelt, No Glory!</p>
+									<p class="space15">
+										<span>
+											<i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;Newyork, United States of America
+										</span>
+										<span class="padleft50">
+											<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;&nbsp;{{trendingProject.category_name}}
+										</span>
+									</p>
+									<div class="progress space10">
+										<div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%">
+											<span class="sr-only"></span>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</section>
+			</section>
 
-<section class="spinagogue_details">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-8 padleft50">
-				<div class="row">
-					<div class="col-md-3 col-sm-6 col-xs-6 space15">
-						<h2>44%
-							<br>funded 
-							</h2>
-						</div>
+	<section class="spinagogue_details">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 padleft50">
+					<div class="row">
 						<div class="col-md-3 col-sm-6 col-xs-6 space15">
-							<h2>$7,999
-								<br>plegded
+							<h2>{{trendingProject.percent_funded}}%
+								<br>funded 
 								</h2>
 							</div>
 							<div class="col-md-3 col-sm-6 col-xs-6 space15">
-								<h2>175
-									<br>backers
+								<h2>${{trendingProject.pledged_amount}}
+									<br>plegded
 									</h2>
 								</div>
 								<div class="col-md-3 col-sm-6 col-xs-6 space15">
-									<h2>31
-										<br>days to go
+									<h2>{{trendingProject.total_backers}}
+										<br>backers
 										</h2>
+									</div>
+									<div class="col-md-3 col-sm-6 col-xs-6 space15">
+										<h2>{{trendingProject.duration}}
+											<br>days to go
+											</h2>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4 padright50">
+									<div class="mybutton_div">
+										<button type="button" (click)="selectProject(trendingProject)" [routerLink]="['/projects', trendingProject.id]" class="mybtn">PARTICIPATE</button>
 									</div>
 								</div>
 							</div>
-							<div class="col-md-4 padright50">
-								<div class="mybutton_div">
-									<button type="button" class="mybtn">PARTICIPATE</button>
-								</div>
-							</div>
 						</div>
-					</div>
-				</section>
+					</section>
+</div>
 
 
 <section id="tranding_sec">
@@ -131,162 +134,60 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-4 col-sm-4 col-xs-12 space15">
-				<a href="project-detail.html"></a>
+			<div *ngFor="let project of projects" class="col-md-4 col-sm-4 col-xs-12 space15">
+				<!--<a></a>-->
 				<div class="sec_detail">
-					<a href="project-detail.html">
-						<img src="assets/img/img4.png" width="100%" class="img-responsive center-block" alt="image">
+					<a (click)="selectProject(project)" [routerLink]="['/projects', project.id]">
+						<img [src]="project.image_url" width="100%" class="img-responsive center-block" alt="image">
+					</a>
+					<div class="details1">
+						<a (click)="selectProject(project)" [routerLink]="['/projects', project.id]">
+							<h5>{{project.title}}</h5>
 						</a>
-						<div class="details1">
-							<a href="project-detail.html">
-								<h5>BLOOD MACHINES - Turbo Killer 2</h5>
+						<p>
+							<a>{{project.user_name}}</a>
+							<a>
+								<span class="onlinetxt active">Online</span>
 							</a>
-							<p>
-								<a href="project-detail.html">Seth Ickerman </a>
-								<a href="#">
-									<span class="onlinetxt active">Online</span>
-								</a>
-							</p>
-							<p class="space15">A live action space opera by SETH ICKERMAN &amp;
-								<br class="hidden-xs">CARPENTER BRUT. A female ghost challenges two space hunters into a galactic chase...
-								</p>
+						</p>
+						<p class="space15">A live action space opera by SETH ICKERMAN &amp;
+							<br class="hidden-xs">CARPENTER BRUT. A female ghost challenges two space hunters into a galactic chase...
+						</p>
+						<div class="row">
+							<div class="col-md-9">
 								<div class="row">
-									<div class="col-md-9">
-										<div class="row">
-											<div class="col-md-3 col-sm-6 col-xs-6 space15">
-												<p class="fsize11">44%
-													<br>funded 
-													</p>
-												</div>
-												<div class="col-md-3 col-sm-6 col-xs-6 space15">
-													<p class="fsize11">$7,999
-														<br>plegded
-														</p>
-													</div>
-													<div class="col-md-3 col-sm-6 col-xs-6 space15">
-														<p class="fsize11">175
-															<br>backers
-															</p>
-														</div>
-														<div class="col-md-3 col-sm-6 col-xs-6 space15">
-															<p class="fsize11">31
-																<br>days to go
-																</p>
-															</div>
-														</div>
-													</div>
-													<div class="col-md-3">
-														<img src="assets/img/funded.png" alt="icon">
-														</div>
-													</div>
-												</div>
+									<div class="col-md-3 col-sm-6 col-xs-6 space15">
+										<p class="fsize11">{{project.percent_funded}}%
+											<br>funded 
+										</p>
+									</div>
+									<div class="col-md-3 col-sm-6 col-xs-6 space15">
+										<p class="fsize11">${{project.pledged_amount}}
+											<br>plegded
+										</p>
+									</div>
+									<div class="col-md-3 col-sm-6 col-xs-6 space15">
+										<p class="fsize11">{{project.total_backers}}
+											<br>backers
+											</p>
+										</div>
+										<div class="col-md-3 col-sm-6 col-xs-6 space15">
+											<p class="fsize11">{{project.duration}}
+												<br>days to go
+												</p>
 											</div>
 										</div>
-										<div class="col-md-4 col-sm-4 col-xs-12 space15">
-											<a href="project-detail.html"></a>
-											<div class="sec_detail">
-												<a href="project-detail.html">
-													<img src="assets/img/img5.png" width="100%" class="img-responsive center-block" alt="image">
-													</a>
-													<div class="details1">
-														<a href="project-detail.html">
-															<h5>BLOOD MACHINES - Turbo Killer 2</h5>
-														</a>
-														<p>
-															<a href="project-detail.html">Seth Ickerman </a>
-															<a href="#">
-																<span class="onlinetxt">Online</span>
-															</a>
-														</p>
-														<p class="space15">A live action space opera by SETH ICKERMAN &amp;
-															<br class="hidden-xs">CARPENTER BRUT. A female ghost challenges two space hunters into a galactic chase...
-															</p>
-															<div class="row">
-																<div class="col-md-9">
-																	<div class="row">
-																		<div class="col-md-3 col-sm-6 col-xs-6 space15">
-																			<p class="fsize11">44%
-																				<br>funded 
-																				</p>
-																			</div>
-																			<div class="col-md-3 col-sm-6 col-xs-6 space15">
-																				<p class="fsize11">$7,999
-																					<br>plegded
-																					</p>
-																				</div>
-																				<div class="col-md-3 col-sm-6 col-xs-6 space15">
-																					<p class="fsize11">175
-																						<br>backers
-																						</p>
-																					</div>
-																					<div class="col-md-3 col-sm-6 col-xs-6 space15">
-																						<p class="fsize11">31
-																							<br>days to go
-																							</p>
-																						</div>
-																					</div>
-																				</div>
-																				<div class="col-md-3">
-																					<img src="assets/img/funded.png" alt="icon">
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																	<div class="col-md-4 col-sm-4 col-xs-12 space15">
-																		<a href="project-detail.html"></a>
-																		<div class="sec_detail">
-																			<a href="project-detail.html">
-																				<img src="assets/img/img6.png" width="100%" class="img-responsive center-block" alt="image">
-																				</a>
-																				<div class="details1">
-																					<a href="project-detail.html">
-																						<h5>BLOOD MACHINES - Turbo Killer 2</h5>
-																					</a>
-																					<p>
-																						<a href="project-detail.html">Seth Ickerman </a>
-																						<a href="#">
-																							<span class="onlinetxt active">Online</span>
-																						</a>
-																					</p>
-																					<p class="space15">A live action space opera by SETH ICKERMAN &amp;
-																						<br class="hidden-xs">CARPENTER BRUT. A female ghost challenges two space hunters into a galactic chase...
-																						</p>
-																						<div class="row">
-																							<div class="col-md-9">
-																								<div class="row">
-																									<div class="col-md-3 col-sm-6 col-xs-6 space15">
-																										<p class="fsize11">44%
-																											<br>funded 
-																											</p>
-																										</div>
-																										<div class="col-md-3 col-sm-6 col-xs-6 space15">
-																											<p class="fsize11">$7,999
-																												<br>plegded
-																												</p>
-																											</div>
-																											<div class="col-md-3 col-sm-6 col-xs-6 space15">
-																												<p class="fsize11">175
-																													<br>backers
-																													</p>
-																												</div>
-																												<div class="col-md-3 col-sm-6 col-xs-6 space15">
-																													<p class="fsize11">31
-																														<br>days to go
-																														</p>
-																													</div>
-																												</div>
-																											</div>
-																											<div class="col-md-3">
-																												<img src="assets/img/funded.png" alt="icon">
-																												</div>
-																											</div>
-																										</div>
-																									</div>
-																								</div>
-																							</div>
-																						</div>
-																					</section>
+									</div>
+									<div class="col-md-3">
+										<img src="assets/img/funded.png" alt="icon">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 
 <section id="about_steps">
     <div class="container">

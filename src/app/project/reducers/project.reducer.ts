@@ -7,7 +7,6 @@ const initialState: ProjectState = new ProjectStateRecored() as ProjectState;
 export function projectReducer(state: ProjectState = initialState, action: Action): ProjectState {
   switch (action.type) {
     case ProjectActions.INIT_DRAFT_SUCCESS:
-      console.log('payload', action.payload);
       const draftProject = action.payload;
 
       return state.merge({
@@ -15,12 +14,13 @@ export function projectReducer(state: ProjectState = initialState, action: Actio
       }) as ProjectState;
 
     case ProjectActions.SELECT_PROJECT:
-      console.log('payload', action.payload);
+    case ProjectActions.FETCH_PROJECT_SUCCESS:
       const selectedProject = action.payload;
 
       return state.merge({
         selectedProject: selectedProject
       }) as ProjectState;
+
 
     default:
       return state;

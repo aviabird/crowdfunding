@@ -32,5 +32,13 @@ export class ProjectEffects {
     })
     .map((project: Project) => this.projectActions.initDraftSuccess(project));
 
+  // tslint:disable-next-line:member-ordering
+  @Effect()
+  fetchDraft$ = this.actions$
+    .ofType(ProjectActions.FETCH_PROJECT)
+    .switchMap((action: Action) => {
+      return this.projectService.fetchProject(action.payload);
+    })
+    .map((project: Project) => this.projectActions.fetchProjectSuccess(project));
 
 }

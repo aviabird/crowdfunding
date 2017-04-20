@@ -15,6 +15,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   trendingProject: Project;
+  projects: Project[] = [];
   message = '';
 
   constructor(private route: ActivatedRoute,
@@ -28,6 +29,7 @@ export class HomeComponent implements OnInit {
     this.route.queryParams.subscribe((params) => this.message = params['message']);
     this.projectService.getProjects().subscribe((projects) => {
       this.trendingProject = projects[0];
+      this.projects = projects;
     });
   }
 

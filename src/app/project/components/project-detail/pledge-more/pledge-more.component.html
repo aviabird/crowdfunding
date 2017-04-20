@@ -1,10 +1,11 @@
 <div class="col-md-12">
-  <div *ngFor="let reward of rewards" class="pledgemore_right">
+  <div *ngFor="let reward of project?.rewards" class="pledgemore_right">
     <h4 class="clr42a7b3">Pledge ${{reward.amount}} or more</h4>
     <p><strong>{{reward.title}}</strong></p>
     <p class="space20">{{reward.description}}</p>
     <p class="space30"><strong>ESTIMATED DELIVERY<br>Feb 2017</strong></p>
     <p class="space30">3 backers</p>
-    <button type="button" class="linksbtn bgclr5cc5d3 space30">Continue</button>
+    <input type="text" class="form-control rewardtype" [(ngModel)]="amount" placeholder="10">
+    <button type="button" appStripeForm [amount]="amount" [projectId]="project.id" class="linksbtn bgclr5cc5d3 space30">Continue</button>
   </div>
 </div>

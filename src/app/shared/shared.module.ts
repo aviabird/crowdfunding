@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { ModalComponent } from './components/modal/modal.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { StripeFormDirective } from './directives/stripe-form.directive';
 
 @NgModule({
   imports: [
@@ -21,11 +22,13 @@ import { SignupComponent } from './components/signup/signup.component';
     FormsModule,
     ReactiveFormsModule,
     ImageUploadComponent,
-    StripeFormComponent
+    StripeFormComponent,
+    StripeFormDirective
   ],
   declarations: [
     ImageUploadComponent,
-    StripeFormComponent
+    StripeFormComponent,
+    StripeFormDirective
   ]
 })
 export class SharedModule { }

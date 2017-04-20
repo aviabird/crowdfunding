@@ -1,4 +1,4 @@
-import { Reward } from './../../../../core/models/reward';
+import { Project } from './../../../../core/models/project';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -8,7 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PledgeMoreComponent implements OnInit {
 
-  @Input() rewards: Reward[];
+  amount: number;
+  @Input() project: Project;
 
   constructor() { }
 

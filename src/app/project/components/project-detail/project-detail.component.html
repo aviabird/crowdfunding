@@ -55,8 +55,7 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-              <app-stripe-form [projectId]="project?.id"></app-stripe-form>
-              <!--<button type="button" class="back_probtn">BACK THIS PROJECT</button>-->
+              <button type="button" class="back_probtn">BACK THIS PROJECT</button>
             </div>
             <div class="col-md-6 col-sm-6 col-xs-6 space30">
               <button type="button" class="linksbtn bgclr5cc5d3"><i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;Remind Me</button>
@@ -73,13 +72,13 @@
               <h2 class="subtitle3 space30">Support this project</h2>
               <div class="support_reward">
                 <h3>Make a pledge without a reward</h3>
-                <input type="text" class="form-control rewardtype" placeholder="10">
-                <button type="button" class="linksbtn bgclff8e00 space20">Continue</button>
+                <input type="text" class="form-control rewardtype" [(ngModel)]="amount" placeholder="10">
+                <button type="button" appStripeForm [amount]="amount" [projectId]="project.id" class="linksbtn bgclff8e00 space20">Continue</button>
               </div>
             </div>
           </div>
           <div class="row">
-            <app-pledge-more [rewards]="project?.rewards"></app-pledge-more>
+            <app-pledge-more [project]="project"></app-pledge-more>
           </div>
         </div>
       </div>

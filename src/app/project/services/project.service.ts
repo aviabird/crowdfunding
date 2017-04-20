@@ -1,3 +1,5 @@
+import { ToastyService } from 'ng2-toasty';
+import { Response } from '@angular/http';
 import { AppConstants } from './../../app.constants';
 import { Subject } from 'rxjs/Subject';
 import { Link } from './../../core/models/link';
@@ -14,7 +16,11 @@ export class ProjectService {
 
   public savingDraft = new Subject();
 
-  constructor(private fb: FormBuilder, private http: HttpService) { }
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpService,
+    private toastyService: ToastyService
+  ) { }
 
   initProjectForm(project) {
     return this.fb.group({
@@ -187,6 +193,23 @@ export class ProjectService {
       return res.json();
     });
   }
+
+  fundProject(token: string, projectId: number, amount: number) {
+    console.log('in stripe service create charge');
+    return this.http.post(
+      '/api/v1/projects/fund_project', { stripeToken: token, id: projectId, amount: amount }
+    ).subscribe((res: Response) => {
+      const data = res.json();
+      if (data.error) {
+        const message = data.error.card_error[0];
+        this.toastyService.error(message);
+      } else {
+        const message = data.message;
+        this.toastyService.success(message);
+      }
+    });
+  }
+
 
   validateNumber(c: FormControl) {
     return c.value > 0 && c.value <= 60 ? null : { validateNumber: true };

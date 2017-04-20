@@ -16,6 +16,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
   projectSub$: Subscription;
   project: Project;
   selectedTab = 1;
+  amount: number;
 
   constructor(private store: Store<AppState>) {
     this.projectSub$ = this.store.select(getSelectedProject).subscribe((project) => {

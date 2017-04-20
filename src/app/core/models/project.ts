@@ -17,6 +17,7 @@ export class Project extends Base {
   category_name = '';
   user_name = '';
   total_backers = '';
+  percent_funded = '';
   start_date = new Date();
   duration = '';
   rewards: Reward[] = [new Reward];

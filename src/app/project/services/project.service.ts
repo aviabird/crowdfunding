@@ -1,3 +1,4 @@
+import { AuthService } from './../../core/services/auth.service';
 import { ToastyService } from 'ng2-toasty';
 import { Response } from '@angular/http';
 import { AppConstants } from './../../app.constants';
@@ -18,6 +19,7 @@ export class ProjectService {
 
   constructor(
     private fb: FormBuilder,
+    private authService: AuthService,
     private http: HttpService,
     private toastyService: ToastyService
   ) { }
@@ -206,6 +208,13 @@ export class ProjectService {
       } else {
         const message = data.message;
         this.toastyService.success(message);
+      }
+    }, (err) => {
+      if (err.status === 401) {
+        this.authService.modalShow$.next(true);
+        this.toastyService.error('Please Login!');
+      } else if (err.status === 500) {
+        this.toastyService.error('Internal Server Error, Please Try again');
       }
     });
   }

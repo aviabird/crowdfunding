@@ -1,10 +1,19 @@
+<!--- Banner -->
+<div class="sub-bnr-flat">
+  <div class="container">
+    <h2>Create a Campaign</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+  </div>
+</div>
+
+
 <div class="campaign_box">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-2 camp_pdng">
+			<div class="col-md-3 camp_pdng">
 				<div class="campaign_editor">
 					<h2>campaign 
-						<br class="br"> editor
+						 editor
 					</h2>
 					<div class="campaign_tabs">
 						<ul class="nav nav-tabs responsive" id="campaign_Tabs">
@@ -52,7 +61,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-6 camp_pdng">
+			<div class="col-md-9 camp_pdng">
 				<div *ngIf="showLoader" class="loading">
 					<img src="assets/img/loading.svg">
 				</div>
@@ -83,47 +92,6 @@
 							<app-project-event></app-project-event> 
 						</ng-template>
 					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 camp_pdng">
-				<div class="camp_right">
-					<img src="assets/img/camp-imgright.png" alt="img">
-					<h2>Brina Wingo
-						<span>
-							<img src="assets/img/hay-icon.png" alt="img">Hey, I am online
-						</span>
-					</h2>
-					<p>on behalf of Victor Brockwell</p>
-					<ul>
-						<li>
-							<i class="fa fa-tag" aria-hidden="true"></i> Climate, Enviroment, Azimuth
-						</li>
-						<li>
-							<i class="fa fa-map-marker" aria-hidden="true"></i>  Riverside, CA
-						</li>
-					</ul>
-				</div>
-				<div class="camp_funded">
-					<ul>
-						<li>$0 
-							<span>funded </span>
-						</li>
-						<li>$0 
-							<span>plegded </span>
-						</li>
-						<li>0 
-							<span>backers </span>
-						</li>
-						<li>0 
-							<span>days to go </span>
-						</li>
-					</ul>
-				</div>
-				<div class="camp_btn">
-					<button class="btn btn-default" type="submit">profile</button>
-					<button class="btn btn-default" type="submit">account</button>
-					<button class="btn btn-default" type="submit">help</button>
-					<button class="btn btn-default" type="submit">logout</button>
 				</div>
 			</div>
 		</div>

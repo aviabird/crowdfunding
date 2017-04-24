@@ -91,7 +91,7 @@
 				<div class="col-md-8 padleft50">
 					<div class="row">
 						<div class="col-md-3 col-sm-6 col-xs-6 space15">
-							<h2>{{trendingProject.percent_funded}}%
+							<h2>{{trendingProject.percent_funded | number:'1.0-2'}}%
 								<br>funded 
 								</h2>
 							</div>
@@ -157,7 +157,7 @@
 							<div class="col-md-9">
 								<div class="row">
 									<div class="col-md-3 col-sm-6 col-xs-6 space15">
-										<p class="fsize11">{{project.percent_funded}}%
+										<p class="fsize11">{{project.percent_funded | number:'1.0-2'}}%
 											<br>funded 
 										</p>
 									</div>

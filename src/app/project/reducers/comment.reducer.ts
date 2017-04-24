@@ -10,18 +10,17 @@ export function commentReducer(state: CommentState = initialState, action: Actio
   switch (action.type) {
     case CommentActions.LOAD_COMMENTS_SUCCESS:
       const comments = <Comment[]>action.payload;
-      const newComments = comments.filter(comment => !state.entities[comment.id]);
 
-      const newCommentIds = newComments.map(comment => comment.id);
-      newEntities = newComments.reduce((entities: { [id: number]: Comment }, comment: Comment) => {
+      const commentIds = comments.map(comment => comment.id);
+      newEntities = comments.reduce((entities: { [id: number]: Comment }, comment: Comment) => {
         return Object.assign(entities, {
           [comment.id]: comment
         });
       }, {});
 
       return Object.assign({}, state, {
-        ids: [ ...state.ids, ...newCommentIds ],
-        entities: Object.assign({}, state.entities, newEntities)
+        ids: commentIds,
+        entities: newEntities
       });
 
     case CommentActions.ADD_COMMENT_SUCCESS:

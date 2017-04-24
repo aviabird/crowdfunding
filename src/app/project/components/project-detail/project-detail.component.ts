@@ -1,3 +1,4 @@
+import { CommentActions } from './../../actions/comment.actions';
 import { Subscription } from 'rxjs/Subscription';
 import { getSelectedProject } from './../../reducers/selectors';
 import { Project } from './../../../core/models/project';
@@ -18,7 +19,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
   selectedTab = 1;
   amount: number;
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>, private commentActions: CommentActions) {
     this.projectSub$ = this.store.select(getSelectedProject).subscribe((project) => {
       this.project = project;
     });
@@ -32,6 +33,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.store.dispatch(this.commentActions.clearComments());
     this.projectSub$.unsubscribe();
   }
 

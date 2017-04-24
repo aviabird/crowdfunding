@@ -7,6 +7,7 @@ export class CommentActions {
   static ADD_COMMENT_SUCCESS = 'ADD_COMMENT_SUCCESS';
   static DELETE_COMMENT = 'DELETE_COMMENT';
   static DELETE_COMMENT_SUCCESS = 'DELETE_COMMENT_SUCCESS';
+  static CLEAR_COMMENTS = 'CLEAR_COMMENTS';
 
   loadComments(project_id: number) {
     return {
@@ -48,6 +49,10 @@ export class CommentActions {
       type: CommentActions.DELETE_COMMENT_SUCCESS,
       payload: id
     };
+  }
+
+  clearComments() {
+    return { type: CommentActions.CLEAR_COMMENTS };
   }
 
 }

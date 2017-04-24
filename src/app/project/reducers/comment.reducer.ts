@@ -46,6 +46,9 @@ export function commentReducer(state: CommentState = initialState, action: Actio
         ids: newIds
       });
 
+    case CommentActions.CLEAR_COMMENTS:
+      return initialState;
+
     default:
       return state;
   }

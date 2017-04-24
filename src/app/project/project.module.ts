@@ -1,13 +1,18 @@
 import { SharedModule } from './../shared/shared.module';
-import { ProjectEffects } from './effects/project.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { ProjectActions } from './actions/project.actions';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProjectService } from './services/project.service';
-import { routes } from './project.routes';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { CommentEffects } from './effects/comment.effect';
+import { ProjectEffects } from './effects/project.effects';
+
+import { ProjectService } from './services/project.service';
+
+import { routes } from './project.routes';
+
 import { ProjectDetailComponent } from './components/project-detail/project-detail.component';
 import { ProjectCreateComponent } from './components/project-create/project-create.component';
 import { ProjectTitleComponent } from './components/project-create/project-title/project-title.component';
@@ -29,6 +34,7 @@ import { PledgeMoreComponent } from './components/project-detail/pledge-more/ple
   imports: [
     RouterModule.forChild(routes),
     EffectsModule.run(ProjectEffects),
+    EffectsModule.run(CommentEffects),
     SharedModule
   ],
   declarations: [

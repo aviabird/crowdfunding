@@ -1,4 +1,5 @@
 import { Project } from './../../core/models/project';
+
 export class ProjectActions {
   static INIT_DRAFT_PROJECT = 'INIT_DRAFT_PROJECT';
   static INIT_DRAFT_SUCCESS = 'INIT_DRAFT_SUCCESS';

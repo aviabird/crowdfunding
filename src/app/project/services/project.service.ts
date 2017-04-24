@@ -197,7 +197,6 @@ export class ProjectService {
   }
 
   fundProject(token: string, projectId: number, amount: number) {
-    console.log('in stripe service create charge');
     return this.http.post(
       '/api/v1/projects/fund_project', { stripeToken: token, id: projectId, amount: amount }
     ).subscribe((res: Response) => {
@@ -219,6 +218,30 @@ export class ProjectService {
     });
   }
 
+  fetchProjectComments(project_id: number) {
+    return this.http.get(
+      `/api/v1/comments/${project_id}`
+    ).map((res: Response) => {
+      return res.json();
+    });
+  }
+
+  addNewComment(comment) {
+    return this.http.post(
+      '/api/v1/comments', comment
+    ).map((res: Response) => {
+      return res.json();
+    });
+  }
+
+  deleteComment(id: number) {
+    return this.http.delete(
+      `/api/v1/comments/${id}`, {}
+    ).map((res: Response) => {
+      console.log('response', res.json());
+      return res.json().id;
+    });
+  }
 
   validateNumber(c: FormControl) {
     return c.value > 0 && c.value <= 60 ? null : { validateNumber: true };

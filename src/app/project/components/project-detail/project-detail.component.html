@@ -39,7 +39,7 @@
 							  <app-updates></app-updates>
 						  </ng-template>
 						  <ng-template [ngSwitchCase]="'3'" ngSwitchDefault> 
-                <app-comments></app-comments>
+                <app-comments [projectId]="project?.id"></app-comments>
 						  </ng-template>
 						  <ng-template [ngSwitchCase]="'4'" ngSwitchDefault> 
 							  <app-community></app-community>

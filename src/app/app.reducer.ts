@@ -5,9 +5,11 @@ import { compose } from '@ngrx/core/compose';
 import { AppState } from './app.state';
 import { ActionReducer, combineReducers } from '@ngrx/store';
 import { projectReducer } from './project/reducers/project.reducer';
+import { commentReducer } from './project/reducers/comment.reducer';
 
 const reducers = {
   project: projectReducer,
+  comment: commentReducer,
   auth: authReducer
 };
 

@@ -157,7 +157,7 @@ img {
 .event_flex_slider {
 	width: 100%;
 	float: left;
-	background: url(../images/event-new-bg.jpg) no-repeat;
+	background: url(../img/event-new-bg.jpg) no-repeat;
 	background-size: cover;
 	padding-bottom: 5px;
 }
@@ -289,7 +289,7 @@ img {
 .event_new_map {
 	width: 100%;
 	float: left;
-	background: url(../images/event-map-bg.jpg) repeat;
+	background: url(../img/event-map-bg.jpg) repeat;
 	padding: 25px 15px 20px 15px;
 }
 .event_new_map img {
@@ -484,7 +484,7 @@ img {
 	margin: 0 auto;
 }
 .pricng_about {
-	background: url(../images/pricing-bg2.jpg) no-repeat;
+	background: url(../img/pricing-bg2.jpg) no-repeat;
 	background-size: cover;
 	padding: 100px 0;
 	text-align: center;
@@ -533,7 +533,7 @@ img {
 .campaign_editor {
 	width: 100%;
 	float: left;
-	background: url(../images/c_left-img.jpg) repeat;
+	background: url(../img/c_left-img.jpg) repeat;
 	padding: 0px 0px 776px 0px;
 }
 .campaign_editor h2 {
@@ -555,7 +555,7 @@ img {
 	width: 100%;
 	float: left;
 	padding: 0px 15px 0px 15px;
-	background: url(../images/c-tab-bg.jpg) repeat-y;
+	background: url(../img/c-tab-bg.jpg) repeat-y;
 	background-size: 100%;
 }
 .campaign_tabs .nav-tabs {
@@ -741,7 +741,7 @@ img {
 	color: #FFF;
 }
 .camp_right {
-	background: url(../images/blue.jpg) repeat;
+	background: url(../img/blue.jpg) repeat;
 	padding: 35px 30px 25px 30px;
 	color: #FFF;
 	font-family: 'Gadugi';
@@ -788,7 +788,7 @@ img {
 .camp_funded {
 	width: 100%;
 	float: left;
-	background: url(../images/camp-funded-bg.jpg) repeat;
+	background: url(../img/camp-funded-bg.jpg) repeat;
 	background-size: 100%;
 	padding: 27px 30px;
 }
@@ -1072,7 +1072,7 @@ img {
 .detail_beach {
 	width: 100%;
 	float: left;
-	background: url(../images/deteai-bgl.jpg) repeat-y;
+	background: url(../img/deteai-bgl.jpg) repeat-y;
 	background-size: 100%;
 	height: 370px;
 }
@@ -1468,7 +1468,7 @@ img {
 	color: #FFF;
 	display: inline-block;
 	text-align: center;
-	background: url(../images/tutorals-bannerimg.png) no-repeat scroll 100% center / cover;
+	background: url(../img/tutorals-bannerimg.png) no-repeat scroll 100% center / cover;
 	padding: 90px 0px 100px 0px;
 }
 .tutorials h2 {
@@ -1478,7 +1478,7 @@ img {
 	padding: 0 0 22px;
 	font-family: 'Montserrat';
 	font-weight: 700;
-	background: url(../images/border.png) no-repeat center bottom;
+	background: url(../img/border.png) no-repeat center bottom;
 	background-size: 37%;
 }
 .tutorials p {
@@ -1572,10 +1572,10 @@ img {
 	height:200px;
 }
 .tutorials_main .tutor_pdg img{
-	width:100%:
+	width:100%;
 }
-.tutorials_trending {
-}
+/*.tutorials_trending {
+}*/
 .tutorials_trending h1 {
 	width: auto;
 	float: left;

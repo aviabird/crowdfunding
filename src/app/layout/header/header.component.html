@@ -1,45 +1,33 @@
-<header id="myheader">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3 col-sm-3 col-xs-12">
-      <div class="mylogo">
-      <a [routerLink]="['/']">
-        <img src="assets/img/logo.png" class="img-responsive" alt="Logo">
-        </a>
-      </div>  
-      </div>
-      <div class="col-md-4 col-sm-3 col-xs-9">
-        <input type="text" class="form-control txtsearch pull-right" placeholder="Search by Name, Category or Title">
-      </div>
-      <div class="col-md-5 col-sm-6 col-xs-12">
-        <nav class="navbar navbar-default">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <!-- <a class="navbar-brand" href="#">Brand</a> -->
-            </div>
-
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">              
-              
-              <ul class="nav navbar-nav navbar-right">
-                <li style="margin-top: 8px !important;"><a href="#">Get Started</a></li>
-                <li *ngIf="authStatus$ | async">
-                  <img class="image" [src]="(authUser$ | async).image_url" alt="">
-                  <a (click)="onLogout()">Logout</a>
-                </li>
-                <li *ngIf="!(authStatus$ | async)">
-                  <a href="#">About Us</a>
-                  <a style="display: inline;" (click)="showModal('login')">Login</a>
-                  <button (click)="showModal('signup')" type="button" class="signupbtn">SIGNUP</button>               
-                </li>
-              </ul>
-            </div>
-        </nav>
-      </div>
+<header id="myheader" class="main-header head-f-ot">
+  <div class="sticky">
+    <div class="container-fluid">
+      <div class="mylogo"> <a [routerLink]="['/']"> <img src="assets/img/logo.png" class="img-responsive" alt="Logo"> </a> </div>
+      <nav class="navbar navbar-default">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <i class="fa fa-navicon"></i> </button>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul *ngIf="!(authStatus$ | async)" class="nav navbar-nav navbar-right">
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Explore</a></li>
+            <li><a (click)="showModal('login')" class="btn" data-toggle="modal" data-target="#myModal1"><i class="flaticon-login"></i> Login</a></li>
+            <li><a (click)="showModal('signup')" class="btn btn-up" data-toggle="modal" data-target="#myModal"><i class="flaticon-note-1"></i> SignUp</a></li>
+            <li><a class="btn zoom"><i class="flaticon-search"></i></a></li>
+          </ul>
+          <ul *ngIf="authStatus$ | async" class="nav navbar-nav navbar-right">
+            <li><a class="btn notifi"><i class="flaticon-notification"></i> <span>2</span></a> </li>
+            <!--<li><a class="btn"><i class="flaticon-user"></i>{{(authUser$ | async).name}}</a></li>-->
+            <li>
+              <a class="btn">
+                <img class="image" [src]="(authUser$ | async).image_url" alt="">
+                {{((authUser$ | async).name).split(' ')[0]}}
+              </a>
+            </li>
+            <li><a (click)="onLogout()" class="btn btn-up">Logout</a></li>
+          </ul>
+        </div>
+      </nav>
     </div>
   </div>
 </header>

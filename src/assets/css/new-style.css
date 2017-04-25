@@ -65,7 +65,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d86ac', end
 .blue {
 }
 .orange {
-	background: url(../images/orange.jpg) repeat;
+	background: url(../img/orange.jpg) repeat;
 }
 .chart_main {
 	background: #f0f0f0;
@@ -397,7 +397,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d86ac', end
 	max-width: 465px;
 	height: 465px;
 	float: left;
-	background: url(../images/round1.png) no-repeat;
+	background: url(../img/round1.png) no-repeat;
 	text-align: center;
 	padding: 70px 0px;
 }
@@ -425,7 +425,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d86ac', end
 	max-width: 374px;
 	height: 382px;
 	float: left;
-	background: url(../images/round2.png) no-repeat;
+	background: url(../img/round2.png) no-repeat;
 	text-align: center;
 	padding: 70px 0px;
 }
@@ -452,7 +452,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d86ac', end
 	max-width: 260px;
 	height: 268px;
 	float: left;
-	background: url(../images/round3.png) no-repeat;
+	background: url(../img/round3.png) no-repeat;
 	text-align: center;
 	padding: 70px 0px;
 	position: relative;
@@ -611,7 +611,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d86ac', end
 .rewards_banner {
 	width: 100%;
 	float: left;
-	background: url(../images/rewards-banner.jpg) no-repeat;
+	background: url(../img/rewards-banner.jpg) no-repeat;
 	background-size: 100% 100%;
 	padding: 170px 0px 170px 0px;
 	display: inline-block;
@@ -625,7 +625,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d86ac', end
 	text-align: center;
 	font-size: 40px;
 	line-height: 40px;
-	background: url(../images/pricing-borderimg.jpg) no-repeat bottom center;
+	background: url(../img/pricing-borderimg.jpg) no-repeat bottom center;
 	padding: 0px 0px 15px 0px;
 	font-family: 'MontserratBlack';
 	text-transform: uppercase;
@@ -1826,7 +1826,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d86ac', end
 .our_press {
 	text-align: center;
 	position: relative;
-	background: url(../images/our_press.jpg) center center no-repeat;
+	background: url(../img/our_press.jpg) center center no-repeat;
 	background-size: cover;
 	padding: 150px 0;
 }

@@ -14,11 +14,11 @@ body{
 }
 @font-face {
      font-family: 'Montserrat';
-    src: url(../fonts/Montserrat-Bold.ttf);
+    src: url(../fonts/Montserrat-Bold.otf);
 }
 @font-face {
      font-family: 'Montserrat';
-    src: url(../fonts/Montserrat-black.ttf);
+    src: url(../fonts/Montserrat-Black.otf);
 }
 @font-face {
      font-family: 'Gadugi';
@@ -26,7 +26,7 @@ body{
 }
 @font-face {
      font-family: 'HelveticaNeueLT Std Med';
-    src: url(../fonts/HelveticaNeueLTStd-Md.ttf);
+    src: url(../fonts/HelveticaNeueLTStd-Md.otf);
 }
 .gadugifont{
   font-family: 'Gadugi';
@@ -989,14 +989,14 @@ span.white_txt{
     
 }
 .loc1 {
-    background-image: url(../img/02.png);
+    background-image: url(../img/2.png);
    
     background-position: 95%;
     background-repeat: no-repeat;
   
 }
 .loc2 {
-    background-image: url(../img/01.png);
+    background-image: url(../img/1.png);
    
     background-position: 95%;
     background-repeat: no-repeat;

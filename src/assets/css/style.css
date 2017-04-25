@@ -673,18 +673,18 @@ footer .links ul{
 	font-size:18px;
 }
 .projects article .pouch{
-	background:url(../images/pouch-icon.jpg) no-repeat;
+	background:url(../img/pouch-icon.jpg) no-repeat;
 	width:38px;
 	margin-right:10px;
 	height:49px;
 	float:left;
 }
 .projects article .pouch-half{
-	background:url(../images/pouch-icon-half.jpg) no-repeat;
+	background:url(../img/pouch-icon-half.jpg) no-repeat;
 }
 
 .video-bnr{
-	background:url(../images/bnr-bg-1.jpg) center center no-repeat;
+	background:url(../img/bnr-bg-1.jpg) center center no-repeat;
 	padding:150px 0;
 	text-align:center;
 	background-size:cover;
@@ -940,10 +940,10 @@ hr.small{
 	margin-bottom: 30px;
 }
 .bg-img-1 {
-	background: url(../images/bnr-bg.jpg) center center no-repeat;
+	background: url(../img/bnr-bg.jpg) center center no-repeat;
 }
 .bg-img-2 {
-	background: url(../images/bnr-bg-1.jpg) center center no-repeat;
+	background: url(../img/bnr-bg-1.jpg) center center no-repeat;
 }
 #banner .text-bnr p {
 	color: #fff;
@@ -1747,12 +1747,12 @@ span.white_txt {
 	background-repeat: no-repeat;
 }
 .loc1 {
-	background-image: url(../img/02.png);
+	background-image: url(../img/2.png);
 	background-position: 95%;
 	background-repeat: no-repeat;
 }
 .loc2 {
-	background-image: url(../img/01.png);
+	background-image: url(../img/1.png);
 	background-position: 95%;
 	background-repeat: no-repeat;
 }
@@ -2565,7 +2565,7 @@ ul.buttonslist {
 	width: 9px;
 	height: 11px;
 	outline: 0;
-	background: url(images/controls.png) -86px -44px no-repeat;
+	background: url/img/controls.png) -86px -44px no-repeat;
 	margin: 0 3px;
 }
 .bx-wrapper .bx-controls-auto .bx-stop:hover, .bx-wrapper .bx-controls-auto .bx-stop.active {

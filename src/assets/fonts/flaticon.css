@@ -1,0 +1,67 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 23/04/2017 13:01
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+	font-family: Flaticon;
+	font-style: normal;
+}
+
+.flaticon-chat:before { content: "\f100"; }
+.flaticon-notification:before { content: "\f101"; }
+.flaticon-cross:before { content: "\f102"; }
+.flaticon-close:before { content: "\f103"; }
+.flaticon-cancel:before { content: "\f104"; }
+.flaticon-play-button:before { content: "\f105"; }
+.flaticon-users:before { content: "\f106"; }
+.flaticon-arrows-1:before { content: "\f107"; }
+.flaticon-arrows:before { content: "\f108"; }
+.flaticon-down-arrow:before { content: "\f109"; }
+.flaticon-back:before { content: "\f10a"; }
+.flaticon-next:before { content: "\f10b"; }
+.flaticon-magnifying-glass:before { content: "\f10c"; }
+.flaticon-search:before { content: "\f10d"; }
+.flaticon-user:before { content: "\f10e"; }
+.flaticon-diamond:before { content: "\f10f"; }
+.flaticon-man:before { content: "\f110"; }
+.flaticon-technology-1:before { content: "\f111"; }
+.flaticon-men-dancing:before { content: "\f112"; }
+.flaticon-note:before { content: "\f113"; }
+.flaticon-technology:before { content: "\f114"; }
+.flaticon-sign-in:before { content: "\f115"; }
+.flaticon-dinner:before { content: "\f116"; }
+.flaticon-cutlery:before { content: "\f117"; }
+.flaticon-gamepad:before { content: "\f118"; }
+.flaticon-video-camera:before { content: "\f119"; }
+.flaticon-donation:before { content: "\f11a"; }
+.flaticon-target:before { content: "\f11b"; }
+.flaticon-charity:before { content: "\f11c"; }
+.flaticon-login:before { content: "\f11d"; }
+.flaticon-stopwatch:before { content: "\f11e"; }
+.flaticon-alarm-clock:before { content: "\f11f"; }
+.flaticon-hourglass:before { content: "\f120"; }
+.flaticon-idea:before { content: "\f121"; }
+.flaticon-music-player:before { content: "\f122"; }
+.flaticon-note-1:before { content: "\f123"; }
+.flaticon-goal:before { content: "\f124"; }
+.flaticon-headphones:before { content: "\f125"; }

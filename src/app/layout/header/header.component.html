@@ -17,9 +17,8 @@
           </ul>
           <ul *ngIf="authStatus$ | async" class="nav navbar-nav navbar-right">
             <li><a class="btn notifi"><i class="flaticon-notification"></i> <span>2</span></a> </li>
-            <!--<li><a class="btn"><i class="flaticon-user"></i>{{(authUser$ | async).name}}</a></li>-->
             <li>
-              <a class="btn">
+              <a [routerLink]="['users',1]" class="btn">
                 <img class="image" [src]="(authUser$ | async).image_url" alt="">
                 {{((authUser$ | async).name).split(' ')[0]}}
               </a>

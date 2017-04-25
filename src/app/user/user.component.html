@@ -1,0 +1,83 @@
+<!-- Sub Bnr -->
+<div class="sub-bnr-flat">
+  <div class="container">
+    <h2>User Dashboard</h2>
+    <p>Edit all your informations Lorem Ipsum</p>
+  </div>
+</div>
+
+<!-- Dashboard Info -->
+<div class="dashboard_info">
+  <div class="container"> 
+    
+    <!-- Dashboard Main -->
+    <div class="dashboard_main">
+      <div class="row"> 
+        
+        <!-- Dashboard Navigation -->
+        <div class="col-md-3">
+          <div class="dashboard_nav">
+            <h2>Profile Info</h2>
+            <div class="nav-side-menu">
+              <div class="menu-list">
+                <ul class="nav nav-tabs responsive" id="dashboard_tabs">
+                  <li [ngClass]="{'active': selectedTab == 1}">
+                    <a (click)="changeTab(1)"><i class="fa fa-user-o"></i> Names & Contacts</a>
+                  </li>
+                  <li [ngClass]="{'active': selectedTab == 2}">
+                    <a (click)="changeTab(2)"><i class="fa fa-eye"></i> Quick view</a>
+                  </li>
+                  <li [ngClass]="{'active': selectedTab == 3}">
+                    <a (click)="changeTab(3)"><i class="fa fa-heart"></i> Backers </a>
+                  </li>
+                  <li [ngClass]="{'active': selectedTab == 4}">
+                    <a (click)="changeTab(4)"><i class="fa fa-podcast"></i> Projects I backed</a>
+                  </li>
+                  <li [ngClass]="{'active': selectedTab == 5}">
+                    <a (click)="changeTab(5)"><i class="fa fa-envelope-o"></i> Mail</a>
+                  </li>
+                  <li [ngClass]="{'active': selectedTab == 6}">
+                    <a (click)="changeTab(6)"><i class="fa fa-bullhorn"></i> Campaigns</a>
+                  </li>
+                  <li [ngClass]="{'active': selectedTab == 7}">
+                    <a (click)="changeTab(7)"><i class="fa fa-calendar-o"></i> <small>Coming Soon</small></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Dashboard Content -->
+        <div class="col-md-9">
+          <div class="tab-content responsive">
+            <div class="" [ngSwitch]="selectedTab">
+              <ng-template [ngSwitchCase]="'1'" ngSwitchDefault>
+                <app-name-contacts-info></app-name-contacts-info>
+              </ng-template>
+              <ng-template [ngSwitchCase]="'2'">
+              <app-quick-view></app-quick-view>
+              </ng-template>
+              <ng-template [ngSwitchCase]="'3'">
+                <app-project-backers></app-project-backers>
+              </ng-template>
+              <ng-template [ngSwitchCase]="'4'">
+                <app-backed-projects></app-backed-projects>
+              </ng-template>
+              <ng-template [ngSwitchCase]="'5'">
+                <app-mail></app-mail>
+              </ng-template>
+              <ng-template [ngSwitchCase]="'6'">
+                <app-user-campaigns></app-user-campaigns>
+              </ng-template>
+              <ng-template [ngSwitchCase]="'7'">
+                <app-coming-soon></app-coming-soon>
+              </ng-template>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

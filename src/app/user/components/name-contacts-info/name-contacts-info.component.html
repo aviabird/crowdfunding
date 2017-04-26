@@ -2,11 +2,11 @@
   <h2>Names & Contacts Info</h2>
   <div class="row"> 
     <app-profile-pic [user]="user$ | async"></app-profile-pic>
-    <app-basic-info></app-basic-info>
+    <app-basic-info [user]="user$ | async"></app-basic-info>
     <app-payment-info></app-payment-info>
   </div>
-  <div class="row"> 
-    <app-email-password></app-email-password>
+  <div class="row">
+    <app-email-password [user]="user$ | async"></app-email-password>
     <app-social-media-links></app-social-media-links>
   </div>
 </div>

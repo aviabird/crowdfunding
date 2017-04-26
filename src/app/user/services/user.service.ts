@@ -25,8 +25,8 @@ export class UserService {
 
   updateUser(user) {
     const id = user.id;
-    return this.http.post(
-      `/api/v1/users/${id}`, {user}
+    return this.http.put(
+      `/api/v1/users/${id}`, { user: user }
     ).map((res: Response) => {
       return res.json();
     });

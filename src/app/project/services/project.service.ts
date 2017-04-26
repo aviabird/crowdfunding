@@ -234,6 +234,15 @@ export class ProjectService {
     });
   }
 
+  editComment(comment) {
+    const id = comment.id;
+    return this.http.put(
+      `/api/v1/comments/${id}`, comment
+    ).map((res: Response) => {
+      return res.json();
+    });
+  }
+
   deleteComment(id: number) {
     return this.http.delete(
       `/api/v1/comments/${id}`, {}

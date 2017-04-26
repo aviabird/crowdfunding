@@ -13,27 +13,6 @@
 			span {
 				margin: 0 15px 0 0;
 			}
-			textarea {
-				width: 90%;
-				overflow: hidden;
-				word-wrap: break-word;
-				resize: none;
-				height: 18px;
-				background: #fff;
-    		border-radius: 3px;
-    		border: 1px solid #e8e8e8;
-				padding: 7px 10px;
-				font: normal normal normal normal 13px / 18px -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-				box-sizing: content-box;
-			}
-		}
-		.save-button {
-			padding: 0 20px 0 20px;
-			border: 1px solid transparent;
-			background-color: #39df12;
-			color: white;
-			border-radius: 5px;
-			height: 34px;
 		}
 	}
 }
@@ -76,9 +55,8 @@ img {
 				margin-right: 25px;
 			}
 		}
-		.cross{
+		.user-actions {
 			display: none;
-			color: red;
 			font-size: 20px;
 			position: absolute;
 			top: 0;
@@ -87,9 +65,32 @@ img {
 	}
 	.comment:hover {
 		background: hsla(0,0%,91%,.5);
-		.cross {
+		.user-actions {
 			display: block;
 			cursor: pointer;
 		}
 	}
+}
+
+textarea {
+	width: 90%;
+	overflow: hidden;
+	word-wrap: break-word;
+	resize: none;
+	height: 18px;
+	background: #fff;
+	border-radius: 3px;
+	border: 1px solid #e8e8e8;
+	padding: 7px 10px;
+	font: normal normal normal normal 13px / 18px -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+	box-sizing: content-box;
+}
+
+.save-button, .edit-button {
+	padding: 0 20px 0 20px;
+	border: 1px solid transparent;
+	background-color: #39df12;
+	color: white;
+	border-radius: 5px;
+	height: 34px;
 }

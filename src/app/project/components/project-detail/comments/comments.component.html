@@ -22,8 +22,17 @@
       </div>
     </div>
     <div class="body">
-      <div class="comment-body">{{comment.body}}</div>
+      <div *ngIf="!edited || comment.id != editedCommentId" class="comment-body">{{comment.body}}</div>
+      <div *ngIf="edited && comment.id == editedCommentId" class="edit-comment">
+        <form  [formGroup]="commentEditForm">
+          <textarea formControlName="body" id="comment" rows="1"></textarea>
+          <button (click)="saveEditedComment()" class="edit-button">Save</button>
+        </form>
+      </div>
     </div>
-    <div *ngIf="comment.user_id == (authUser$ | async).id" (click)="deleteComment(comment.id)" class="cross">X</div>
+    <div *ngIf="comment.user_id == (authUser$ | async).id" class="user-actions">
+      <i (click)="deleteComment(comment.id)" class="fa fa-trash-o" aria-hidden="true"></i>
+      <i (click)="editComment(comment)" class="fa fa-pencil-square-o" aria-hidden="true"></i>
+    </div>
   </div>
 </div>

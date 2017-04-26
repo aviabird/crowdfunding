@@ -31,6 +31,18 @@ export function commentReducer(state: CommentState = initialState, action: Actio
         entities: Object.assign({}, state.entities, { [newComment.id]: newComment })
       });
 
+
+    case CommentActions.EDIT_COMMENT_SUCCESS:
+      const editedComment = <Comment>action.payload;
+      const editedCommentId = editedComment.id;
+
+      newEntities = Object.assign({}, state.entities);
+      newEntities[editedCommentId] = editedComment;
+
+      return Object.assign({}, state, {
+        entities: newEntities
+      });
+
     case CommentActions.DELETE_COMMENT_SUCCESS:
       const deletedId = <number>action.payload;
       const newIds = state.ids.filter(val => val !== deletedId);

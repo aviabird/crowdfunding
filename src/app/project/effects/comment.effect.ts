@@ -45,4 +45,13 @@ export class CommentEffects {
         return this.commentActions.deleteCommentSuccess(id);
       });
 
+    // tslint:disable-next-line:member-ordering
+    @Effect()
+    editComment$ = this.actions$
+      .ofType(CommentActions.EDIT_COMMENT)
+      .switchMap((action: Action) => {
+        return this.projectService.editComment(action.payload);
+      })
+      .map((comment: Comment) => this.commentActions.editCommentSuccess(comment));
+
 }

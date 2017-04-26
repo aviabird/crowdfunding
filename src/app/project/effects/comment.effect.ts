@@ -33,25 +33,25 @@ export class CommentEffects {
     })
     .map((comment: Comment) => this.commentActions.addCommentSuccess(comment));
 
-    // tslint:disable-next-line:member-ordering
-    @Effect()
-    deleteComment$ = this.actions$
-      .ofType(CommentActions.DELETE_COMMENT)
-      .switchMap((action: Action) => {
-        return this.projectService.deleteComment(action.payload);
-      })
-      .map((id: number) => {
-        console.log('id', id);
-        return this.commentActions.deleteCommentSuccess(id);
-      });
+  // tslint:disable-next-line:member-ordering
+  @Effect()
+  deleteComment$ = this.actions$
+    .ofType(CommentActions.DELETE_COMMENT)
+    .switchMap((action: Action) => {
+      return this.projectService.deleteComment(action.payload);
+    })
+    .map((id: number) => {
+      console.log('id', id);
+      return this.commentActions.deleteCommentSuccess(id);
+    });
 
-    // tslint:disable-next-line:member-ordering
-    @Effect()
-    editComment$ = this.actions$
-      .ofType(CommentActions.EDIT_COMMENT)
-      .switchMap((action: Action) => {
-        return this.projectService.editComment(action.payload);
-      })
-      .map((comment: Comment) => this.commentActions.editCommentSuccess(comment));
+  // tslint:disable-next-line:member-ordering
+  @Effect()
+  editComment$ = this.actions$
+    .ofType(CommentActions.EDIT_COMMENT)
+    .switchMap((action: Action) => {
+      return this.projectService.editComment(action.payload);
+    })
+    .map((comment: Comment) => this.commentActions.editCommentSuccess(comment));
 
 }

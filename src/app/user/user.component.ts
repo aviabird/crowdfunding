@@ -9,10 +9,9 @@ export class UserComponent implements OnInit {
 
   selectedTab = 1;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   changeTab(tab) {
     this.selectedTab = tab;

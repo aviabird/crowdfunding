@@ -1,95 +1,12 @@
 <div class="tab-pane">
   <h2>Names & Contacts Info</h2>
   <div class="row"> 
-    
-    <!-- Profile Pic -->
-    <div class="col-md-4 cntr">
-      <article>
-        <div class="profile_pic">
-          <div class="head-info">
-            <h6>Profile Pic</h6>
-            <div class="edit-info"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></div>
-          </div>
-        </div>
-        <div class="text-center"> <img src="assets/img/user.png" class="img-responsive" alt="img"> </div>
-      </article>
-    </div>
-    
-    <!-- basic info -->
-    <div class="col-md-4 basic_info">
-      <article>
-        <div class="head-info">
-          <h6>basic info</h6>
-          <div class="edit-info"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></div>
-        </div>
-        <h2>John Smith</h2>
-        <p>First and Last Name</p>
-        <h3>25 Kensington Gardens</h3>
-        <p>Street Address</p>
-        <h3>193746WJ</h3>
-        <p>City & Postcode</p>
-        <h3>United Kingdom</h3>
-        <p>Country</p>
-      </article>
-    </div>
-    
-    <!-- Payment Info -->
-    <div class="col-md-4 payment_info">
-      <article>
-        <div class="head-info">
-          <h6>payment info</h6>
-          <div class="edit-info"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></div>
-        </div>
-        <div class="payment_img"><a href="#" class="add-bank-info">Bank</a> <a href="#"><img src="assets/img/stripe.png" class="img-responsive" alt="img"></a></div>
-        <p>Bank and Stripe Available</p>
-        <h3>Bank Account # 1</h3>
-        <p>Adnan Arif</p>
-      </article>
-    </div>
+    <app-profile-pic [user]="user$ | async"></app-profile-pic>
+    <app-basic-info></app-basic-info>
+    <app-payment-info></app-payment-info>
   </div>
   <div class="row"> 
-    
-    <!-- email & password -->
-    <div class="col-md-6 profile_edit">
-      <article>
-        <div class="head-info">
-          <h6>email & password</h6>
-          <div class="edit-info"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></div>
-        </div>
-        <h2>johnsmith@gmail.com</h2>
-        <p>First email address</p>
-        <h2>johnsmith@yahoo.co.uk</h2>
-        <p>Security email address</p>
-        <h4>***************</h4>
-        <p>Password</p>
-      </article>
-    </div>
-    
-    <!-- social_media -->
-    <div class="col-md-6 social_media">
-      <article>
-        <div class="head-info">
-          <h6>social media links</h6>
-          <div class="edit-info"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></div>
-        </div>
-        <div class="social_media_box">
-          <ul>
-            <li> <a href="#"><span><i class="fa fa-facebook" aria-hidden="true"></i></span> </a>
-              <p>Not linked</p>
-            </li>
-            <li> <a href="#"><span><i class="fa fa-twitter" aria-hidden="true"></i></span> </a>
-              <p>Not linked</p>
-            </li>
-            <li> <a href="#"><span><i class="fa fa-instagram" aria-hidden="true"></i></span> </a>
-              <p>Not linked</p>
-            </li>
-            <li> <a href="#"><span><i class="fa fa-google-plus" aria-hidden="true"></i></span> </a>
-              <p>Not linked</p>
-            </li>
-          </ul>
-        </div>
-        <p>Connect to all your friends and spread the love!</p>
-      </article>
-    </div>
+    <app-email-password></app-email-password>
+    <app-social-media-links></app-social-media-links>
   </div>
 </div>

@@ -1,3 +1,4 @@
+import { UserActions } from './../user/actions/user.actions';
 import { CommentActions } from './../project/actions/comment.actions';
 import { ProjectResolveGuard } from './guards/project-resolve.guard';
 import { StripeService } from './services/stripe.service';
@@ -31,6 +32,7 @@ export function httpInterceptor(
     },
     ProjectActions,
     CommentActions,
+    UserActions,
     ProjectService,
     AuthService,
     AuthActions,

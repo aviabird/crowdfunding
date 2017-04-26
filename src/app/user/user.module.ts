@@ -1,3 +1,7 @@
+import { UserActions } from './actions/user.actions';
+import { UserService } from './services/user.service';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from './effects/user.effects';
 import { routes } from './user.routes';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from './../shared/shared.module';
@@ -11,10 +15,16 @@ import { ProjectBackersComponent } from './components/project-backers/project-ba
 import { MailComponent } from './components/mail/mail.component';
 import { UserCampaignsComponent } from './components/user-campaigns/user-campaigns.component';
 import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
+import { BasicInfoComponent } from './components/name-contacts-info/basic-info/basic-info.component';
+import { PaymentInfoComponent } from './components/name-contacts-info/payment-info/payment-info.component';
+import { EmailPasswordComponent } from './components/name-contacts-info/email-password/email-password.component';
+import { SocialMediaLinksComponent } from './components/name-contacts-info/social-media-links/social-media-links.component';
+import { ProfilePicComponent } from './components/name-contacts-info/profile-pic/profile-pic.component';
 
 @NgModule({
   imports: [
     RouterModule.forChild(routes),
+    EffectsModule.run(UserEffects),
     SharedModule
   ],
   declarations: [
@@ -25,8 +35,16 @@ import { ComingSoonComponent } from './components/coming-soon/coming-soon.compon
     ProjectBackersComponent,
     MailComponent,
     UserCampaignsComponent,
-    ComingSoonComponent
+    ComingSoonComponent,
+    BasicInfoComponent,
+    PaymentInfoComponent,
+    EmailPasswordComponent,
+    SocialMediaLinksComponent,
+    ProfilePicComponent
   ],
-  providers: []
+  providers: [
+    UserService,
+    UserActions
+  ]
 })
 export class UserModule { }

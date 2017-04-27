@@ -3,7 +3,7 @@
     <div class="head-info">
       <h6>basic info</h6>
       <div class="edit-info">
-        <i *ngIf="!edited" (click)="editBasicInfo()" class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        <i *ngIf="isAuthUser() && !edited" (click)="editBasicInfo()" class="fa fa-pencil-square-o" aria-hidden="true"></i>
         <button *ngIf="edited" (click)="saveBasicInfo()" class="save-button">Save</button>
       </div>
     </div>

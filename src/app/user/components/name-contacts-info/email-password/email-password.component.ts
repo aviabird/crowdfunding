@@ -1,3 +1,4 @@
+import { UserService } from './../../../services/user.service';
 import { UserActions } from './../../../actions/user.actions';
 import { AppState } from './../../../../app.state';
 import { Store } from '@ngrx/store';
@@ -19,7 +20,8 @@ export class EmailPasswordComponent implements OnInit {
   constructor(
     private store: Store<AppState>,
     private fb: FormBuilder,
-    private userActions: UserActions
+    private userActions: UserActions,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
@@ -43,6 +45,10 @@ export class EmailPasswordComponent implements OnInit {
       'secondary_email': [this.user.secondary_email],
       'password': ['', Validators.required]
     });
+  }
+
+  isAuthUser() {
+    return this.userService.isLoggedInUser(this.user);
   }
 
 }

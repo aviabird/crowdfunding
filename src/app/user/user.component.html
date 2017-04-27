@@ -24,16 +24,16 @@
                   <li [ngClass]="{'active': selectedTab == 1}">
                     <a (click)="changeTab(1)"><i class="fa fa-user-o"></i> Names & Contacts</a>
                   </li>
-                  <li [ngClass]="{'active': selectedTab == 2}">
+                  <li *ngIf="isCreator()" [ngClass]="{'active': selectedTab == 2}">
                     <a (click)="changeTab(2)"><i class="fa fa-eye"></i> Quick view</a>
                   </li>
-                  <li [ngClass]="{'active': selectedTab == 3}">
+                  <li *ngIf="isCreator()" [ngClass]="{'active': selectedTab == 3}">
                     <a (click)="changeTab(3)"><i class="fa fa-heart"></i> Backers </a>
                   </li>
                   <li [ngClass]="{'active': selectedTab == 4}">
                     <a (click)="changeTab(4)"><i class="fa fa-podcast"></i> Projects I backed</a>
                   </li>
-                  <li [ngClass]="{'active': selectedTab == 5}">
+                  <li *ngIf="isAuthUser()" [ngClass]="{'active': selectedTab == 5}">
                     <a (click)="changeTab(5)"><i class="fa fa-envelope-o"></i> Mail</a>
                   </li>
                   <li [ngClass]="{'active': selectedTab == 6}">
@@ -53,22 +53,22 @@
           <div class="tab-content responsive">
             <div class="" [ngSwitch]="selectedTab">
               <ng-template [ngSwitchCase]="'1'" ngSwitchDefault>
-                <app-name-contacts-info [user]="user$ | async"></app-name-contacts-info>
+                <app-name-contacts-info [user]="user"></app-name-contacts-info>
               </ng-template>
-              <ng-template [ngSwitchCase]="'2'">
+              <ng-template *ngIf="isCreator()" [ngSwitchCase]="'2'">
               <app-quick-view></app-quick-view>
               </ng-template>
-              <ng-template [ngSwitchCase]="'3'">
-                <app-project-backers [user]="user$ | async"></app-project-backers>
+              <ng-template *ngIf="isCreator()" [ngSwitchCase]="'3'">
+                <app-project-backers [user]="user"></app-project-backers>
               </ng-template>
               <ng-template [ngSwitchCase]="'4'">
-                <app-backed-projects [user]="user$ | async"></app-backed-projects>
+                <app-backed-projects [user]="user"></app-backed-projects>
               </ng-template>
               <ng-template [ngSwitchCase]="'5'">
-                <app-mail></app-mail>
+                <app-mail *ngIf="isAuthUser()"></app-mail>
               </ng-template>
               <ng-template [ngSwitchCase]="'6'">
-                <app-user-campaigns [user]="user$ | async"></app-user-campaigns>
+                <app-user-campaigns [user]="user"></app-user-campaigns>
               </ng-template>
               <ng-template [ngSwitchCase]="'7'">
                 <app-coming-soon></app-coming-soon>

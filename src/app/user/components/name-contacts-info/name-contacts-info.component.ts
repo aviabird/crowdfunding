@@ -13,4 +13,5 @@ export class NameContactsInfoComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
 }

@@ -21,6 +21,6 @@
         </tr>
       </tbody>
     </table>
-    <div class="text-center"> <a href="#." class="btn">add a campaign</a> </div>
+    <div *ngIf="isAuthUser()" class="text-center"> <a [routerLink]="['/projects','new']" class="btn">add a campaign</a> </div>
   </div>
 </div>

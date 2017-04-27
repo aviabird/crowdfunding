@@ -3,7 +3,7 @@
     <div class="head-info">
       <h6>social media links</h6>
       <div class="edit-info">
-        <i *ngIf="!edited" (click)="editSocialLinks()" class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        <i *ngIf="isAuthUser() && !edited" (click)="editSocialLinks()" class="fa fa-pencil-square-o" aria-hidden="true"></i>
         <button *ngIf="edited" (click)="saveSocialLinks()" class="save-button">Save</button>
       </div>
     </div>

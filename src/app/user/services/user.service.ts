@@ -1,3 +1,7 @@
+import { getAuthUser } from './../../core/reducers/auth.selector';
+import { AppState } from './../../app.state';
+import { Store } from '@ngrx/store';
+import { User } from './../../core/models/user';
 import { HttpService } from './../../core/services/http';
 import { Response } from '@angular/http';
 import { UserActions } from './../actions/user.actions';
@@ -5,7 +9,18 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class UserService {
-  constructor(private userActions: UserActions, private http: HttpService) {}
+
+  authUser: User;
+
+  constructor(
+    private userActions: UserActions,
+    private http: HttpService,
+    private store: Store<AppState>
+  ) {
+    this.store.select(getAuthUser).subscribe((user) => {
+      this.authUser = user;
+    });
+  }
 
   fetchUser(id: number) {
     return this.http.get(
@@ -31,5 +46,13 @@ export class UserService {
       return res.json();
     });
   }
+
+  isLoggedInUser(user) {
+    if (user && this.authUser) {
+      return user.id === this.authUser.id;
+    }
+    return false;
+  }
+
 
 }

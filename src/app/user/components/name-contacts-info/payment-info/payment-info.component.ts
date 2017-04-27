@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { User } from './../../../../core/models/user';
+import { UserService } from './../../../services/user.service';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-payment-info',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentInfoComponent implements OnInit {
 
-  constructor() { }
+  @Input() user: User;
+
+  constructor(
+    private userService: UserService
+  ) { }
 
   ngOnInit() {
+  }
+
+  isAuthUser() {
+    return this.userService.isLoggedInUser(this.user);
   }
 
 }

@@ -1,3 +1,4 @@
+import { UserService } from './../../services/user.service';
 import { User } from './../../../core/models/user';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -10,9 +11,15 @@ export class UserCampaignsComponent implements OnInit {
 
   @Input() user: User;
 
-  constructor() { }
+  constructor(
+    private userService: UserService
+  ) { }
 
   ngOnInit() {
+  }
+
+  isAuthUser() {
+    return this.userService.isLoggedInUser(this.user);
   }
 
 }

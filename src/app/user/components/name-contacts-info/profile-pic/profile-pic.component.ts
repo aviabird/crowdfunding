@@ -1,3 +1,4 @@
+import { UserService } from './../../../services/user.service';
 import { User } from './../../../../core/models/user';
 import { UserActions } from './../../../actions/user.actions';
 import { AppState } from './../../../../app.state';
@@ -13,7 +14,11 @@ export class ProfilePicComponent implements OnInit {
 
   @Input() user: User;
 
-  constructor(private store: Store<AppState>, private userActions: UserActions) { }
+  constructor(
+    private store: Store<AppState>,
+    private userActions: UserActions,
+    private userService: UserService
+  ) { }
 
   ngOnInit() {
   }
@@ -21,6 +26,10 @@ export class ProfilePicComponent implements OnInit {
   updateProfileImage(image) {
     const id = this.user.id;
     this.store.dispatch(this.userActions.updateUserProfilePic(image));
+  }
+
+  isAuthUser() {
+    return this.userService.isLoggedInUser(this.user);
   }
 
 }

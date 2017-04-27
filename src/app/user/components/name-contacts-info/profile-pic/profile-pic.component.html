@@ -3,10 +3,10 @@
     <div class="profile_pic">
       <div class="head-info">
         <h6>Profile Pic</h6>
-        <div class="edit-info"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></div>
+        <div *ngIf="isAuthUser()" class="edit-info"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></div>
       </div>
     </div>
     <div class="text-center"> <img [src]="user?.image_url" class="img-responsive" alt="img"> </div>
-    <app-image-upload (image)="updateProfileImage($event)"></app-image-upload>
+    <app-image-upload *ngIf="isAuthUser()" (image)="updateProfileImage($event)"></app-image-upload>
   </article>
 </div>

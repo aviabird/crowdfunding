@@ -1,3 +1,4 @@
+import { UserService } from './../../../services/user.service';
 import { Address } from './../../../../core/models/address';
 import { UserActions } from './../../../actions/user.actions';
 import { AppState } from './../../../../app.state';
@@ -20,7 +21,8 @@ export class BasicInfoComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private store: Store<AppState>,
-    private userActions: UserActions
+    private userActions: UserActions,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
@@ -55,5 +57,8 @@ export class BasicInfoComponent implements OnInit {
     });
   }
 
+  isAuthUser() {
+    return this.userService.isLoggedInUser(this.user);
+  }
 
 }

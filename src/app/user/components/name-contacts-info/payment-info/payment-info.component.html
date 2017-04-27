@@ -2,7 +2,7 @@
   <article>
     <div class="head-info">
       <h6>payment info</h6>
-      <div class="edit-info"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></div>
+      <div *ngIf="isAuthUser()" class="edit-info"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></div>
     </div>
     <div class="payment_img"><a class="add-bank-info">Bank</a> <a><img src="assets/img/stripe.png" class="img-responsive" alt="img"></a></div>
     <p>Bank and Stripe Available</p>

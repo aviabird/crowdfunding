@@ -1,3 +1,4 @@
+import { UserService } from './../../../services/user.service';
 import { AppState } from './../../../../app.state';
 import { Store } from '@ngrx/store';
 import { UserActions } from './../../../actions/user.actions';
@@ -19,7 +20,8 @@ export class SocialMediaLinksComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userActions: UserActions,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
@@ -46,5 +48,8 @@ export class SocialMediaLinksComponent implements OnInit {
     });
   }
 
+  isAuthUser() {
+    return this.userService.isLoggedInUser(this.user);
+  }
 
 }

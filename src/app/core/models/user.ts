@@ -1,5 +1,5 @@
-import { SocialLink } from './social-link';
 import { Address } from './address';
+
 export class User {
   id: '';
   name: string;

@@ -2565,7 +2565,7 @@ ul.buttonslist {
 	width: 9px;
 	height: 11px;
 	outline: 0;
-	background: url/img/controls.png) -86px -44px no-repeat;
+	/*background: url(img/controls.png) -86px -44px no-repeat;*/
 	margin: 0 3px;
 }
 .bx-wrapper .bx-controls-auto .bx-stop:hover, .bx-wrapper .bx-controls-auto .bx-stop.active {

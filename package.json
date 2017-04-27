@@ -30,8 +30,6 @@
     "@ngx-translate/http-loader": "0.0.3",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
-    "flexslider": "^2.6.3",
-    "font-awesome": "^4.7.0",
     "immutable": "^3.8.1",
     "jquery": "^3.2.1",
     "ng-recaptcha": "^2.0.2",

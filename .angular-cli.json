@@ -22,23 +22,20 @@
       "prefix": "app",
       "styles": [
         "../node_modules/ng2-toasty/style-bootstrap.css",
-        "../node_modules/flexslider/flexslider.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-        "../node_modules/font-awesome/css/font-awesome.min.css",
         "assets/fonts/flaticon.css",
+        "assets/font-awesome-4.3.0/css/font-awesome.min.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "assets/css/style.css",
         "assets/css/style-2.css",
         "assets/css/new-style.css",
-        "assets/css/css1.css",
-        "assets/css/flags.css",
-        "assets/css/dropkick.css",
         "styles.scss"
       ],
       "scripts": [
-        "../node_modules/jquery/dist/jquery.min.js",
+        "assets/js/jquery-1.12.4.min.js",
         "../node_modules/bootstrap/dist/js/bootstrap.min.js",
-        "../node_modules/flexslider/jquery.flexslider-min.js",
-        "../node_modules/select/dist/select.js"
+        "assets/js/jquery.flexslider.js",
+        "assets/js/plug-ins.js",
+        "assets/js/main.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

@@ -44,6 +44,7 @@ export class BasicInfoComponent implements OnInit {
     return this.fb.group({
       'id': [this.user.id],
       'name': [this.user.name],
+      'phone_no': [this.user.phone_no],
       'address_attributes': this.fb.group({
         'id': [address.id],
         'street_address': [address.street_address, Validators.required],

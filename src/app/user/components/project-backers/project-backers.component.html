@@ -12,26 +12,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>John Smith</td>
-          <td>johnsmith@gmail.com</td>
-          <td>25 cnshgy 239847 Italy</td>
-          <td>259 475903284</td>
-          <td>$1290</td>
-        </tr>
-        <tr>
-          <td>John Smith</td>
-          <td>johnsmith@gmail.com</td>
-          <td>25 cnshgy 239847 Italy</td>
-          <td>259 475903284</td>
-          <td>$1290</td>
-        </tr>
-        <tr>
-          <td>John Smith</td>
-          <td>johnsmith@gmail.com</td>
-          <td>25 cnshgy 239847 Italy</td>
-          <td>259 475903284</td>
-          <td>$1290</td>
+        <tr *ngFor="let backer of user.project_backers">
+          <td>{{backer.name}}</td>
+          <td>{{backer.email}}</td>
+          <td>{{backer.address || 'Not Availabe'}}</td>
+          <td>{{backer.phone_no || 'Not Availabe'}}</td>
+          <td>${{backer.total_backed_amount}}</td>
         </tr>
       </tbody>
     </table>

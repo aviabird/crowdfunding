@@ -59,7 +59,7 @@
               <app-quick-view></app-quick-view>
               </ng-template>
               <ng-template [ngSwitchCase]="'3'">
-                <app-project-backers></app-project-backers>
+                <app-project-backers [user]="user$ | async"></app-project-backers>
               </ng-template>
               <ng-template [ngSwitchCase]="'4'">
                 <app-backed-projects [user]="user$ | async"></app-backed-projects>

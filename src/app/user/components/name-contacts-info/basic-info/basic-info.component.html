@@ -10,6 +10,8 @@
     <div *ngIf="!edited">
       <h2>{{user?.name}}</h2>
       <p>First and Last Name</p>
+      <h2>{{user?.phone_no}}</h2>
+      <p>Phone No</p>
       <h3 *ngIf="user?.address?.street_address">{{user?.address?.street_address}}</h3>
       <h3 *ngIf="!(user?.address?.street_address)">Not Present</h3>
       <p>Street Address</p>
@@ -28,6 +30,10 @@
         <div class="input-group">
           <input type="text" formControlName="name" class="form-control" >
           <p>First and Last Name</p>
+        </div>
+        <div class="input-group">
+          <input type="text" formControlName="phone_no" class="form-control" >
+          <p>Phone no</p>
         </div>
         <div formGroupName="address_attributes">
           <div class="input-group">

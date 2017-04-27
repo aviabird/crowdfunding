@@ -25,14 +25,17 @@ export class UserComponent implements OnInit {
     private route: ActivatedRoute,
     private userService: UserService
   ) {
-    this.route.params.subscribe(params => this.userId = params['id']);
+    this.route.params.subscribe((params) => {
+      this.userId = params['id'];
+      this.store.dispatch(this.userActions.loadUser(this.userId));
+    });
+
     this.store.select(getUser).subscribe((user) => {
       this.user = user;
     });
   }
 
   ngOnInit() {
-    this.store.dispatch(this.userActions.loadUser(this.userId));
   }
 
   changeTab(tab) {

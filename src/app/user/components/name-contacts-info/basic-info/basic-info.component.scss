@@ -1,0 +1,24 @@
+.save-button {
+	padding: 0 20px 0 20px;
+	border: 1px solid transparent;
+	background-color: #333;
+	color: white;
+	border-radius: 5px;
+	height: 34px;
+	margin-top: -7px;
+	&:hover {
+		background-color: #29acbf;
+	}
+}
+
+.fa {
+	cursor: pointer;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 100 !important;
+}
+
+h2 {
+	font-size: 15px !important;
+}

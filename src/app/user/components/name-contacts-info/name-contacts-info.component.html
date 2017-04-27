@@ -7,6 +7,6 @@
   </div>
   <div class="row">
     <app-email-password [user]="user$ | async"></app-email-password>
-    <app-social-media-links></app-social-media-links>
+    <app-social-media-links [user]="user$ | async"></app-social-media-links>
   </div>
 </div>

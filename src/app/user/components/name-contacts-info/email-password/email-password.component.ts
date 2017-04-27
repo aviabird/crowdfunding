@@ -40,7 +40,8 @@ export class EmailPasswordComponent implements OnInit {
     return this.fb.group({
       'id': [this.user.id],
       'email': [this.user.email, Validators.required],
-      'secondary_email': [this.user.secondary_email]
+      'secondary_email': [this.user.secondary_email],
+      'password': ['', Validators.required]
     });
   }
 

@@ -1,3 +1,4 @@
+import { SocialLink } from './social-link';
 import { Address } from './address';
 export class User {
   id: '';
@@ -5,5 +6,10 @@ export class User {
   image_url: string;
   email: string;
   secondary_email: string;
-  address: Address;
+  facebook_url: string;
+  twitter_url: string;
+  instagram_url: string;
+  google_plus_url: string;
+  address: Address = new Address;
 }
+

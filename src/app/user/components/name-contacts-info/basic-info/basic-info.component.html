@@ -2,15 +2,53 @@
   <article>
     <div class="head-info">
       <h6>basic info</h6>
-      <div class="edit-info"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></div>
+      <div class="edit-info">
+        <i *ngIf="!edited" (click)="editBasicInfo()" class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        <button *ngIf="edited" (click)="saveBasicInfo()" class="save-button">Save</button>
+      </div>
     </div>
-    <h2>{{user?.name}}</h2>
-    <p>First and Last Name</p>
-    <h3>25 Kensington Gardens</h3>
-    <p>Street Address</p>
-    <h3>193746WJ</h3>
-    <p>City & Postcode</p>
-    <h3>United Kingdom</h3>
-    <p>Country</p>
+    <div *ngIf="!edited">
+      <h2>{{user?.name}}</h2>
+      <p>First and Last Name</p>
+      <h3 *ngIf="user?.address?.street_address">{{user?.address?.street_address}}</h3>
+      <h3 *ngIf="!(user?.address?.street_address)">Not Present</h3>
+      <p>Street Address</p>
+      <h3 *ngIf="user?.address?.city">{{user?.address?.city}}</h3>
+      <h3 *ngIf="!(user?.address?.city)">Not Present</h3>
+      <p>City</p>
+      <h3 *ngIf="user?.address?.postcode">{{user?.address?.postcode}}</h3>
+      <h3 *ngIf="!(user?.address?.postcode)">Not Present</h3>
+      <p>Postcode</p>
+      <h3 *ngIf="user?.address?.country">{{user?.address?.country}}</h3>
+      <h3 *ngIf="!(user?.address?.country)">Not Present</h3>
+      <p>Country</p>
+    </div>
+    <div *ngIf="edited">
+      <form [formGroup]="basicInfoForm">
+        <div class="input-group">
+          <input type="text" formControlName="name" class="form-control" >
+          <p>First and Last Name</p>
+        </div>
+        <div formGroupName="address_attributes">
+          <div class="input-group">
+            <input type="text" formControlName="street_address" class="form-control">
+            <p>Street Address</p>
+          </div>
+          <div class="input-group">
+            <input type="text" formControlName="city" class="form-control">
+            <p>City</p>
+          </div>
+          <div class="input-group">
+            <input type="text" formControlName="postcode" class="form-control">
+            <p>Postcode</p>
+          </div>
+          <div class="input-group">
+            <input type="text" formControlName="country" class="form-control">
+            <p>Country</p>
+          </div>
+        </div>
+      </form>
+    </div>
+
   </article>
 </div>

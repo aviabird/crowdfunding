@@ -1,12 +1,12 @@
 <div class="tab-pane">
   <h2>Names & Contacts Info</h2>
   <div class="row"> 
-    <app-profile-pic [user]="user$ | async"></app-profile-pic>
-    <app-basic-info [user]="user$ | async"></app-basic-info>
+    <app-profile-pic [user]="user"></app-profile-pic>
+    <app-basic-info [user]="user"></app-basic-info>
     <app-payment-info></app-payment-info>
   </div>
   <div class="row">
-    <app-email-password [user]="user$ | async"></app-email-password>
-    <app-social-media-links [user]="user$ | async"></app-social-media-links>
+    <app-email-password [user]="user"></app-email-password>
+    <app-social-media-links [user]="user"></app-social-media-links>
   </div>
 </div>

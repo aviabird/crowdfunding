@@ -23,6 +23,5 @@ export class Project extends Base {
   rewards: Reward[] = [new Reward];
   faqs: Faq[] = [new Faq];
   links: Link[] = [new Link];
-  events: Event[] = [new Event];
   story: Story = new Story;
 }

@@ -53,7 +53,7 @@
           <div class="tab-content responsive">
             <div class="" [ngSwitch]="selectedTab">
               <ng-template [ngSwitchCase]="'1'" ngSwitchDefault>
-                <app-name-contacts-info></app-name-contacts-info>
+                <app-name-contacts-info [user]="user$ | async"></app-name-contacts-info>
               </ng-template>
               <ng-template [ngSwitchCase]="'2'">
               <app-quick-view></app-quick-view>
@@ -62,13 +62,13 @@
                 <app-project-backers></app-project-backers>
               </ng-template>
               <ng-template [ngSwitchCase]="'4'">
-                <app-backed-projects></app-backed-projects>
+                <app-backed-projects [user]="user$ | async"></app-backed-projects>
               </ng-template>
               <ng-template [ngSwitchCase]="'5'">
                 <app-mail></app-mail>
               </ng-template>
               <ng-template [ngSwitchCase]="'6'">
-                <app-user-campaigns></app-user-campaigns>
+                <app-user-campaigns [user]="user$ | async"></app-user-campaigns>
               </ng-template>
               <ng-template [ngSwitchCase]="'7'">
                 <app-coming-soon></app-coming-soon>

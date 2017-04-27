@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { User } from './../../../core/models/user';
+import { Store } from '@ngrx/store';
+import { AppState } from './../../../app.state';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-backed-projects',
@@ -7,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BackedProjectsComponent implements OnInit {
 
-  constructor() { }
+  @Input() user: User;
+
+  constructor() {}
 
   ngOnInit() {
   }

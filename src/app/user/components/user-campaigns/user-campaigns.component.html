@@ -8,23 +8,16 @@
           <th class="center">End Date</th>
           <th class="center">Name</th>
           <th class="center">Target</th>
-          <th class="center">Founded</th>
+          <th class="center">Funded</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr *ngFor="let project of user.projects">
           <td>23-04-2017</td>
           <td class="center">28-04-2018</td>
-          <td class="center">Here is you Campaigns tittle</td>
-          <td class="center">$2500</td>
-          <td class="center">$1850</td>
-        </tr>
-        <tr>
-          <td>23-04-2017</td>
-          <td class="center">28-04-2018</td>
-          <td class="center">Here is you Campaigns tittle</td>
-          <td class="center">$2500</td>
-          <td class="center">$1850</td>
+          <td class="center">{{project.title}}</td>
+          <td class="center">${{project.pledged_amount}}</td>
+          <td class="center">${{project.funded_amount}}</td>
         </tr>
       </tbody>
     </table>

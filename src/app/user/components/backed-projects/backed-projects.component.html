@@ -1,62 +1,16 @@
 <div class="tab-pane">
   <h2> Projects I backed</h2>
-
-  <!-- Projects -->
   <div class="projects padding-0">
     <div class="row"> 
-      
-      <!-- Projects Item -->
-      <div class="col-sm-6">
+      <div *ngFor="let project of user?.backed_projects" class="col-sm-6">
         <article>
-          <div class="p-img"> <img src="assets/img/p-img-1.jpg" alt="" > </div>
-          <div class="text-part"> <a href="#.">BLOOD MACHINES - Turbo Killer 2</a> </div>
+          <div class="p-img"> <img [src]="project.image_url" alt="" > </div>
+          <div class="text-part"> <a href="#.">{{project.title}}</a> </div>
           <ul>
-            <li class="pouch-info"> <i class="pouch"></i> <span>44%</span> </li>
-            <li> <i class="flaticon-target"></i> <span>$7,999</span> </li>
-            <li> <i class="flaticon-user"></i> <span>179</span> </li>
-            <li> <i class="flaticon-alarm-clock"></i> <span>13</span> </li>
-          </ul>
-        </article>
-      </div>
-      
-      <!-- Projects Item -->
-      <div class="col-sm-6">
-        <article>
-          <div class="p-img"> <img src="assets/img/p-img-1.jpg" alt="" > </div>
-          <div class="text-part"> <a href="#.">BLOOD MACHINES - Turbo Killer 2</a> </div>
-          <ul>
-            <li class="pouch-info"> <i class="pouch pouch-half"></i> <span>55%</span> </li>
-            <li> <i class="flaticon-target"></i> <span>$7,999</span> </li>
-            <li> <i class="flaticon-user"></i> <span>179</span> </li>
-            <li> <i class="flaticon-alarm-clock"></i> <span>13</span> </li>
-          </ul>
-        </article>
-      </div>
-      
-      <!-- Projects Item -->
-      <div class="col-sm-6">
-        <article>
-          <div class="p-img"> <img src="assets/img/p-img-1.jpg" alt="" > </div>
-          <div class="text-part"> <a href="#.">BLOOD MACHINES - Turbo Killer 2</a> </div>
-          <ul>
-            <li class="pouch-info"> <i class="pouch"></i> <span>44%</span> </li>
-            <li> <i class="flaticon-target"></i> <span>$7,999</span> </li>
-            <li> <i class="flaticon-user"></i> <span>179</span> </li>
-            <li> <i class="flaticon-alarm-clock"></i> <span>13</span> </li>
-          </ul>
-        </article>
-      </div>
-      
-      <!-- Projects Item -->
-      <div class="col-sm-6">
-        <article>
-          <div class="p-img"> <img src="assets/img/p-img-1.jpg" alt="" > </div>
-          <div class="text-part"> <a href="#.">BLOOD MACHINES - Turbo Killer 2</a> </div>
-          <ul>
-            <li class="pouch-info"> <i class="pouch"></i> <span>44%</span> </li>
-            <li> <i class="flaticon-target"></i> <span>$7,999</span> </li>
-            <li> <i class="flaticon-user"></i> <span>179</span> </li>
-            <li> <i class="flaticon-alarm-clock"></i> <span>13</span> </li>
+            <li class="pouch-info"> <i class="pouch"></i> <span>{{project.percent_funded}}%</span> </li>
+            <li> <i class="flaticon-target"></i> <span>${{project.pledged_amount}}</span> </li>
+            <li> <i class="flaticon-user"></i> <span>{{project.total_backers}}</span> </li>
+            <li> <i class="flaticon-alarm-clock"></i> <span>{{project.duration}}</span> </li>
           </ul>
         </article>
       </div>

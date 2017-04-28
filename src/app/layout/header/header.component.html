@@ -8,7 +8,7 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul *ngIf="!(authStatus$ | async)" class="nav navbar-nav navbar-right">
-            <li><a href="#">About us</a></li>
+            <li><a [routerLink]="['/about-us']">About us</a></li>
             <li><a href="#">Blog</a></li>
             <li><a href="#">Explore</a></li>
             <li><a (click)="showModal('login')" class="btn" data-toggle="modal" data-target="#myModal1"><i class="flaticon-login"></i> Login</a></li>

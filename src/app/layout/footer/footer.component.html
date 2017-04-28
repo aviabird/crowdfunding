@@ -17,21 +17,21 @@
       <div class="col-md-4">
         <div class="links">
           <ul>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Jobs</a></li>
-            <li><a href="#">Press</a></li>
-            <li><a href="#">Statistics</a></li>
-            <li><a href="#">Newsletter</a></li>
-            <li><a href="#">Support</a></li>
-            <li><a href="#">Partners</a></li>
-            <li><a href="#">Tutorial</a></li>
+            <li><a [routerLink]="['/about-us']">About Us</a></li>
+            <li><a [routerLink]="['/jobs']">Jobs</a></li>
+            <li><a [routerLink]="['/press']">Press</a></li>
+            <li><a [routerLink]="['/statistics']">Statistics</a></li>
+            <li><a [routerLink]="['/newsletter']">Newsletter</a></li>
+            <li><a [routerLink]="['/support']">Support</a></li>
+            <li><a [routerLink]="['/partners']">Partners</a></li>
+            <li><a [routerLink]="['/tutorials']">Tutorial</a></li>
           </ul>
           <ul>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Rulebook</a></li>
-            <li><a href="#">Events</a></li>
-            <li><a href="#">Trust & Safety</a></li>
+            <li><a [routerLink]="['/blog']">Blog</a></li>
+            <li><a [routerLink]="['/faqs']">FAQ</a></li>
+            <li><a [routerLink]="['/rulebook']">Rulebook</a></li>
+            <li><a [routerLink]="['/events']">Events</a></li>
+            <li><a [routerLink]="['/trust']">Trust & Safety</a></li>
           </ul>
         </div>
       </div>
@@ -45,7 +45,10 @@
       <div class="row">
         <div class="col-md-8">
           <p>Copyright 2017 Crowd Pouch</p>
-          <a href="#."> Privacy Policy </a> <a href="#.">Term & Condition</a> <a href="#."> Cookie Policy </a> </div>
+          <a [routerLink]="['/privacy']"> Privacy Policy </a>
+					<a [routerLink]="['/terms']">Term & Condition </a>
+					<a [routerLink]="['/cookies']"> Cookie Policy </a>
+				</div>
         <div class="col-md-4">
           <div class="row">
             <div class="col-md-6"> <img class="margin-top-10" src="assets/img/Bitmap.png" alt="icon"> </div>

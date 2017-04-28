@@ -173,7 +173,7 @@ export class ProjectService {
 
   getProjectsByCategory(category: string) {
     return this.http.get(
-      `/api/v1/projects/${category}`
+      `/api/v1/projects/categories/${category}`
     ).map((res) => {
       return res.json();
     });

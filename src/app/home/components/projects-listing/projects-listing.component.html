@@ -6,7 +6,7 @@
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
         <ul class="nav navbar-nav">
-          <li><a href="#">Art</a></li>
+          <!--<li><a href="#">Art</a></li>
           <li class="dropdown active"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Comics<span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li class="active"><a href="#">All Comics Projects</a></li>
@@ -16,21 +16,22 @@
               <li><a href="#">Graphic Novels</a></li>
               <li><a href="#">Web Comics</a></li>
             </ul>
-          </li>
-          <li><a href="#">Crafts</a></li>
-          <li><a href="#">Dance</a></li>
-          <li><a href="#">Dance</a></li>
-          <li><a href="#">Design</a></li>
-          <li><a href="#">Fashion</a></li>
-          <li><a href="#">Film </a></li>
-          <li><a href="#">Video</a></li>
-          <li><a href="#">Food</a></li>
-          <li><a href="#">Games</a></li>
-          <li><a href="#">Music</a></li>
-          <li><a href="#">Photography</a></li>
-          <li><a href="#">Publishing</a></li>
-          <li><a href="#">Technology</a></li>
-          <li><a href="#">Theater</a></li>
+          </li>-->
+          <li><a [routerLink]="['/categories', 'Art']">Art</a></li>
+          <li><a [routerLink]="['/categories', 'Crafts']">Crafts</a></li>
+          <li><a [routerLink]="['/categories', 'Dance']">Dance</a></li>
+          <li><a [routerLink]="['/categories', 'Community']">Community</a></li>
+          <li><a [routerLink]="['/categories', 'Fashion']">Fashion</a></li>
+          <li><a [routerLink]="['/categories', 'Film']">Film </a></li>
+          <li><a [routerLink]="['/categories', 'Video']">Video</a></li>
+          <li><a [routerLink]="['/categories', 'Food']">Food</a></li>
+          <li><a [routerLink]="['/categories', 'Games']">Games</a></li>
+          <li><a [routerLink]="['/categories', 'Music']">Music</a></li>
+          <li><a [routerLink]="['/categories', 'Photography']">Photography</a></li>
+          <li><a [routerLink]="['/categories', 'Publishing']">Publishing</a></li>
+          <li><a [routerLink]="['/categories', 'Technology']">Technology</a></li>
+          <li><a [routerLink]="['/categories', 'Theater']">Theater</a></li>
+          <li><a [routerLink]="['/categories', 'NonProfit']">NonProfit</a></li>
         </ul>
       </div>
     </div>
@@ -41,14 +42,13 @@
 <section id="comicbok12">
   <div class="comicbok12_div" data-stellar-background-ratio="0.8">
     <div class="container">
-      <h1>Comics Books</h1>
-      <p>Comics can make your <strong>life Excited and Pretty</strong></p>
+      <h1>{{category}}</h1>
+      <p>{{category}} can make your <strong>life Excited and Pretty</strong></p>
       <div class="comicbok12_overlay">
         <ol class="breadcrumb">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Categories</a></li>
-          <li><a href="#">Comics</a></li>
-          <li class="active">Comic Books</li>
+          <li><a [routerLink]="['/']">Home</a></li>
+          <li><a [routerLink]="['/categories', 'Art']">Categories</a></li>
+          <li><a [routerLink]="['/categories',category]">{{category}}</a></li>
         </ol>
       </div>
     </div>
@@ -62,7 +62,7 @@
       <div class="col-md-3 col-sm-3 col-xs-6 space15">
         <h2 class="title11"><strong>TRENDING IN</strong></h2>
       </div>
-      <div class="col-md-2 col-sm-3 col-xs-6 space15"> <a href="#" class="comicsbtn1">COMICS BOOKS</a> </div>
+      <div class="col-md-2 col-sm-3 col-xs-6 space15"> <a class="comicsbtn1">{{category}}</a></div>
       <div class="col-md-7 col-sm-6 col-xs-12 space15">
         <div id="linedot"></div>
       </div>
@@ -71,20 +71,21 @@
 </section>
 
 <!-- Trending -->
-<section id="spinagogue1">
+<section *ngIf="trendingProject" id="spinagogue1">
   <div class="container">
     <div class="spinagogue_bg1">
       <div class="row">
-        <div class="col-md-4 padleft50"> <img src="assets/img/img2.png" class="img-responsive center-block" alt="image"> </div>
+        <div class="col-md-4 padleft50"> 
+          <a [routerLink]="['/projects', trendingProject.id]"><img [src]="trendingProject.image_url" class="img-responsive center-block" alt="image"></a>
+        </div>
         <div class="col-md-8 padright50">
           <div class="spacing15">
-            <h3>Spinagogue - The First-Ever Dreidel Spinning Stadium...</h3>
-            <p>by Eric Pavony&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="whiteclr"><img src="assets/img/icon2.png" alt="icon">&nbsp; Online</a></p>
+            <a [routerLink]="['/projects', trendingProject.id]"><h3>{{trendingProject.title}}</h3></a>
+            <p>by {{trendingProject.user_name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="whiteclr"><img src="assets/img/icon2.png" alt="icon">&nbsp; Online</a></p>
             <p  class="space15">Dreidel is now a tabletop game of skill, played competitively and socially by spinners of all ages. No Gelt, No Glory!</p>
-            <p class="space15"><span><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;Newyork, United States of America</span><span class="padleft50"><i class="fa fa-tag" aria-hidden="true"></i>&nbsp;&nbsp;Tabletop Games</span></p>
+            <p class="space15"><span><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;Newyork, United States of America</span><span class="padleft50"><i class="fa fa-tag" aria-hidden="true"></i>&nbsp;&nbsp;{{trendingProject.category_name}}</span></p>
             <div class="progress space10">
               <div class="progress-bar" role="progressbar" aria-valuenow="10"
-
                 aria-valuemin="0" aria-valuemax="100" style="width:10%"> <span class="sr-only"></span> </div>
             </div>
           </div>
@@ -95,33 +96,33 @@
 </section>
 
 <!-- Details -->
-<section class="spinagogue_details1">
+<section  *ngIf="trendingProject" class="spinagogue_details1">
   <div class="container">
     <div class="spinagogue_details1bg">
       <div class="row">
         <div class="col-md-8 padleft50">
           <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-6 space15">
-              <h2>44%<br>
+              <h2>{{trendingProject.percent_funded}}%<br>
                 funded </h2>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-6 space15">
-              <h2>$7,999<br>
+              <h2>${{trendingProject.pledged_amount}}<br>
                 plegded</h2>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-6 space15">
-              <h2>175<br>
+              <h2>{{trendingProject.total_backers}}<br>
                 backers</h2>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-6 space15">
-              <h2>31<br>
+              <h2>{{trendingProject.duration}}<br>
                 days to go</h2>
             </div>
           </div>
         </div>
         <div class="col-md-4 padright50">
           <div class="mybutton_div">
-            <button type="button" class="mybtn">PARTICIPATE</button>
+            <button [routerLink]="['/projects', trendingProject.id]" type="button" class="mybtn">PARTICIPATE</button>
           </div>
         </div>
       </div>
@@ -133,14 +134,14 @@
 <section id="tranding_sec11">
   <div class="container">
     <div class="heading-bar text-center">
-      <h2>Comics Compaigns</h2>
+      <h2>{{category}} Compaigns</h2>
     </div>
     <div class="row">
-      <div class="col-md-4 col-sm-4 col-xs-12 space15">
-        <!--<a href="project-detail.html">-->
-        <div class="sec_detail"> <img src="assets/img/img30.png" width="100%" class="img-responsive center-block" alt="image">
+      <div *ngFor="let project of projects | slice:1 " class="col-md-4 col-sm-4 col-xs-12 space15">
+        <div class="sec_detail"> 
+          <a [routerLink]="['/projects', trendingProject.id]"><img [src]="project.image_url" width="100%" class="img-responsive center-block" alt="image"></a>
           <div class="details1">
-            <h5>BLOOD MACHINES - Turbo Killer 2</h5>
+            <a [routerLink]="['/projects', trendingProject.id]"><h5>{{project.title}}</h5></a>
             <p>Seth Ickerman <a href="#"><span class="onlinetxt active">Online</span></a></p>
             <p class="space15">A live action space opera by SETH ICKERMAN &<br class="hidden-xs">
               CARPENTER BRUT. A female ghost challenges two space hunters into a galactic chase...
@@ -149,64 +150,28 @@
               <div class="col-md-9">
                 <div class="row">
                   <div class="col-md-3 col-sm-6 col-xs-6 space15">
-                    <p class="fsize11">44%<br>
+                    <p class="fsize11">{{project.percent_funded}}%<br>
                       funded 
                     </p>
                   </div>
                   <div class="col-md-3 col-sm-6 col-xs-6 space15">
-                    <p class="fsize11">$7,999<br>
+                    <p class="fsize11">${{project.pledged_amount}}<br>
                       plegded
                     </p>
                   </div>
                   <div class="col-md-3 col-sm-6 col-xs-6 space15">
-                    <p class="fsize11">175<br>
+                    <p class="fsize11">{{project.total_backers}}<br>
                       backers
                     </p>
                   </div>
                   <div class="col-md-3 col-sm-6 col-xs-6 space15">
-                    <p class="fsize11">31<br>
+                    <p class="fsize11">{{project.duration}}<br>
                       days to go
                     </p>
                   </div>
                 </div>
               </div>
               <div class="col-md-3">
-                <a><img src="assets/img/funded.png" alt="icon"></a> 
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-4 col-xs-12 space15"> 
-        <!--<a href="project-detail.html">-->
-        <div class="sec_detail"> <img src="assets/img/img30.png" width="100%" class="img-responsive center-block" alt="image">
-          <div class="details1">
-            <h5>BLOOD MACHINES - Turbo Killer 2</h5>
-            <p>Seth Ickerman <a href="#"><span class="onlinetxt">Online</span></a></p>
-            <p class="space15">A live action space opera by SETH ICKERMAN &<br class="hidden-xs">
-              CARPENTER BRUT. A female ghost challenges two space hunters into a galactic chase...</p>
-            <div class="row">
-              <div class="col-md-9">
-                <div class="row">
-                  <div class="col-md-3 col-sm-6 col-xs-6 space15">
-                    <p class="fsize11">44%<br>
-                      funded </p>
-                  </div>
-                  <div class="col-md-3 col-sm-6 col-xs-6 space15">
-                    <p class="fsize11">$7,999<br>
-                      plegded</p>
-                  </div>
-                  <div class="col-md-3 col-sm-6 col-xs-6 space15">
-                    <p class="fsize11">175<br>
-                      backers</p>
-                  </div>
-                  <div class="col-md-3 col-sm-6 col-xs-6 space15">
-                    <p class="fsize11">31<br>
-                      days to go</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3"> 
                 <a><img src="assets/img/funded.png" alt="icon"></a> 
               </div>
             </div>

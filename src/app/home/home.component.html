@@ -7,7 +7,7 @@
           <div class="text-bnr">
             <h1>The #1 online and mobile fundraising platform. </h1>
             <p>Trusted by 3,000+ of the world's top nonprofits & social enterprises.</p>
-            <a href="#." class="btn">Create your dream</a> </div>
+            <a [routerLink]="['/projects','new']" class="btn">Create your dream</a> </div>
         </div>
       </div>
       <div class="bg-img-2" data-stellar-background-ratio="0.5">
@@ -15,7 +15,7 @@
           <div class="text-bnr">
             <h1>The #1 online and mobile fundraising platform. </h1>
             <p>Trusted by 3,000+ of the world's top nonprofits & social enterprises.</p>
-            <a href="#." class="btn">Create your dream</a> </div>
+            <a [routerLink]="['/projects','new']" class="btn">Create your dream</a> </div>
         </div>
       </div>
     </div>
@@ -27,16 +27,16 @@
 <!-- Categories -->
 <section class="categories" id="go-up">
   <ul>
-    <li> <a href="#."><i class="flaticon-men-dancing"></i> <span>Dance</span></a> </li>
-    <li> <a href="#."><i class="flaticon-idea"></i> <span>Technology</span></a> </li>
-    <li> <a href="#."><i class="flaticon-headphones"></i> <span>Music</span></a> </li>
-    <li> <a href="#."><i class="flaticon-cutlery"></i> <span>Food</span></a> </li>
-    <li> <a href="#."><i class="flaticon-technology-1"></i> <span>Photography</span></a> </li>
-    <li> <a href="#."><i class="flaticon-video-camera"></i> <span>Films</span></a> </li>
-    <li> <a href="#."><i class="flaticon-gamepad"></i> <span>Games</span></a> </li>
-    <li> <a href="#."><i class="flaticon-diamond"></i> <span>Fashion</span></a> </li>
-    <li> <a href="#."><i class="flaticon-charity"></i> <span>Non Profit</span></a> </li>
-    <li> <a href="#." class="all-cat"> Browse <br>
+    <li> <a [routerLink]="['/categories','Dance']"><i class="flaticon-men-dancing"></i> <span>Dance</span></a> </li>
+    <li> <a [routerLink]="['/categories','Technology']"><i class="flaticon-idea"></i> <span>Technology</span></a> </li>
+    <li> <a [routerLink]="['/categories','Music']"><i class="flaticon-headphones"></i> <span>Music</span></a> </li>
+    <li> <a [routerLink]="['/categories','Food']"><i class="flaticon-cutlery"></i> <span>Food</span></a> </li>
+    <li> <a [routerLink]="['/categories','Photography']"><i class="flaticon-technology-1"></i> <span>Photography</span></a> </li>
+    <li> <a [routerLink]="['/categories','Film']"><i class="flaticon-video-camera"></i> <span>Films</span></a> </li>
+    <li> <a [routerLink]="['/categories','Games']"><i class="flaticon-gamepad"></i> <span>Games</span></a> </li>
+    <li> <a [routerLink]="['/categories','Fashion']"><i class="flaticon-diamond"></i> <span>Fashion</span></a> </li>
+    <li> <a [routerLink]="['/categories','NonProfit']"><i class="flaticon-charity"></i> <span>Non Profit</span></a> </li>
+    <li> <a [routerLink]="['/categories','Art']" class="all-cat"> Browse <br>
       All Categories</a> </li>
   </ul>
 </section>
@@ -46,12 +46,12 @@
   <div class="container">
     <div class="heading-block">
       <h2>Trending Projects</h2>
-      <a href="#.">View All</a> </div>
+      <a [routerLink]="['/categories','Art']">View All</a> </div>
     <div class="row"> 
       <div *ngFor="let project of projects" class="col-md-4">
         <article>
-          <div class="p-img"> <img [src]="project.image_url" alt="" > </div>
-          <div class="text-part"> <a href="#.">{{project.title}}</a>
+          <div class="p-img"><a [routerLink]="['/projects',project.id]"><img [src]="project.image_url" alt="" ></a></div>
+          <div class="text-part"> <a [routerLink]="['/projects',project.id]">{{project.title}}</a>
             <p>A live action space opera by SETH ICKERMAN & CARPENTER BRUT. A female ghost challenges two space hunters into a galactic chase...</p>
           </div>
           <ul>

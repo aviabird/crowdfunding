@@ -50,6 +50,13 @@ export class ProjectEffects {
     })
     .map((projects: Project[]) => this.projectActions.fetchProjectsSuccess(projects));
 
-
+  // tslint:disable-next-line:member-ordering
+  @Effect()
+  fetchCategoryProjects$ = this.actions$
+    .ofType(ProjectActions.FETCH_CATEGORY_PROJECTS)
+    .switchMap((action: Action) => {
+      return this.projectService.getProjectsByCategory(action.payload);
+    })
+    .map((projects: Project[]) => this.projectActions.fetchProjectsSuccess(projects));
 
 }

@@ -23,9 +23,9 @@ export function projectReducer(state: ProjectState = initialState, action: Actio
     case ProjectActions.FETCH_PROJECTS_SUCCESS:
       const projects = <Project[]>action.payload;
       const newProjects = projects.filter(project => !state.entities[project.id]);
-      const newProjectIds = projects.map(project => project.id);
+      const newProjectIds = newProjects.map(project => project.id);
 
-      const newEntities = projects.reduce((entities: { [id: number]: Project }, project: Project) => {
+      const newEntities = newProjects.reduce((entities: { [id: number]: Project }, project: Project) => {
         return Object.assign(entities, {
           [project.id]: project
         });

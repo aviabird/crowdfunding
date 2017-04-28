@@ -3,44 +3,46 @@ jQuery( document ).ready(function( $ ) {
 /*-----------------------------------------------------------------------------------
     Animated progress bars
 /*-----------------------------------------------------------------------------------*/
-$('.progress-bars').waypoint(function() {
-  $('.progress').each(function(){
-    $(this).find('.progress-bar').animate({
-      width:$(this).attr('data-percent')
-     },200);
-});},
+  $('.progress-bars').waypoint(function() {
+    $('.progress').each(function(){
+      $(this).find('.progress-bar').animate({
+        width:$(this).attr('data-percent')
+      },200);
+    });
+  },
 	{ 
 	offset: '100%',
     triggerOnce: true 
-});
+  });
 /*-----------------------------------------------------------------------------------
     TESTNMONIALS STYLE 2
 /*-----------------------------------------------------------------------------------*/
-$('.testi-slide-2').bxSlider({
-  mode: 'fade',
-  auto: true
-});
+  $('.testi-slide-2').bxSlider({
+    mode: 'fade',
+    auto: true
+  });
 
 /*-----------------------------------------------------------------------------------*/
 /*		STICKY NAVIGATION
 /*-----------------------------------------------------------------------------------*/
-$(".sticky").sticky({topSpacing:0});
+  $(".sticky").sticky({topSpacing:0});
 /*-----------------------------------------------------------------------------------*/
 /*  FULL SCREEN
 /*-----------------------------------------------------------------------------------*/
-$('.full-screen').superslides({});
+  $('.full-screen').superslides({});
 /*-----------------------------------------------------------------------------------*/
 /*    Parallax
 /*-----------------------------------------------------------------------------------*/
-jQuery.stellar({
-   horizontalScrolling: false,
-   scrollProperty: 'scroll',
-   positionProperty: 'position',
-});
-});
-$('#slides').superslides({
-      animation: 'fade',
-	  play: 8000
+  jQuery.stellar({
+    horizontalScrolling: false,
+    scrollProperty: 'scroll',
+    positionProperty: 'position',
+  });
+
+  $('#slides').superslides({
+        animation: 'fade',
+      play: 8000
+  });
 });
 
 

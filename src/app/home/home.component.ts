@@ -34,6 +34,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadScript();
 
     if (this.message) {
       this.toastyService.success(this.message);
@@ -44,4 +45,21 @@ export class HomeComponent implements OnInit {
     this.store.dispatch(this.projectActions.selectProject(project));
   }
 
+  loadScript() {
+    $('.testi-slide-2').bxSlider({
+      mode: 'fade',
+      auto: true
+    });
+
+    jQuery.stellar({
+      horizontalScrolling: false,
+      scrollProperty: 'scroll',
+      positionProperty: 'position',
+    });
+
+    $('#slides').superslides({
+          animation: 'fade',
+        play: 8000
+    });
+  }
 }

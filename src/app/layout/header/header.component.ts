@@ -27,8 +27,7 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   showModal(type) {
     this.modal.emit(type);
@@ -39,3 +38,5 @@ export class HeaderComponent implements OnInit {
   }
 
 }
+
+

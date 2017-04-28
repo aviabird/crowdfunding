@@ -9,8 +9,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul *ngIf="!(authStatus$ | async)" class="nav navbar-nav navbar-right">
             <li><a [routerLink]="['/about-us']">About us</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Explore</a></li>
+            <li><a>Blog</a></li>
+            <li><a [routerLink]="['/categories', 'art']">Explore</a></li>
             <li><a (click)="showModal('login')" class="btn" data-toggle="modal" data-target="#myModal1"><i class="flaticon-login"></i> Login</a></li>
             <li><a (click)="showModal('signup')" class="btn btn-up" data-toggle="modal" data-target="#myModal"><i class="flaticon-note-1"></i> SignUp</a></li>
             <li><a class="btn zoom"><i class="flaticon-search"></i></a></li>

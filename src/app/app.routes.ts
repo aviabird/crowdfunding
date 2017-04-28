@@ -8,5 +8,6 @@ export const routes: Routes = [
   { path: 'projects', loadChildren: './project/project.module#ProjectModule' },
   { path: 'categories', loadChildren: './projects-listing/projects-listing.module#ProjectListingModule' },
   { path: 'users/:id', loadChildren: './user/user.module#UserModule' },
+  { path: 'events', loadChildren: './events/events.module#EventsModule' },
   ...staticPagesRoutes
 ];

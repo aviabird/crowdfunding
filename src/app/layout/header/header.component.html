@@ -19,7 +19,8 @@
             <li><a class="btn notifi"><i class="flaticon-notification"></i> <span>2</span></a> </li>
             <li>
               <a [routerLink]="['users', (authUser$ | async).id]" class="btn">
-                <img class="image" [src]="(authUser$ | async).image_url" alt="">
+                <i class="flaticon-user"></i>
+                <!--<img class="image" [src]="(authUser$ | async).image_url" alt="">-->
                 {{((authUser$ | async).name).split(' ')[0]}}
               </a>
             </li>

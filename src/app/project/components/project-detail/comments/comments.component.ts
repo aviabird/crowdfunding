@@ -1,8 +1,8 @@
+import { getProjectComments } from './../../../reducers/project.selector';
 import { Comment } from './../../../../core/models/comment';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { getAuthStatus, getAuthUser } from './../../../../core/reducers/auth.selector';
 import { CommentActions } from './../../../actions/comment.actions';
-import { getProjectComments } from './../../../reducers/selectors';
 import { AppState } from './../../../../app.state';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';

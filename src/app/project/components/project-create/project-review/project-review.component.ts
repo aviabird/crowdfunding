@@ -1,6 +1,6 @@
+import { getDraftProject } from './../../../reducers/project.selector';
 import { ToastyService } from 'ng2-toasty';
 import { Subscription } from 'rxjs/Subscription';
-import { getDraftProject } from './../../../reducers/selectors';
 import { AppState } from './../../../../app.state';
 import { Store } from '@ngrx/store';
 import { ProjectService } from './../../../services/project.service';
@@ -19,7 +19,7 @@ export class ProjectReviewComponent implements OnInit {
   private projectSub: Subscription = new Subscription();
 
   errors: Array<string> = [];
-  project: Project;
+  project: any;
 
   constructor(
     private projectService: ProjectService,

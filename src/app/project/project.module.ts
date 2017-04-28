@@ -33,7 +33,6 @@ import { PledgeMoreComponent } from './components/project-detail/pledge-more/ple
 @NgModule({
   imports: [
     RouterModule.forChild(routes),
-    EffectsModule.run(ProjectEffects),
     EffectsModule.run(CommentEffects),
     SharedModule
   ],

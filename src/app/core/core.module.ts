@@ -1,3 +1,5 @@
+import { EffectsModule } from '@ngrx/effects';
+import { ProjectEffects } from './../project/effects/project.effects';
 import { UserActions } from './../user/actions/user.actions';
 import { CommentActions } from './../project/actions/comment.actions';
 import { ProjectResolveGuard } from './guards/project-resolve.guard';
@@ -22,6 +24,7 @@ export function httpInterceptor(
 
 @NgModule({
   imports: [
+    EffectsModule.run(ProjectEffects),
   ],
   declarations: [],
   providers: [

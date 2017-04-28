@@ -15,11 +15,15 @@ function getCommentState(state: AppState): CommentState {
 
 // ******************** Individual selectors ***************************
 function fetchDraftProject(state: ProjectState) {
-  return state.draftProject ? state.draftProject.toJS() : {};
+  return state.draftProject ? state.draftProject : {};
 }
 
 function fetchSelectedProject(state: ProjectState) {
-  return state.selectedProject ? state.selectedProject.toJS() : {};
+  return state.selectedProject ? state.selectedProject : {};
+}
+
+function fetchAllProjects(state: ProjectState) {
+  return state.ids.map(id => state.entities[id]);
 }
 
 function fetchProjectComments(state: CommentState) {
@@ -29,4 +33,5 @@ function fetchProjectComments(state: CommentState) {
 // *************************** PUBLIC API's ****************************
 export const getDraftProject = createSelector(getProjectState, fetchDraftProject);
 export const getSelectedProject = createSelector(getProjectState, fetchSelectedProject);
+export const getAllProjects = createSelector(getProjectState, fetchAllProjects);
 export const getProjectComments = createSelector(getCommentState, fetchProjectComments);

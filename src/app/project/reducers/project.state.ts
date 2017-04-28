@@ -1,12 +1,16 @@
-import { Map, Record, fromJS } from 'immutable';
+import { ProjectState } from './project.state';
 import { Project } from './../../core/models/project';
 
-export interface ProjectState extends Map<string, any> {
-  draftProject: any;
-  selectedProject: any;
+export interface ProjectState {
+  ids: number[];
+  entities: { [id: number]: Project };
+  draftProject: Project;
+  selectedProject: Project;
 }
 
-export const ProjectStateRecored = Record({
-  draftProject: fromJS({}),
-  selectedProject: fromJS({})
-});
+export const initialState: ProjectState =  {
+  ids: [],
+  entities: {},
+  draftProject: null,
+  selectedProject: null
+};

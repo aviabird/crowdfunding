@@ -1,6 +1,6 @@
+import { getSelectedProject } from './../../reducers/project.selector';
 import { CommentActions } from './../../actions/comment.actions';
 import { Subscription } from 'rxjs/Subscription';
-import { getSelectedProject } from './../../reducers/selectors';
 import { Project } from './../../../core/models/project';
 import { Observable } from 'rxjs/Observable';
 import { AppState } from './../../../app.state';
@@ -15,7 +15,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 export class ProjectDetailComponent implements OnInit, OnDestroy {
 
   projectSub$: Subscription;
-  project: Project;
+  project: any;
   selectedTab = 1;
   amount: number;
 

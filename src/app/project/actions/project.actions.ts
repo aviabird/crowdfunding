@@ -7,6 +7,9 @@ export class ProjectActions {
   static SELECT_PROJECT = 'SELECT_PROJECT';
   static FETCH_PROJECT = 'FETCH_PROJECT';
   static FETCH_PROJECT_SUCCESS = 'FETCH_PROJECT_SUCCESS';
+  static FETCH__ALL_PROJECTS = 'FETCH_ALL_PROJECTS';
+  static FETCH_CATEGORY_PROJECTS = 'FETCH_CATEGORY_PROJECTS';
+  static FETCH_PROJECTS_SUCCESS = 'FETCH_PROJECTS_SUCCESS';
 
   initDraftProject() {
     return { type: ProjectActions.INIT_DRAFT_PROJECT };
@@ -44,6 +47,26 @@ export class ProjectActions {
     return {
       type: ProjectActions.SELECT_PROJECT,
       payload: project
+    };
+  }
+
+  fetchAllProjects() {
+    return {
+      type: ProjectActions.FETCH__ALL_PROJECTS
+    };
+  }
+
+  fetchCategoryProjects(category: string) {
+    return {
+      type: ProjectActions.FETCH_CATEGORY_PROJECTS,
+      payload: category
+    };
+  }
+
+  fetchProjectsSuccess(projects: Project[]) {
+    return {
+      type: ProjectActions.FETCH_PROJECTS_SUCCESS,
+      payload: projects
     };
   }
 

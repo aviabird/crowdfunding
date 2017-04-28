@@ -1,6 +1,6 @@
+import { getDraftProject } from './../../../reducers/project.selector';
 import { ProjectActions } from './../../../actions/project.actions';
 import { Subscription } from 'rxjs/Subscription';
-import { getDraftProject } from './../../../reducers/selectors';
 import { AppState } from './../../../../app.state';
 import { Store } from '@ngrx/store';
 import { Project } from './../../../../core/models/project';

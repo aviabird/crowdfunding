@@ -1,4 +1,4 @@
-import { getDraftProject } from './../../../reducers/selectors';
+import { getDraftProject } from './../../../reducers/project.selector';
 import { Store } from '@ngrx/store';
 import { AppState } from './../../../../app.state';
 import { ProjectActions } from './../../../actions/project.actions';

@@ -1,8 +1,8 @@
+import { getDraftProject } from './../../../reducers/project.selector';
 import { Subscription } from 'rxjs/Subscription';
 import { ProjectActions } from './../../../actions/project.actions';
 import { AppState } from './../../../../app.state';
 import { Store } from '@ngrx/store';
-import { getDraftProject } from './../../../reducers/selectors';
 import { ProjectService } from './../../../services/project.service';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';

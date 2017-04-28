@@ -1,7 +1,7 @@
+import { getSelectedProject } from './../../project/reducers/project.selector';
 import { ProjectActions } from './../../project/actions/project.actions';
 import { ProjectService } from './../../project/services/project.service';
 import { Project } from './../models/project';
-import { getSelectedProject } from './../../project/reducers/selectors';
 import { AppState } from './../../app.state';
 import { Store } from '@ngrx/store';
 import { Injectable } from '@angular/core';
@@ -12,7 +12,7 @@ import { ToastyService } from 'ng2-toasty';
 @Injectable()
 export class ProjectResolveGuard implements CanActivate {
 
-  project: Project;
+  project: any;
 
   constructor(
     private router: Router,

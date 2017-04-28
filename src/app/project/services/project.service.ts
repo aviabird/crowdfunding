@@ -171,6 +171,14 @@ export class ProjectService {
     });
   }
 
+  getProjectsByCategory(category: string) {
+    return this.http.get(
+      `/api/v1/projects/${category}`
+    ).map((res) => {
+      return res.json();
+    });
+  }
+
   fetchProject(id) {
     return this.http.get(
       `/api/v1/projects/${id}`

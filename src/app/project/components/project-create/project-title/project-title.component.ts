@@ -1,5 +1,5 @@
+import { getDraftProject } from './../../../reducers/project.selector';
 import { ProjectActions } from './../../../actions/project.actions';
-import { getDraftProject } from './../../../reducers/selectors';
 import { AppState } from './../../../../app.state';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';

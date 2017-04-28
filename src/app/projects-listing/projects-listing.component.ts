@@ -1,9 +1,9 @@
-import { Project } from './../../../core/models/project';
-import { getAllProjects } from './../../../project/reducers/project.selector';
+import { getAllProjects } from './../project/reducers/project.selector';
+import { ProjectActions } from './../project/actions/project.actions';
+import { AppState } from './../app.state';
+import { Project } from './../core/models/project';
 import { Subscription } from 'rxjs/Subscription';
-import { ProjectActions } from './../../../project/actions/project.actions';
 import { ActivatedRoute } from '@angular/router';
-import { AppState } from './../../../app.state';
 import { Store } from '@ngrx/store';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 

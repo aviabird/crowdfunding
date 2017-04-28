@@ -1,5 +1,4 @@
 import { ProjectService } from './../../services/project.service';
-import { getDraftProject } from './../../reducers/selectors';
 import { Project } from './../../../core/models/project';
 import { AppState } from './../../../app.state';
 import { ProjectActions } from './../../actions/project.actions';

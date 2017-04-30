@@ -1,3 +1,4 @@
+import { AuthUser } from './../models/auth-user';
 import { User } from './../models/user';
 import { HttpService } from './http';
 import { AuthActions } from './../actions/auth.actions';
@@ -38,7 +39,7 @@ export class AuthService {
       (res) => {
         // console.log('res', res);
         if (res.status === 200) {
-          const data: User = res.json();
+          const data: AuthUser = res.json();
           this.store.dispatch(this.authActions.loginSuccess(data));
         }
       },
@@ -88,7 +89,7 @@ export class AuthService {
 
   socialLogin(provider: string) {
     return this.socialAuth.authenticate(provider).subscribe((res: Response) => {
-      const data: User = res.json();
+      const data: AuthUser = res.json();
       this.store.dispatch(this.authActions.loginSuccess(data));
       this.modalShow$.next(false);
       this.setTokenInLocalStorage(res.headers.toJSON());

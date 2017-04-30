@@ -1,3 +1,4 @@
+import { Notification } from './notification';
 import { Address } from './address';
 import { LiteProject } from './lite-project';
 
@@ -19,4 +20,5 @@ export class User {
   projects: LiteProject[];
   project_backers: any;
   backed_projects: LiteProject[];
+  notifications: Notification[];
 }

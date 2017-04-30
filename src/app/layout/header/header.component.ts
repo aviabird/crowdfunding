@@ -1,3 +1,5 @@
+import { Subscription } from 'rxjs/Subscription';
+import { AuthUser } from './../../core/models/auth-user';
 import { AuthService } from './../../core/services/auth.service';
 import { Observable } from 'rxjs/Observable';
 import { getAuthStatus, getAuthUser } from './../../core/reducers/auth.selector';
@@ -12,14 +14,19 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  authStatus$: Observable<boolean>;
-  authUser$: Observable<any>;
+  status$: Subscription;
+  user$: Subscription;
+  authStatus: boolean;
+  authUser: AuthUser;
 
   @Output() modal: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(private store: Store<AppState>, private authService: AuthService) {
-    this.authStatus$ = this.store.select(getAuthStatus);
-    this.authUser$ = this.store.select(getAuthUser);
+    this.store.select(getAuthStatus).subscribe((status) => this.authStatus = status);
+    this.store.select(getAuthUser).subscribe((user) => {
+      this.authUser = user;
+      console.log('user', user);
+    });
     this.authService.modalShow$.subscribe((status) => {
       if (status === true) {
         this.showModal('login');
@@ -38,5 +45,4 @@ export class HeaderComponent implements OnInit {
   }
 
 }
-
 

@@ -29,6 +29,11 @@ export class UserComponent implements OnInit {
       this.userId = params['id'];
       this.store.dispatch(this.userActions.loadUser(this.userId));
     });
+    this.route.fragment.subscribe((fragment: string) => {
+      if (fragment === 'notifications') {
+        this.selectedTab = 5;
+      }
+    });
 
     this.store.select(getUser).subscribe((user) => {
       this.user = user;

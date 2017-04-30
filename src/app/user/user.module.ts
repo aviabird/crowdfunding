@@ -12,7 +12,6 @@ import { NameContactsInfoComponent } from './components/name-contacts-info/name-
 import { QuickViewComponent } from './components/quick-view/quick-view.component';
 import { BackedProjectsComponent } from './components/backed-projects/backed-projects.component';
 import { ProjectBackersComponent } from './components/project-backers/project-backers.component';
-import { MailComponent } from './components/mail/mail.component';
 import { UserCampaignsComponent } from './components/user-campaigns/user-campaigns.component';
 import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
 import { BasicInfoComponent } from './components/name-contacts-info/basic-info/basic-info.component';
@@ -20,6 +19,9 @@ import { PaymentInfoComponent } from './components/name-contacts-info/payment-in
 import { EmailPasswordComponent } from './components/name-contacts-info/email-password/email-password.component';
 import { SocialMediaLinksComponent } from './components/name-contacts-info/social-media-links/social-media-links.component';
 import { ProfilePicComponent } from './components/name-contacts-info/profile-pic/profile-pic.component';
+import { UserNotificationsComponent } from './components/user-notifications/user-notifications.component';
+import { TruncatePipe } from './../core/pipes/truncate'
+
 
 @NgModule({
   imports: [
@@ -33,14 +35,15 @@ import { ProfilePicComponent } from './components/name-contacts-info/profile-pic
     QuickViewComponent,
     BackedProjectsComponent,
     ProjectBackersComponent,
-    MailComponent,
     UserCampaignsComponent,
     ComingSoonComponent,
     BasicInfoComponent,
     PaymentInfoComponent,
     EmailPasswordComponent,
     SocialMediaLinksComponent,
-    ProfilePicComponent
+    ProfilePicComponent,
+    UserNotificationsComponent,
+    TruncatePipe
   ],
   providers: [
     UserService,

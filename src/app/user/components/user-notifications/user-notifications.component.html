@@ -1,0 +1,30 @@
+<div class="tab-pane">
+  <h2>Notifications</h2>
+  <div class="mails">
+    <p class="click">Click and read all your notifications</p>
+    <div class="mails_table">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Subject</th>
+            <th class="center">Date & Time</th>
+            <th class="center">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let notification of user.notifications" (click)="selectNotification(notification)" class="notification">
+            <td>{{notification.subject}}</td>
+            <td class="center">{{notification.created_at | date:'short'}}</td>
+            <td class="center">{{notification.description | truncate : 25 : '...'}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--<h3>Select all mail</h3>-->
+  </div>
+  <div *ngIf="selectedNotification" class="mail_section">
+    <h3>{{selectedNotification.subject}}</h3>
+    <h4>{{selectedNotification.created_at | date:'short'}}</h4>
+    <p>{{selectedNotification.description}}</p>
+  </div>
+</div>

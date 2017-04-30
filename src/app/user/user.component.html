@@ -34,7 +34,7 @@
                     <a (click)="changeTab(4)"><i class="fa fa-podcast"></i> Projects I backed</a>
                   </li>
                   <li *ngIf="isAuthUser()" [ngClass]="{'active': selectedTab == 5}">
-                    <a (click)="changeTab(5)"><i class="fa fa-envelope-o"></i> Mail</a>
+                    <a (click)="changeTab(5)"><i class="fa fa-envelope-o"></i> Notifications</a>
                   </li>
                   <li [ngClass]="{'active': selectedTab == 6}">
                     <a (click)="changeTab(6)"><i class="fa fa-bullhorn"></i> Campaigns</a>
@@ -64,8 +64,8 @@
               <ng-template [ngSwitchCase]="'4'">
                 <app-backed-projects [user]="user"></app-backed-projects>
               </ng-template>
-              <ng-template [ngSwitchCase]="'5'">
-                <app-mail *ngIf="isAuthUser()"></app-mail>
+              <ng-template *ngIf="isAuthUser()" [ngSwitchCase]="'5'">
+                <app-user-notifications [user]="user"></app-user-notifications>
               </ng-template>
               <ng-template [ngSwitchCase]="'6'">
                 <app-user-campaigns [user]="user"></app-user-campaigns>

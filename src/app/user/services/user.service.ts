@@ -54,5 +54,11 @@ export class UserService {
     return false;
   }
 
+  readNotification(id: number) {
+    return this.http.put(
+      `/api/v1/notifications/read_notification`, { id: id}
+    ).map((res: Response) => {});
+  }
+
 
 }

@@ -7,7 +7,7 @@
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <i class="fa fa-navicon"></i> </button>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul *ngIf="!(authStatus$ | async)" class="nav navbar-nav navbar-right">
+          <ul *ngIf="!authStatus" class="nav navbar-nav navbar-right">
             <li><a [routerLink]="['/about-us']">About us</a></li>
             <li><a>Blog</a></li>
             <li><a [routerLink]="['/categories', 'Art']">Explore</a></li>
@@ -15,13 +15,17 @@
             <li><a (click)="showModal('signup')" class="btn btn-up" data-toggle="modal" data-target="#myModal"><i class="flaticon-note-1"></i> SignUp</a></li>
             <li><a class="btn zoom"><i class="flaticon-search"></i></a></li>
           </ul>
-          <ul *ngIf="authStatus$ | async" class="nav navbar-nav navbar-right">
-            <li><a class="btn notifi"><i class="flaticon-notification"></i> <span>2</span></a> </li>
+          <ul *ngIf="authStatus" class="nav navbar-nav navbar-right">
             <li>
-              <a [routerLink]="['users', (authUser$ | async).id]" class="btn">
+              <a [routerLink]="['users', authUser.id]" fragment='notifications' class="btn notifi"><i class="flaticon-notification"></i> 
+                <span *ngIf="authUser.notifications_count > 0">{{authUser.notifications_count}}</span>
+              </a>
+            </li>
+            <li>
+              <a [routerLink]="['users', authUser.id]" class="btn">
                 <i class="flaticon-user"></i>
-                <!--<img class="image" [src]="(authUser$ | async).image_url" alt="">-->
-                {{((authUser$ | async).name).split(' ')[0]}}
+                <!--<img class="image" [src]="authUser.image_url" alt="">-->
+                {{(authUser.name).split(' ')[0]}}
               </a>
             </li>
             <li><a (click)="onLogout()" class="btn btn-up">Logout</a></li>

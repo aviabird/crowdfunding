@@ -43,7 +43,7 @@ export function HttpLoaderFactory(http: Http) {
     AppComponent,
     ModalComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
   ],
   imports: [
     BrowserModule,

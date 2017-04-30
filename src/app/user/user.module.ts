@@ -6,6 +6,7 @@ import { routes } from './user.routes';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
+import { EasyPieChartModule } from 'ng2modules-easypiechart';
 
 import { UserComponent } from './user.component';
 import { NameContactsInfoComponent } from './components/name-contacts-info/name-contacts-info.component';
@@ -20,14 +21,15 @@ import { EmailPasswordComponent } from './components/name-contacts-info/email-pa
 import { SocialMediaLinksComponent } from './components/name-contacts-info/social-media-links/social-media-links.component';
 import { ProfilePicComponent } from './components/name-contacts-info/profile-pic/profile-pic.component';
 import { UserNotificationsComponent } from './components/user-notifications/user-notifications.component';
-import { TruncatePipe } from './../core/pipes/truncate'
+import { TruncatePipe } from './../core/pipes/truncate';
 
 
 @NgModule({
   imports: [
     RouterModule.forChild(routes),
     EffectsModule.run(UserEffects),
-    SharedModule
+    SharedModule,
+    EasyPieChartModule
   ],
   declarations: [
     UserComponent,

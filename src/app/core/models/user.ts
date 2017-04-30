@@ -21,4 +21,5 @@ export class User {
   project_backers: any;
   backed_projects: LiteProject[];
   notifications: Notification[];
+  project_in_funding_state: LiteProject;
 }

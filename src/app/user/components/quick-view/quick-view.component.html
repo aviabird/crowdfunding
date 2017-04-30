@@ -6,23 +6,23 @@
     <div class="fund-info">
       <ul class="row">
         <li class="col-sm-3">
-          <article> <span class="main-tit">$1290</span>
+          <article> <span class="main-tit">${{project.funded_amount}}</span>
             <p>Funded </p>
           </article>
         </li>
         <li class="col-sm-3">
-          <article> <span class="main-tit">$150</span>
+          <article> <span class="main-tit">${{project.pledged_amount}}</span>
             <p>Plegded </p>
           </article>
         </li>
         <li class="col-sm-3">
-          <article> <span class="main-tit">135</span>
+          <article> <span class="main-tit">{{project.total_backers}}</span>
             <p>Backers</p>
           </article>
         </li>
         <li class="col-sm-3">
           <article> <span class="main-tit">35</span>
-            <p>Days to go </p>
+            <p>{{project.duration}}</p>
           </article>
         </li>
       </ul>
@@ -32,19 +32,25 @@
       <div class="col-md-6">
         <article class="funded-graph">
           <div class="head-info">
-            <h6>total founded</h6>
+            <h6>total funded</h6>
           </div>
           
           <!-- Total Funded -->
           <ul class="row pie-chrt">
             <li class="col-sm-6">
-              <div id="pie-1" class="pie-title-center" data-percent="80"> <span class="pie-value"></span> </div>
-              <p>Total Funded <span>$1390</span></p>
+              <div class="pie-title-center">
+                <easy-pie-chart [percent]="percent" [options]="options"></easy-pie-chart>
+                <span class="pie-value">{{project.percent_funded}}%</span>
+              </div>
+              <p>Total Funded <span>${{project.funded_amount}}</span></p>
             </li>
             
             <!-- Tittle -->
             <li class="col-sm-6">
-              <div id="pie-2" class="pie-title-center" data-percent="20"> <span class="pie-value"></span> </div>
+              <div class="pie-title-center">
+                <easy-pie-chart [percent]="percent" [options]="options"></easy-pie-chart>
+                <span class="pie-value">20%</span>
+              </div>
               <p>Tittle  here <span>$200</span></p>
             </li>
           </ul>
@@ -52,7 +58,7 @@
           <!-- Target -->
           <div class="row text-center margin-top-35">
             <div class="col-sm-4">
-              <p>Target <span>$200</span></p>
+              <p>Target <span>${{project.pledged_amount}}</span></p>
             </div>
             <div class="col-sm-4">
               <p>Tittle  here <span>$200</span></p>
@@ -74,8 +80,10 @@
             
             <!-- Backers -->
             <div class="col-sm-6">
-              <div class="backers-c"> <span class="backer-num"></span> <span class="backer-num"></span> <span class="backer-num"></span> <span class="backer-num"></span> <span class="backer-num"></span> <span class="backer-num"></span> <span class="backer-num"></span> <span class="backer-num"></span> <span class="backer-num"></span> <span class="backer-num"></span> <span class="backer-num"></span> <span class="backer-num"></span> <span class="backer-num"></span> </div>
-              <p>Total Backers <span>135</span> </p>
+              <div class="backers-c">
+                <span *ngFor=" let dot of totalDots()" class="backer-num"></span>
+              </div>
+              <p>Total Backers <span>{{project.total_backers}}</span></p>
             </div>
             
             <!-- Backers  Bar -->
@@ -115,32 +123,6 @@
           </div>
         </article>
       </div>
-    </div>
-    
-    <!-- Fund info -->
-    <div class="fund-info">
-      <ul class="row">
-        <li class="col-sm-3">
-          <article> <span class="main-tit">$1290</span>
-            <p>Funded </p>
-          </article>
-        </li>
-        <li class="col-sm-3">
-          <article> <span class="main-tit">$150</span>
-            <p>Plegded </p>
-          </article>
-        </li>
-        <li class="col-sm-3">
-          <article> <span class="main-tit">135</span>
-            <p>Backers</p>
-          </article>
-        </li>
-        <li class="col-sm-3">
-          <article> <span class="main-tit">35</span>
-            <p>Days to go </p>
-          </article>
-        </li>
-      </ul>
     </div>
   </div>
 </div>

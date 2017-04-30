@@ -56,7 +56,7 @@
                 <app-name-contacts-info [user]="user"></app-name-contacts-info>
               </ng-template>
               <ng-template *ngIf="isCreator()" [ngSwitchCase]="'2'">
-              <app-quick-view></app-quick-view>
+              <app-quick-view [user]="user"></app-quick-view>
               </ng-template>
               <ng-template *ngIf="isCreator()" [ngSwitchCase]="'3'">
                 <app-project-backers [user]="user"></app-project-backers>

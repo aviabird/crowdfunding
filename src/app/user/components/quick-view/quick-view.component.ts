@@ -24,7 +24,8 @@ export class QuickViewComponent implements OnInit {
   totalDots() {
     let count;
     count = Math.floor(this.project.total_backers / 5);
-    return count;
+    const dotsArray = Array.from(Array(count), (x, i) => i);
+    return dotsArray;
   }
 
   loadGraph() {

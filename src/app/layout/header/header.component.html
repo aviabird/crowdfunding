@@ -21,13 +21,18 @@
                 <span *ngIf="authUser.notifications_count > 0">{{authUser.notifications_count}}</span>
               </a>
             </li>
-            <li>
-              <a [routerLink]="['users', authUser.id]" class="btn">
+            <li class="dropdown active">
+              <a href="#" class="dropdown-toggle btn" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <i class="flaticon-user"></i>
                 <!--<img class="image" [src]="authUser.image_url" alt="">-->
                 {{(authUser.name).split(' ')[0]}}
+                <span class="caret"></span>
               </a>
-            </li>
+              <ul class="dropdown-menu">
+                <li><a [routerLink]="['users', authUser.id]" fragment='quick-view'>Dashboard</a></li>
+                <li><a [routerLink]="['users', authUser.id]">Settings</a></li>
+              </ul>
+            </li>            
             <li><a (click)="onLogout()" class="btn btn-up">Logout</a></li>
           </ul>
         </div>

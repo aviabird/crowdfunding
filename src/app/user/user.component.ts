@@ -33,6 +33,9 @@ export class UserComponent implements OnInit {
       if (fragment === 'notifications') {
         this.selectedTab = 5;
       }
+      if (fragment === 'quick-view') {
+        this.selectedTab = 2;
+      }
     });
 
     this.store.select(getUser).subscribe((user) => {

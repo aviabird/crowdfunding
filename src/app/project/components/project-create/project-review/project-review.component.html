@@ -63,7 +63,8 @@
 			</ul>
 		</div>
 		<div class="camp_link">
-			<a (click)="onLaunch()" class="btnNext pull-right" style="width:48%">Review and Launch</a>
+			<a *ngIf="!isEditing" (click)="onLaunch()" class="btnNext pull-right" style="width:48%">Review and Launch</a>
+			<a *ngIf="isEditing" [routerLink]="['/projects', project.id]" class="btnNext pull-right" style="width:48%">Review and Update</a>
 			<a (click)="onBackToEditor()" class="camp_btn btn-default" style="width:48%">
 				Back to the Editor
 			</a>

@@ -1,4 +1,4 @@
-import { getDraftProject } from './../../../reducers/project.selector';
+import { getDraftProject, getSelectedProject } from './../../../reducers/project.selector';
 import { ProjectActions } from './../../../actions/project.actions';
 import { AppState } from './../../../../app.state';
 import { Store } from '@ngrx/store';
@@ -16,7 +16,8 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class ProjectTitleComponent implements OnInit, OnDestroy {
 
-  private projectSub: Subscription = new Subscription();
+  private projectSub$: Subscription = new Subscription();
+  @Input() isEditing;
 
   formSubmit = false;
   projectForm: FormGroup;
@@ -27,12 +28,19 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
 
   constructor(private projectService: ProjectService, private actions: ProjectActions, private store: Store<AppState>) {
     this.fetchCategories();
-    this.store.select(getDraftProject).subscribe((project) => {
-      this.initProjectForm(project);
-    });
   }
 
   ngOnInit() {
+    if (this.isEditing) {
+    this.projectSub$ = this.store.select(getSelectedProject).subscribe((project) => {
+      console.log('selected project', project);
+      this.initProjectForm(project);
+    });
+    } else {
+      this.projectSub$ = this.store.select(getDraftProject).subscribe((project) => {
+        this.initProjectForm(project);
+      });
+    }
   }
 
   setImageData(image) {
@@ -53,7 +61,11 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
     this.formSubmit = true;
     const project = this.projectForm.value;
     if (this.projectForm.valid && this.isImagePresent()) {
-      this.store.dispatch(this.actions.saveDraft(project));
+      if (!this.isEditing) {
+        this.store.dispatch(this.actions.saveDraft(project));
+      } else {
+        this.store.dispatch(this.actions.updateProject(project));
+      }
     }
   }
 
@@ -69,7 +81,7 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.projectSub.unsubscribe();
+    this.projectSub$.unsubscribe();
   }
 
 }

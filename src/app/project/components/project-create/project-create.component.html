@@ -59,22 +59,22 @@
 				<div class="tab-content responsive">
 					<div class="" [ngSwitch]="selectedTab">
 						<ng-template [ngSwitchCase]="'1'" ngSwitchDefault> 
-							<app-project-title></app-project-title>
+							<app-project-title [isEditing]="isEditing"></app-project-title>
 						</ng-template>      
 						<ng-template [ngSwitchCase]="'2'">
-							<app-project-reward></app-project-reward> 
+							<app-project-reward [isEditing]="isEditing"></app-project-reward> 
 						</ng-template>
 						<ng-template [ngSwitchCase]="'3'">
-							<app-project-story></app-project-story>
+							<app-project-story [isEditing]="isEditing"></app-project-story>
 						</ng-template>
 						<ng-template [ngSwitchCase]="'4'">
-							<app-project-faq></app-project-faq> 
+							<app-project-faq [isEditing]="isEditing"></app-project-faq>
 						</ng-template>
 						<ng-template [ngSwitchCase]="'5'">
-							<app-project-link></app-project-link> 
+							<app-project-link [isEditing]="isEditing"></app-project-link>
 						</ng-template>
 						<ng-template [ngSwitchCase]="'6'">
-							<app-project-review (backToEditor)="changeTab(1)"></app-project-review> 
+							<app-project-review [isEditing]="isEditing" (backToEditor)="changeTab(1)"></app-project-review> 
 						</ng-template>
 						<ng-template [ngSwitchCase]="'7'">
 							<app-project-profile></app-project-profile> 

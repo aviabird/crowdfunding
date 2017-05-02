@@ -1,11 +1,11 @@
-import { getDraftProject } from './../../../reducers/project.selector';
+import { getDraftProject, getSelectedProject } from './../../../reducers/project.selector';
 import { Subscription } from 'rxjs/Subscription';
 import { ProjectActions } from './../../../actions/project.actions';
 import { AppState } from './../../../../app.state';
 import { Store } from '@ngrx/store';
 import { ProjectService } from './../../../services/project.service';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
-import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy, Input } from '@angular/core';
 
 @Component({
   selector: 'app-project-reward',
@@ -14,7 +14,8 @@ import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/cor
 })
 export class ProjectRewardComponent implements OnInit, OnDestroy {
 
-  private projectSub: Subscription = new Subscription();
+  private projectSub$: Subscription = new Subscription();
+  @Input() isEditing;
 
   formSubmit = false;
   rewardForm: FormGroup;
@@ -24,13 +25,18 @@ export class ProjectRewardComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private store: Store<AppState>,
     private actions: ProjectActions
-  ) {
-    this.projectSub = this.store.select(getDraftProject).subscribe((project) => {
-      this.initRewardForm(project);
-    });
-  }
+  ) {}
 
   ngOnInit() {
+    if (this.isEditing) {
+      this.projectSub$ = this.store.select(getSelectedProject).subscribe((project) => {
+        this.initRewardForm(project);
+      });
+    } else {
+      this.projectSub$ = this.store.select(getDraftProject).subscribe((project) => {
+        this.initRewardForm(project);
+      });
+    }
   }
 
   getRewards() {
@@ -60,7 +66,11 @@ export class ProjectRewardComponent implements OnInit, OnDestroy {
     this.formSubmit = true;
     const data = this.rewardForm.value;
     if (this.rewardForm.valid) {
-      this.store.dispatch(this.actions.saveDraft(data));
+      if (!this.isEditing) {
+        this.store.dispatch(this.actions.saveDraft(data));
+      } else {
+        this.store.dispatch(this.actions.updateProject(data));
+      }
     }
   }
 
@@ -70,8 +80,7 @@ export class ProjectRewardComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.projectSub.unsubscribe();
+    this.projectSub$.unsubscribe();
   }
-
 
 }

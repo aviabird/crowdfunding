@@ -1,20 +1,21 @@
-import { getDraftProject } from './../../../reducers/project.selector';
+import { getDraftProject, getSelectedProject } from './../../../reducers/project.selector';
 import { Store } from '@ngrx/store';
 import { AppState } from './../../../../app.state';
 import { ProjectActions } from './../../../actions/project.actions';
 import { Subscription } from 'rxjs/Subscription';
 import { ProjectService } from './../../../services/project.service';
 import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-project-link',
   templateUrl: './project-link.component.html',
   styleUrls: ['./project-link.component.scss']
 })
-export class ProjectLinkComponent implements OnInit {
+export class ProjectLinkComponent implements OnInit, OnDestroy {
 
-  private projectSub: Subscription = new Subscription();
+  private projectSub$: Subscription = new Subscription();
+  @Input() isEditing;
 
   formSubmit = false;
   linkForm: FormGroup;
@@ -24,13 +25,18 @@ export class ProjectLinkComponent implements OnInit {
     private fb: FormBuilder,
     private actions: ProjectActions,
     private store: Store<AppState>
-    ) {
-    this.projectSub = this.store.select(getDraftProject).subscribe((project) => {
-      this.initLinkForm(project);
-    });
-  }
+    ) {}
 
   ngOnInit() {
+    if (this.isEditing) {
+      this.projectSub$ = this.store.select(getSelectedProject).subscribe((project) => {
+        this.initLinkForm(project);
+      });
+    } else {
+      this.projectSub$ = this.store.select(getDraftProject).subscribe((project) => {
+        this.initLinkForm(project);
+      });
+    }
   }
 
   getLinks() {
@@ -50,12 +56,20 @@ export class ProjectLinkComponent implements OnInit {
     this.formSubmit = true;
     const data = this.linkForm.value;
     if (this.linkForm.valid) {
-      this.store.dispatch(this.actions.saveDraft(data));
+      if (!this.isEditing) {
+        this.store.dispatch(this.actions.saveDraft(data));
+      } else {
+        this.store.dispatch(this.actions.updateProject(data));
+      }
     }
   }
 
   private initLinkForm(project) {
     this.linkForm = this.projectService.initLinkForm(project);
+  }
+
+  ngOnDestroy() {
+    this.projectSub$.unsubscribe();
   }
 
 }

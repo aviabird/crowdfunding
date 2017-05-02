@@ -6,6 +6,7 @@ import { AuthGuard } from '../core/guards/auth.guard';
 
 export const routes: Routes = [
   { path: 'new', component: ProjectCreateComponent, canActivate: [AuthGuard] },
+  { path: 'edit/:id', component: ProjectCreateComponent, canActivate: [AuthGuard] },
   // { path: ':id', component: ProjectDetailComponent, canActivate: [ProjectResolveGuard] }
   { path: ':id', component: ProjectDetailComponent }
 ];

@@ -31,7 +31,7 @@ export class ProjectService {
       'title': [project.title, Validators.required],
       'category_id': [project.category_id, Validators.required],
       'image_url': [project.image_url],
-      'image_data': ['', Validators.required],
+      'image_data': [''],
       'video_url': [project.video_url, this.validateURL],
       'pledged_amount': [project.pledged_amount, Validators.required],
       'funding_model': [project.funding_model || 'flexi', Validators.required],
@@ -54,7 +54,7 @@ export class ProjectService {
           'id': section.id,
           'heading': [section.heading, Validators.required],
           'description': [section.description, Validators.required],
-          'image_data': [section.image_data],
+          'image_data': [''],
           'image_url': [section.image_url]
         })
       );
@@ -183,6 +183,16 @@ export class ProjectService {
     return this.http.get(
       `/api/v1/projects/${id}`
     ).map((res) => {
+      return res.json();
+    });
+  }
+
+  updateProject(project: Project) {
+    this.savingDraft.next(true);
+    return this.http.put(
+      `/api/v1/projects/${project.id}`, project
+    ).map((res) => {
+      this.savingDraft.next(false);
       return res.json();
     });
   }

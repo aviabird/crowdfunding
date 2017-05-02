@@ -1,4 +1,4 @@
-import { getDraftProject } from './../../../reducers/project.selector';
+import { getDraftProject, getSelectedProject } from './../../../reducers/project.selector';
 import { ProjectActions } from './../../../actions/project.actions';
 import { Subscription } from 'rxjs/Subscription';
 import { AppState } from './../../../../app.state';
@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 import { Project } from './../../../../core/models/project';
 import { ProjectService } from './../../../services/project.service';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
-import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy, Input } from '@angular/core';
 
 @Component({
   selector: 'app-project-story',
@@ -15,7 +15,8 @@ import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/cor
 })
 export class ProjectStoryComponent implements OnInit, OnDestroy {
 
-  private projectSub: Subscription = new Subscription();
+  private projectSub$: Subscription = new Subscription();
+  @Input() isEditing;
 
   formSubmit = false;
   storyForm: FormGroup;
@@ -26,13 +27,18 @@ export class ProjectStoryComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private store: Store<AppState>,
     private actions: ProjectActions
-  ) {
-    this.projectSub = this.store.select(getDraftProject).subscribe((project) => {
-      this.initStoryForm(project);
-    });
-  }
+  ) {}
 
   ngOnInit() {
+    if (this.isEditing) {
+      this.projectSub$ = this.store.select(getSelectedProject).subscribe((project) => {
+        this.initStoryForm(project);
+      });
+    } else {
+      this.projectSub$ = this.store.select(getDraftProject).subscribe((project) => {
+        this.initStoryForm(project);
+      });
+    }
   }
 
   getSections() {
@@ -61,7 +67,11 @@ export class ProjectStoryComponent implements OnInit, OnDestroy {
     this.formSubmit = true;
     const data = this.projectForm.value;
     if (this.storyForm.valid) {
-      this.store.dispatch(this.actions.saveDraft(data));
+      if (!this.isEditing) {
+        this.store.dispatch(this.actions.saveDraft(data));
+      } else {
+        this.store.dispatch(this.actions.updateProject(data));
+      }
     }
   }
 
@@ -71,7 +81,7 @@ export class ProjectStoryComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.projectSub.unsubscribe();
+    this.projectSub$.unsubscribe();
   }
 
 }

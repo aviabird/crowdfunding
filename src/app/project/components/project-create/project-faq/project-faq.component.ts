@@ -1,11 +1,11 @@
-import { getDraftProject } from './../../../reducers/project.selector';
+import { getDraftProject, getSelectedProject } from './../../../reducers/project.selector';
 import { ProjectActions } from './../../../actions/project.actions';
 import { AppState } from './../../../../app.state';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
 import { ProjectService } from './../../../services/project.service';
 import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy, Input } from '@angular/core';
 
 @Component({
   selector: 'app-project-faq',
@@ -14,7 +14,8 @@ import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/cor
 })
 export class ProjectFaqComponent implements OnInit, OnDestroy {
 
-  private projectSub: Subscription = new Subscription();
+  private projectSub$: Subscription = new Subscription();
+  @Input() isEditing;
 
   formSubmit = false;
   faqForm: FormGroup;
@@ -24,17 +25,22 @@ export class ProjectFaqComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private store: Store<AppState>,
     private actions: ProjectActions
-    ) {
-    this.projectSub = this.store.select(getDraftProject).subscribe((project) => {
-      this.initFaqForm(project);
-    });
-  }
+    ) {}
 
   getFaqs() {
     return (<FormArray>this.faqForm.get('faqs_attributes')).controls;
   }
 
   ngOnInit() {
+    if (this.isEditing) {
+      this.projectSub$ = this.store.select(getSelectedProject).subscribe((project) => {
+        this.initFaqForm(project);
+      });
+    } else {
+      this.projectSub$ = this.store.select(getDraftProject).subscribe((project) => {
+        this.initFaqForm(project);
+      });
+    }
   }
 
   onAddFaq() {
@@ -51,7 +57,11 @@ export class ProjectFaqComponent implements OnInit, OnDestroy {
     this.formSubmit = true;
     const data = this.faqForm.value;
     if (this.faqForm.valid) {
-      this.store.dispatch(this.actions.saveDraft(data));
+      if (!this.isEditing) {
+        this.store.dispatch(this.actions.saveDraft(data));
+      } else {
+        this.store.dispatch(this.actions.updateProject(data));
+      }
     }
   }
 
@@ -60,7 +70,7 @@ export class ProjectFaqComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.projectSub.unsubscribe();
+    this.projectSub$.unsubscribe();
   }
 
 }

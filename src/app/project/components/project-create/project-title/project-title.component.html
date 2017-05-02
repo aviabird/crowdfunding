@@ -4,8 +4,13 @@
 		<form [formGroup]="projectForm">
 			<div class="form-group">
 				<label for="usr">Campaign Title *</label>
-				<input type="text" class="form-control" placeholder="Enter title" formControlName="title">
-				<p *ngIf="projectForm.get('title').hasError('required') && (projectForm.get('title').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
+				<div *ngIf="!isEditing">
+					<input type="text" class="form-control" placeholder="Enter title" formControlName="title">
+					<p *ngIf="projectForm.get('title').hasError('required') && (projectForm.get('title').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
+				</div>
+				<div *ngIf="isEditing">
+					{{projectForm.get('title').value}}
+				</div>
 			</div>
 			<div class="form-group">
 				<label for="comment">Campaign Category *</label>
@@ -29,69 +34,90 @@
 			<h2>Campaign Goal *</h2>
 			<p>How much money would you like to raise for this campaign? </p>
 			<div class="row">
-				<div class="col-xs-6">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="$ 500" formControlName="pledged_amount">
-						<p *ngIf="projectForm.get('pledged_amount').hasError('required') && (projectForm.get('pledged_amount').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
+				<div *ngIf="!isEditing">
+					<div class="col-xs-6">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="$ 500" formControlName="pledged_amount">
+							<p *ngIf="projectForm.get('pledged_amount').hasError('required') && (projectForm.get('pledged_amount').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div class="camp_select slate">
+							<select>
+								<option>USA</option>
+								<option>USA</option>
+							</select>
+						</div>
 					</div>
 				</div>
-				<div class="col-xs-6">
-					<div class="camp_select slate">
-						<select>
-							<option>USA</option>
-							<option>USA</option>
-						</select>
-					</div>
+				<div *ngIf="isEditing">
+					${{projectForm.get('pledged_amount').value}}
 				</div>
 			</div>
 			<h2>Funding Model</h2>
 			<p>Lorem Ipsum</p>
-			<div class="camp_flexi">
-				<div class="col-xs-6">
-					<input type="radio" name="funding_model" formControlName="funding_model" value="flexi">
-					<h2>FLEXI 
-						<img src="assets/img/qstion-iconimg.png" alt="img">
-					</h2>
+			<div>
+				<div *ngIf="!isEditing" class="camp_flexi">
+					<div class="col-xs-6">
+						<input type="radio" name="funding_model" formControlName="funding_model" value="flexi">
+						<h2>FLEXI 
+							<img src="assets/img/qstion-iconimg.png" alt="img">
+						</h2>
+					</div>
+					<div class="col-xs-6">
+						<input type="radio" name="funding_model" formControlName="funding_model" value="fixed">
+						<h2>FIXED
+							<img src="assets/img/qstion-iconimg.png" alt="img">
+						</h2>
+					</div>
 				</div>
-				<div class="col-xs-6">
-					<input type="radio" name="funding_model" formControlName="funding_model" value="fixed">
-					<h2>FIXED
-						<img src="assets/img/qstion-iconimg.png" alt="img">
-					</h2>
+				<div *ngIf="isEditing">
+					{{projectForm.get('funding_model').value}}
 				</div>
 			</div>
 			<h2>Begin Date *</h2>
 			<p>Lorem ipsum begin date end date</p>
-			<div class="camp_date">
-				<div class="form-group">
-					<div class="col-xs-3 camp_date_width">
-						<select class="form-control">
-							<option disabled class="hide">Day</option>
-							<option *ngFor="let day of days">{{day}}</option>
-						</select>
+			<div *ngIf="!isEditing">
+				<div class="camp_date">
+					<div class="form-group">
+						<div class="col-xs-3 camp_date_width">
+							<select class="form-control">
+								<option disabled class="hide">Day</option>
+								<option *ngFor="let day of days">{{day}}</option>
+							</select>
+						</div>
+						<div class="col-xs-3 camp_date_width">
+							<select class="form-control">
+								<option disabled class="hide">Month</option>
+								<option *ngFor="let month of months">{{month}}</option>
+							</select>
+						</div>
+						<div class="col-xs-3 camp_date_width">
+							<select class="form-control">
+								<option disabled class="hide">Year</option>
+								<option>2017</option>
+								<option>2018</option>
+							</select>
+						</div>
+						<div class="col-xs-3"></div>
 					</div>
-					<div class="col-xs-3 camp_date_width">
-						<select class="form-control">
-							<option disabled class="hide">Month</option>
-							<option *ngFor="let month of months">{{month}}</option>
-						</select>
-					</div>
-					<div class="col-xs-3 camp_date_width">
-						<select class="form-control">
-							<option disabled class="hide">Year</option>
-							<option>2017</option>
-							<option>2018</option>
-						</select>
-					</div>
-					<div class="col-xs-3"></div>
 				</div>
+			</div>
+			<div *ngIf="isEditing">
+				02/05/2017
+				<!--{{projectForm.get('start_date').value}}-->
 			</div>
 			<h2>Begin Duration *</h2>
 			<p>Lorem ipsum begin date end date</p>
 			<div class="camp_duration">
-				<input type="number" placeholder="Duration" min="1" max="60" class="form-control" formControlName="duration">
-				<p *ngIf="projectForm.get('duration').hasError('required') && (projectForm.get('duration').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
-				<p *ngIf="projectForm.get('duration').hasError('validateNumber') && (projectForm.get('duration').touched || formSubmit)" class="value-err show">Duration must between 1 and 60 days</p>
+				<div *ngIf="!isEditing">
+					<input type="number" placeholder="Duration" min="1" max="60" class="form-control" formControlName="duration">
+					<p *ngIf="projectForm.get('duration').hasError('required') && (projectForm.get('duration').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
+					<p *ngIf="projectForm.get('duration').hasError('validateNumber') && (projectForm.get('duration').touched || formSubmit)" class="value-err show">Duration must between 1 and 60 days</p>
+				</div>
+				<div *ngIf="isEditing">
+					{{projectForm.get('duration').value}}
+				</div>
 			</div>
 			<div class="camp_link">
 				<a (click)="submitProject()" class="btnNext">NEXT</a>

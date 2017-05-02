@@ -1,11 +1,11 @@
-import { getDraftProject } from './../../../reducers/project.selector';
+import { getDraftProject, getSelectedProject } from './../../../reducers/project.selector';
 import { ToastyService } from 'ng2-toasty';
 import { Subscription } from 'rxjs/Subscription';
 import { AppState } from './../../../../app.state';
 import { Store } from '@ngrx/store';
 import { ProjectService } from './../../../services/project.service';
 import { Project } from './../../../../core/models/project';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,10 +13,11 @@ import { Router } from '@angular/router';
   templateUrl: './project-review.component.html',
   styleUrls: ['./project-review.component.scss']
 })
-export class ProjectReviewComponent implements OnInit {
+export class ProjectReviewComponent implements OnInit, OnDestroy {
 
   @Output() backToEditor: EventEmitter<number> = new EventEmitter<number>();
-  private projectSub: Subscription = new Subscription();
+  @Input() isEditing;
+  private projectSub$: Subscription = new Subscription();
 
   errors: Array<string> = [];
   project: any;
@@ -26,13 +27,18 @@ export class ProjectReviewComponent implements OnInit {
     private router: Router,
     private store: Store<AppState>,
     private toastyService: ToastyService
-  ) {
-    this.projectSub = this.store.select(getDraftProject).subscribe((project) => {
-      this.project = project;
-    });
-  }
+  ) {}
 
   ngOnInit() {
+    if (this.isEditing) {
+      this.projectSub$ = this.store.select(getSelectedProject).subscribe((project) => {
+        this.project = project;
+      });
+    } else {
+      this.projectSub$ = this.store.select(getDraftProject).subscribe((project) => {
+        this.project = project;
+      });
+    }
   }
 
   private fetchProject() {
@@ -122,6 +128,10 @@ export class ProjectReviewComponent implements OnInit {
       status = false;
     }
     return status;
+  }
+
+  ngOnDestroy() {
+    this.projectSub$.unsubscribe();
   }
 
 }

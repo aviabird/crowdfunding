@@ -1,3 +1,5 @@
+import { ProjectActions } from './../../actions/project.actions';
+import { ActivatedRoute } from '@angular/router';
 import { getSelectedProject } from './../../reducers/project.selector';
 import { CommentActions } from './../../actions/comment.actions';
 import { Subscription } from 'rxjs/Subscription';
@@ -15,11 +17,22 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 export class ProjectDetailComponent implements OnInit, OnDestroy {
 
   projectSub$: Subscription;
+  routeSub$: Subscription;
   project: any;
   selectedTab = 1;
   amount: number;
 
-  constructor(private store: Store<AppState>, private commentActions: CommentActions) {
+  constructor(
+    private store: Store<AppState>,
+    private commentActions: CommentActions,
+    private route: ActivatedRoute,
+    private projectActions: ProjectActions) {
+
+    this.routeSub$ = this.route.params.subscribe((params) => {
+      const id = params['id'];
+      this.store.dispatch(this.projectActions.fetchProject(id));
+    });
+
     this.projectSub$ = this.store.select(getSelectedProject).subscribe((project) => {
       this.project = project;
     });
@@ -35,6 +48,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.store.dispatch(this.commentActions.clearComments());
     this.projectSub$.unsubscribe();
+    this.routeSub$.unsubscribe();
   }
 
 }

@@ -41,10 +41,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  selectProject(project: Project) {
-    this.store.dispatch(this.projectActions.selectProject(project));
-  }
-
   ngOnDestroy() {
     this.projectsSub$.unsubscribe();
   }

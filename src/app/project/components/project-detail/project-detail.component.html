@@ -4,7 +4,7 @@
       <div class="col-md-8">
         <div class="row">
           <div class="col-md-12">
-            <h2 class="title">{{project?.title}}</h2>
+            <h2>{{project?.title}}</h2>
           </div>
           <div class="col-md-12 space20">
             <img *ngIf="project?.image_url" [src]="project?.image_url" width="100%" class="img-responsive center-block" alt="image">
@@ -71,9 +71,14 @@
             <div class="col-md-12">
               <h2 class="subtitle3 space30">Support this project</h2>
               <div class="support_reward">
+<!--<<<<<<< HEAD
                 <h3>Make a pledge without a reward</h3>
                 <input type="text" class="form-control rewardtype" [(ngModel)]="amount" placeholder="10">
                 <button type="button" appStripeForm [amount]="amount" [projectId]="project.id" class="linksbtn bgclff8e00 space20">Continue</button>
+=======-->
+                <h3>Make a pledge without a Pouch</h3>
+                <input type="text" class="form-control rewardtype" placeholder="10">
+                <button type="button" class="linksbtn bgclff8e00 space20">Continue</button>
               </div>
             </div>
           </div>

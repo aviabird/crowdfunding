@@ -6,8 +6,8 @@
 export const environment = {
   production: false,
   token_auth_config: {
-    apiBase: 'https://crowdpouch.herokuapp.com'
+    apiBase: 'http://localhost:3000'
   },
-  API_ENDPOINT: 'https://crowdpouch.herokuapp.com',
+  API_ENDPOINT: 'http://localhost:3000',
   AppName: 'CrowdPouch'
 };

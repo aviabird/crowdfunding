@@ -1,3 +1,4 @@
+import { ImageUploadComponent } from './../../../../shared/components/image-upload/image-upload.component';
 import { getDraftProject, getSelectedProject } from './../../../reducers/project.selector';
 import { ProjectActions } from './../../../actions/project.actions';
 import { AppState } from './../../../../app.state';
@@ -5,7 +6,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Project } from './../../../../core/models/project';
 import { ProjectService } from './../../../services/project.service';
-import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -18,6 +19,7 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
 
   private projectSub$: Subscription = new Subscription();
   @Input() isEditing;
+  @ViewChild('imageUpload') imageUpload: ImageUploadComponent; 
 
   formSubmit = false;
   projectForm: FormGroup;
@@ -55,6 +57,10 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
     } else {
       return false;
     }
+  }
+
+  uploadImage() {
+    this.imageUpload.showImageBrowseDlg();
   }
 
   submitProject() {

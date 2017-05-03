@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import { Project } from './../../../../core/models/project';
 import { ProjectService } from './../../../services/project.service';
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
@@ -19,7 +19,7 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
 
   private projectSub$: Subscription = new Subscription();
   @Input() isEditing;
-  @ViewChild('imageUpload') imageUpload: ImageUploadComponent; 
+  @ViewChild('imageUpload') imageUpload: ImageUploadComponent;
 
   formSubmit = false;
   projectForm: FormGroup;
@@ -28,14 +28,18 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
   months = new Array('January', 'February', 'March', 'April', 'May', 'June',
                       'July', 'August', 'September', 'October', 'November', 'December');
 
-  constructor(private projectService: ProjectService, private actions: ProjectActions, private store: Store<AppState>) {
+  constructor(
+    private projectService: ProjectService,
+    private actions: ProjectActions,
+    private store: Store<AppState>,
+    private fb: FormBuilder
+  ) {
     this.fetchCategories();
   }
 
   ngOnInit() {
     if (this.isEditing) {
     this.projectSub$ = this.store.select(getSelectedProject).subscribe((project) => {
-      console.log('selected project', project);
       this.initProjectForm(project);
     });
     } else {
@@ -45,14 +49,20 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
     }
   }
 
+  getPictures() {
+    return (<FormArray>this.projectForm.get('pictures_attributes')).value;
+  }
+
   setImageData(image) {
-    (<FormControl>this.projectForm.controls['image_data']).setValue(image);
+    (<FormArray>this.projectForm.get('images_data')).push(
+      this.fb.control(image)
+    );
   }
 
   isImagePresent() {
-    const imageUrl = this.projectForm.get('image_url').value;
-    const imageData = this.projectForm.get('image_data').value;
-    if (imageUrl || imageData) {
+    const isPicturesAttributes = (<FormArray>this.projectForm.get('pictures_attributes')).controls.length > 0;
+    const isImagesData = (<FormArray>this.projectForm.get('images_data')).controls.length > 0;
+    if (isPicturesAttributes || isPicturesAttributes) {
       return true;
     } else {
       return false;
@@ -61,6 +71,22 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
 
   uploadImage() {
     this.imageUpload.showImageBrowseDlg();
+  }
+
+  removePictureAttribue(i) {
+    (<FormArray>this.projectForm.get('pictures_attributes')).controls[i].patchValue({
+      _destroy: true
+    });
+    const project = this.projectForm.value;
+    if (!this.isEditing) {
+      this.store.dispatch(this.actions.saveDraft(project));
+    } else {
+      this.store.dispatch(this.actions.updateProject(project));
+    }
+  }
+
+  removeImageData(i) {
+    (<FormArray>this.projectForm.get('images_data')).removeAt(i);
   }
 
   submitProject() {

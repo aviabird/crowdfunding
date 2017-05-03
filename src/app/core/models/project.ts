@@ -1,3 +1,4 @@
+import { Picture } from './picture';
 import { Base } from './base';
 import { Story } from './story';
 import { Event } from './event';
@@ -20,6 +21,7 @@ export class Project extends Base {
   percent_funded = '';
   start_date = new Date();
   duration = '';
+  pictures: Picture[] = [new Picture];
   rewards: Reward[] = [new Reward];
   faqs: Faq[] = [new Faq];
   links: Link[] = [new Link];

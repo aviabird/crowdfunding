@@ -13,10 +13,16 @@
           <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
         </select>
       </div>
-      <h2>Upload your Campaign Image *</h2>
-			<div>
-				<img *ngIf="projectForm.get('image_data').value" class="reward_image" [src]="projectForm.get('image_data').value" alt="img">
-				<img *ngIf="!(projectForm.get('image_data').value) && projectForm.get('image_url').value" class="reward_image" [src]="projectForm.get('image_url').value" alt="img">
+      <h2>Upload your Campaign Images *</h2>
+			<div formArrayName="pictures_attributes">
+				<span class="image-div" *ngFor="let picture of getPictures(); let i = index">
+					<span (click)="removePictureAttribue(i)" class="fa fa-times cross"></span>
+					<img class="reward-image" [src]="picture.url" alt="img">
+				</span>
+				<span class="image-div" *ngFor="let image_data of projectForm.get('images_data').value; let i = index">
+					<span (click)="removeImageData(i)" class="fa fa-times cross"></span>
+					<img class="reward-image" [src]="image_data" alt="img">
+				</span>
 			</div>
 			<app-image-upload #imageUpload (click)="uploadImage()" (image)="setImageData($event)">
 				<img src="assets/img/camera-img.png" alt="img">

@@ -1,3 +1,4 @@
+import { Picture } from './../../core/models/picture';
 import { AuthService } from './../../core/services/auth.service';
 import { ToastyService } from 'ng2-toasty';
 import { Response } from '@angular/http';
@@ -24,19 +25,35 @@ export class ProjectService {
     private toastyService: ToastyService
   ) { }
 
-  initProjectForm(project) {
+  initProjectForm(project: Project) {
+    let pictures = project.pictures;
+    if (!pictures) {
+      pictures = [new Picture];
+    }
+
+    const picture_attributes_array = [];
+    pictures.forEach((picture) => {
+      picture_attributes_array.push(
+        this.fb.group({
+          'id': [picture.id],
+          'url': [picture.url],
+          '_destroy': [false]
+        })
+      );
+    });
+
     return this.fb.group({
       'id': [project.id],
       'type': ['project'],
       'title': [project.title, Validators.required],
       'category_id': [project.category_id, Validators.required],
-      'image_url': [project.image_url],
-      'image_data': [''],
+      'images_data': this.fb.array([]),
       'video_url': [project.video_url, this.validateURL],
       'pledged_amount': [project.pledged_amount, Validators.required],
       'funding_model': [project.funding_model || 'flexi', Validators.required],
       'start_date': [project.start_date],
-      'duration': [project.duration, Validators.compose([Validators.required, this.validateNumber])]
+      'duration': [project.duration, Validators.compose([Validators.required, this.validateNumber])],
+      'pictures_attributes': this.fb.array(picture_attributes_array)
     });
   }
 

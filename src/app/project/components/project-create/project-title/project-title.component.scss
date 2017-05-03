@@ -4,6 +4,36 @@
 	color: #ea6c6c;
 }
 
+.image-div {
+	position: relative;
+	.reward-image {
+		width: 100px;
+		height: 100px;
+		background: #29acbf;
+		object-fit: cover;
+		object-position: center;
+		margin-right: 20px;
+		margin-bottom: 20px;
+	}
+	.cross {
+		cursor: pointer;
+		font-size: 6rem;
+    position: absolute;
+    top: -30px;
+    right: 50px;
+    color: #ffffff;
+		display: none;
+		z-index: 100;
+	}
+}
+
+.image-div:hover {
+	filter: brightness(50%);
+	.cross {
+		display: block;
+	}
+}
+
 .camp_duration {
 	width: 150px;
 }

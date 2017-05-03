@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 import { CommentEffects } from './effects/comment.effect';
 import { ProjectEffects } from './effects/project.effects';
@@ -33,6 +34,7 @@ import { PledgeMoreComponent } from './components/project-detail/pledge-more/ple
 @NgModule({
   imports: [
     RouterModule.forChild(routes),
+    CarouselModule.forRoot(),
     EffectsModule.run(CommentEffects),
     SharedModule
   ],

@@ -7,7 +7,19 @@
             <h2>{{project?.title}}</h2>
           </div>
           <div class="col-md-12 space20">
-            <img *ngIf="project?.image_url" [src]="project?.image_url" width="100%" class="img-responsive center-block" alt="image">
+            <carousel interval="false">
+              <slide>
+                <img src="https://res.cloudinary.com/crowdpouch/image/upload/v1493841384/muqhx0ocfodnadkkmuj5.png" alt="First slide">
+              </slide>
+              <slide>
+                <img src="https://res.cloudinary.com/crowdpouch/image/upload/v1493836674/khliatsofgqft8w6q5a7.png" alt="Second slide">
+              </slide>
+              <slide>
+                <iframe width="420" height="345" src="https://www.youtube.com/embed/XGSy3_Czz8k">
+                </iframe>
+              </slide>              
+            </carousel>
+            <!--<img *ngIf="project?.image_url" [src]="project?.image_url" width="100%" class="img-responsive center-block" alt="image">-->
           </div>
         </div>
         <div class="row space10">

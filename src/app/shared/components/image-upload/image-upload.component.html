@@ -1,4 +1,4 @@
 <div class="upload">
 	<ng-content></ng-content>
-	<input #fileInput  type="file" name="pic" accept="image/*" (change)="handleOnChange($event)" style="display: none">
+	<input #fileInput  multiple type="file" name="pic" accept="image/*" (change)="handleOnChange($event)" style="display: none">
 </div>

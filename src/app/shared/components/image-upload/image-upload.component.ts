@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef, Renderer } from '@angular/core';
 
 @Component({
   selector: 'app-image-upload',
@@ -8,6 +8,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 export class ImageUploadComponent implements OnInit {
 
   @Output() image: EventEmitter<string> = new EventEmitter<string>();
+  @ViewChild('fileInput') fileInput: ElementRef;
 
   constructor() { }
 
@@ -32,11 +33,14 @@ export class ImageUploadComponent implements OnInit {
     });
   }
 
+  showImageBrowseDlg() {
+    this.fileInput.nativeElement.click();
+  }
+
   private handleReaderLoaded(e) {
     const reader = e.target;
     const imageUrl = reader.result;
     this.image.emit(imageUrl);
   }
-
 
 }

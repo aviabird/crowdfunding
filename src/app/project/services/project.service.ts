@@ -72,7 +72,7 @@ export class ProjectService {
 
   initRewardForm(project) {
     let rewards = project.rewards;
-    if (!rewards) {
+    if (rewards.length === 0) {
       rewards = [new Reward];
     }
 
@@ -86,6 +86,7 @@ export class ProjectService {
           'image_url': [reward.image_url],
           'image_data': [''],
           'amount': [reward.amount, Validators.required],
+          '_destroy': [false]
         })
       );
     });

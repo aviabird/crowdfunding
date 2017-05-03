@@ -3,3 +3,17 @@
 	padding-top: 2px;
 	color: #ea6c6c;
 }
+
+.reward_image {
+	width: 300px;
+	object-fit: contain;
+}
+
+.camp_upload_img {
+	text-align: left;
+	margin-bottom: 30px;
+	height: auto;
+	img {
+		margin-top: 30px;
+	}
+}

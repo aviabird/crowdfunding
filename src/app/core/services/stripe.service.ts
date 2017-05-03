@@ -17,5 +17,14 @@ export class StripeService {
     });
   }
 
+  payBySofortPayments(token: string, projectId: number, amount: number) {
+    console.log('in stripe service create charge');
+    return this.http.post(
+      '/api/v1/pay_by_sofort', { stripeToken: token, id: projectId, amount: amount }
+    ).subscribe((res: Response) => {
+      console.log('stripe response', res.json());
+    });
+  }
+
 
 }

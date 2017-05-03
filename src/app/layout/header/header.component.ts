@@ -25,7 +25,6 @@ export class HeaderComponent implements OnInit {
     this.store.select(getAuthStatus).subscribe((status) => this.authStatus = status);
     this.store.select(getAuthUser).subscribe((user) => {
       this.authUser = user;
-      console.log('user', user);
     });
     this.authService.modalShow$.subscribe((status) => {
       if (status === true) {

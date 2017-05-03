@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="mytabs">
+      <ul class="tab">
+        <li [ngClass]="{'active': selectedTab == 1}"><a class="tablinks" (click)="changeTab(1)">Card</a></li>
+        <li [ngClass]="{'active': selectedTab == 2}"><a class="tablinks" (click)="changeTab(2)">Sofort</a></li>
+        <li [ngClass]="{'active': selectedTab == 3}"><a class="tablinks" (click)="changeTab(3)">Sepa Direct Debit</a></li>
+      </ul>
+    </div>
+    <div class="" [ngSwitch]="selectedTab">
+      <ng-template [ngSwitchCase]="'1'" ngSwitchDefault> 
+        <app-card></app-card>
+      </ng-template>
+      <ng-template [ngSwitchCase]="'2'"> 
+        <app-sofort></app-sofort>
+      </ng-template>
+      <ng-template [ngSwitchCase]="'3'"> 
+        <app-sepa></app-sepa>
+      </ng-template>
+    </div>
+  </div>
+</div>

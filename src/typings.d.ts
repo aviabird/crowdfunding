@@ -6,3 +6,4 @@ interface NodeModule {
 
 declare var $: any;
 declare var jQuery: any;
+declare var Stripe: any;

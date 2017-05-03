@@ -1,129 +1,97 @@
+<div class="sub-bnr-flat">
+  <div class="container">
+    <h2>Create a Campaign</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+  </div>
+</div>
+
 <div class="campaign_box">
 	<div class="container">
-		<div class="row">
-			<div class="col-sm-2 camp_pdng">
-				<div class="campaign_editor">
-					<h2>campaign 
-						<br class="br"> editor
-					</h2>
-					<div class="campaign_tabs">
-						<ul class="nav nav-tabs responsive" id="campaign_Tabs">
-							<li [ngClass]="{'active': selectedTab == 1}">
-								<a (click)="changeTab(1)">1. title 
-									<span class="category_camp">lorem ipsum</span>
-								</a>
-							</li>
-							<li [ngClass]="{'active': selectedTab == 2}">
-								<a (click)="changeTab(2)">2. reward 
-									<span class="category_camp">lorem ipsum</span>
-								</a>
-							</li>
-							<li [ngClass]="{'active': selectedTab == 3}">
-								<a (click)="changeTab(3)">3. story 
-									<span class="category_camp">lorem ipsum</span>
-								</a>
-							</li>
-							<li class="faq_boder" [ngClass]="{'active': selectedTab == 4}">
-								<a (click)="changeTab(4)">4. faq  
-									<span class="category_camp">lorem ipsum</span>
-								</a>
-							</li>
-							<li [ngClass]="{'active': selectedTab == 5}">
-								<a (click)="changeTab(5)">5. links 
-									<span class="category_camp">lorem ipsum</span>
-								</a>
-							</li>
-							<li [ngClass]="{'active': selectedTab == 6}">
-								<a (click)="changeTab(6)">6. review 
-									<span class="category_camp">lorem ipsum</span>
-								</a>
-							</li>
-							<li [ngClass]="{'active': selectedTab == 7}">
-								<a (click)="changeTab(7)">7. profile 
-									<span class="category_camp">lorem ipsum</span>
-								</a>
-							</li>
-							<li [ngClass]="{'active': selectedTab == 8}">
-								<a (click)="changeTab(8)">8. events 
-									<span class="category_camp">lorem ipsum</span>
-								</a>
-							</li>
-						</ul>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-3 camp_pdng">
+					<div class="campaign_editor">
+						<h2>campaign 
+							<br class="br"> editor
+						</h2>
+						<div class="campaign_tabs">
+							<ul class="nav nav-tabs responsive" id="campaign_Tabs">
+								<li [ngClass]="{'active': selectedTab == 1}">
+									<a (click)="changeTab(1)">1. title 
+										<span class="category_camp">lorem ipsum</span>
+									</a>
+								</li>
+								<li [ngClass]="{'active': selectedTab == 2}">
+									<a (click)="changeTab(2)">2. reward 
+										<span class="category_camp">lorem ipsum</span>
+									</a>
+								</li>
+								<li [ngClass]="{'active': selectedTab == 3}">
+									<a (click)="changeTab(3)">3. story 
+										<span class="category_camp">lorem ipsum</span>
+									</a>
+								</li>
+								<li class="faq_boder" [ngClass]="{'active': selectedTab == 4}">
+									<a (click)="changeTab(4)">4. faq  
+										<span class="category_camp">lorem ipsum</span>
+									</a>
+								</li>
+								<li [ngClass]="{'active': selectedTab == 5}">
+									<a (click)="changeTab(5)">5. links 
+										<span class="category_camp">lorem ipsum</span>
+									</a>
+								</li>
+								<li [ngClass]="{'active': selectedTab == 6}">
+									<a (click)="changeTab(6)">6. review 
+										<span class="category_camp">lorem ipsum</span>
+									</a>
+								</li>
+								<li [ngClass]="{'active': selectedTab == 7}">
+									<a (click)="changeTab(7)">7. profile 
+										<span class="category_camp">lorem ipsum</span>
+									</a>
+								</li>
+								<li [ngClass]="{'active': selectedTab == 8}">
+									<a (click)="changeTab(8)">8. events 
+										<span class="category_camp">lorem ipsum</span>
+									</a>
+								</li>
+							</ul>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-sm-6 camp_pdng">
-				<div *ngIf="showLoader" class="loading">
-					<img src="assets/img/loading.svg">
-				</div>
-				<div class="tab-content responsive">
-					<div class="" [ngSwitch]="selectedTab">
-						<ng-template [ngSwitchCase]="'1'" ngSwitchDefault> 
-							<app-project-title [isEditing]="isEditing"></app-project-title>
-						</ng-template>      
-						<ng-template [ngSwitchCase]="'2'">
-							<app-project-reward [isEditing]="isEditing"></app-project-reward> 
-						</ng-template>
-						<ng-template [ngSwitchCase]="'3'">
-							<app-project-story [isEditing]="isEditing"></app-project-story>
-						</ng-template>
-						<ng-template [ngSwitchCase]="'4'">
-							<app-project-faq [isEditing]="isEditing"></app-project-faq>
-						</ng-template>
-						<ng-template [ngSwitchCase]="'5'">
-							<app-project-link [isEditing]="isEditing"></app-project-link>
-						</ng-template>
-						<ng-template [ngSwitchCase]="'6'">
-							<app-project-review [isEditing]="isEditing" (backToEditor)="changeTab(1)"></app-project-review> 
-						</ng-template>
-						<ng-template [ngSwitchCase]="'7'">
-							<app-project-profile></app-project-profile> 
-						</ng-template>
-						<ng-template [ngSwitchCase]="'8'">
-							<app-project-event></app-project-event> 
-						</ng-template>
+				<div class="col-sm-9 camp_pdng">
+					<div *ngIf="showLoader" class="loading">
+						<img src="assets/img/loading.svg">
 					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 camp_pdng">
-				<div class="camp_right">
-					<img src="assets/img/camp-imgright.png" alt="img">
-					<h2>Brina Wingo
-						<span>
-							<img src="assets/img/hay-icon.png" alt="img">Hey, I am online
-						</span>
-					</h2>
-					<p>on behalf of Victor Brockwell</p>
-					<ul>
-						<li>
-							<i class="fa fa-tag" aria-hidden="true"></i> Climate, Enviroment, Azimuth
-						</li>
-						<li>
-							<i class="fa fa-map-marker" aria-hidden="true"></i>  Riverside, CA
-						</li>
-					</ul>
-				</div>
-				<div class="camp_funded">
-					<ul>
-						<li>$0 
-							<span>funded </span>
-						</li>
-						<li>$0 
-							<span>plegded </span>
-						</li>
-						<li>0 
-							<span>backers </span>
-						</li>
-						<li>0 
-							<span>days to go </span>
-						</li>
-					</ul>
-				</div>
-				<div class="camp_btn">
-					<button class="btn btn-default" type="submit">profile</button>
-					<button class="btn btn-default" type="submit">account</button>
-					<button class="btn btn-default" type="submit">help</button>
-					<button class="btn btn-default" type="submit">logout</button>
+					<div class="tab-content responsive">
+						<div class="" [ngSwitch]="selectedTab">
+							<ng-template [ngSwitchCase]="'1'" ngSwitchDefault> 
+								<app-project-title [isEditing]="isEditing"></app-project-title>
+							</ng-template>      
+							<ng-template [ngSwitchCase]="'2'">
+								<app-project-reward [isEditing]="isEditing"></app-project-reward> 
+							</ng-template>
+							<ng-template [ngSwitchCase]="'3'">
+								<app-project-story [isEditing]="isEditing"></app-project-story>
+							</ng-template>
+							<ng-template [ngSwitchCase]="'4'">
+								<app-project-faq [isEditing]="isEditing"></app-project-faq>
+							</ng-template>
+							<ng-template [ngSwitchCase]="'5'">
+								<app-project-link [isEditing]="isEditing"></app-project-link>
+							</ng-template>
+							<ng-template [ngSwitchCase]="'6'">
+								<app-project-review [isEditing]="isEditing" (backToEditor)="changeTab(1)"></app-project-review> 
+							</ng-template>
+							<ng-template [ngSwitchCase]="'7'">
+								<app-project-profile></app-project-profile> 
+							</ng-template>
+							<ng-template [ngSwitchCase]="'8'">
+								<app-project-event></app-project-event> 
+							</ng-template>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

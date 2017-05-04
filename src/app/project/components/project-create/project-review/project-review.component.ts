@@ -1,9 +1,9 @@
+import { ProjectHttpService } from './../../../services/http/project-http.service';
 import { getDraftProject, getSelectedProject } from './../../../reducers/project.selector';
 import { ToastyService } from 'ng2-toasty';
 import { Subscription } from 'rxjs/Subscription';
 import { AppState } from './../../../../app.state';
 import { Store } from '@ngrx/store';
-import { ProjectService } from './../../../services/project.service';
 import { Project } from './../../../../core/models/project';
 import { Component, OnInit, Output, EventEmitter, Input, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
@@ -23,7 +23,7 @@ export class ProjectReviewComponent implements OnInit, OnDestroy {
   project: any;
 
   constructor(
-    private projectService: ProjectService,
+    private projectHttpService: ProjectHttpService,
     private router: Router,
     private store: Store<AppState>,
     private toastyService: ToastyService
@@ -91,7 +91,7 @@ export class ProjectReviewComponent implements OnInit, OnDestroy {
   onLaunch() {
     const isValid = this.checkIfProjectIsValid();
     if (isValid) {
-      this.projectService.launchProject(this.project.id).subscribe((status) => {
+      this.projectHttpService.launchProject(this.project.id).subscribe((status) => {
         console.log('status');
         if (status) {
           this.router.navigate(['/']);

@@ -1,6 +1,5 @@
 import { Subscription } from 'rxjs/Subscription';
 import { getAllProjects } from './../project/reducers/project.selector';
-import { ProjectService } from './../project/services/project.service';
 import { ProjectActions } from './../project/actions/project.actions';
 import { AppState } from './../app.state';
 import { Store } from '@ngrx/store';
@@ -23,7 +22,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute,
     private toastyService: ToastyService,
     private toastyConfig: ToastyConfig,
-    private projectService: ProjectService,
     private store: Store<AppState>,
     private projectActions: ProjectActions
   ) {

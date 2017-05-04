@@ -1,5 +1,5 @@
+import { ProjectHttpService } from './../../services/http/project-http.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ProjectService } from './../../services/project.service';
 import { Project } from './../../../core/models/project';
 import { AppState } from './../../../app.state';
 import { ProjectActions } from './../../actions/project.actions';
@@ -21,14 +21,14 @@ export class ProjectCreateComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store<AppState>,
     private actions: ProjectActions,
-    private projectService: ProjectService,
+    private projectHttpService: ProjectHttpService,
     private router: Router,
     private route: ActivatedRoute,
     private projectActions: ProjectActions,
   ) {
     this.setProject();
     this.selectedTab = 1;
-    this.projectService.savingDraft.subscribe((res) => {
+    this.projectHttpService.savingDraft.subscribe((res) => {
       this.showLoader = res;
       if (this.showLoader === false) {
         this.incrementTab();

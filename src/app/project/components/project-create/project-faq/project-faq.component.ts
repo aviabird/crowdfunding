@@ -1,9 +1,9 @@
+import { FaqFormService } from './../../../services/forms/faq-form.service';
 import { getDraftProject, getSelectedProject } from './../../../reducers/project.selector';
 import { ProjectActions } from './../../../actions/project.actions';
 import { AppState } from './../../../../app.state';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
-import { ProjectService } from './../../../services/project.service';
 import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, Output, EventEmitter, OnDestroy, Input } from '@angular/core';
 
@@ -21,7 +21,7 @@ export class ProjectFaqComponent implements OnInit, OnDestroy {
   faqForm: FormGroup;
 
   constructor(
-    private projectService: ProjectService,
+    private faqFormService: FaqFormService,
     private fb: FormBuilder,
     private store: Store<AppState>,
     private actions: ProjectActions
@@ -66,7 +66,7 @@ export class ProjectFaqComponent implements OnInit, OnDestroy {
   }
 
   private initFaqForm(project) {
-    this.faqForm = this.projectService.initFaqForm(project);
+    this.faqForm = this.faqFormService.initFaqForm(project);
   }
 
   ngOnDestroy() {

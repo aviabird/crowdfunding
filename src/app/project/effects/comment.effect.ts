@@ -1,5 +1,5 @@
+import { CommentHttpService } from './../services/http/comment-http.service';
 import { Comment } from './../../core/models/comment';
-import { ProjectService } from './../services/project.service';
 import { CommentActions } from './../actions/comment.actions';
 import { Observable } from 'rxjs/Observable';
 import { Action } from '@ngrx/store';
@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 export class CommentEffects {
   constructor(
     private commentActions: CommentActions,
-    private projectService: ProjectService,
+    private commentHttpService: CommentHttpService,
     private actions$: Actions
   ) { }
 
@@ -19,7 +19,7 @@ export class CommentEffects {
   loadComments$ = this.actions$
     .ofType(CommentActions.LOAD_COMMENTS)
     .switchMap((action: Action) => {
-      return this.projectService.fetchProjectComments(action.payload);
+      return this.commentHttpService.fetchProjectComments(action.payload);
     })
     .map((comments: Comment[]) => this.commentActions.loadCommentSuccess(comments));
 
@@ -29,7 +29,7 @@ export class CommentEffects {
   addNewComment$ = this.actions$
     .ofType(CommentActions.ADD_COMMENT)
     .switchMap((action: Action) => {
-      return this.projectService.addNewComment(action.payload);
+      return this.commentHttpService.addNewComment(action.payload);
     })
     .map((comment: Comment) => this.commentActions.addCommentSuccess(comment));
 
@@ -38,7 +38,7 @@ export class CommentEffects {
   deleteComment$ = this.actions$
     .ofType(CommentActions.DELETE_COMMENT)
     .switchMap((action: Action) => {
-      return this.projectService.deleteComment(action.payload);
+      return this.commentHttpService.deleteComment(action.payload);
     })
     .map((id: number) => {
       console.log('id', id);
@@ -50,7 +50,7 @@ export class CommentEffects {
   editComment$ = this.actions$
     .ofType(CommentActions.EDIT_COMMENT)
     .switchMap((action: Action) => {
-      return this.projectService.editComment(action.payload);
+      return this.commentHttpService.editComment(action.payload);
     })
     .map((comment: Comment) => this.commentActions.editCommentSuccess(comment));
 

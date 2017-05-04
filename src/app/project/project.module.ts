@@ -10,9 +10,14 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CommentEffects } from './effects/comment.effect';
 import { ProjectEffects } from './effects/project.effects';
 
-import { ProjectService } from './services/project.service';
-
 import { routes } from './project.routes';
+
+import { LinkFormService } from './services/forms/link-form.service';
+import { FaqFormService } from './services/forms/faq-form.service';
+import { StoryFormService } from './services/forms/story-form.service';
+import { RewardFormService } from './services/forms/reward-form.service';
+import { ProjectFormService } from './services/forms/project-form.service';
+import { CommentHttpService } from './services/http/comment-http.service';
 
 import { ProjectDetailComponent } from './components/project-detail/project-detail.component';
 import { ProjectCreateComponent } from './components/project-create/project-create.component';
@@ -56,6 +61,13 @@ import { PledgeMoreComponent } from './components/project-detail/pledge-more/ple
     AlreadyPledgedComponent,
     PledgeMoreComponent,
   ],
-  providers: []
+  providers: [
+    ProjectFormService,
+    RewardFormService,
+    StoryFormService,
+    FaqFormService,
+    LinkFormService,
+    CommentHttpService
+  ]
 })
 export class ProjectModule { }

@@ -1,10 +1,10 @@
+import { RewardFormService } from './../../../services/forms/reward-form.service';
 import { ImageUploadComponent } from './../../../../shared/components/image-upload/image-upload.component';
 import { getDraftProject, getSelectedProject } from './../../../reducers/project.selector';
 import { Subscription } from 'rxjs/Subscription';
 import { ProjectActions } from './../../../actions/project.actions';
 import { AppState } from './../../../../app.state';
 import { Store } from '@ngrx/store';
-import { ProjectService } from './../../../services/project.service';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { Component, OnInit, Output, EventEmitter, OnDestroy, Input, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
 
@@ -24,7 +24,7 @@ export class ProjectRewardComponent implements OnInit, OnDestroy, AfterViewInit 
   rewardForm: FormGroup;
 
   constructor(
-    private projectService: ProjectService,
+    private rewardFormService: RewardFormService,
     private fb: FormBuilder,
     private store: Store<AppState>,
     private actions: ProjectActions
@@ -100,7 +100,7 @@ export class ProjectRewardComponent implements OnInit, OnDestroy, AfterViewInit 
   }
 
   private initRewardForm(project) {
-    this.rewardForm = this.projectService.initRewardForm(project);
+    this.rewardForm = this.rewardFormService.initRewardForm(project);
   }
 
   ngOnDestroy() {

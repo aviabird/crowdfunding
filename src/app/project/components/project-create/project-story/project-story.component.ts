@@ -1,10 +1,10 @@
+import { StoryFormService } from './../../../services/forms/story-form.service';
 import { getDraftProject, getSelectedProject } from './../../../reducers/project.selector';
 import { ProjectActions } from './../../../actions/project.actions';
 import { Subscription } from 'rxjs/Subscription';
 import { AppState } from './../../../../app.state';
 import { Store } from '@ngrx/store';
 import { Project } from './../../../../core/models/project';
-import { ProjectService } from './../../../services/project.service';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { Component, OnInit, Output, EventEmitter, OnDestroy, Input } from '@angular/core';
 
@@ -23,7 +23,7 @@ export class ProjectStoryComponent implements OnInit, OnDestroy {
   projectForm: FormGroup;
 
   constructor(
-    private projectService: ProjectService,
+    private storyFormService: StoryFormService,
     private fb: FormBuilder,
     private store: Store<AppState>,
     private actions: ProjectActions
@@ -76,7 +76,7 @@ export class ProjectStoryComponent implements OnInit, OnDestroy {
   }
 
   private initStoryForm(project) {
-    this.projectForm = this.projectService.initStoryForm(project);
+    this.projectForm = this.storyFormService.initStoryForm(project);
     this.storyForm = <FormGroup>this.projectForm.get('story_attributes');
   }
 

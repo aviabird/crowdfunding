@@ -1,5 +1,4 @@
 import { StripeService } from './../../core/services/stripe.service';
-import { ProjectService } from './../../project/services/project.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -16,7 +15,6 @@ export class SofortRedirectUrlComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private projectService: ProjectService,
     private stripeService: StripeService
   ) {
     Stripe.setPublishableKey('pk_test_M2e5YbVJN53ZL7CWp1KdgNAC');

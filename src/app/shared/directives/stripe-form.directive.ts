@@ -1,4 +1,4 @@
-import { ProjectService } from './../../project/services/project.service';
+import { ProjectHttpService } from './../../project/services/http/project-http.service';
 import { Directive, HostListener, Input } from '@angular/core';
 
 
@@ -10,7 +10,9 @@ export class StripeFormDirective {
   @Input() amount: number;
   @Input() projectId: number;
 
-  constructor(private projectService: ProjectService) { }
+  constructor(
+    private projectHttpService: ProjectHttpService
+  ) { }
 
   @HostListener('click', ['$event'])
   openCheckout(event: Event) {
@@ -18,7 +20,7 @@ export class StripeFormDirective {
       key: 'pk_test_M2e5YbVJN53ZL7CWp1KdgNAC',
       locale: 'auto',
       token: (token: any) => {
-        this.projectService.fundProject(token.id, this.projectId, this.amount);
+        this.projectHttpService.fundProject(token.id, this.projectId, this.amount);
       }
     });
 

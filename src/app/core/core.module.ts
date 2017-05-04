@@ -1,10 +1,9 @@
+import { ProjectHttpService } from './../project/services/http/project-http.service';
 import { EffectsModule } from '@ngrx/effects';
 import { ProjectEffects } from './../project/effects/project.effects';
 import { UserActions } from './../user/actions/user.actions';
 import { CommentActions } from './../project/actions/comment.actions';
-import { ProjectResolveGuard } from './guards/project-resolve.guard';
 import { StripeService } from './services/stripe.service';
-import { ProjectService } from './../project/services/project.service';
 import { ProjectActions } from './../project/actions/project.actions';
 import { AuthActions } from './actions/auth.actions';
 import { AuthService } from './services/auth.service';
@@ -36,12 +35,11 @@ export function httpInterceptor(
     ProjectActions,
     CommentActions,
     UserActions,
-    ProjectService,
+    ProjectHttpService,
     AuthService,
     AuthActions,
     StripeService,
-    AuthGuard,
-    ProjectResolveGuard
+    AuthGuard
   ]
 })
 export class CoreModule { }

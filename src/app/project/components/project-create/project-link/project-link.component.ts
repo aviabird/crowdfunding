@@ -1,9 +1,9 @@
+import { LinkFormService } from './../../../services/forms/link-form.service';
 import { getDraftProject, getSelectedProject } from './../../../reducers/project.selector';
 import { Store } from '@ngrx/store';
 import { AppState } from './../../../../app.state';
 import { ProjectActions } from './../../../actions/project.actions';
 import { Subscription } from 'rxjs/Subscription';
-import { ProjectService } from './../../../services/project.service';
 import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, Output, EventEmitter, Input, OnDestroy } from '@angular/core';
 
@@ -21,7 +21,7 @@ export class ProjectLinkComponent implements OnInit, OnDestroy {
   linkForm: FormGroup;
 
   constructor(
-    private projectService: ProjectService,
+    private linkFormService: LinkFormService,
     private fb: FormBuilder,
     private actions: ProjectActions,
     private store: Store<AppState>
@@ -65,7 +65,7 @@ export class ProjectLinkComponent implements OnInit, OnDestroy {
   }
 
   private initLinkForm(project) {
-    this.linkForm = this.projectService.initLinkForm(project);
+    this.linkForm = this.linkFormService.initLinkForm(project);
   }
 
   ngOnDestroy() {

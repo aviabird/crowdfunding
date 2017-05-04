@@ -1,3 +1,5 @@
+import { ProjectFormService } from './../../../services/forms/project-form.service';
+import { ProjectHttpService } from './../../../services/http/project-http.service';
 import { ImageUploadComponent } from './../../../../shared/components/image-upload/image-upload.component';
 import { getDraftProject, getSelectedProject } from './../../../reducers/project.selector';
 import { ProjectActions } from './../../../actions/project.actions';
@@ -5,7 +7,6 @@ import { AppState } from './../../../../app.state';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Project } from './../../../../core/models/project';
-import { ProjectService } from './../../../services/project.service';
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
@@ -29,10 +30,11 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
                       'July', 'August', 'September', 'October', 'November', 'December');
 
   constructor(
-    private projectService: ProjectService,
     private actions: ProjectActions,
     private store: Store<AppState>,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private projectHttpService: ProjectHttpService,
+    private projectFormService: ProjectFormService
   ) {
     this.fetchCategories();
   }
@@ -102,14 +104,14 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
   }
 
   private fetchCategories() {
-    this.projectService.fetchAllCategories().subscribe((data) => {
+    this.projectHttpService.fetchAllCategories().subscribe((data) => {
       this.categories = data;
       (<FormControl>this.projectForm.controls['category_id']).setValue(data[0].id);
     });
   }
 
   private initProjectForm(project) {
-    this.projectForm = this.projectService.initProjectForm(project);
+    this.projectForm = this.projectFormService.initProjectForm(project);
   }
 
   ngOnDestroy() {

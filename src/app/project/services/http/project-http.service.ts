@@ -36,6 +36,15 @@ export class ProjectHttpService {
     });
   }
 
+  removeFromDraftProject(params) {
+    return this.http.post(
+      '/api/v1/projects',
+      params
+    ).map((res) => {
+      return res.json();
+    });
+  }
+
   getProjects() {
     return this.http.get(
       `/api/v1/projects`

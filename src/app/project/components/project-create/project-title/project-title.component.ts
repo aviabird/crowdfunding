@@ -64,7 +64,7 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
   isImagePresent() {
     const isPicturesAttributes = (<FormArray>this.projectForm.get('pictures_attributes')).controls.length > 0;
     const isImagesData = (<FormArray>this.projectForm.get('images_data')).controls.length > 0;
-    if (isPicturesAttributes || isPicturesAttributes) {
+    if (isPicturesAttributes || isImagesData) {
       return true;
     } else {
       return false;
@@ -81,7 +81,7 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
     });
     const project = this.projectForm.value;
     if (!this.isEditing) {
-      this.store.dispatch(this.actions.saveDraft(project));
+      this.store.dispatch(this.actions.removeFromDraft(project));
     } else {
       this.store.dispatch(this.actions.updateProject(project));
     }

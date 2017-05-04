@@ -4,6 +4,7 @@ export class ProjectActions {
   static INIT_DRAFT_PROJECT = 'INIT_DRAFT_PROJECT';
   static INIT_DRAFT_SUCCESS = 'INIT_DRAFT_SUCCESS';
   static SAVE_DRAFT = 'SAVE_DRAFT';
+  static REMOVE_FROM_DRAFT = 'REMOVE_FROM_DRAFT';
   static SELECT_PROJECT = 'SELECT_PROJECT';
   static UPDATE_PROJECT = 'UPDATE_PROJECT';
   static UPDATE_PROJECT_SUCCESS = 'UPDATE_PROJECT_SUCCESS';
@@ -41,6 +42,13 @@ export class ProjectActions {
   saveDraft(project: Project) {
     return {
        type: ProjectActions.SAVE_DRAFT,
+       payload: project
+    };
+  }
+
+  removeFromDraft(project: Project) {
+    return {
+       type: ProjectActions.REMOVE_FROM_DRAFT,
        payload: project
     };
   }

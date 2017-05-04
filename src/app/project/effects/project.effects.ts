@@ -34,6 +34,15 @@ export class ProjectEffects {
 
   // tslint:disable-next-line:member-ordering
   @Effect()
+  removeFromDraft$ = this.actions$
+    .ofType(ProjectActions.REMOVE_FROM_DRAFT)
+    .switchMap((action: Action) => {
+      return this.projectHttpService.removeFromDraftProject(action.payload);
+    })
+    .map((project: Project) => this.projectActions.initDraftSuccess(project));
+
+  // tslint:disable-next-line:member-ordering
+  @Effect()
   fetchDraft$ = this.actions$
     .ofType(ProjectActions.FETCH_PROJECT)
     .switchMap((action: Action) => {

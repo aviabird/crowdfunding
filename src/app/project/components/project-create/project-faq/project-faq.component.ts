@@ -46,11 +46,29 @@ export class ProjectFaqComponent implements OnInit, OnDestroy {
   onAddFaq() {
     (<FormArray>this.faqForm.controls['faqs_attributes']).push(
       this.fb.group({
-        'id': [''],
+        'id': [null],
         'question': ['', Validators.required],
         'answer': ['', Validators.required],
+        '_destroy': [false]
       })
     );
+  }
+
+  removeFaq(index, id) {
+    console.log('id', id);
+    if (!id) {
+      return (<FormArray>this.faqForm.controls['faqs_attributes']).removeAt(index);
+    }
+
+    (<FormArray>this.faqForm.controls['faqs_attributes']).controls[index].patchValue({
+      '_destroy': true
+    });
+    const data = this.faqForm.value;
+    if (!this.isEditing) {
+      this.store.dispatch(this.actions.removeFromDraft(data));
+    } else {
+      this.store.dispatch(this.actions.updateProject(data));
+    }
   }
 
   onSubmit() {

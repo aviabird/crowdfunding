@@ -7,7 +7,7 @@
 					<div *ngFor="let reward of getRewards(); let i = index">
 						<div class="panel panel-default" formGroupName="{{i}}">
 							<div class="panel-heading">
-								<span (click)="removeReward(i, reward.id)" class="fa fa-times pull-right "></span>
+								<span (click)="removeReward(i, reward.get('id').value)" class="fa fa-times pull-right "></span>
 								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionReward" href="#collapseReward">
 									<h4 class="panel-title">
 										Section #{{i+1}}

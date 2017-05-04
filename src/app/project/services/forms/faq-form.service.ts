@@ -11,7 +11,7 @@ export class FaqFormService {
 
   initFaqForm(project) {
     let faqs = project.faqs;
-    if (!faqs) {
+    if (faqs.length === 0) {
       faqs = [new Faq];
     }
 
@@ -21,7 +21,8 @@ export class FaqFormService {
         this.fb.group({
           'id': [faq.id],
           'question': [faq.question, Validators.required],
-          'answer': [faq.answer, Validators.required]
+          'answer': [faq.answer, Validators.required],
+          '_destroy': [false]
         })
       );
     });

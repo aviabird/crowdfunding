@@ -75,7 +75,12 @@ export class ProjectRewardComponent implements OnInit, OnDestroy {
     (<FormArray>this.rewardForm.controls['rewards_attributes']).controls[index].patchValue({
       '_destroy': true
     });
-    this.onSubmit();
+    const data = this.rewardForm.value;
+    if (!this.isEditing) {
+      this.store.dispatch(this.actions.removeFromDraft(data));
+    } else {
+      this.store.dispatch(this.actions.updateProject(data));
+    }
   }
 
   // uploadImage(index) {

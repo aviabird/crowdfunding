@@ -1,8 +1,14 @@
-import { Base } from './base';
+export class Faq {
+  id: number;
+  question: string;
+  answer: string;
+  project_id: number;
 
-export class Faq extends Base {
-  id = '';
-  question = '';
-  answer = '';
-  project_id: string;
+  constructor() {
+    this.id = null;
+    this.question = '';
+    this.answer = '';
+    this.project_id = null;
+  }
+
 }

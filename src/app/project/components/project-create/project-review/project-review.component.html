@@ -5,35 +5,37 @@
 			<h3>Campaign Name</h3>
 			<p>{{project.title}}</p>
 		</div>
-		<div *ngIf="project.pledged_amount" class="camp_mrg">
+		<div *ngIf="project.pledged_amount" class="camp_mrg2">
 			<h3>Campaign Pledge</h3>
 			<p>$ {{project.pledged_amount}}</p>
 		</div>
-		<div *ngIf="project.image_url" class="camp_mrg">
-			<h3>Campaign Main Image</h3>
-			<img class="img-responsive" [src]="project.image_url" alt="img">
+		<div *ngIf="project.pictures.length > 0" class="camp_mrg2">
+			<h3>Campaign Images</h3>
+			<span class="image-div" *ngFor="let picture of project?.pictures; let i = index">
+				<img class="reward-image" [src]="picture.url" alt="img">
+			</span>
 		</div>
-		<div *ngIf="project.video_url">
+		<div *ngIf="project.video_url" class="camp_mrg2">
 			<h3>Campaign Video</h3>
 			<a [href]="project.video_url">{{project.video_url}}</a>
 		</div>
-		<div *ngIf="project.funding_model" class="camp_mrg">
+		<div *ngIf="project.funding_model" class="camp_mrg2">
 			<h3>Campaign Funding Model</h3>
 			<p>{{project.funding_model}}</p>
 		</div>
-		<div *ngIf="project.duration" class="camp_mrg">
+		<div *ngIf="project.duration" class="camp_mrg2">
 			<h3>Campaign Duration</h3>
 			<p>{{project.duration}} Days</p>
 		</div>
-		<div *ngIf="isStoryPresent()" class="camp_mrg">
+		<div *ngIf="isStoryPresent()" class="camp_mrg2">
 			<h3 style="margin-bottom: 16px;">Campaign Story</h3>
 			<div *ngFor="let section of project?.story.sections">
 				<h3 *ngIf="section.heading">{{section.heading}}</h3>
 				<p *ngIf="section.description">{{section.description}}</p>
-				<img *ngIf="section.image_url" class="img-responsive" [src]="section.image_url" alt="img">
+				<img  *ngIf="section.image_url" class="" [src]="section.image_url" alt="img">
 			</div>
 		</div>
-		<div *ngIf="isRewardsPresent()" class="camp_mrg">
+		<div *ngIf="isRewardsPresent()" class="camp_mrg2">
 			<h3 style="margin-bottom: 16px;">Campaign Rewards</h3>
 			<div *ngFor="let reward of project?.rewards">
 				<h3 *ngIf="reward.title">{{reward.title}}</h3>
@@ -42,20 +44,20 @@
 				<img *ngIf="reward.image_url" class="img-responsive" [src]="reward.image_url" alt="img">
 			</div>
 		</div>
-		<div *ngIf="isLinksPresent()" class="camp_mrg">
+		<div *ngIf="isLinksPresent()" class="camp_mrg2">
 			<h3>Campaign Links and other Info</h3>
 			<div *ngFor="let link of project?.links">
 				<a *ngIf="link.url" [href]="link.url" target="_blank">{{link.url}}</a>
 			</div>
 		</div>
-		<div *ngIf="isFaqsPresent()" class="camp_mrg">
+		<div *ngIf="isFaqsPresent()" class="camp_mrg2">
 			<h3 style="margin-bottom: 16px;">Campaign FAQ's</h3>
 			<div style="margin-bottom: 15px;" *ngFor="let faq of project?.faqs; let i = index">
 				<h3 *ngIf="faq.question">{{i+1}}.) {{faq.question}}</h3>
 				<p *ngIf="faq.answer">{{faq.answer}}</p>
 			</div>
 		</div>
-		<div class="camp_mrg">
+		<div class="camp_mrg2">
 			<ul>
 				<li class="value-err" *ngFor="let error of errors">
 					{{error}}

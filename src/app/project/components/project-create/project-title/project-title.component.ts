@@ -104,6 +104,7 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
     this.setStartDate();
     this.formSubmit = true;
     const project = this.projectForm.value;
+    console.log('project', project);
     if (this.projectForm.valid && this.isImagePresent()) {
       if (!this.isEditing) {
         this.store.dispatch(this.actions.saveDraft(project));

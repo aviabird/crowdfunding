@@ -1,12 +1,11 @@
 import { Picture } from './picture';
-import { Base } from './base';
 import { Story } from './story';
 import { Event } from './event';
 import { Link } from './link';
 import { Faq } from './faq';
 import { Reward } from './reward';
 
-export class Project extends Base {
+export class Project {
   id = '';
   title = '';
   category_id: string;
@@ -21,6 +20,7 @@ export class Project extends Base {
   percent_funded = '';
   start_date = new Date();
   duration = '';
+  currency: string;
   pictures: Picture[] = [new Picture];
   rewards: Reward[] = [new Reward];
   faqs: Faq[] = [new Faq];

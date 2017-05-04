@@ -7,6 +7,7 @@ export class Reward {
   delivery_date: Date;
   quantity: number;
   amount: number;
+  currency: string;
   project_id: number;
 
   constructor() {
@@ -16,6 +17,7 @@ export class Reward {
     this.delivery_date = new Date();
     this.quantity = null;
     this.amount = null;
+    this.currency = 'USD';
     this.project_id = null;
   }
 

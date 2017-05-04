@@ -81,6 +81,7 @@ export class ProjectRewardComponent implements OnInit, OnDestroy {
         'year': [date.getFullYear()],
         'quantity': [null, Validators.required],
         'amount': [null, Validators.required],
+        'currency': ['USD']
       })
     );
   }

@@ -1,7 +1,7 @@
 import { Picture } from './picture';
 import { Base } from './base';
 
-export class LiteProject extends Base {
+export class LiteProject {
   id: number;
   title: string;
   category_id: number;
@@ -16,5 +16,6 @@ export class LiteProject extends Base {
   percent_funded: number;
   start_date: Date;
   duration: number;
+  currency: string;
   pictures: Picture[] = [new Picture];
 }

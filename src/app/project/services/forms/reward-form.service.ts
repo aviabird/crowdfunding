@@ -32,6 +32,7 @@ export class RewardFormService {
           'year': [date.getFullYear()],
           'quantity': [reward.quantity, Validators.required],
           'amount': [reward.amount, Validators.required],
+          'currency': [reward.currency || 'USD'],
           '_destroy': [false]
         })
       );

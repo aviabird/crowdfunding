@@ -5,6 +5,8 @@
 	}
 }
 
-.carousel-caption {
-	position: static !important;
+.carousel {
+	.carousel-indicators, .carousel-control {
+		display: none;
+	}
 }

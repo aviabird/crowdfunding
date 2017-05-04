@@ -8,7 +8,7 @@ import { Project } from './../../../core/models/project';
 import { Observable } from 'rxjs/Observable';
 import { AppState } from './../../../app.state';
 import { Store } from '@ngrx/store';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
@@ -23,6 +23,8 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
   project: any;
   selectedTab = 1;
   amount: number;
+  safeEmbedUrl: SafeResourceUrl;
+  carouselIndex: number;
 
   constructor(
     private store: Store<AppState>,
@@ -30,7 +32,8 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private projectActions: ProjectActions,
     private projectHttpService: ProjectHttpService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private zone: NgZone
     ) {
     this.routeSub$ = this.route.params.subscribe((params) => {
       const id = params['id'];
@@ -39,14 +42,22 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
 
     this.projectSub$ = this.store.select(getSelectedProject).subscribe((project) => {
       this.project = project;
+      if (this.project) {
+        this.zone.run(() => {
+          this.getVideoEmbedUrl(this.project.video_url);
+        });
+      }
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   changeTab(number) {
     this.selectedTab = number;
+  }
+
+  showImage(index) {
+    this.carouselIndex = index;
   }
 
   getVideoThumbnail(url) {
@@ -56,10 +67,12 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
   }
 
   getVideoEmbedUrl(url) {
+    if (!url) {
+      return;
+    }
     const videoId = this.projectHttpService.getVideoId(url);
-    const embedUrl = `https://www.youtube.com/embed/${videoId}`;
-    const safeEmbedUrl =  this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
-    return safeEmbedUrl;
+    const embedUrl = `https://www.youtube.com/embed/${videoId}?rel=0`;
+    this.safeEmbedUrl =  this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
   }
 
   ngOnDestroy() {

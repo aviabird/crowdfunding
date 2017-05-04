@@ -65,11 +65,41 @@
 			</ul>
 		</div>
 		<div class="camp_link">
-			<a *ngIf="!isEditing" (click)="onLaunch()" class="btnNext pull-right" style="width:48%">Review and Launch</a>
-			<a *ngIf="isEditing" [routerLink]="['/projects', project.id]" class="btnNext pull-right" style="width:48%">Review and Update</a>
+			<a *ngIf="!isEditing" (click)="lgModal.show()" class="btnNext pull-right" style="width:48%">Review and Launch</a>
+			<a *ngIf="isEditing" (click)="lgModal.show()" class="btnNext pull-right" style="width:48%">Review and Update</a>
 			<a (click)="onBackToEditor()" class="camp_btn btn-default" style="width:48%">
 				Back to the Editor
 			</a>
 		</div>
 	</div>
+</div>
+
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left"></h4>
+        <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+				<div>
+					Note: You will not be able to edit Title, Duration, 
+					Goal Amount, Currency, Begin date, Category after 
+					submission. Make sure you have verified all fields
+				</div>
+				<br>
+				<br>
+				<div class="camp_link">
+					<a *ngIf="!isEditing" (click)="onLaunch()" class="btnNext pull-right" style="width:48%">Launch</a>
+					<a *ngIf="isEditing" [routerLink]="['/projects', project.id]" class="btnNext pull-right" style="width:48%">Update</a>
+					<a (click)="lgModal.hide()" class="camp_btn btn-default" style="width:48%">
+						Back to the Editor
+					</a>
+				</div>
+				<br>
+      </div>
+    </div>
+  </div>
 </div>

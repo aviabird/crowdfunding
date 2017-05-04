@@ -14,7 +14,7 @@ import { StripeFormDirective } from './directives/stripe-form.directive';
     CommonModule,
     TranslateModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     CommonModule,

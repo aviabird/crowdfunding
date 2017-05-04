@@ -7,25 +7,16 @@
             <h2>{{project?.title}}</h2>
           </div>
           <div class="col-md-12 space20">
-            <carousel interval="false">
-              <slide>
-                <iframe width="800" height="450" src="https://www.youtube.com/embed/DLTJki0hFyU">
-                </iframe>
-              </slide> 
-              <slide>
-                <img width="800" height="450" src="https://res.cloudinary.com/crowdpouch/image/upload/v1493888129/mxi7n6esyexnppxpwaj5.png" alt="First slide">
-              </slide>
-              <slide>
-                <img width="800" height="450" src="https://res.cloudinary.com/crowdpouch/image/upload/v1493888133/n9rxvvaokk7gxjx9ko32.png" alt="Second slide">
-              </slide>
-              <slide>
-                <img width="800" height="450" src="https://res.cloudinary.com/crowdpouch/image/upload/v1493888139/qgs14bqmdxahlrrheftm.png" alt="Second slide">
-              </slide>
-              <slide>
-                <img width="800" height="450" src="https://res.cloudinary.com/crowdpouch/image/upload/v1493888142/kxfcypcwhzq6bv2ianku.png" alt="Second slide">
-              </slide>             
-            </carousel>
-            <!--<img *ngIf="project?.image_url" [src]="project?.image_url" width="100%" class="img-responsive center-block" alt="image">-->
+            <div id="myElement" class="big-image">Loading the player...</div>
+              <!--<iframe class="main-media" id="video" *ngIf="project?.video_url" [src]="getVideoEmbedUrl(project.video_url)">
+              </iframe>-->
+            <!--<div class="big-image" *ngFor="let picture of project?.pictures; let i = index">
+              <img class="main-media" id="image{{i}}" [src]="picture.url" alt="First slide">
+            </div>-->
+            <div class="thumbnails">
+              <img *ngIf="project?.video_url" class="thumbnail" [src]="getVideoThumbnail(project.video_url)" alt="">
+              <img *ngFor="let picture of project?.pictures" class="thumbnail" (click)="showImage()" [src]="picture.url" alt="">
+            </div>
           </div>
         </div>
         <div class="row space10">

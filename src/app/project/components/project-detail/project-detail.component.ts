@@ -40,8 +40,6 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     this.projectSub$ = this.store.select(getSelectedProject).subscribe((project) => {
       this.project = project;
     });
-
-    this.loadJWPlayer();
   }
 
   ngOnInit() {
@@ -68,15 +66,6 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     this.store.dispatch(this.commentActions.clearComments());
     this.projectSub$.unsubscribe();
     this.routeSub$.unsubscribe();
-  }
-
-  loadJWPlayer() {
-    const playerInstance = jwplayer('myElement');
-    playerInstance.setup({
-    file: 'https://www.youtube.com/watch?v=KFwjibi-JRU',
-    width: 640,
-    height: 360
-    });
   }
 
 }

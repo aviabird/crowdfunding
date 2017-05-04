@@ -23,6 +23,7 @@
       "styles": [
         "../node_modules/ng2-toasty/style-bootstrap.css",
         "assets/fonts/flaticon.css",
+        "../node_modules/froala-editor/css/froala_editor.pkgd.min.css",
         "assets/font-awesome-4.3.0/css/font-awesome.min.css",
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "assets/css/style.css",
@@ -32,6 +33,7 @@
       ],
       "scripts": [
         "assets/js/jquery-1.12.4.min.js",
+        "../node_modules/froala-editor/js/froala_editor.pkgd.min.js",
         "../node_modules/bootstrap/dist/js/bootstrap.min.js",
         "assets/js/jquery.flexslider.js",
         "assets/js/plug-ins.js",

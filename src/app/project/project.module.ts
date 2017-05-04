@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 
 import { CommentEffects } from './effects/comment.effect';
 import { ProjectEffects } from './effects/project.effects';
@@ -41,6 +42,8 @@ import { PledgeMoreComponent } from './components/project-detail/pledge-more/ple
   imports: [
     RouterModule.forChild(routes),
     CarouselModule.forRoot(),
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot(),
     ModalModule.forRoot(),
     EffectsModule.run(CommentEffects),
     SharedModule

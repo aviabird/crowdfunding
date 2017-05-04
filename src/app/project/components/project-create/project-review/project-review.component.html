@@ -27,14 +27,8 @@
 			<h3>Campaign Duration</h3>
 			<p>{{project.duration}} Days</p>
 		</div>
-		<div *ngIf="isStoryPresent()" class="camp_mrg2">
-			<h3 style="margin-bottom: 16px;">Campaign Story</h3>
-			<div *ngFor="let section of project?.story.sections">
-				<h3 *ngIf="section.heading">{{section.heading}}</h3>
-				<p *ngIf="section.description">{{section.description}}</p>
-				<img  *ngIf="section.image_url" class="" [src]="section.image_url" alt="img">
-			</div>
-		</div>
+		<div *ngIf="project.story" [innerHTML]="project.story.body" class="camp_mrg2"></div>
+		
 		<div *ngIf="isRewardsPresent()" class="camp_mrg2">
 			<h3 style="margin-bottom: 16px;">Campaign Rewards</h3>
 			<div *ngFor="let reward of project?.rewards">

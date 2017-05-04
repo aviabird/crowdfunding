@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { AppState } from './../../../../app.state';
 import { Store } from '@ngrx/store';
 import { Project } from './../../../../core/models/project';
-import { Component, OnInit, Output, EventEmitter, Input, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,11 +14,13 @@ import { Router } from '@angular/router';
   templateUrl: './project-review.component.html',
   styleUrls: ['./project-review.component.scss']
 })
-export class ProjectReviewComponent implements OnInit, OnDestroy {
+export class ProjectReviewComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @Output() backToEditor: EventEmitter<number> = new EventEmitter<number>();
   @Input() isEditing;
   @ViewChild('lgModal') lgModal: ModalDirective;
+  // @ViewChild('story') story: ElementRef;
+
   private projectSub$: Subscription = new Subscription();
 
   errors: Array<string> = [];
@@ -43,21 +45,13 @@ export class ProjectReviewComponent implements OnInit, OnDestroy {
     }
   }
 
+  ngAfterViewInit() {}
+
   private fetchProject() {
   }
 
   onBackToEditor() {
     this.backToEditor.emit(1);
-  }
-
-  isStoryPresent() {
-    let status = false;
-    this.project.story.sections.forEach(section => {
-      if (section.heading || section.description || section.image_url) {
-        status = true;
-      }
-    });
-    return status;
   }
 
   isRewardsPresent() {
@@ -93,17 +87,17 @@ export class ProjectReviewComponent implements OnInit, OnDestroy {
   onLaunch() {
     const isValid = this.checkIfProjectIsValid();
     this.hideModal();
-    // if (isValid) {
-    //   this.projectHttpService.launchProject(this.project.id).subscribe((status) => {
-    //     console.log('status');
-    //     if (status) {
-    //       this.router.navigate(['/']);
-    //       this.toastyService.success('Your Project is Pending for Approval, We Will notify you once your project is approved');
-    //     } else {
-    //       this.toastyService.error('Something went wrong!');
-    //     }
-    //   });
-    // }
+    if (isValid) {
+      this.projectHttpService.launchProject(this.project.id).subscribe((status) => {
+        console.log('status');
+        if (status) {
+          this.router.navigate(['/']);
+          this.toastyService.success('Your Project is Pending for Approval, We Will notify you once your project is approved');
+        } else {
+          this.toastyService.error('Something went wrong!');
+        }
+      });
+    }
   }
 
   private checkIfProjectIsValid() {
@@ -121,11 +115,11 @@ export class ProjectReviewComponent implements OnInit, OnDestroy {
       this.errors.push('Campaign Duration is missig');
       status = false;
    }
-    if (!this.project.image_url) {
+    if (this.project.pictures.length === 0) {
       this.errors.push('Campaign Image is missing');
       status = false;
    }
-    if (!this.isStoryPresent()) {
+    if (!this.project.story) {
       this.errors.push('Campaign Story is missing');
       status = false;
     }

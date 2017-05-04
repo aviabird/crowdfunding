@@ -15,26 +15,26 @@ export class StoryFormService {
       story = new Story;
     }
 
-    const section_attributes_array = [];
-    story.sections.forEach(section => {
-      section_attributes_array.push(
-        this.fb.group({
-          'id': section.id,
-          'heading': [section.heading, Validators.required],
-          'description': [section.description, Validators.required],
-          'image_data': [''],
-          'image_url': [section.image_url],
-          '_destroy': [false]
-        })
-      );
-    });
+    // const section_attributes_array = [];
+    // story.sections.forEach(section => {
+    //   section_attributes_array.push(
+    //     this.fb.group({
+    //       'id': section.id,
+    //       'heading': [section.heading, Validators.required],
+    //       'description': [section.description, Validators.required],
+    //       'image_data': [''],
+    //       'image_url': [section.image_url],
+    //       '_destroy': [false]
+    //     })
+    //   );
+    // });
 
     return this.fb.group({
       'id': [project.id],
       'type': ['story'],
       'story_attributes': this.fb.group({
         'id': [story.id],
-        'sections_attributes': this.fb.array(section_attributes_array)
+        'body': [story.body, Validators.required]
       })
     });
   }

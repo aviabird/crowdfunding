@@ -3,56 +3,14 @@
 	<div class="camp_create_box">
 		<div class="panel-group" id="accordion">
 			<form [formGroup]="storyForm">
-				<div formArrayName="sections_attributes">
-					<div *ngFor="let section of getSections(); let i = index">
-						<div class="panel panel-default" formGroupName="{{i}}">
-							<div class="panel-heading">
-								<!--<span (click)="removeSection(i, section.get('id').value)" class="fa fa-times pull-right "></span>-->
-								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-									<h4 class="panel-title">
-										Section #{{i+1}}
-									</h4>
-								</a>
-							</div>
-							<div id="collapseOne" class="panel-collapse collapse in">
-								<div class="panel-body">
-									<div class="camp_mrg2"></div>
-									<div class="form-group">
-										<label for="usr">Story Heading *</label>
-										<input type="text" class="form-control" formControlName="heading" placeholder="Enter title">
-										<p *ngIf="section.get('heading').hasError('required') && (section.get('heading').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
-									</div>
-									<div class="form-group">
-										<label for="comment">Story Description *</label>
-										<textarea class="form-control" rows="2" formControlName="description" placeholder="Enter description"></textarea>
-										<p *ngIf="section.get('description').hasError('required') && (section.get('description').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
-									</div>
-									<div>
-										<span *ngIf="!section.get('image_data').value && section.get('image_url').value" class="image-div">
-											<img class="reward-image" [src]="section.get('image_url').value" alt="img">
-										</span>
-										<span *ngIf="section.get('image_data').value" class="image-div">
-											<img class="reward-image" [src]="section.get('image_data').value" alt="img">
-										</span>
-									</div>
-									<app-image-upload (click)="uploadImage(i)" (image)="setImageData($event, i)">
-										<img src="assets/img/camera-img.png" alt="img">
-										<h4>Upload Image</h4>
-									</app-image-upload>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				<textarea [froalaEditor] formControlName="body">
+				</textarea>
 			</form>
 		</div>
 		<br>
 		<div class="camp_mrg"></div>
 		<div class="camp_link">
 			<a (click)="onSubmit()" class="btnNext pull-right" style="width:48%">NEXT</a>
-			<a (click)="onAddSection()" class="camp_btn btn-default btn-add-panel" style="width:48%">
-				<i class="fa fa-plus"></i> Add New Section
-			</a>
 		</div>
 	</div>
 </div>

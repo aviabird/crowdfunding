@@ -7,13 +7,15 @@
             <h2>{{project?.title}}</h2>
           </div>
           <div class="col-md-12 space20">
-            <div class="big-image">
-              <iframe class="main-media" id="video" *ngIf="project?.video_url" [src]="getVideoEmbedUrl(project.video_url)">
-              </iframe>
-            </div>
-            <div class="big-image" *ngFor="let picture of project?.pictures; let i = index">
-              <img class="main-media" id="image{{i}}" [src]="picture.url" alt="First slide">
-            </div>
+            <carousel>
+              <slide>
+                <iframe class="main-media" id="video" *ngIf="project?.video_url" [src]="getVideoEmbedUrl(project.video_url)">
+                </iframe>
+              </slide>
+              <slide class="big-image" *ngFor="let picture of project?.pictures; let i = index">
+                <img class="main-media" id="image{{i}}" [src]="picture.url" alt="First slide">
+              </slide>
+            </carousel>
             <div class="thumbnails">
               <img *ngIf="project?.video_url" class="thumbnail" [src]="getVideoThumbnail(project.video_url)" alt="">
               <img *ngFor="let picture of project?.pictures" class="thumbnail" (click)="showImage()" [src]="picture.url" alt="">

@@ -3,23 +3,24 @@
 	<form [formGroup]="linkForm">
 		<div formArrayName="links_attributes">
 			<div *ngFor="let link of getLinks(); let i = index">
-				<div class="camp_create_box" formGroupName="{{i}}">
-					<div class="camp_add_png">
-						<h2>Add a Link</h2>
-						<p>Lorem Ipsum </p>
+				<div class="panel panel-default" formGroupName="{{i}}">
+					<div class="panel-heading">
+						<span (click)="removeLink(i, link.get('id').value)" class="fa fa-times pull-right "></span>
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionFaq" href="#collapseFaq">
+							<h4 class="panel-title">
+								Add Link #{{i+1}}
+							</h4>
+						</a>
 					</div>
-					<div class="camp_mrg2"></div>
-					<h2>Link n.{{i+1}} *</h2>
-					<p>Introduce yourself,, your campaign and why it's important to you. </p>
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Http:\\.." formControlName="url">
-						<p *ngIf="link.get('url').hasError('required') && (link.get('url').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
+					<div id="collapseFaq" class="panel-collapse collapse in">
+						<div class="panel-body">
+							<div class="camp_mrg2"></div>
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Http:\\.." formControlName="url">
+								<p *ngIf="link.get('url').hasError('required') && (link.get('url').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
+							</div>
+						</div>
 					</div>
-					<!--<div class="camp_mrg"></div>
-					<div class="camp_add_png">
-						<h2>Add a Link</h2>
-						<p>Lorem ipsum</p>
-					</div>-->
 				</div>
 			</div>
 		</div>

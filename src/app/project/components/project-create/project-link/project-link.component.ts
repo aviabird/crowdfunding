@@ -46,10 +46,28 @@ export class ProjectLinkComponent implements OnInit, OnDestroy {
   onAddLink() {
     (<FormArray>this.linkForm.controls['links_attributes']).push(
       this.fb.group({
-        'id': [''],
+        'id': [null],
         'url': ['', Validators.required],
+        '_destroy': [false]
       })
     );
+  }
+
+  removeLink(index, id) {
+    console.log('id', id);
+    if (!id) {
+      return (<FormArray>this.linkForm.controls['links_attributes']).removeAt(index);
+    }
+
+    (<FormArray>this.linkForm.controls['links_attributes']).controls[index].patchValue({
+      '_destroy': true
+    });
+    const data = this.linkForm.value;
+    if (!this.isEditing) {
+      this.store.dispatch(this.actions.removeFromDraft(data));
+    } else {
+      this.store.dispatch(this.actions.updateProject(data));
+    }
   }
 
   onSubmit() {

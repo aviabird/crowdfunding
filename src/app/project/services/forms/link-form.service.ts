@@ -11,7 +11,7 @@ export class LinkFormService {
 
   initLinkForm(project) {
     let links = project.links;
-    if (!links) {
+    if (links.length === 0) {
       links = [new Link];
     }
 
@@ -20,7 +20,8 @@ export class LinkFormService {
       link_attributes_array.push(
         this.fb.group({
           'id': [link.id],
-          'url': [link.url, Validators.required]
+          'url': [link.url, Validators.required],
+          '_destroy': [false]
         })
       );
     });

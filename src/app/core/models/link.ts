@@ -1,7 +1,12 @@
-import { Base } from './base';
+export class Link {
+  id: number;
+  url: string;
+  project_id: number;
 
-export class Link extends Base {
-  id = '';
-  url = '';
-  project_id = '';
+  constructor() {
+    this.id = null;
+    this.url = '';
+    this.project_id = null;
+  }
+
 }

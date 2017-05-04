@@ -3,3 +3,16 @@
 	padding-top: 2px;
 	color: #ea6c6c;
 }
+
+.image-div {
+	position: relative;
+	.reward-image {
+		width: 100px;
+		height: 100px;
+		background: #29acbf;
+		object-fit: cover;
+		object-position: center;
+		margin-right: 20px;
+		margin-bottom: 20px;
+	}
+}

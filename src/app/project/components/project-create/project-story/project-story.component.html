@@ -7,7 +7,7 @@
 					<div *ngFor="let section of getSections(); let i = index">
 						<div class="panel panel-default" formGroupName="{{i}}">
 							<div class="panel-heading">
-								<span class="fa fa-times pull-right "></span>
+								<!--<span (click)="removeSection(i, section.get('id').value)" class="fa fa-times pull-right "></span>-->
 								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
 									<h4 class="panel-title">
 										Section #{{i+1}}
@@ -27,41 +27,24 @@
 										<textarea class="form-control" rows="2" formControlName="description" placeholder="Enter description"></textarea>
 										<p *ngIf="section.get('description').hasError('required') && (section.get('description').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
 									</div>
-									<h2>Upload your Image</h2>
-									<app-image-upload (image)="setImageData($event, i)"></app-image-upload>
+									<div>
+										<span *ngIf="!section.get('image_data').value && section.get('image_url').value" class="image-div">
+											<img class="reward-image" [src]="section.get('image_url').value" alt="img">
+										</span>
+										<span *ngIf="section.get('image_data').value" class="image-div">
+											<img class="reward-image" [src]="section.get('image_data').value" alt="img">
+										</span>
+									</div>
+									<app-image-upload (click)="uploadImage(i)" (image)="setImageData($event, i)">
+										<img src="assets/img/camera-img.png" alt="img">
+										<h4>Upload Image</h4>
+									</app-image-upload>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</form>
-			<!--<div class="panel panel-default template">
-				<div class="panel-heading">
-					<span class="fa fa-times pull-right "></span>
-					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-						<h4 class="panel-title">
-							Section #1 (template panel)
-						</h4>
-					</a>
-				</div>
-				<div id="collapseThree" class="panel-collapse collapse">
-					<div class="panel-body">
-						<div class="camp_mrg2"></div>
-						<form>
-							<div class="form-group">
-								<label for="usr">Story Heading</label>
-								<input type="text" class="form-control" placeholder="Enter title">
-							</div>
-							<div class="form-group">
-								<label for="comment">Story Description</label>
-								<textarea class="form-control" rows="2" placeholder="Enter description"></textarea>
-							</div>
-						</form>
-						<h2>Upload your Reward Image</h2>
-						<input type="file" name="pic" accept="image/*">
-					</div>
-				</div>
-			</div>-->
 		</div>
 		<br>
 		<div class="camp_mrg"></div>
@@ -70,7 +53,6 @@
 			<a (click)="onAddSection()" class="camp_btn btn-default btn-add-panel" style="width:48%">
 				<i class="fa fa-plus"></i> Add New Section
 			</a>
-			<!-- <button class="btn btn-lg btn-primary btn-add-panel" ></button> -->
 		</div>
 	</div>
 </div>

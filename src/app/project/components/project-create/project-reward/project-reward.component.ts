@@ -7,7 +7,7 @@ import { ProjectActions } from './../../../actions/project.actions';
 import { AppState } from './../../../../app.state';
 import { Store } from '@ngrx/store';
 import { FormGroup, FormBuilder, FormArray, Validators, FormControl } from '@angular/forms';
-import { Component, OnInit, Output, EventEmitter, OnDestroy, Input, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy, Input } from '@angular/core';
 
 @Component({
   selector: 'app-project-reward',
@@ -17,9 +17,7 @@ import { Component, OnInit, Output, EventEmitter, OnDestroy, Input, ViewChildren
 export class ProjectRewardComponent implements OnInit, OnDestroy {
 
   private projectSub$: Subscription = new Subscription();
-  // @ViewChildren(ImageUploadComponent) imageUploadChildren: QueryList<ImageUploadComponent>;
   @Input() isEditing;
-  // imageUploadChildrenArray: Array<ImageUploadComponent>;
 
   formSubmit = false;
   rewardForm: FormGroup;
@@ -50,22 +48,9 @@ export class ProjectRewardComponent implements OnInit, OnDestroy {
     }
   }
 
-  // ngAfterViewInit() {
-  //   this.imageUploadChildrenArray = this.imageUploadChildren.toArray();
-  //   this.imageUploadChildren.changes.subscribe(childern => {
-  //     this.imageUploadChildrenArray = childern.toArray();
-  //   });
-  // }
-
   getRewards() {
     return (<FormArray>this.rewardForm.get('rewards_attributes')).controls;
   }
-
-  // setImageData(image, index) {
-  //   (<FormArray>this.rewardForm.controls['rewards_attributes']).controls[index].patchValue({
-  //     'image_data': image
-  //   });
-  // }
 
   removeReward(index, id) {
     if (!id) {
@@ -82,10 +67,6 @@ export class ProjectRewardComponent implements OnInit, OnDestroy {
       this.store.dispatch(this.actions.updateProject(data));
     }
   }
-
-  // uploadImage(index) {
-  //   this.imageUploadChildrenArray[index].showImageBrowseDlg();
-  // }
 
   onAddReward() {
     const date = new Date();

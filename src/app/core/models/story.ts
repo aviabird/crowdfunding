@@ -1,8 +1,13 @@
 import { Section } from './section';
-import { Base } from './base';
 
-export class Story extends Base {
-  id = '';
-  sections: Section[] = [new Section];
-  project_id: string;
+export class Story {
+  id: number;
+  sections: Section[];
+  project_id: number;
+
+  constructor() {
+    this.id = null;
+    this.sections = [new Section];
+    this.project_id = null;
+  }
 }

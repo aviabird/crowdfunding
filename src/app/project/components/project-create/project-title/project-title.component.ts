@@ -101,9 +101,8 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
   }
 
   submitProject() {
+    this.setStartDate();
     this.formSubmit = true;
-    const date = this.dateService.createDate(this.day, this.month, this.year);
-    this.setStartDate(date);
     const project = this.projectForm.value;
     console.log('project', project);
     if (this.projectForm.valid && this.isImagePresent()) {
@@ -115,7 +114,8 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
     }
   }
 
-  private setStartDate(date) {
+  private setStartDate() {
+    const date = this.dateService.createDate(this.day, this.month, this.year);
     this.projectForm.controls['start_date'].setValue(date);
   }
 

@@ -1,3 +1,4 @@
+import { DateService } from './../../../core/services/date.service';
 import { Reward } from './../../../core/models/reward';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Injectable } from '@angular/core';
@@ -6,7 +7,8 @@ import { Injectable } from '@angular/core';
 export class RewardFormService {
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private dateService: DateService
   ) { }
 
   initRewardForm(project) {
@@ -17,13 +19,18 @@ export class RewardFormService {
 
     const reward_attributes_array = [];
     rewards.forEach((reward: any) => {
+      let date: Date = reward.delivery_date || new Date();
+      date = new Date(date);
       reward_attributes_array.push(
         this.fb.group({
           'id': [reward.id],
           'title': [reward.title, Validators.required],
           'description': [reward.description, Validators.required],
-          'image_url': [reward.image_url],
-          'image_data': [''],
+          'delivery_date': [date],
+          'day': [date.getDate()],
+          'month': [this.dateService.months[date.getMonth()]],
+          'year': [date.getFullYear()],
+          'quantity': [reward.quantity, Validators.required],
           'amount': [reward.amount, Validators.required],
           '_destroy': [false]
         })

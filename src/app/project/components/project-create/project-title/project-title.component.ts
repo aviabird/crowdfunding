@@ -1,3 +1,4 @@
+import { DateService } from './../../../../core/services/date.service';
 import { ProjectFormService } from './../../../services/forms/project-form.service';
 import { ProjectHttpService } from './../../../services/http/project-http.service';
 import { ImageUploadComponent } from './../../../../shared/components/image-upload/image-upload.component';
@@ -25,18 +26,26 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
   formSubmit = false;
   projectForm: FormGroup;
   categories = [];
-  days = Array.from(new Array(31), ( val, index) => index + 1);
-  months = new Array('January', 'February', 'March', 'April', 'May', 'June',
-                      'July', 'August', 'September', 'October', 'November', 'December');
+
+  days: number[] = [];
+  months: string[] = [];
+
+  // two-way data binding models for start date
+  day: number;
+  month: string;
+  year: number;
 
   constructor(
     private actions: ProjectActions,
     private store: Store<AppState>,
     private fb: FormBuilder,
     private projectHttpService: ProjectHttpService,
-    private projectFormService: ProjectFormService
+    private projectFormService: ProjectFormService,
+    private dateService: DateService
   ) {
     this.fetchCategories();
+    this.days = dateService.getDays();
+    this.months = dateService.getMonths();
   }
 
   ngOnInit() {
@@ -93,7 +102,10 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
 
   submitProject() {
     this.formSubmit = true;
+    const date = this.dateService.createDate(this.day, this.month, this.year);
+    this.setStartDate(date);
     const project = this.projectForm.value;
+    console.log('project', project);
     if (this.projectForm.valid && this.isImagePresent()) {
       if (!this.isEditing) {
         this.store.dispatch(this.actions.saveDraft(project));
@@ -101,6 +113,10 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
         this.store.dispatch(this.actions.updateProject(project));
       }
     }
+  }
+
+  private setStartDate(date) {
+    this.projectForm.controls['start_date'].setValue(date);
   }
 
   private fetchCategories() {
@@ -112,6 +128,19 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
 
   private initProjectForm(project) {
     this.projectForm = this.projectFormService.initProjectForm(project);
+    this.parseProjectStartDate();
+    this.setDateMonthYear();
+  }
+
+  private parseProjectStartDate() {
+    const date = this.projectForm.get('start_date').value;
+    this.dateService.parseDate(date);
+  }
+
+  private setDateMonthYear() {
+    this.day = this.dateService.day;
+    this.month = this.dateService.month;
+    this.year = this.dateService.year;
   }
 
   ngOnDestroy() {

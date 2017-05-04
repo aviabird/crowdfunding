@@ -1,3 +1,4 @@
+import { DateService } from './services/date.service';
 import { ProjectHttpService } from './../project/services/http/project-http.service';
 import { EffectsModule } from '@ngrx/effects';
 import { ProjectEffects } from './../project/effects/project.effects';
@@ -39,7 +40,8 @@ export function httpInterceptor(
     AuthService,
     AuthActions,
     StripeService,
-    AuthGuard
+    AuthGuard,
+    DateService
   ]
 })
 export class CoreModule { }

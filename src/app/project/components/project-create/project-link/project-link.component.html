@@ -8,7 +8,7 @@
 						<span (click)="removeLink(i, link.get('id').value)" class="fa fa-times pull-right "></span>
 						<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionFaq" href="#collapseFaq">
 							<h4 class="panel-title">
-								Add Link #{{i+1}}
+								Link #{{i+1}}
 							</h4>
 						</a>
 					</div>
@@ -16,7 +16,7 @@
 						<div class="panel-body">
 							<div class="camp_mrg2"></div>
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Http:\\.." formControlName="url">
+								<input type="text" class="form-control" placeholder="https:\\.." formControlName="url">
 								<p *ngIf="link.get('url').hasError('required') && (link.get('url').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
 							</div>
 						</div>

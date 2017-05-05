@@ -19,6 +19,7 @@ export class Project {
   total_backers = '';
   percent_funded = '';
   start_date = new Date();
+  end_date: Date;
   duration = '';
   currency: string;
   pictures: Picture[] = [new Picture];

@@ -1,3 +1,4 @@
+import { DateService } from './../core/services/date.service';
 import { Subscription } from 'rxjs/Subscription';
 import { getAllProjects } from './../project/reducers/project.selector';
 import { ProjectActions } from './../project/actions/project.actions';
@@ -23,7 +24,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     private toastyService: ToastyService,
     private toastyConfig: ToastyConfig,
     private store: Store<AppState>,
-    private projectActions: ProjectActions
+    private projectActions: ProjectActions,
+    private dateService: DateService
   ) {
     this.toastyConfig.theme = 'bootstrap';
     this.route.queryParams.subscribe((params) => this.message = params['message']);
@@ -37,6 +39,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     if (this.message) {
       this.toastyService.success(this.message);
     }
+  }
+
+  daysToGo(end_date) {
+    return this.dateService.daysBetweenDates(new Date(), end_date);
   }
 
   ngOnDestroy() {

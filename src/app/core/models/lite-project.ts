@@ -15,6 +15,7 @@ export class LiteProject {
   total_backers: number;
   percent_funded: number;
   start_date: Date;
+  end_date: Date;
   duration: number;
   currency: string;
   pictures: Picture[] = [new Picture];

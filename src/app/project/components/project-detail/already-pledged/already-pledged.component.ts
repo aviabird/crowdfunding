@@ -1,3 +1,4 @@
+import { DateService } from './../../../../core/services/date.service';
 import { Project } from './../../../../core/models/project';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -10,9 +11,13 @@ export class AlreadyPledgedComponent implements OnInit {
 
   @Input() project: Project;
 
-  constructor() { }
+  constructor(private dateService: DateService) {}
 
   ngOnInit() {
+  }
+
+  daysToGo() {
+    return this.dateService.daysBetweenDates(new Date(), this.project.end_date);
   }
 
 }

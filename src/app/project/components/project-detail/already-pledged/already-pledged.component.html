@@ -4,8 +4,8 @@
       <div class="pouch-big pouch-big-half"></div>
     </div>
     <div class="media-body">
-        <p><span class="fsize40 f500">$3,519</span><span class="goals-txt">pledged of $7,999 goal</span></p>
-        <p class="text-right created">Created January 17, 2017</p>
+        <p><span class="fsize40 f500">${{project?.funded_amount}}</span><span class="goals-txt">pledged of ${{project?.pledged_amount}} goal</span></p>
+        <p class="text-right created">Created {{project?.start_date | date: 'longDate' }}</p>
     </div>
     <div class="media">
       <div class="media-left">
@@ -14,29 +14,29 @@
         </a>
       </div>
       <div class="media-body">
-        <h4 class="media-heading">Brina Wingo </h4>
-        <p class="space20">on behalf of Victor Brockwell</p>
+        <h4 class="media-heading">{{project?.user_name}}</h4>
+        <p class="space20">on behalf of {{project?.user_name}}</p>
         <p class="space15"><span><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;Newyork, United States of America</span></p>
-        <p class="space15"><span><i class="fa fa-tag" aria-hidden="true"></i>&nbsp;&nbsp;Tabletop Games</span></p>
+        <p class="space15"><span><i class="fa fa-tag" aria-hidden="true"></i>&nbsp;&nbsp;{{project?.category_name}}</span></p>
       </div>
     </div>
   </div>
   <div class="pledgedbtm">
     <ul>
       <li>
-        <p>44%
+        <p>{{project?.percent_funded | number:'1.0-0'}}%
           Funded </p>
       </li>
       <li>
-        <p>$7,999
+        <p>${{project?.pledged_amount}}
           Plegded</p>
       </li>
       <li>
-        <p>175
+        <p>{{project?.total_backers}}
           Backers</p>
       </li>
       <li>
-        <p>31
+        <p>{{daysToGo()}}
           Days to go</p>
       </li>
     </ul>

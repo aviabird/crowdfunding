@@ -77,7 +77,11 @@
     <div class="spinagogue_bg1">
       <div class="row">
         <div class="col-md-4 padleft50"> 
-          <a [routerLink]="['/projects', trendingProject.id]"><img [src]="trendingProject.image_url" class="img-responsive center-block" alt="image"></a>
+          <a [routerLink]="['/projects', trendingProject.id]">
+            <div class="no-image">
+              <img *ngIf="trendingProject.image_url" [src]="trendingProject.image_url" class="img-responsive center-block" alt="image">
+            </div>
+          </a>
         </div>
         <div class="col-md-8 padright50">
           <div class="spacing15">
@@ -104,7 +108,7 @@
         <div class="col-md-8 padleft50">
           <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-6 space15">
-              <h2>{{trendingProject.percent_funded | number:'1.0-2'}}%<br>
+              <h2>{{trendingProject.percent_funded | number:'1.0-0'}}%<br>
                 funded </h2>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-6 space15">
@@ -116,7 +120,7 @@
                 backers</h2>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-6 space15">
-              <h2>{{trendingProject.duration}}<br>
+              <h2>{{daysToGo(trendingProject.end_date)}}<br>
                 days to go</h2>
             </div>
           </div>
@@ -140,7 +144,11 @@
     <div class="row">
       <div *ngFor="let project of projects | slice:1 " class="col-md-4 col-sm-4 col-xs-12 space15">
         <div class="sec_detail"> 
-          <a [routerLink]="['/projects', trendingProject.id]"><img [src]="project.image_url" width="100%" class="img-responsive center-block" alt="image"></a>
+          <a [routerLink]="['/projects', trendingProject.id]">
+            <div class="no-image">
+              <img *ngIf="project.image_url" [src]="project.image_url" class="img-responsive center-block" alt="image">
+            </div>
+          </a>
           <div class="details1">
             <a [routerLink]="['/projects', trendingProject.id]"><h5>{{project.title}}</h5></a>
             <p>Seth Ickerman <a href="#"><span class="onlinetxt active">Online</span></a></p>
@@ -151,7 +159,7 @@
               <div class="col-md-9">
                 <div class="row">
                   <div class="col-md-3 col-sm-6 col-xs-6 space15">
-                    <p class="fsize11">{{project.percent_funded | number:'1.0-2'}}%<br>
+                    <p class="fsize11">{{project.percent_funded | number:'1.0-0'}}%<br>
                       funded 
                     </p>
                   </div>
@@ -166,7 +174,7 @@
                     </p>
                   </div>
                   <div class="col-md-3 col-sm-6 col-xs-6 space15">
-                    <p class="fsize11">{{project.duration}}<br>
+                    <p class="fsize11">{{daysToGo(project.end_date)}}<br>
                       days to go
                     </p>
                   </div>

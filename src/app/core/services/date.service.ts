@@ -33,4 +33,23 @@ export class DateService {
     return this.months;
   }
 
+  addDaysToDate(date = new Date(), days = 0) {
+    if (!date || !days) {
+      return new Date();
+    }
+    date = new Date(date);
+    const newTimeStamp = date.setDate(date.getDate() + days);
+    return new Date(newTimeStamp);
+  }
+
+  daysBetweenDates(date1, date2) {
+    if (!date1 || !date2) {
+      return 0;
+    }
+    date1 = new Date(date1);
+    date2 = new Date(date2);
+    const days = Math.round((date2 - date1) / (1000 * 60 * 60 * 24) );
+    return days;
+  }
+
 }

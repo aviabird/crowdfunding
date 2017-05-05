@@ -48,17 +48,24 @@
       <h2>Trending Projects</h2>
       <a [routerLink]="['/categories','Art']">View All</a> </div>
     <div class="row"> 
-      <div *ngFor="let project of projects" class="col-md-4">
+      <div *ngFor="let project of projects" class="col-md-4 project">
         <article>
-          <div class="p-img"><a [routerLink]="['/projects',project.id]"><img [src]="project.image_url" alt="" ></a></div>
+          <div class="p-img">
+            <a [routerLink]="['/projects',project.id]">
+              <!--<img src="">-->
+              <div class="no-image">
+                <img *ngIf="project.image_url" [src]="project.image_url" alt="" >
+              </div>
+            </a>
+          </div>
           <div class="text-part"> <a [routerLink]="['/projects',project.id]">{{project.title}}</a>
             <p>A live action space opera by SETH ICKERMAN & CARPENTER BRUT. A female ghost challenges two space hunters into a galactic chase...</p>
           </div>
           <ul>
-            <li class="pouch-info"> <i class="pouch"></i> <span>{{project.percent_funded | number:'1.0-2'}}%</span> </li>
+            <li class="pouch-info"> <i class="pouch"></i> <span>{{project.percent_funded | number:'1.0-0'}}%</span> </li>
             <li> <i class="flaticon-target"></i> <span>${{project.pledged_amount}}</span> </li>
             <li> <i class="flaticon-user"></i> <span>{{project.total_backers}}</span> </li>
-            <li> <i class="flaticon-alarm-clock"></i> <span>{{project.duration}}</span> </li>
+            <li> <i class="flaticon-alarm-clock"></i> <span>{{daysToGo(project.end_date)}}</span> </li>
           </ul>
         </article>
       </div>

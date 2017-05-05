@@ -1,3 +1,4 @@
+import { DateService } from './../core/services/date.service';
 import { getAllProjects } from './../project/reducers/project.selector';
 import { ProjectActions } from './../project/actions/project.actions';
 import { AppState } from './../app.state';
@@ -23,7 +24,8 @@ export class ProjectsListingComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store<AppState>,
     private route: ActivatedRoute,
-    private projectActions: ProjectActions
+    private projectActions: ProjectActions,
+    private dateService: DateService
   ) {
     this.routeSub$ = this.route.params.subscribe((params) => {
       this.category = params['category'];
@@ -41,6 +43,10 @@ export class ProjectsListingComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+  }
+
+  daysToGo(end_date) {
+    return this.dateService.daysBetweenDates(new Date(), end_date);
   }
 
   ngOnDestroy() {

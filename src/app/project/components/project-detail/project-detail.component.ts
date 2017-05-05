@@ -1,3 +1,4 @@
+import { DateService } from './../../../core/services/date.service';
 import { ProjectHttpService } from './../../services/http/project-http.service';
 import { ProjectActions } from './../../actions/project.actions';
 import { ActivatedRoute } from '@angular/router';
@@ -33,7 +34,8 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     private projectActions: ProjectActions,
     private projectHttpService: ProjectHttpService,
     private sanitizer: DomSanitizer,
-    private zone: NgZone
+    private zone: NgZone,
+    private dateService: DateService
     ) {
     this.routeSub$ = this.route.params.subscribe((params) => {
       const id = params['id'];
@@ -73,6 +75,10 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     const videoId = this.projectHttpService.getVideoId(url);
     const embedUrl = `https://www.youtube.com/embed/${videoId}?rel=0`;
     this.safeEmbedUrl =  this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
+  }
+
+  daysToGo() {
+    this.dateService.daysBetweenDates(this.project.start_date, this.project.end_date);
   }
 
   ngOnDestroy() {

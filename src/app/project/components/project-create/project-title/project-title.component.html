@@ -13,7 +13,7 @@
           <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
         </select>
       </div>
-      <h2>Upload your Campaign Images *</h2>
+      <h2>Upload your Campaign Images</h2>
 			<div formArrayName="pictures_attributes">
 				<span class="image-div" *ngFor="let picture of getPictures(); let i = index">
 					<span (click)="removePictureAttribue(i)" class="fa fa-times cross"></span>
@@ -58,7 +58,7 @@
           </div>
         </div>
       </div>
-      <h2>Funding Model</h2>
+      <h2>Funding Model *</h2>
       <p>Lorem Ipsum</p>
       <div class="camp_flexi">
         <div class="col-xs-6">

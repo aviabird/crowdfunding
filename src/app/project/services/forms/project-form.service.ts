@@ -50,7 +50,7 @@ export class ProjectFormService {
 
   private validateURL(c: FormControl) {
     const URL_REGEXP = AppConstants.URL_REGEX;
-    return URL_REGEXP.test(c.value) ? null : { validateURL: true };
+    return !(c.value) || URL_REGEXP.test(c.value) ? null : { validateURL: true };
   }
 
 }

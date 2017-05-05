@@ -1,5 +1,5 @@
 <div class="campaign_create">
-	<h1>review</h1>
+	<h1>Review</h1>
 	<div class="camp_review">
 		<div *ngIf="project.title">
 			<h3>Campaign Name</h3>
@@ -30,7 +30,7 @@
 		<div *ngIf="project.story" [innerHTML]="project.story.body" class="camp_mrg2"></div>
 		
 		<div *ngIf="isRewardsPresent()" class="camp_mrg2">
-			<h3 style="margin-bottom: 16px;">Campaign Rewards</h3>
+			<h3 style="margin-bottom: 16px;">Campaign Pouches</h3>
 			<div *ngFor="let reward of project?.rewards">
 				<h3 *ngIf="reward.title">{{reward.title}}</h3>
 				<h3 *ngIf="reward.amount">$ {{reward.amount}}</h3>

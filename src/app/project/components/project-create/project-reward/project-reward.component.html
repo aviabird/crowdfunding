@@ -1,5 +1,5 @@
 <div class="campaign_create">
-	<h1>Reward</h1>
+	<h1>Pouches</h1>
 	<div class="camp_create_box">
 		<div class="panel-group" id="accordionReward">
 			<form [formGroup]="rewardForm">
@@ -19,17 +19,17 @@
 									<div class="camp_mrg2"></div>
 									<!-- Reward body -->
 									<div class="form-group">
-										<label for="usr">Reward Title</label>
+										<label for="usr">Pouch Title</label>
 										<input type="text" class="form-control" placeholder="Enter title" formControlName="title">
 										<p *ngIf="reward.get('title').hasError('required') && (reward.get('title').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
 									</div>
 									<div class="form-group">
-										<label for="comment">Reward Description</label>
+										<label for="comment">Pouch Description</label>
 										<textarea class="form-control" rows="3" placeholder="Enter description" formControlName="description"></textarea>
 										<p *ngIf="reward.get('description').hasError('required') && (reward.get('description').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
 									</div>
-									<h2>Reward Amount</h2>
-									<p>How much money for this reward? </p>
+									<h2>Pouch Amount</h2>
+									<p>How much money for this pouch? </p>
 									<div class="row">
 										<div class="col-xs-6">
 											<div class="form-group">
@@ -50,11 +50,11 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="usr">Reward Quantity</label>
+										<label for="usr">Pouch Quantity</label>
 										<input type="number" class="form-control" placeholder="Enter quantity" formControlName="quantity">
 										<p *ngIf="reward.get('quantity').hasError('required') && (reward.get('quantity').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
 									</div>
-									<h2>Reward Delivery Date</h2>
+									<h2>Pouch Delivery Date</h2>
 									<div class="camp_date">
 										<div class="form-group">
 											<div class="col-xs-3 camp_date_width">
@@ -88,7 +88,7 @@
 			<div class="camp_link">
 				<a (click)="onSubmit()" class="btnNext pull-right" style="width:48%">NEXT</a>
 				<a (click)="onAddReward()" class="camp_btn btn-default reward-add-panel" style="width:48%">
-					<i class="fa fa-plus"></i> Add New Reward
+					<i class="fa fa-plus"></i> Add New Pouch
 				</a>
 			</div>
 		</div>

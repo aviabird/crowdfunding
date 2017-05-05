@@ -61,11 +61,16 @@
           <div class="text-part"> <a [routerLink]="['/projects',project.id]">{{project.title}}</a>
             <p>A live action space opera by SETH ICKERMAN & CARPENTER BRUT. A female ghost challenges two space hunters into a galactic chase...</p>
           </div>
-          <ul>
-            <li class="pouch-info"> <i class="pouch"></i> <span>{{project.percent_funded | number:'1.0-0'}}%</span> </li>
-            <li> <i class="flaticon-target"></i> <span>${{project.pledged_amount}}</span> </li>
-            <li> <i class="flaticon-user"></i> <span>{{project.total_backers}}</span> </li>
-            <li> <i class="flaticon-alarm-clock"></i> <span>{{daysToGo(project.end_date)}}</span> </li>
+          <ul class="icons">
+            <li class="pouch-info">
+              <div class="icon">
+                <i class="pouch"></i>
+              </div>
+              <div class="percent">{{project.percent_funded | number:'1.0-0'}}%</div>
+            </li>
+            <li> <i class="fi flaticon-target"></i> <span>${{project.pledged_amount}}</span> </li>
+            <li class="backers-info"> <i class="fi flaticon-user"></i> <span>{{project.total_backers}}</span> </li>
+            <li> <i class="fi flaticon-alarm-clock"></i> <span>{{daysToGo(project.end_date)}}</span> </li>
           </ul>
         </article>
       </div>

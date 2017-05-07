@@ -1,0 +1,13 @@
+<div class="mini-bag-summary">
+  <div class="order-total">
+    <span>Pledged Amount</span>
+    <span class="value">${{pledgedAmount | number:'1.2-2'}}</span>
+  </div>
+</div>
+<div class="address-summary">
+  <div class="address-lbl">SELECTED REWARD</div>
+  <div class="reward-title">{{reward?.title}}</div>
+  <div class="reward-title">{{reward?.description}}</div>
+  <div class="reward-title">Estimated delivery {{reward?.delivery_date | date:'mediumDate'}}</div>
+  
+</div>

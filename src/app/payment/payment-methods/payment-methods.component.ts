@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-payment-methods',
@@ -8,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class PaymentMethodsComponent implements OnInit {
 
   selectedTab = 1;
+  @Input() pledgedAmount: number;
+  @Input() projectId: number;
+  @Input() rewardId: number;
 
   constructor() { }
 

@@ -13,8 +13,7 @@ export class ProjectHttpService {
 
   constructor(
     private http: HttpService,
-    private authService: AuthService,
-    private toastyService: ToastyService
+    private authService: AuthService
   ) { }
 
   fetchAllCategories() {
@@ -93,28 +92,6 @@ export class ProjectHttpService {
       `/api/v1/projects/launch`, { id: id }
     ).map((res) => {
       return res.json();
-    });
-  }
-
-  fundProject(token: string, projectId: number, amount: number) {
-    return this.http.post(
-      '/api/v1/projects/fund_project', { stripeToken: token, id: projectId, amount: amount }
-    ).subscribe((res: Response) => {
-      const data = res.json();
-      if (data.error) {
-        const message = data.error.card_error[0];
-        this.toastyService.error(message);
-      } else {
-        const message = data.message;
-        this.toastyService.success(message);
-      }
-    }, (err) => {
-      if (err.status === 401) {
-        this.authService.modalShow$.next(true);
-        this.toastyService.error('Please Login!');
-      } else if (err.status === 500) {
-        this.toastyService.error('Internal Server Error, Please Try again');
-      }
     });
   }
 

@@ -1,6 +1,7 @@
+import { environment } from './../../../../environments/environment';
 import { ToastyService } from 'ng2-toasty';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-sofort',
@@ -10,28 +11,25 @@ import { Component, OnInit } from '@angular/core';
 export class SofortComponent implements OnInit {
 
   source: any;
-  projectId: number;
+  @Input() pledgedAmount: number;
+  @Input() projectId: number;
+  @Input() rewardId: number;
 
   constructor(
-    private route: ActivatedRoute,
     private toastyService: ToastyService,
   ) {
-    this.route.params.subscribe((params) => {
-      this.projectId = params['id'];
-    });
+    Stripe.setPublishableKey('pk_test_M2e5YbVJN53ZL7CWp1KdgNAC');
   }
 
-  ngOnInit() {
-    // this.source = this.createSourceObject();
-  }
+  ngOnInit() {}
 
   private createSourceObject() {
-    return Stripe.source.create({
+    this.source = Stripe.source.create({
       type: 'sofort',
-      amount: 100,
+      amount: this.pledgedAmount * 100,
       currency: 'eur',
       redirect: {
-        return_url: `http://localhost:4200/projects/${this.projectId}/payment/sofort/redirect`,
+        return_url: `${environment.UI_ENDPOINT}/projects/${this.projectId}/payment/sofort/redirect`,
       },
       sofort: {
         country: 'DE',

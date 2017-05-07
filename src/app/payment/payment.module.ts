@@ -1,3 +1,4 @@
+import { PaymentService } from './services/payment.service';
 import { routes } from './payment.routes';
 import { PaymentComponent } from './payment.component';
 import { RouterModule } from '@angular/router';
@@ -8,6 +9,7 @@ import { CardComponent } from './payment-methods/card/card.component';
 import { SofortComponent } from './payment-methods/sofort/sofort.component';
 import { SepaComponent } from './payment-methods/sepa/sepa.component';
 import { SofortRedirectUrlComponent } from './sofort-redirect-url/sofort-redirect-url.component';
+import { SelectedRewardComponent } from './selected-reward/selected-reward.component';
 
 @NgModule({
   imports: [
@@ -21,8 +23,11 @@ import { SofortRedirectUrlComponent } from './sofort-redirect-url/sofort-redirec
     CardComponent,
     SofortComponent,
     SepaComponent,
-    SofortRedirectUrlComponent
+    SofortRedirectUrlComponent,
+    SelectedRewardComponent
   ],
-  providers: []
+  providers: [
+    PaymentService
+  ]
 })
 export class PaymentModule { }

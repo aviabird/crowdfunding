@@ -9,5 +9,6 @@ export const environment = {
     apiBase: 'http://localhost:3000'
   },
   API_ENDPOINT: 'http://localhost:3000',
+  UI_ENDPOINT: 'http://localhost:4200',
   AppName: 'CrowdPouch'
 };

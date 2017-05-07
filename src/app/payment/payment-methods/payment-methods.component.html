@@ -1,15 +1,15 @@
 <div class="pay-modes">
   <div class="mode" (click)="changeTab(1)" [ngClass]="{'selected': selectedTab == 1}">Card</div>
   <div class="mode" (click)="changeTab(2)" [ngClass]="{'selected': selectedTab == 2}">Sofort</div>
-  <div class="mode" (click)="changeTab(3)" [ngClass]="{'selected': selectedTab == 3}">Sepa Direct Debit</div>
+  <!--<div class="mode" (click)="changeTab(3)" [ngClass]="{'selected': selectedTab == 3}">Sepa Direct Debit</div>-->
 </div>
 
 <div class="selected-mode" [ngSwitch]="selectedTab">
   <ng-template [ngSwitchCase]="'1'" ngSwitchDefault> 
-    <app-card></app-card>
+    <app-card [projectId]="projectId" [rewardId]="selectedRewardId" [pledgedAmount]="pledgedAmount"></app-card>
   </ng-template>
   <ng-template [ngSwitchCase]="'2'"> 
-    <app-sofort></app-sofort>
+    <app-sofort [projectId]="projectId" [rewardId]="selectedRewardId" [pledgedAmount]="pledgedAmount"></app-sofort>
   </ng-template>
   <ng-template [ngSwitchCase]="'3'"> 
     <app-sepa></app-sepa>

@@ -4,5 +4,6 @@ export const environment = {
     apiBase: 'https://crowdpouch.herokuapp.com'
   },
   API_ENDPOINT: 'https://crowdpouch.herokuapp.com',
+  UI_ENDPOINT: 'https://crd-test.firebaseapp.com',
   AppName: 'CrowdPouch'
 };

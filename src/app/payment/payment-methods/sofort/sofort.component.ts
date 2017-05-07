@@ -22,7 +22,7 @@ export class SofortComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.source = this.createSourceObject();
+    // this.source = this.createSourceObject();
   }
 
   private createSourceObject() {

@@ -6,6 +6,9 @@
     <p class="space30"><strong>ESTIMATED DELIVERY<br>{{reward.delivery_date | date:'mediumDate'}}</strong></p>
     <p class="space30">3 backers</p>
     <input type="text" class="form-control rewardtype" [(ngModel)]="amount" placeholder="10">
-    <button type="button" appStripeForm [amount]="amount" [projectId]="project.id" class="linksbtn bgclr5cc5d3 space30">Continue</button>
+    <button [routerLink]="['/projects', project.id, 'payment']" 
+            [queryParams]="{amount: amount, reward: reward.id}"
+            type="button" class="linksbtn bgclr5cc5d3 space30">Continue
+    </button>
   </div>
 </div>

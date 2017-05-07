@@ -20,7 +20,7 @@ export class StripeFormDirective {
       key: 'pk_test_M2e5YbVJN53ZL7CWp1KdgNAC',
       locale: 'auto',
       token: (token: any) => {
-        this.projectHttpService.fundProject(token.id, this.projectId, this.amount);
+        // this.projectHttpService.fundProject(token.id, this.projectId, this.amount);
       }
     });
 

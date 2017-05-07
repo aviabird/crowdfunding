@@ -23,7 +23,7 @@ export class SofortComponent implements OnInit {
 
   ngOnInit() {}
 
-  private createSourceObject() {
+  createSourceObject() {
     this.source = Stripe.source.create({
       type: 'sofort',
       amount: this.pledgedAmount * 100,

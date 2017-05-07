@@ -36,6 +36,7 @@
     "ng-recaptcha": "^2.0.2",
     "ng2-toasty": "^4.0.0",
     "ng2-ui-auth": "^6.1.4",
+    "ng2modules-easypiechart": "0.0.4",
     "ngx-bootstrap": "^1.6.5",
     "reselect": "^2.5.4",
     "rxjs": "^5.1.0",

@@ -25,16 +25,19 @@ export class PaymentComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       this.selectedRewardId = params['reward'];
       this.pledgedAmount = params['amount'];
-      this.getSelectedReward(this.selectedRewardId);
+      // this.getSelectedReward(this.selectedRewardId);
     });
   }
 
   ngOnInit() {}
 
   getSelectedReward(id) {
-    this.paymentService.fetchSelectedReward(id).subscribe((reward) => {
-      this.selectedReward = reward;
-    });
+    if (id) {
+      this.paymentService.fetchSelectedReward(id).subscribe((reward) => {
+        this.selectedReward = reward;
+      });
+    }
+
   }
 
 }

@@ -4,10 +4,15 @@
     <span class="value">${{pledgedAmount | number:'1.2-2'}}</span>
   </div>
 </div>
-<div class="address-summary">
+<div *ngIf="reward" class="address-summary">
   <div class="address-lbl">SELECTED REWARD</div>
   <div class="reward-title">{{reward?.title}}</div>
   <div class="reward-title">{{reward?.description}}</div>
   <div class="reward-title">Estimated delivery {{reward?.delivery_date | date:'mediumDate'}}</div>
-  
+</div>
+<div *ngIf="!reward">
+  <div class="address-lbl">SELECTED REWARD</div>
+  <div>
+    I just want to help this project
+  </div>
 </div>

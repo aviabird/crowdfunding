@@ -1,3 +1,4 @@
+import { RewardAmountValidator } from './directives/reward-amount.validator';
 import { SharedModule } from './../shared/shared.module';
 import { EffectsModule } from '@ngrx/effects';
 import { ProjectActions } from './actions/project.actions';
@@ -65,6 +66,7 @@ import { PledgeMoreComponent } from './components/project-detail/pledge-more/ple
     CommunityComponent,
     AlreadyPledgedComponent,
     PledgeMoreComponent,
+    RewardAmountValidator
   ],
   providers: [
     ProjectFormService,

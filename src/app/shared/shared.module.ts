@@ -8,13 +8,15 @@ import { ModalComponent } from './components/modal/modal.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { StripeFormDirective } from './directives/stripe-form.directive';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 @NgModule({
   imports: [
     CommonModule,
     TranslateModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TooltipModule.forRoot()
   ],
   exports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { StripeFormDirective } from './directives/stripe-form.directive';
     ReactiveFormsModule,
     ImageUploadComponent,
     StripeFormComponent,
-    StripeFormDirective
+    StripeFormDirective,
+    TooltipModule
   ],
   declarations: [
     ImageUploadComponent,

@@ -74,7 +74,7 @@ export class ProjectRewardComponent implements OnInit, OnDestroy {
       this.fb.group({
         'id': [null],
         'title': ['', Validators.required],
-        'description': ['', Validators.required],
+        'description': ['', Validators.compose([Validators.required, this.rewardFormService.descriptionValidator])],
         'delivery_date': [date],
         'day': [date.getDate()],
         'month': [this.dateService.months[date.getMonth()]],

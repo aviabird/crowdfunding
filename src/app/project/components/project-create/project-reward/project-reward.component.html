@@ -25,8 +25,9 @@
 									</div>
 									<div class="form-group">
 										<label for="comment">Pouch Description</label>
-										<textarea class="form-control" rows="3" placeholder="Enter description" formControlName="description"></textarea>
+										<textarea class="form-control" rows="4" placeholder="Enter description" formControlName="description"></textarea>
 										<p *ngIf="reward.get('description').hasError('required') && (reward.get('description').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
+                    					<p *ngIf="reward.get('description').hasError('invalid') && (reward.get('description').touched || formSubmit)" class="value-err show">Pouch description must no exceed 350 characters or 50 words</p>
 									</div>
 									<h2>Pouch Amount</h2>
 									<p>How much money for this pouch? </p>

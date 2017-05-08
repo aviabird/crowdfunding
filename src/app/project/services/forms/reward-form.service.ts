@@ -1,6 +1,6 @@
 import { DateService } from './../../../core/services/date.service';
 import { Reward } from './../../../core/models/reward';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -25,7 +25,7 @@ export class RewardFormService {
         this.fb.group({
           'id': [reward.id],
           'title': [reward.title, Validators.required],
-          'description': [reward.description, Validators.required],
+          'description': [reward.description, [Validators.required, this.descriptionValidator]],
           'delivery_date': [date],
           'day': [date.getDate()],
           'month': [this.dateService.months[date.getMonth()]],
@@ -43,6 +43,14 @@ export class RewardFormService {
       'type': ['reward', Validators.required],
       'rewards_attributes': this.fb.array(reward_attributes_array)
     });
+  }
+
+  descriptionValidator(control: FormControl) {
+    if (control.value.length > 350 || control.value.split(' ').length > 50) {
+      console.log(control.value.split(' ').length);
+      return { invalid: true };
+    }
+    return null;
   }
 
 }

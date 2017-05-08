@@ -28,7 +28,6 @@
 				<img src="assets/img/camera-img.png" alt="img">
 				<h4>Upload Image</h4>
 			</app-image-upload>
-      <p *ngIf="!isImagePresent() && formSubmit" class="value-err show">Campaign image is required</p>
       <br>
       <h2>Video URL</h2>
       <p>Enter a URL to appear at the top of your campaign page.</p>
@@ -59,9 +58,9 @@
         </div>
       </div>
       <h2>Funding Model *</h2>
-      <p>Lorem Ipsum</p>
+      <!--<p>Lorem Ipsum</p>-->
       <div class="camp_flexi">
-        <div class="col-xs-6">
+        <div class="col-xs-6" tooltip="Flexible Funding: Keep Your Money No Matter What" placement="top">
           <div class="radio">
             <input type="radio" id="boxi" name="funding_model" formControlName="funding_model" value="flexi">
             <label for="boxi">
@@ -69,7 +68,7 @@
             </label>
           </div>
         </div>
-        <div class="col-xs-6">
+        <div class="col-xs-6" tooltip="Fixed Funding: Keep Your Money Only if You Meet Your Goal" placement="top">
           <div class="radio">
             <input type="radio" id="boxi-1" name="funding_model" formControlName="funding_model" value="fixed">
             <label for="boxi-1">
@@ -79,7 +78,7 @@
         </div>
       </div>
       <h2>Begin Date *</h2>
-      <p>Lorem ipsum begin date end date</p>
+      <!--<p>Lorem ipsum begin date end date</p>-->
       <div class="camp_date">
         <div class="form-group">
           <div class="col-xs-3 camp_date_width">
@@ -102,7 +101,7 @@
         </div>
       </div>
       <h2>Begin Duration *</h2>
-      <p>Lorem ipsum begin date end date</p>
+      <!--<p>Lorem ipsum begin date end date</p>-->
       <div class="camp_duration">
         <input type="number" placeholder="Duration" min="1" max="60" class="form-control" formControlName="duration">
         <p *ngIf="projectForm.get('duration').hasError('required') && (projectForm.get('duration').touched || formSubmit)" class="value-err show">This is a mandatory field</p>

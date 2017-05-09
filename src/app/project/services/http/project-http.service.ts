@@ -101,4 +101,21 @@ export class ProjectHttpService {
     return (match && match[7].length === 11) ? match[7] : false;
   }
 
+  getUserKycInfo() {
+    return this.http.get(
+      `/api/v1/users/get_user_kyc_info`
+    ).map((res) => {
+      return res.json();
+    });
+  }
+
+  updateUserKycInfo(data) {
+    this.savingDraft.next(true);
+    return this.http.post(
+      `/api/v1/users/update_user_kyc_info`, data
+    ).map((res) => {
+      this.savingDraft.next(false);
+    });
+  }
+
 }

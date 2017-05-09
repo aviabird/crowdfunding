@@ -9,6 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { StripeFormDirective } from './directives/stripe-form.directive';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { DatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     TranslateModule,
     FormsModule,
     ReactiveFormsModule,
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    DatepickerModule.forRoot()
   ],
   exports: [
     CommonModule,
@@ -26,7 +28,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     ImageUploadComponent,
     StripeFormComponent,
     StripeFormDirective,
-    TooltipModule
+    TooltipModule,
+    DatepickerModule
   ],
   declarations: [
     ImageUploadComponent,

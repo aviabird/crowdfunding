@@ -1,3 +1,4 @@
+import { Kyc } from './kyc';
 import { Notification } from './notification';
 import { Address } from './address';
 import { LiteProject } from './lite-project';
@@ -22,4 +23,5 @@ export class User {
   backed_projects: LiteProject[];
   notifications: Notification[];
   project_in_funding_state: LiteProject;
+  kyc: Kyc;
 }

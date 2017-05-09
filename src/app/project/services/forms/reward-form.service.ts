@@ -19,17 +19,12 @@ export class RewardFormService {
 
     const reward_attributes_array = [];
     rewards.forEach((reward: any) => {
-      let date: Date = reward.delivery_date || new Date();
-      date = new Date(date);
       reward_attributes_array.push(
         this.fb.group({
           'id': [reward.id],
           'title': [reward.title, Validators.required],
           'description': [reward.description, [Validators.required, this.descriptionValidator]],
-          'delivery_date': [date],
-          'day': [date.getDate()],
-          'month': [this.dateService.months[date.getMonth()]],
-          'year': [date.getFullYear()],
+          'delivery_date': [],
           'quantity': [reward.quantity, Validators.required],
           'amount': [reward.amount, Validators.required],
           'currency': [reward.currency || 'USD'],

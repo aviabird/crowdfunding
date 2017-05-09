@@ -56,28 +56,9 @@
 										<p *ngIf="reward.get('quantity').hasError('required') && (reward.get('quantity').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
 									</div>
 									<h2>Pouch Delivery Date</h2>
-									<div class="camp_date">
-										<div class="form-group">
-											<div class="col-xs-3 camp_date_width">
-												<select class="form-control" formControlName="day">
-													<option *ngFor="let day of days" [value]="day">{{day}}</option>
-												</select>
-											</div>
-											<div class="col-xs-3 camp_date_width">
-												<select class="form-control" formControlName="month">
-													<option *ngFor="let month of months" [value]="month">{{month}}</option>
-												</select>
-											</div>
-											<div class="col-xs-3 camp_date_width">
-												<select class="form-control" formControlName="year">
-													<option>2017</option>
-													<option>2018</option>
-												</select>
-											</div>
-											<div class="col-xs-3"></div>
-										</div>
+									<div style="display:inline-block; min-height:290px;">
+										<datepicker [(ngModel)]="selectedDate[i]" [ngModelOptions]="{standalone: true}" [minDate]="minDate" [showWeeks]="true" [dateDisabled]="dateDisabled"></datepicker>
 									</div>
-									<!-- Reward body -->
 								</div>
 							</div>
 						</div>

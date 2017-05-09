@@ -31,7 +31,6 @@
       <br>
       <h2>Video URL</h2>
       <p>Enter a URL to appear at the top of your campaign page.</p>
-      URL Error {{projectForm.get('video_url').hasError('validateURL')}}
       <div class="form-group">
         <input type="text" class="form-control" placeholder="https:\\.." formControlName="video_url">
         <p *ngIf="projectForm.get('video_url').hasError('validateURL') && projectForm.get('video_url').touched" class="value-err show">Video Url is invalid</p>

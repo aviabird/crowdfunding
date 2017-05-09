@@ -15,6 +15,7 @@ export class Project {
   funded_amount = '';
   funding_model = '';
   category_name = '';
+  user_id: null;
   user_name = '';
   total_backers = '';
   percent_funded = '';

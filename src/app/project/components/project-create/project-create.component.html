@@ -125,7 +125,7 @@
 								</a>
 							</li>
 							<li [ngClass]="{'active': selectedTab == 5}">
-								<a (click)="changeTab(5)">5. Links 
+								<a (click)="changeTab(5)">5. KYC info
 									<!--<span class="category_camp">lorem ipsum</span>-->
 								</a>
 							</li>
@@ -135,12 +135,7 @@
 								</a>
 							</li>
 							<li [ngClass]="{'active': selectedTab == 7}">
-								<a (click)="changeTab(7)">7. Profile 
-									<!--<span class="category_camp">lorem ipsum</span>-->
-								</a>
-							</li>
-							<li [ngClass]="{'active': selectedTab == 8}">
-								<a (click)="changeTab(8)">8. Events 
+								<a (click)="changeTab(8)">7. Events 
 									<!--<span class="category_camp">lorem ipsum</span>-->
 								</a>
 							</li>
@@ -167,15 +162,12 @@
 							<app-project-faq></app-project-faq> 
 						</ng-template>
 						<ng-template [ngSwitchCase]="'5'">
-							<app-project-link></app-project-link> 
+							<app-project-user-kyc-info></app-project-user-kyc-info>
 						</ng-template>
 						<ng-template [ngSwitchCase]="'6'">
 							<app-project-review (backToEditor)="changeTab(1)"></app-project-review> 
 						</ng-template>
 						<ng-template [ngSwitchCase]="'7'">
-							<app-project-profile></app-project-profile> 
-						</ng-template>
-						<ng-template [ngSwitchCase]="'8'">
 							<app-project-event></app-project-event> 
 						</ng-template>
 <!-->>>>>>> f2efa6931556c70f601548904ac46df41d174b2e-->

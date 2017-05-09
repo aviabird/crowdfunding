@@ -1,3 +1,4 @@
+import { KycFormService } from './services/forms/kyc-form.service';
 import { SharedModule } from './../shared/shared.module';
 import { EffectsModule } from '@ngrx/effects';
 import { ProjectActions } from './actions/project.actions';
@@ -37,6 +38,7 @@ import { CommentsComponent } from './components/project-detail/comments/comments
 import { CommunityComponent } from './components/project-detail/community/community.component';
 import { AlreadyPledgedComponent } from './components/project-detail/already-pledged/already-pledged.component';
 import { PledgeMoreComponent } from './components/project-detail/pledge-more/pledge-more.component';
+import { ProjectUserKycInfoComponent } from './components/project-create/project-user-kyc-info/project-user-kyc-info.component';
 
 @NgModule({
   imports: [
@@ -64,7 +66,8 @@ import { PledgeMoreComponent } from './components/project-detail/pledge-more/ple
     CommentsComponent,
     CommunityComponent,
     AlreadyPledgedComponent,
-    PledgeMoreComponent
+    PledgeMoreComponent,
+    ProjectUserKycInfoComponent
   ],
   providers: [
     ProjectFormService,
@@ -72,7 +75,8 @@ import { PledgeMoreComponent } from './components/project-detail/pledge-more/ple
     StoryFormService,
     FaqFormService,
     LinkFormService,
-    CommentHttpService
+    CommentHttpService,
+    KycFormService
   ]
 })
 export class ProjectModule { }

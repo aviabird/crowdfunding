@@ -7,9 +7,8 @@ import { Injectable } from '@angular/core';
 export class KycFormService {
 
   constructor(private fb: FormBuilder) { }
-
-  initKycForm(kyc: Kyc) {
-    if (!kyc) {
+    initKycForm(kyc: Kyc) {
+      if (!kyc) {
       kyc = new Kyc;
     }
 
@@ -21,7 +20,7 @@ export class KycFormService {
       'document_type': [kyc.document_type || 'PASSPORT', Validators.required],
       'name': [kyc.name, Validators.required],
       'nationality': [kyc.nationality || 'Alaska', Validators.required],
-      'birth_date': [kyc.birth_date, Validators.required],
+      'birth_date': [''],
     });
   }
 

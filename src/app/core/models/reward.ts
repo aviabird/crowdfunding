@@ -1,5 +1,3 @@
-import { Base } from './base';
-
 export class Reward {
   id: number;
   title: string;

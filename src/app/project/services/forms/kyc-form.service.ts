@@ -19,7 +19,7 @@ export class KycFormService {
       'document_id': [kyc.document_id, Validators.required],
       'document_type': [kyc.document_type || 'PASSPORT', Validators.required],
       'name': [kyc.name, Validators.required],
-      'nationality': [kyc.nationality || 'Alaska', Validators.required],
+      'nationality': [kyc.nationality || 'Australia', Validators.required],
       'birth_date': [''],
     });
   }

@@ -4,7 +4,12 @@
 		"GET_STARTED": "Get Started",
 		"ABOUT_US": "About Us",
 		"LOGIN": "Login",
-		"SIGNUP": "SIGNUP"
+		"SIGNUP": "SIGNUP",
+		"BLOG": "Blog",
+		"EXPLORE": "Explore",
+		"DASHBOARD": "Dashboard",
+		"SETTINGS": "Settings",
+		"LOGOUT": "Logout"
 	},
 	"FOOTER": {
 		"ABOUT_US": "About Us",
@@ -20,8 +25,12 @@
 		"RULEBOOK": "Rulebook",
 		"EVENTS": "Events",
 		"TRUST": "Trust",
-		"SAFETY": "Safety",
-		"PRICING": "Pricing",
-		"FOLLOW": "Follow us on"
+		"PRIVACY_POLICY": "Privacy Policy",
+		"TERMS_AND_CONDITION": "Term & Condition",
+		"COOKIE_POLICY": "Cookie Policy",
+		"SUBSRCIBE_NOW": "Got it? Subscribe to our newsletter now !",
+		"PROMISE_MSG": "We don’t send spam emails, promise.",
+		"EMAIL_SEND": "Send",
+		"FOLLOW_US": "Follow Us"
 	}
 }

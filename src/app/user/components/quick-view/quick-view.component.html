@@ -40,7 +40,7 @@
             <li class="col-sm-6">
               <div class="pie-title-center">
                 <easy-pie-chart [percent]="percent" [options]="options"></easy-pie-chart>
-                <span class="pie-value">{{project.percent_funded}}%</span>
+                <span class="pie-value">{{project.percent_funded | number:'1.0-0'}}%</span>
               </div>
               <p>Total Funded <span>${{project.funded_amount}}</span></p>
             </li>

@@ -9,6 +9,7 @@
           <th class="center">Name</th>
           <th class="center">Target</th>
           <th class="center">Funded</th>
+          <th class="center"></th>
         </tr>
       </thead>
       <tbody>
@@ -18,6 +19,9 @@
           <td class="center">{{project.title}}</td>
           <td class="center">${{project.pledged_amount}}</td>
           <td class="center">${{project.funded_amount}}</td>
+          <td class="center">
+            <button class="btn edit-btn" [routerLink]="['/projects', 'edit', project.id]">Edit</button>
+          </td>
         </tr>
       </tbody>
     </table>

@@ -26,6 +26,7 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
   formSubmit = false;
   projectForm: FormGroup;
   categories = [];
+  project: any;
 
   constructor(
     private actions: ProjectActions,
@@ -38,13 +39,16 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    console.log('editing', this.isEditing);
     if (this.isEditing) {
-    this.projectSub$ = this.store.select(getSelectedProject).subscribe((project) => {
-      this.initProjectForm(project);
-    });
+      this.projectSub$ = this.store.select(getSelectedProject).subscribe((project) => {
+        this.initProjectForm(project);
+        this.project = project;
+      });
     } else {
       this.projectSub$ = this.store.select(getDraftProject).subscribe((project) => {
         this.initProjectForm(project);
+        this.project = project;
       });
     }
   }
@@ -57,16 +61,6 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
     (<FormArray>this.projectForm.get('images_data')).push(
       this.fb.control(image)
     );
-  }
-
-  isImagePresent() {
-    const isPicturesAttributes = (<FormArray>this.projectForm.get('pictures_attributes')).controls.length > 0;
-    const isImagesData = (<FormArray>this.projectForm.get('images_data')).controls.length > 0;
-    if (isPicturesAttributes || isImagesData) {
-      return true;
-    } else {
-      return false;
-    }
   }
 
   uploadImage() {

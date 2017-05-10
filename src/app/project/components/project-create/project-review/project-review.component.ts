@@ -54,34 +54,9 @@ export class ProjectReviewComponent implements OnInit, OnDestroy, AfterViewInit 
     this.backToEditor.emit(1);
   }
 
-  isRewardsPresent() {
-    let status = false;
-    this.project.rewards.forEach(reward => {
-      if (reward.title || reward.description || reward.image_url || reward.amount) {
-        status =  true;
-      }
-    });
-    return status;
-  }
-
-  isFaqsPresent() {
-    let status = false;
-    this.project.faqs.forEach(faq => {
-      if (faq.question || faq.answer) {
-        status = true;
-      }
-    });
-    return status;
-  }
-
-  isLinksPresent() {
-    let status = false;
-    this.project.links.forEach(link => {
-      if (link.url) {
-        status = true;
-      }
-    });
-    return status;
+  onUpdate() {
+    this.router.navigate(['/projects', this.project.id]);
+    this.toastyService.success('Your Project is Updated');
   }
 
   onLaunch() {
@@ -89,7 +64,6 @@ export class ProjectReviewComponent implements OnInit, OnDestroy, AfterViewInit 
     this.hideModal();
     if (isValid) {
       this.projectHttpService.launchProject(this.project.id).subscribe((status) => {
-        console.log('status');
         if (status) {
           this.router.navigate(['/']);
           this.toastyService.success('Your Project is Pending for Approval, We Will notify you once your project is approved');
@@ -113,10 +87,6 @@ export class ProjectReviewComponent implements OnInit, OnDestroy, AfterViewInit 
    }
     if (!this.project.duration) {
       this.errors.push('Campaign Duration is missig');
-      status = false;
-   }
-    if (this.project.pictures.length === 0) {
-      this.errors.push('Campaign Image is missing');
       status = false;
    }
     if (!this.project.story) {

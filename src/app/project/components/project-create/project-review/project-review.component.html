@@ -7,9 +7,9 @@
 		</div>
 		<div *ngIf="project.pledged_amount" class="camp_mrg2">
 			<h3>Campaign Pledge</h3>
-			<p>$ {{project.pledged_amount}}</p>
+			<p>{{project.pledged_amount}} {{project.currency}}</p>
 		</div>
-		<div *ngIf="project.pictures.length > 0" class="camp_mrg2">
+		<div *ngIf="project.pictures?.length > 0" class="camp_mrg2">
 			<h3>Campaign Images</h3>
 			<span class="image-div" *ngFor="let picture of project?.pictures; let i = index">
 				<img class="reward-image" [src]="picture.url" alt="img">
@@ -27,9 +27,12 @@
 			<h3>Campaign Duration</h3>
 			<p>{{project.duration}} Days</p>
 		</div>
-		<div *ngIf="project.story" [innerHTML]="project.story.body" class="camp_mrg2"></div>
+		<div *ngIf="project.story">
+			<h3>Campaign Story</h3>
+			<div [innerHTML]="project.story.body" class="camp_mrg2"></div>
+		</div>
 		
-		<div *ngIf="isRewardsPresent()" class="camp_mrg2">
+		<div *ngIf="project.rewards?.length > 0" class="camp_mrg2">
 			<h3 style="margin-bottom: 16px;">Campaign Pouches</h3>
 			<div *ngFor="let reward of project?.rewards">
 				<h3 *ngIf="reward.title">{{reward.title}}</h3>
@@ -38,13 +41,7 @@
 				<img *ngIf="reward.image_url" class="img-responsive" [src]="reward.image_url" alt="img">
 			</div>
 		</div>
-		<div *ngIf="isLinksPresent()" class="camp_mrg2">
-			<h3>Campaign Links and other Info</h3>
-			<div *ngFor="let link of project?.links">
-				<a *ngIf="link.url" [href]="link.url" target="_blank">{{link.url}}</a>
-			</div>
-		</div>
-		<div *ngIf="isFaqsPresent()" class="camp_mrg2">
+		<div *ngIf="project.faqs?.length > 0" class="camp_mrg2">
 			<h3 style="margin-bottom: 16px;">Campaign FAQ's</h3>
 			<div style="margin-bottom: 15px;" *ngFor="let faq of project?.faqs; let i = index">
 				<h3 *ngIf="faq.question">{{i+1}}.) {{faq.question}}</h3>
@@ -60,7 +57,7 @@
 		</div>
 		<div class="camp_link">
 			<a *ngIf="!isEditing" (click)="lgModal.show()" class="btnNext pull-right" style="width:48%">Review and Launch</a>
-			<a *ngIf="isEditing" (click)="lgModal.show()" class="btnNext pull-right" style="width:48%">Review and Update</a>
+			<a *ngIf="isEditing" (click)="onUpdate()" class="btnNext pull-right" style="width:48%">Review and Update</a>
 			<a (click)="onBackToEditor()" class="camp_btn btn-default" style="width:48%">
 				Back to the Editor
 			</a>
@@ -86,8 +83,7 @@
 				<br>
 				<br>
 				<div class="camp_link">
-					<a *ngIf="!isEditing" (click)="onLaunch()" class="btnNext pull-right" style="width:48%">Launch</a>
-					<a *ngIf="isEditing" [routerLink]="['/projects', project.id]" class="btnNext pull-right" style="width:48%">Update</a>
+					<a (click)="onLaunch()" class="btnNext pull-right" style="width:48%">Launch</a>
 					<a (click)="lgModal.hide()" class="camp_btn btn-default" style="width:48%">
 						Back to the Editor
 					</a>

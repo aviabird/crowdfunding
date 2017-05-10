@@ -1,98 +1,8 @@
 <div class="sub-bnr-flat">
   <div class="container">
     <h2>Create a Campaign</h2>
-    <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>-->
   </div>
 </div>
-
-<!--<<<<<<< HEAD
-<div class="campaign_box">
-	<div class="container">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-sm-3 camp_pdng">
-					<div class="campaign_editor">
-						<h2>campaign 
-							<br class="br"> editor
-						</h2>
-						<div class="campaign_tabs">
-							<ul class="nav nav-tabs responsive" id="campaign_Tabs">
-								<li [ngClass]="{'active': selectedTab == 1}">
-									<a (click)="changeTab(1)">1. title 
-										<span class="category_camp">lorem ipsum</span>
-									</a>
-								</li>
-								<li [ngClass]="{'active': selectedTab == 2}">
-									<a (click)="changeTab(2)">2. reward 
-										<span class="category_camp">lorem ipsum</span>
-									</a>
-								</li>
-								<li [ngClass]="{'active': selectedTab == 3}">
-									<a (click)="changeTab(3)">3. story 
-										<span class="category_camp">lorem ipsum</span>
-									</a>
-								</li>
-								<li class="faq_boder" [ngClass]="{'active': selectedTab == 4}">
-									<a (click)="changeTab(4)">4. faq  
-										<span class="category_camp">lorem ipsum</span>
-									</a>
-								</li>
-								<li [ngClass]="{'active': selectedTab == 5}">
-									<a (click)="changeTab(5)">5. links 
-										<span class="category_camp">lorem ipsum</span>
-									</a>
-								</li>
-								<li [ngClass]="{'active': selectedTab == 6}">
-									<a (click)="changeTab(6)">6. review 
-										<span class="category_camp">lorem ipsum</span>
-									</a>
-								</li>
-								<li [ngClass]="{'active': selectedTab == 7}">
-									<a (click)="changeTab(7)">7. profile 
-										<span class="category_camp">lorem ipsum</span>
-									</a>
-								</li>
-								<li [ngClass]="{'active': selectedTab == 8}">
-									<a (click)="changeTab(8)">8. events 
-										<span class="category_camp">lorem ipsum</span>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-9 camp_pdng">
-					<div *ngIf="showLoader" class="loading">
-						<img src="assets/img/loading.svg">
-					</div>
-					<div class="tab-content responsive">
-						<div class="" [ngSwitch]="selectedTab">
-							<ng-template [ngSwitchCase]="'1'" ngSwitchDefault> 
-								<app-project-title [isEditing]="isEditing"></app-project-title>
-							</ng-template>      
-							<ng-template [ngSwitchCase]="'2'">
-								<app-project-reward [isEditing]="isEditing"></app-project-reward> 
-							</ng-template>
-							<ng-template [ngSwitchCase]="'3'">
-								<app-project-story [isEditing]="isEditing"></app-project-story>
-							</ng-template>
-							<ng-template [ngSwitchCase]="'4'">
-								<app-project-faq [isEditing]="isEditing"></app-project-faq>
-							</ng-template>
-							<ng-template [ngSwitchCase]="'5'">
-								<app-project-link [isEditing]="isEditing"></app-project-link>
-							</ng-template>
-							<ng-template [ngSwitchCase]="'6'">
-								<app-project-review [isEditing]="isEditing" (backToEditor)="changeTab(1)"></app-project-review> 
-							</ng-template>
-							<ng-template [ngSwitchCase]="'7'">
-								<app-project-profile></app-project-profile> 
-							</ng-template>
-							<ng-template [ngSwitchCase]="'8'">
-								<app-project-event></app-project-event> 
-							</ng-template>
-						</div>
-=======-->
 
 <div class="campaign_box">
 	<div class="container">
@@ -106,7 +16,6 @@
 						<ul class="nav nav-tabs responsive" id="campaign_Tabs">
 							<li [ngClass]="{'active': selectedTab == 1}">
 								<a (click)="changeTab(1)">1. Title 
-									<!--<span class="category_camp">lorem ipsum</span>-->
 								</a>
 							</li>
 							<li [ngClass]="{'active': selectedTab == 2}">
@@ -116,27 +25,22 @@
 							</li>
 							<li [ngClass]="{'active': selectedTab == 3}">
 								<a (click)="changeTab(3)">3. Story Board 
-									<!--<span class="category_camp">lorem ipsum</span>-->
 								</a>
 							</li>
 							<li class="faq_boder" [ngClass]="{'active': selectedTab == 4}">
 								<a (click)="changeTab(4)">4. Faqs
-									<!--<span class="category_camp">lorem ipsum</span>-->
 								</a>
 							</li>
 							<li [ngClass]="{'active': selectedTab == 5}">
 								<a (click)="changeTab(5)">5. KYC info
-									<!--<span class="category_camp">lorem ipsum</span>-->
 								</a>
 							</li>
 							<li [ngClass]="{'active': selectedTab == 6}">
 								<a (click)="changeTab(6)">6. Review 
-									<!--<span class="category_camp">lorem ipsum</span>-->
 								</a>
 							</li>
 							<li [ngClass]="{'active': selectedTab == 7}">
 								<a (click)="changeTab(8)">7. Events 
-									<!--<span class="category_camp">lorem ipsum</span>-->
 								</a>
 							</li>
 						</ul>
@@ -150,27 +54,26 @@
 				<div class="tab-content responsive">
 					<div class="" [ngSwitch]="selectedTab">
 						<ng-template [ngSwitchCase]="'1'" ngSwitchDefault> 
-							<app-project-title></app-project-title>
+							<app-project-title [isEditing]="isEditing"></app-project-title>
 						</ng-template>      
 						<ng-template [ngSwitchCase]="'2'">
-							<app-project-reward></app-project-reward> 
+							<app-project-reward [isEditing]="isEditing"></app-project-reward> 
 						</ng-template>
 						<ng-template [ngSwitchCase]="'3'">
-							<app-project-story></app-project-story>
+							<app-project-story [isEditing]="isEditing"></app-project-story>
 						</ng-template>
 						<ng-template [ngSwitchCase]="'4'">
-							<app-project-faq></app-project-faq> 
+							<app-project-faq [isEditing]="isEditing"></app-project-faq>
 						</ng-template>
 						<ng-template [ngSwitchCase]="'5'">
 							<app-project-user-kyc-info></app-project-user-kyc-info>
 						</ng-template>
 						<ng-template [ngSwitchCase]="'6'">
-							<app-project-review (backToEditor)="changeTab(1)"></app-project-review> 
+							<app-project-review [isEditing]="isEditing" (backToEditor)="changeTab(1)"></app-project-review> 
 						</ng-template>
 						<ng-template [ngSwitchCase]="'7'">
 							<app-project-event></app-project-event> 
 						</ng-template>
-<!-->>>>>>> f2efa6931556c70f601548904ac46df41d174b2e-->
 					</div>
 				</div>
 			</div>

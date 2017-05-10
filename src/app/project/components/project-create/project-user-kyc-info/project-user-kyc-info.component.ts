@@ -23,6 +23,11 @@ export class ProjectUserKycInfoComponent implements OnInit, OnDestroy {
   kycForm: FormGroup;
   @ViewChild('imageUpload') imageUpload: ImageUploadComponent;
   selectedDate = new Date();
+  nationalities = [
+    'Australia', 'Canada', 'Denmark', 'Finland', 'France', 'Ireland', 'Japan', 'Norway', 'Singapore',
+    'Spain', 'Sweden', 'United Kingdom', 'United States', 'Austria', 'Belgium', 'Germany', 'Hong Kong',
+    'Italy', 'Luxembourg', 'Netherlands', 'New Zealand', 'Portugal', 'Switzerland', 'Brazil', 'Mexico'
+  ];
 
   constructor(
     private store: Store<AppState>,

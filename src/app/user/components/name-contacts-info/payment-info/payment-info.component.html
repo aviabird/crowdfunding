@@ -2,11 +2,13 @@
   <article>
     <div class="head-info">
       <h6>payment info</h6>
-      <div *ngIf="isAuthUser()" class="edit-info"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></div>
     </div>
-    <div class="payment_img"><a class="add-bank-info">Bank</a> <a><img src="assets/img/stripe.png" class="img-responsive" alt="img"></a></div>
-    <p>Bank and Stripe Available</p>
-    <h3>Bank Account # 1</h3>
-    <p>Adnan Arif</p>
+    <div class="payment_img">
+      <a><img src="assets/img/stripe_logo.png" class="img-responsive" alt="img"></a>
+    </div>
+    <p>You are not connected with stripe, please connect with stripe before donors can fund into your project</p>
+    <div class="connect_img">
+      <a><img (click)="connectWithStripe()" src="assets/img/stripe_connect.png" class="img-responsive" alt="img"></a>
+    </div>
   </article>
 </div>

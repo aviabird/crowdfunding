@@ -26,6 +26,7 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
   formSubmit = false;
   projectForm: FormGroup;
   categories = [];
+  project: any;
 
   constructor(
     private actions: ProjectActions,
@@ -42,11 +43,12 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
     if (this.isEditing) {
       this.projectSub$ = this.store.select(getSelectedProject).subscribe((project) => {
         this.initProjectForm(project);
-        console.log('form', this.projectForm);
+        this.project = project;
       });
     } else {
       this.projectSub$ = this.store.select(getDraftProject).subscribe((project) => {
         this.initProjectForm(project);
+        this.project = project;
       });
     }
   }

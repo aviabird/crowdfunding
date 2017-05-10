@@ -1,3 +1,4 @@
+import { Reward } from './../../../../core/models/reward';
 import { RewardFormService } from './../../../services/forms/reward-form.service';
 import { ImageUploadComponent } from './../../../../shared/components/image-upload/image-upload.component';
 import { getDraftProject, getSelectedProject } from './../../../reducers/project.selector';
@@ -66,20 +67,10 @@ export class ProjectRewardComponent implements OnInit, OnDestroy {
   }
 
   onAddReward() {
-    (<FormArray>this.rewardForm.controls['rewards_attributes']).push(
-      this.fb.group({
-        'id': [null],
-        'title': ['', Validators.required],
-        'description': ['', Validators.compose([Validators.required, this.rewardFormService.descriptionValidator])],
-        'delivery_date': [],
-        'quantity': [null, Validators.required],
-        'amount': [null, Validators.required],
-        'currency': ['USD']
-      })
-    );
+    const reward = new Reward;
+    const fg =  this.rewardFormService.initFormGroup(reward);
+    (<FormArray>this.rewardForm.controls['rewards_attributes']).push(fg);
     this.selectedDate.push(new Date());
-      console.log('dates', this.selectedDate);
-      console.log('form', this.rewardForm.value);
   }
 
   onSubmit() {

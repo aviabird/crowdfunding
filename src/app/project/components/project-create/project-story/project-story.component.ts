@@ -45,7 +45,6 @@ export class ProjectStoryComponent implements OnInit, OnDestroy {
   onSubmit() {
     this.formSubmit = true;
     const data = this.projectForm.value;
-    console.log('data', data);
     if (this.storyForm.valid) {
       if (!this.isEditing) {
         this.store.dispatch(this.actions.saveDraft(data));

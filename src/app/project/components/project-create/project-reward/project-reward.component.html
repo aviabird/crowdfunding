@@ -34,8 +34,9 @@
 									<div class="row">
 										<div class="col-xs-6">
 											<div class="form-group">
-												<input type="text" class="form-control" placeholder="$ 500" formControlName="amount">
+												<input type="number" class="form-control" placeholder="$ 500" formControlName="amount">
 												<p *ngIf="reward.get('amount').hasError('required') && (reward.get('amount').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
+												<p *ngIf="(reward.get('amount').hasError('invalid') || reward.get('quantity').hasError('invalid')) && (reward.get('amount').touched || reward.get('quantity').touched || formSubmit)" class="value-err show">Pouch amount x Pouch Quantity should be less than goal amount</p>
 											</div>
 										</div>
 										<div class="col-xs-6">

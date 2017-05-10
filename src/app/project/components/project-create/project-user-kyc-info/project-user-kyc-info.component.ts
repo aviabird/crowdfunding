@@ -1,3 +1,5 @@
+import { Link } from './../../../../core/models/link';
+import { Reward } from './../../../../core/models/reward';
 import { Kyc } from './../../../../core/models/kyc';
 import { ImageUploadComponent } from './../../../../shared/components/image-upload/image-upload.component';
 import { KycFormService } from './../../../services/forms/kyc-form.service';
@@ -20,7 +22,7 @@ export class ProjectUserKycInfoComponent implements OnInit, OnDestroy {
 
   kycForm: FormGroup;
   @ViewChild('imageUpload') imageUpload: ImageUploadComponent;
-  dt;
+  selectedDate = new Date();
 
   constructor(
     private store: Store<AppState>,
@@ -30,10 +32,14 @@ export class ProjectUserKycInfoComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     const kyc = new Kyc;
+
     this.kycForm = this.kycFormService.initKycForm(kyc);
     this.projectHttpService.getUserKycInfo()
       .subscribe((res: Kyc) => {
-        this.kycForm = this.kycFormService.initKycForm(res);
+        if (res) {
+          this.kycForm = this.kycFormService.initKycForm(res);
+          this.selectedDate = new Date(res.birth_date);
+        }
       });
   }
 
@@ -46,6 +52,7 @@ export class ProjectUserKycInfoComponent implements OnInit, OnDestroy {
   }
 
   submitKyc() {
+    this.kycForm.get('birth_date').setValue(this.selectedDate);
     const data = this.kycForm.value;
     this.projectHttpService.updateUserKycInfo(data).subscribe();
   }

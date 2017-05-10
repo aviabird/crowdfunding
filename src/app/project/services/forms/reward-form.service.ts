@@ -35,17 +35,11 @@ export class RewardFormService {
   }
 
   initFormGroup(reward) {
-    let date: Date = reward.delivery_date || new Date();
-    date = new Date(date);
-
     return this.fb.group({
       'id': [reward.id],
       'title': [reward.title, Validators.required],
       'description': [reward.description, [Validators.required, this.descriptionValidator]],
-      'delivery_date': [date],
-      'day': [date.getDate()],
-      'month': [this.dateService.months[date.getMonth()]],
-      'year': [date.getFullYear()],
+      'delivery_date': [],
       'quantity': [reward.quantity, [Validators.required, this.validateRewardQuantity.bind(this)]],
       'amount': [reward.amount, [Validators.required, this.validateRewardAmount.bind(this)]],
       'currency': [reward.currency || 'USD'],

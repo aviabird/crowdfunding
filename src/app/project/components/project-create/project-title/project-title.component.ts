@@ -1,4 +1,3 @@
-import { DateService } from './../../../../core/services/date.service';
 import { ProjectFormService } from './../../../services/forms/project-form.service';
 import { ProjectHttpService } from './../../../services/http/project-http.service';
 import { ImageUploadComponent } from './../../../../shared/components/image-upload/image-upload.component';
@@ -22,30 +21,20 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
   private projectSub$: Subscription = new Subscription();
   @Input() isEditing;
   @ViewChild('imageUpload') imageUpload: ImageUploadComponent;
+  selectedDate = new Date();
 
   formSubmit = false;
   projectForm: FormGroup;
   categories = [];
-
-  days: number[] = [];
-  months: string[] = [];
-
-  // two-way data binding models for start date
-  day: number;
-  month: string;
-  year: number;
 
   constructor(
     private actions: ProjectActions,
     private store: Store<AppState>,
     private fb: FormBuilder,
     private projectHttpService: ProjectHttpService,
-    private projectFormService: ProjectFormService,
-    private dateService: DateService
+    private projectFormService: ProjectFormService
   ) {
     this.fetchCategories();
-    this.days = dateService.getDays();
-    this.months = dateService.getMonths();
   }
 
   ngOnInit() {
@@ -114,8 +103,7 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
   }
 
   private setStartDate() {
-    const date = this.dateService.createDate(this.day, this.month, this.year);
-    this.projectForm.controls['start_date'].setValue(date);
+    this.projectForm.controls['start_date'].setValue(this.selectedDate);
   }
 
   private fetchCategories() {
@@ -127,19 +115,7 @@ export class ProjectTitleComponent implements OnInit, OnDestroy {
 
   private initProjectForm(project) {
     this.projectForm = this.projectFormService.initProjectForm(project);
-    this.parseProjectStartDate();
-    this.setDateMonthYear();
-  }
-
-  private parseProjectStartDate() {
-    const date = this.projectForm.get('start_date').value;
-    this.dateService.parseDate(date);
-  }
-
-  private setDateMonthYear() {
-    this.day = this.dateService.day;
-    this.month = this.dateService.month;
-    this.year = this.dateService.year;
+    this.selectedDate = new Date(project.start_date);
   }
 
   ngOnDestroy() {

@@ -77,28 +77,9 @@
         </div>
       </div>
       <h2>Begin Date *</h2>
-      <!--<p>Lorem ipsum begin date end date</p>-->
-      <div class="camp_date">
-        <div class="form-group">
-          <div class="col-xs-3 camp_date_width">
-            <select class="form-control" [(ngModel)]="day" [ngModelOptions]="{standalone: true}">
-              <option *ngFor="let day of days">{{day}}</option>
-            </select>
-          </div>
-          <div class="col-xs-3 camp_date_width">
-            <select class="form-control" [(ngModel)]="month" [ngModelOptions]="{standalone: true}">
-              <option *ngFor="let month of months">{{month}}</option>
-            </select>
-          </div>
-          <div class="col-xs-3 camp_date_width">
-            <select class="form-control" [(ngModel)]="year" [ngModelOptions]="{standalone: true}">
-              <option>2017</option>
-              <option>2018</option>
-            </select>
-          </div>
-          <div class="col-xs-3"></div>
-        </div>
-      </div>
+			<div style="display:inline-block; min-height:290px;">
+				<datepicker [(ngModel)]="selectedDate" [ngModelOptions]="{standalone: true}"></datepicker>
+			</div>
       <h2>Begin Duration *</h2>
       <!--<p>Lorem ipsum begin date end date</p>-->
       <div class="camp_duration">

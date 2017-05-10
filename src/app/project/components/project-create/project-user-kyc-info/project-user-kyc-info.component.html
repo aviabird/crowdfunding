@@ -40,7 +40,7 @@
 			</div>
 			<h2>Birth Date</h2>
 			<div style="display:inline-block; min-height:290px;">
-				<datepicker [(ngModel)]="dt" [ngModelOptions]="{standalone: true}" [minDate]="minDate" [showWeeks]="true" [dateDisabled]="dateDisabled"></datepicker>
+				<datepicker [(ngModel)]="selectedDate" [ngModelOptions]="{standalone: true}"></datepicker>
 			</div>
 			<div class="camp_link"> <a (click)="submitKyc()" class="btnNext">SAVE</a> </div>
 		</form>

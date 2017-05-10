@@ -27,7 +27,7 @@ export class ProjectRewardComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private store: Store<AppState>,
     private actions: ProjectActions
-  ) {}
+  ) { }
 
   ngOnInit() {
     if (this.isEditing) {
@@ -68,7 +68,7 @@ export class ProjectRewardComponent implements OnInit, OnDestroy {
 
   onAddReward() {
     const reward = new Reward;
-    const fg =  this.rewardFormService.initFormGroup(reward);
+    const fg = this.rewardFormService.initFormGroup(reward);
     (<FormArray>this.rewardForm.controls['rewards_attributes']).push(fg);
     this.selectedDate.push(new Date());
   }
@@ -79,13 +79,29 @@ export class ProjectRewardComponent implements OnInit, OnDestroy {
     const data = this.rewardForm.value;
     console.log('dates', this.selectedDate);
     console.log('form', this.rewardForm.value);
-    if (this.rewardForm.valid) {
+    if (this.rewardForm.valid && this.validatePouchDates()) {
       if (!this.isEditing) {
         this.store.dispatch(this.actions.saveDraft(data));
       } else {
         this.store.dispatch(this.actions.updateProject(data));
       }
     }
+  }
+
+  validatePouchDates() {
+    let i: number;
+    for (i = 0; i < this.selectedDate.length; i++) {
+      if (this.validateDeliveryDate(i) === true) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  validateDeliveryDate(i) {
+    let startDate = this.rewardFormService.project.start_date || new Date();
+    startDate = new Date(startDate);
+    return this.selectedDate[i] > startDate ? false : true;
   }
 
   private setDeliveryDates() {

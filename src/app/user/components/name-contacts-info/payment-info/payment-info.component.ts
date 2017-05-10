@@ -22,4 +22,8 @@ export class PaymentInfoComponent implements OnInit {
     return this.userService.isLoggedInUser(this.user);
   }
 
+ connectWithStripe() {
+   console.log('clicked');
+ }
+
 }

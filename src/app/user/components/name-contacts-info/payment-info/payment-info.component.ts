@@ -10,6 +10,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PaymentInfoComponent implements OnInit {
 
   @Input() user: User;
+  clientId = 'ca_AFh1FgLLwrY0SPNb39sCEldX472lhvjP';
 
   constructor(
     private userService: UserService
@@ -23,7 +24,7 @@ export class PaymentInfoComponent implements OnInit {
   }
 
  connectWithStripe() {
-   console.log('clicked');
+   window.location.href = `https://connect.stripe.com/oauth/authorize?response_type=code&client_id=${this.clientId}&scope=read_write`;
  }
 
 }

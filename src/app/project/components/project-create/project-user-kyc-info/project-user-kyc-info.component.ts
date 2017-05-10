@@ -36,8 +36,10 @@ export class ProjectUserKycInfoComponent implements OnInit, OnDestroy {
     this.kycForm = this.kycFormService.initKycForm(kyc);
     this.projectHttpService.getUserKycInfo()
       .subscribe((res: Kyc) => {
-        this.kycForm = this.kycFormService.initKycForm(res);
-        this.selectedDate = new Date(res.birth_date);
+        if (res) {
+          this.kycForm = this.kycFormService.initKycForm(res);
+          this.selectedDate = new Date(res.birth_date);
+        }
       });
   }
 

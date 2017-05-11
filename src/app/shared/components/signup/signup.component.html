@@ -2,36 +2,36 @@
   <div class="modal-content">
     <div class="modal-header">
       <button type="button" class="close" (click)="onCloseModal()">×</button>
-      <h1 class="modal-title">Sign up
-        <span class="white_txt">Have an account? Log in now</span>
+      <h1 class="modal-title">{{ 'SIGNUP_DIALOG.SIGNUP' | translate}}
+        <span class="white_txt">{{ 'SIGNUP_DIALOG.ACCOUNT_MSG' | translate}}</span>
       </h1>
     </div>
     <div class="modal-body">
       <form #captchaProtectedForm="ngForm" [formGroup]="signupForm">
         <div class="input-group ">
-          <input type="text" class="form-control loc1" formControlName="name" placeholder="Name">
-            <p *ngIf="signupForm.get('name').hasError('required') && (signupForm.get('name').touched || formSubmit)" class="value-err show">Name is required</p>
+          <input type="text" class="form-control loc1" formControlName="name" placeholder="{{ 'SIGNUP_DIALOG.NAME_PLACEHOLDER' | translate}}">
+            <p *ngIf="signupForm.get('name').hasError('required') && (signupForm.get('name').touched || formSubmit)" class="value-err show">{{ 'SIGNUP_DIALOG.NAME_ERROR_MSG' | translate}}</p>
         </div>
         <div class="input-group">
-          <input type="email" class="form-control loc2" formControlName="email" placeholder="Your email address">
-          <p *ngIf="signupForm.get('email').hasError('validateEMAIL') && (signupForm.get('email').touched || formSubmit)" class="value-err show">Email is not valid</p>
+          <input type="email" class="form-control loc2" formControlName="email" placeholder="{{ 'SIGNUP_DIALOG.EMAIL_PLACEHOLDER' | translate}}">
+          <p *ngIf="signupForm.get('email').hasError('validateEMAIL') && (signupForm.get('email').touched || formSubmit)" class="value-err show">{{ 'SIGNUP_DIALOG.EMAIL_ERROR_MSG' | translate}}</p>
         </div>
         <!--<div class="input-group">
           <input type="password" class="form-control" formControlName="reEmail" placeholder="Re-enter email address">
         </div>-->
         <div class="input-group">
-          <input type="password" class="form-control loc" formControlName="password" placeholder="Password">
-          <p *ngIf="signupForm.get('password').hasError('minlength') && (signupForm.get('password').touched || formSubmit)" class="value-err show">Password must hav min 8 characters</p>
-          <p *ngIf="signupForm.get('password').hasError('required') && (signupForm.get('password').touched || formSubmit)" class="value-err show">Password is required</p>
+          <input type="password" class="form-control loc" formControlName="password" placeholder="{{ 'SIGNUP_DIALOG.PASSWORD_PLACEHODLER' | translate}}">
+          <p *ngIf="signupForm.get('password').hasError('minlength') && (signupForm.get('password').touched || formSubmit)" class="value-err show">{{ 'SIGNUP_DIALOG.PASSWORD_ERROR_MSG1' | translate}}</p>
+          <p *ngIf="signupForm.get('password').hasError('required') && (signupForm.get('password').touched || formSubmit)" class="value-err show">{{ 'SIGNUP_DIALOG.PASSWORD_ERROR_MSG2' | translate}}</p>
         </div>
         <div class="input-group">
-          <input type="password" class="form-control" formControlName="password_confirmation" placeholder="Re-enter Password">
-          <p *ngIf="signupForm.get('password_confirmation').hasError('validateConfirmPassword') && (signupForm.get('password_confirmation').touched || formSubmit)" class="value-err show">Password do not match</p>
-          <p *ngIf="signupForm.get('password_confirmation').hasError('required') && (signupForm.get('password_confirmation').touched || formSubmit)" class="value-err show">Confirm Password is required</p>
+          <input type="password" class="form-control" formControlName="password_confirmation" placeholder="{{ 'SIGNUP_DIALOG.PASSWORD_REENTER_PLACEHOLDER' | translate}}">
+          <p *ngIf="signupForm.get('password_confirmation').hasError('validateConfirmPassword') && (signupForm.get('password_confirmation').touched || formSubmit)" class="value-err show">{{ 'SIGNUP_DIALOG.PASSWORD_ERROR_MSG3' | translate}}</p>
+          <p *ngIf="signupForm.get('password_confirmation').hasError('required') && (signupForm.get('password_confirmation').touched || formSubmit)" class="value-err show">{{ 'SIGNUP_DIALOG.PASSWORD_ERROR_MSG4' | translate}}</p>
         </div>
         <div class="form-group our">
           <input type="checkbox" id="custom_checkbox1">
-          <label for="custom_checkbox1">Receive our weekly newsletter and  other occasional updates </label>
+          <label for="custom_checkbox1">{{ 'SIGNUP_DIALOG.WEEKLY_UPDATE_MSG' | translate}}</label>
         </div>
         <div class="form-group">
            <re-captcha
@@ -42,23 +42,23 @@
             siteKey="6LcxzBwUAAAAAP9WU4R0GjNvGSqSL98TbmqlptGG"
             #captchaControl="ngModel"
           ></re-captcha>
-          <div [hidden]="captchaControl.valid || captchaControl.pristine" class="error">Captcha must be solved</div>
-          <div [hidden]="!captchaControl.valid" class="success">Captcha is valid</div>
-          <button (click)="formModel.captcha = ''">Reset Captcha</button>
+          <div [hidden]="captchaControl.valid || captchaControl.pristine" class="error">{{ 'SIGNUP_DIALOG.CAPTCHA_MSG1' | translate}}</div>
+          <div [hidden]="!captchaControl.valid" class="success">{{ 'SIGNUP_DIALOG.CAPTCHA_MSG2' | translate}}</div>
+          <button (click)="formModel.captcha = ''">{{ 'SIGNUP_DIALOG.CAPTCHA_MSG3' | translate}}</button>
         </div>
         <div class="form-group">
-          <button type="button" (click)="onSignUp()" class="btn up">SIGN ME UP</button>
+          <button type="button" (click)="onSignUp()" class="btn up">{{ 'SIGNUP_DIALOG.SIGN_ME_UP' | translate}}</button>
         </div>
       </form>
-      <p class="text-center by">By signing up, you agree to our
+      <p class="text-center by">{{ 'SIGNUP_DIALOG.T&C_MSG1' | translate}}
         <a href="#">
-          <span class="blue"> terms of use, privacy policy,</span>
-        </a> and 
+          <span class="blue"> {{ 'SIGNUP_DIALOG.T&C_MSG2' | translate}}</span>
+        </a> {{ 'SIGNUP_DIALOG.T&C_MSG3' | translate}} 
         <a href="#">
-          <span class="blue"> cookie policy. </span>
+          <span class="blue"> {{ 'SIGNUP_DIALOG.T&C_MSG4' | translate}} </span>
         </a>
       </p>
-      <p class="text-center by space10">or signup with</p>
+      <p class="text-center by space10">{{ 'SIGNUP_DIALOG.T&C_MSG5' | translate}}</p>
     </div>
     <div class="modal-footer">
       <p>
@@ -69,7 +69,7 @@
           <i class="fa fa-google" aria-hidden="true"></i>Google
         </button>
       </p>
-      <p class="text-center by1 space10">We’ll never post anything on Facebook &amp; Google without your permission.</p>
+      <p class="text-center by1 space10">{{ 'SIGNUP_DIALOG.DECLARATION_MSG' | translate}}</p>
     </div>
   </div>
 </div>

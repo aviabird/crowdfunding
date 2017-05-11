@@ -5,17 +5,17 @@
       <div class="bg-img-1" data-stellar-background-ratio="0.5">
         <div class="position-center-center">
           <div class="text-bnr">
-            <h1>The #1 online and mobile fundraising platform. </h1>
-            <p>Trusted by 3,000+ of the world's top nonprofits & social enterprises.</p>
-            <a [routerLink]="['/projects','new']" class="btn">Create your dream</a> </div>
+            <h1>{{ 'HOME.BANNER_TITLE' | translate}}</h1>
+            <p>{{ 'HOME.BANNER_PARA_1' | translate}}</p>
+            <a [routerLink]="['/projects','new']" class="btn">{{ 'HOME.CREATE_DREAM' | translate}}</a> </div>
         </div>
       </div>
       <div class="bg-img-2" data-stellar-background-ratio="0.5">
         <div class="position-center-center">
           <div class="text-bnr">
-            <h1>The #1 online and mobile fundraising platform. </h1>
-            <p>Trusted by 3,000+ of the world's top nonprofits & social enterprises.</p>
-            <a [routerLink]="['/projects','new']" class="btn">Create your dream</a> </div>
+            <h1>{{ 'HOME.BANNER_TITLE' | translate}}</h1>
+            <p>{{ 'HOME.BANNER_PARA_1' | translate}}</p>
+            <a [routerLink]="['/projects','new']" class="btn">{{ 'HOME.CREATE_DREAM' | translate}}</a> </div>
         </div>
       </div>
     </div>
@@ -27,17 +27,17 @@
 <!-- Categories -->
 <section class="categories" id="go-up">
   <ul>
-    <li> <a [routerLink]="['/categories','Dance']"><i class="flaticon-men-dancing"></i> <span>Dance</span></a> </li>
-    <li> <a [routerLink]="['/categories','Technology']"><i class="flaticon-idea"></i> <span>Technology</span></a> </li>
-    <li> <a [routerLink]="['/categories','Music']"><i class="flaticon-headphones"></i> <span>Music</span></a> </li>
-    <li> <a [routerLink]="['/categories','Food']"><i class="flaticon-cutlery"></i> <span>Food</span></a> </li>
-    <li> <a [routerLink]="['/categories','Photography']"><i class="flaticon-technology-1"></i> <span>Photography</span></a> </li>
-    <li> <a [routerLink]="['/categories','Film']"><i class="flaticon-video-camera"></i> <span>Films</span></a> </li>
-    <li> <a [routerLink]="['/categories','Games']"><i class="flaticon-gamepad"></i> <span>Games</span></a> </li>
-    <li> <a [routerLink]="['/categories','Fashion']"><i class="flaticon-diamond"></i> <span>Fashion</span></a> </li>
-    <li> <a [routerLink]="['/categories','NonProfit']"><i class="flaticon-charity"></i> <span>Non Profit</span></a> </li>
-    <li> <a [routerLink]="['/categories','Art']" class="all-cat"> Browse <br>
-      All Categories</a> </li>
+    <li> <a [routerLink]="['/categories','Dance']"><i class="flaticon-men-dancing"></i> <span>{{ 'HOME.DANCE' | translate}}</span></a> </li>
+    <li> <a [routerLink]="['/categories','Technology']"><i class="flaticon-idea"></i> <span>{{ 'HOME.TECHNOLOGY' | translate}}</span></a> </li>
+    <li> <a [routerLink]="['/categories','Music']"><i class="flaticon-headphones"></i> <span>{{ 'HOME.MUSIC' | translate}}</span></a> </li>
+    <li> <a [routerLink]="['/categories','Food']"><i class="flaticon-cutlery"></i> <span>{{ 'HOME.FOOD' | translate}}</span></a> </li>
+    <li> <a [routerLink]="['/categories','Photography']"><i class="flaticon-technology-1"></i> <span>{{ 'HOME.PHOTOGRAPHY' | translate}}</span></a> </li>
+    <li> <a [routerLink]="['/categories','Film']"><i class="flaticon-video-camera"></i> <span>{{ 'HOME.FILMS' | translate}}</span></a> </li>
+    <li> <a [routerLink]="['/categories','Games']"><i class="flaticon-gamepad"></i> <span>{{ 'HOME.GAMES' | translate}}</span></a> </li>
+    <li> <a [routerLink]="['/categories','Fashion']"><i class="flaticon-diamond"></i> <span>{{ 'HOME.FASHION' | translate}}</span></a> </li>
+    <li> <a [routerLink]="['/categories','NonProfit']"><i class="flaticon-charity"></i> <span>{{ 'HOME.NON_PROFIT' | translate}}</span></a> </li>
+    <li> <a [routerLink]="['/categories','Art']" class="all-cat"> {{ 'HOME.BROWSE' | translate}} <br>
+      {{ 'HOME.ALL_CATEGORIES' | translate}}</a> </li>
   </ul>
 </section>
 
@@ -45,8 +45,8 @@
 <section class="projects">
   <div class="container">
     <div class="heading-block">
-      <h2>Trending Projects</h2>
-      <a [routerLink]="['/categories','Art']">View All</a> </div>
+      <h2>{{ 'HOME.TRENDING_PROJECT' | translate}}</h2>
+      <a [routerLink]="['/categories','Art']">{{ 'HOME.VIEW_ALL' | translate}}</a> </div>
     <div class="row"> 
       <div *ngFor="let project of projects" class="col-md-4 project">
         <article>
@@ -82,7 +82,7 @@
 <section class="video-bnr" data-stellar-background-ratio="0.8">
   <div class="container">
     <div class="video-text"> <a href="#." class="video-icon"><i class="fa fa-play"></i></a>
-      <h2>Play Video for Our Introduction</h2>
+      <h2>{{ 'HOME.VIDEO_INTRODUCTION' | translate}}</h2>
     </div>
   </div>
 </section>
@@ -93,7 +93,7 @@
     
     <!-- Main Heading -->
     <div class="heading-block text-center">
-      <h2>What Our Customer Say’s</h2>
+      <h2>{{ 'HOME.CUSTOMER_FEEDBACK' | translate}}</h2>
     </div>
     <div class="testi"> 
       <!-- Testi Slides With Image -->

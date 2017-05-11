@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { ProjectsListingComponent } from './projects-listing.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './projects-listing.routes';
@@ -8,7 +9,8 @@ import { CommonModule } from '@angular/common';
   imports: [
     RouterModule.forChild(routes),
     CommonModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   declarations: [
     ProjectsListingComponent

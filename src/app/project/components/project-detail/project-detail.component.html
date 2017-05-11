@@ -37,10 +37,10 @@
           <div class="col-md-12">
             <div class="mytabs">
               <ul class="tab">
-                <li [ngClass]="{'active': selectedTab == 1}"><a class="tablinks" (click)="changeTab(1)">Campaign</a></li>
-                <li [ngClass]="{'active': selectedTab == 2}"><a class="tablinks" (click)="changeTab(2)">Updates</a></li>
-                <li [ngClass]="{'active': selectedTab == 3}"><a class="tablinks" (click)="changeTab(3)">Discussion</a></li>
-                <li [ngClass]="{'active': selectedTab == 4}"><a class="tablinks" (click)="changeTab(4)">Community</a></li>
+                <li [ngClass]="{'active': selectedTab == 1}"><a class="tablinks" (click)="changeTab(1)">{{ 'PROJ_DETAIL.CAMPAIGN' | translate }}</a></li>
+                <li [ngClass]="{'active': selectedTab == 2}"><a class="tablinks" (click)="changeTab(2)">{{ 'PROJ_DETAIL.UPDATES' | translate }}</a></li>
+                <li [ngClass]="{'active': selectedTab == 3}"><a class="tablinks" (click)="changeTab(3)">{{ 'PROJ_DETAIL.DISSCUSION' | translate }}</a></li>
+                <li [ngClass]="{'active': selectedTab == 4}"><a class="tablinks" (click)="changeTab(4)">{{ 'PROJ_DETAIL.COMMUNITY' | translate }}</a></li>
               </ul>
             </div>
             <div class="" [ngSwitch]="selectedTab">
@@ -67,27 +67,27 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-              <button type="button" class="back_probtn">BACK THIS PROJECT</button>
+              <button type="button" class="back_probtn">{{ 'PROJ_DETAIL.BACK_PROJECT' | translate }}</button>
             </div>
             <div class="col-md-6 col-sm-6 col-xs-6 space30">
-              <button type="button" class="linksbtn bgclr5cc5d3"><i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;Remind Me</button>
+              <button type="button" class="linksbtn bgclr5cc5d3"><i class="fa fa-star" aria-hidden="true"></i>  {{ 'PROJ_DETAIL.REMIND_ME' | translate }}</button>
             </div>
             <div class="col-md-6 col-sm-6 col-xs-6 space30">
-              <button type="button" class="linksbtn bgclr39df12"><i class="fa fa-share" aria-hidden="true"></i>&nbsp;&nbsp;Share Now</button>
+              <button type="button" class="linksbtn bgclr39df12"><i class="fa fa-share" aria-hidden="true"></i>  {{ 'PROJ_DETAIL.SHARE_NOW' | translate }}</button>
             </div>
             <div class="col-md-12 space20">
-              <p class="clr42a7b3 fsize14">All or nothing. This project will only be funded if it reaches its goal by {{project?.end_date | date:'medium'}}.</p>
+              <p class="clr42a7b3 fsize14">{{ 'PROJ_DETAIL.PROJECT_BACK_MSG1' | translate }} {{project?.end_date | date:'medium'}}.</p>
             </div>
           </div>
           <div class="row">
             <div class="col-md-12">
-              <h2 class="subtitle3 space30">Support this project</h2>
+              <h2 class="subtitle3 space30">{{ 'PROJ_DETAIL.PROJECT_BACK_MSG2' | translate }}</h2>
               <div class="support_reward">
-                <h3>Make a pledge without a Pouch</h3>
+                <h3>{{ 'PROJ_DETAIL.PROJECT_BACK_MSG3' | translate }}</h3>
                 <input type="text" class="form-control rewardtype" [(ngModel)]="amount" placeholder="10">
                 <button [routerLink]="['/projects', project.id, 'payment']" 
                         [queryParams]="{amount: amount, reward: null}"
-                        type="button" class="linksbtn bgclr5cc5d3 space30">Continue
+                        type="button" class="linksbtn bgclr5cc5d3 space30">{{ 'PROJ_DETAIL.CONTINUE' | translate }}
                 </button>
               </div>
             </div>

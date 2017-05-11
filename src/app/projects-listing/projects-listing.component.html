@@ -17,22 +17,22 @@
               <li><a href="#">Web Comics</a></li>
             </ul>
           </li>-->
-          <li><a [routerLink]="['/categories', 'Art']">Art</a></li>
-          <li><a [routerLink]="['/categories', 'Crafts']">Crafts</a></li>
-          <li><a [routerLink]="['/categories', 'Dance']">Dance</a></li>
-          <li><a [routerLink]="['/categories', 'Community']">Community</a></li>
-          <li><a [routerLink]="['/categories', 'Fashion']">Fashion</a></li>
-          <li><a [routerLink]="['/categories', 'Film']">Film </a></li>
-          <li><a [routerLink]="['/categories', 'Video']">Video</a></li>
-          <li><a [routerLink]="['/categories', 'Food']">Food</a></li>
-          <li><a [routerLink]="['/categories', 'Games']">Games</a></li>
-          <li><a [routerLink]="['/categories', 'Music']">Music</a></li>
-          <li><a [routerLink]="['/categories', 'Photography']">Photography</a></li>
-          <li><a [routerLink]="['/categories', 'Publishing']">Publishing</a></li>
-          <li><a [routerLink]="['/categories', 'Technology']">Technology</a></li>
-          <li><a [routerLink]="['/categories', 'Theater']">Theater</a></li>
-          <li><a [routerLink]="['/categories', 'NonProfit']">Non Profit</a></li>
-          <li><a [routerLink]="['/categories', 'PersonalCause']">Personal Cause</a></li>
+          <li><a [routerLink]="['/categories', 'Art']">{{ 'PROJ_CATEGORY.ART' | translate }}</a></li>
+          <li><a [routerLink]="['/categories', 'Crafts']">{{ 'PROJ_CATEGORY.CRAFTS' | translate }}</a></li>
+          <li><a [routerLink]="['/categories', 'Dance']">{{ 'PROJ_CATEGORY.DANCE' | translate }}</a></li>
+          <li><a [routerLink]="['/categories', 'Community']">{{ 'PROJ_CATEGORY.COMMUNITY' | translate }}</a></li>
+          <li><a [routerLink]="['/categories', 'Fashion']">{{ 'PROJ_CATEGORY.FASHION' | translate }}</a></li>
+          <li><a [routerLink]="['/categories', 'Film']">{{ 'PROJ_CATEGORY.FILM' | translate }}</a></li>
+          <li><a [routerLink]="['/categories', 'Video']">{{ 'PROJ_CATEGORY.VIDEO' | translate }}</a></li>
+          <li><a [routerLink]="['/categories', 'Food']">{{ 'PROJ_CATEGORY.FOOD' | translate }}</a></li>
+          <li><a [routerLink]="['/categories', 'Games']">{{ 'PROJ_CATEGORY.GAMES' | translate }}</a></li>
+          <li><a [routerLink]="['/categories', 'Music']">{{ 'PROJ_CATEGORY.MUSIC' | translate }}</a></li>
+          <li><a [routerLink]="['/categories', 'Photography']">{{ 'PROJ_CATEGORY.PHOTOGRAPHY' | translate }}</a></li>
+          <li><a [routerLink]="['/categories', 'Publishing']">{{ 'PROJ_CATEGORY.PUBLISHING' | translate }}</a></li>
+          <li><a [routerLink]="['/categories', 'Technology']">{{ 'PROJ_CATEGORY.TECHNOLOGY' | translate }}</a></li>
+          <li><a [routerLink]="['/categories', 'Theater']">{{ 'PROJ_CATEGORY.THEATER' | translate }}</a></li>
+          <li><a [routerLink]="['/categories', 'NonProfit']">{{ 'PROJ_CATEGORY.NON_PROFIT' | translate }}</a></li>
+          <li><a [routerLink]="['/categories', 'PersonalCause']">{{ 'PROJ_CATEGORY.PERSONAL_CAUSE' | translate }}</a></li>
         </ul>
       </div>
     </div>
@@ -47,8 +47,8 @@
       <p>{{category}} can make your <strong>life Excited and Pretty</strong></p>
       <div class="comicbok12_overlay">
         <ol class="breadcrumb">
-          <li><a [routerLink]="['/']">Home</a></li>
-          <li><a [routerLink]="['/categories', 'Art']">Categories</a></li>
+          <li><a [routerLink]="['/']">{{ 'PROJ_CATEGORY.HOME' | translate }}</a></li>
+          <li><a [routerLink]="['/categories', 'Art']">{{ 'PROJ_CATEGORY.CATEGORIES' | translate }}</a></li>
           <li><a [routerLink]="['/categories',category]">{{category}}</a></li>
         </ol>
       </div>
@@ -61,7 +61,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3 col-sm-3 col-xs-6 space15">
-        <h2 class="title11"><strong>TRENDING IN</strong></h2>
+        <h2 class="title11"><strong>{{ 'PROJ_CATEGORY.TRENDING_IN' | translate }}</strong></h2>
       </div>
       <div class="col-md-2 col-sm-3 col-xs-6 space15"> <a class="comicsbtn1">{{category}}</a></div>
       <div class="col-md-7 col-sm-6 col-xs-12 space15">
@@ -139,7 +139,7 @@
 <section id="tranding_sec11">
   <div class="container">
     <div class="heading-bar text-center">
-      <h2>{{category}} Compaigns</h2>
+      <h2>{{category}} Campaigns</h2>
     </div>
     <div class="row">
       <div *ngFor="let project of projects | slice:1 " class="col-md-4 col-sm-4 col-xs-12 space15">

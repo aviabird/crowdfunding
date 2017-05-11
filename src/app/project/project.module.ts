@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
+import {ShareButtonsModule} from 'ngx-sharebuttons';
 
 import { CommentEffects } from './effects/comment.effect';
 import { ProjectEffects } from './effects/project.effects';
@@ -39,6 +40,7 @@ import { CommunityComponent } from './components/project-detail/community/commun
 import { AlreadyPledgedComponent } from './components/project-detail/already-pledged/already-pledged.component';
 import { PledgeMoreComponent } from './components/project-detail/pledge-more/pledge-more.component';
 import { ProjectUserKycInfoComponent } from './components/project-create/project-user-kyc-info/project-user-kyc-info.component';
+import { SocialShareComponent } from './components/project-detail/social-share/social-share.component';
 
 @NgModule({
   imports: [
@@ -47,6 +49,7 @@ import { ProjectUserKycInfoComponent } from './components/project-create/project
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
     ModalModule.forRoot(),
+    ShareButtonsModule.forRoot(),
     EffectsModule.run(CommentEffects),
     SharedModule
   ],
@@ -67,7 +70,8 @@ import { ProjectUserKycInfoComponent } from './components/project-create/project
     CommunityComponent,
     AlreadyPledgedComponent,
     PledgeMoreComponent,
-    ProjectUserKycInfoComponent
+    ProjectUserKycInfoComponent,
+    SocialShareComponent
   ],
   providers: [
     ProjectFormService,

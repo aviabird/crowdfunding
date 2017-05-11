@@ -34,7 +34,7 @@ export class SofortRedirectUrlComponent implements OnInit {
       if (status === 200) {
         if (source.status === 'chargeable') {
           const amount = source.amount / 100;
-          this.stripeService.payBySofortPayments(source.id, this.projectId, amount);
+          this.stripeService.payBySofort(source.id, this.projectId, amount);
         }
       } else {
         console.log('error', source);

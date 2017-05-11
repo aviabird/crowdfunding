@@ -21,7 +21,8 @@ export class SofortComponent implements OnInit {
     Stripe.setPublishableKey('pk_test_M2e5YbVJN53ZL7CWp1KdgNAC');
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   createSourceObject() {
     this.source = Stripe.source.create({

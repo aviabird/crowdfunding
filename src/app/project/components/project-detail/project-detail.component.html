@@ -86,7 +86,7 @@
                 <h3>Make a pledge without a Pouch</h3>
                 <input type="text" class="form-control rewardtype" [(ngModel)]="amount" placeholder="10">
                 <button [routerLink]="['/projects', project.id, 'payment']" 
-                        [queryParams]="{amount: amount, reward: null}"
+                        [queryParams]="{amount: amount}"
                         type="button" class="linksbtn bgclr5cc5d3 space30">Continue
                 </button>
               </div>

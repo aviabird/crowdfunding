@@ -6,6 +6,7 @@ export class Reward {
   quantity: number;
   amount: number;
   currency: string;
+  backers_count: number;
   project_id: number;
 
   constructor() {
@@ -16,6 +17,7 @@ export class Reward {
     this.quantity = null;
     this.amount = null;
     this.currency = 'USD';
+    this.backers_count = null;
     this.project_id = null;
   }
 

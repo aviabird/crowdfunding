@@ -6,10 +6,10 @@
 
 <div class="selected-mode" [ngSwitch]="selectedTab">
   <ng-template [ngSwitchCase]="'1'" ngSwitchDefault> 
-    <app-card [projectId]="projectId" [rewardId]="selectedRewardId" [pledgedAmount]="pledgedAmount"></app-card>
+    <app-card [projectId]="projectId" [rewardId]="rewardId" [pledgedAmount]="pledgedAmount"></app-card>
   </ng-template>
   <ng-template [ngSwitchCase]="'2'"> 
-    <app-sofort [projectId]="projectId" [rewardId]="selectedRewardId" [pledgedAmount]="pledgedAmount"></app-sofort>
+    <app-sofort [projectId]="projectId" [rewardId]="rewardId" [pledgedAmount]="pledgedAmount"></app-sofort>
   </ng-template>
   <ng-template [ngSwitchCase]="'3'"> 
     <app-sepa></app-sepa>

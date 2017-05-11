@@ -26,7 +26,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
   selectedTab = 1;
   amount: number;
   safeEmbedUrl: SafeResourceUrl;
-  carouselIndex: number;
+  carouselIndex = 0;
   reportReason: string;
 
   constructor(

@@ -8,7 +8,7 @@
         <div class="row">
           <div class="col-md-12">
             <carousel interval="false" [(activeSlide)]="carouselIndex">
-              <slide>
+              <slide *ngIf="project?.video_url">
                 <iframe marginwidth="0" marginheight="0" align="top" scrolling="No" frameborder="0" hspace="0" vspace="0" class="main-media" id="video" *ngIf="project?.video_url" [src]="safeEmbedUrl">
                 </iframe>
               </slide>
@@ -18,7 +18,12 @@
             </carousel>
             <div class="thumbnails">
               <img *ngIf="project?.video_url" class="thumbnail" (click)="showImage(0)" [src]="getVideoThumbnail(project.video_url)" alt="">
-              <img *ngFor="let picture of project?.pictures; let i = index" class="thumbnail" (click)="showImage(i+1)" [src]="picture.url" alt="">
+              <span *ngIf="project?.video_url">
+                <img *ngFor="let picture of project?.pictures; let i = index" class="thumbnail" (click)="showImage(i+1)" [src]="picture.url" alt="">
+              </span>
+              <span *ngIf="!project?.video_url">
+                <img *ngFor="let picture of project?.pictures; let i = index" class="thumbnail" (click)="showImage(i)" [src]="picture.url" alt="">
+              </span>
             </div>
           </div>
         </div>

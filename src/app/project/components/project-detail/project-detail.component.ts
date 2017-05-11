@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/Observable';
 import { AppState } from './../../../app.state';
 import { Store } from '@ngrx/store';
 import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-project-detail',
@@ -35,7 +35,8 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     private projectHttpService: ProjectHttpService,
     private sanitizer: DomSanitizer,
     private zone: NgZone,
-    private dateService: DateService
+    private dateService: DateService,
+    private metaService: Meta
     ) {
     this.routeSub$ = this.route.params.subscribe((params) => {
       const id = params['id'];
@@ -45,6 +46,8 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     this.projectSub$ = this.store.select(getSelectedProject).subscribe((project) => {
       this.project = project;
       if (this.project) {
+        // this.removeMetaTags();
+        this.addMetaTags();
         this.zone.run(() => {
           this.getVideoEmbedUrl(this.project.video_url);
         });
@@ -85,6 +88,14 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     this.store.dispatch(this.commentActions.clearComments());
     this.projectSub$.unsubscribe();
     this.routeSub$.unsubscribe();
+  }
+
+  removeMetaTags() {
+    this.metaService.removeTag('title');
+  }
+
+  addMetaTags() {
+    this.metaService.addTag({name: 'title',  content: this.project.title});
   }
 
 }

@@ -33,6 +33,16 @@
             </div>
           </div>
         </div>
+        <div class="row space10">
+          <div class="col-md-12 report">
+            <button type="button" class="btn report-btn linksbtn bgclr5cc5d3">
+              <i class="fa fa-flag-checkered" aria-hidden="true"></i>
+              Report this project
+            </button>
+            <textarea [(ngModel)]="reportReason" class="report-reason" type="text" placeholder="why are you reporting this project"></textarea>
+            <button class="send" (click)="reportProject()" type="button">Send</button>
+          </div>
+        </div>
         <div class="row">
           <div class="col-md-12">
             <div class="mytabs">

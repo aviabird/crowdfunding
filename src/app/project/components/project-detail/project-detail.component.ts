@@ -1,3 +1,4 @@
+import { ToastyService } from 'ng2-toasty';
 import { DateService } from './../../../core/services/date.service';
 import { ProjectHttpService } from './../../services/http/project-http.service';
 import { ProjectActions } from './../../actions/project.actions';
@@ -26,6 +27,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
   amount: number;
   safeEmbedUrl: SafeResourceUrl;
   carouselIndex: number;
+  reportReason: string;
 
   constructor(
     private store: Store<AppState>,
@@ -36,7 +38,8 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     private sanitizer: DomSanitizer,
     private zone: NgZone,
     private dateService: DateService,
-    private metaService: Meta
+    private metaService: Meta,
+    private toastyService: ToastyService
     ) {
     this.routeSub$ = this.route.params.subscribe((params) => {
       const id = params['id'];
@@ -82,6 +85,12 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
 
   daysToGo() {
     this.dateService.daysBetweenDates(this.project.start_date, this.project.end_date);
+  }
+
+  reportProject() {
+    this.projectHttpService.reportProject(this.reportReason, this.project.id).subscribe((res) => {
+      this.toastyService.success(res.message);
+    });
   }
 
   ngOnDestroy() {

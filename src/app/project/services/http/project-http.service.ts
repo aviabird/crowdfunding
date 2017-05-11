@@ -118,4 +118,12 @@ export class ProjectHttpService {
     });
   }
 
+  reportProject(reason: string, id: number) {
+    return this.http.post(
+      `/api/v1/projects/report_project`, { reason: reason, id: id }
+    ).map((res) => {
+      return res.json();
+    });
+  }
+
 }

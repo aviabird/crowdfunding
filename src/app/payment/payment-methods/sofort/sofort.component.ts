@@ -13,7 +13,7 @@ export class SofortComponent implements OnInit {
   source: any;
   @Input() pledgedAmount: number;
   @Input() projectId: number;
-  @Input() rewardId: number;
+  @Input() rewardId = null;
 
   constructor(
     private toastyService: ToastyService,
@@ -30,7 +30,7 @@ export class SofortComponent implements OnInit {
       amount: this.pledgedAmount * 100,
       currency: 'eur',
       redirect: {
-        return_url: `${environment.UI_ENDPOINT}/projects/${this.projectId}/payment/sofort/redirect`,
+        return_url: this.redirectUrl(),
       },
       sofort: {
         country: 'DE',
@@ -48,6 +48,14 @@ export class SofortComponent implements OnInit {
       const response = JSON.parse(this.source.response);
       const error_message = response.error.message;
       this.toastyService.error(error_message);
+    }
+  }
+
+  redirectUrl() {
+    if (this.rewardId) {
+      return `${environment.UI_ENDPOINT}/projects/${this.projectId}/payment/sofort/redirect?reward=${this.rewardId}`;
+    } else {
+      return `${environment.UI_ENDPOINT}/projects/${this.projectId}/payment/sofort/redirect`;
     }
   }
 

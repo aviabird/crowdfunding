@@ -31,7 +31,7 @@ export class CommentEffects {
     .switchMap((action: Action) => {
       return this.commentHttpService.addNewComment(action.payload);
     })
-    .map((comment: Comment) => this.commentActions.addCommentSuccess(comment));
+    .map((comments: Comment[]) => this.commentActions.loadCommentSuccess(comments));
 
   // tslint:disable-next-line:member-ordering
   @Effect()
@@ -40,10 +40,7 @@ export class CommentEffects {
     .switchMap((action: Action) => {
       return this.commentHttpService.deleteComment(action.payload);
     })
-    .map((id: number) => {
-      console.log('id', id);
-      return this.commentActions.deleteCommentSuccess(id);
-    });
+    .map((comments: Comment[]) => this.commentActions.loadCommentSuccess(comments));
 
   // tslint:disable-next-line:member-ordering
   @Effect()
@@ -52,6 +49,6 @@ export class CommentEffects {
     .switchMap((action: Action) => {
       return this.commentHttpService.editComment(action.payload);
     })
-    .map((comment: Comment) => this.commentActions.editCommentSuccess(comment));
+    .map((comments: Comment[]) => this.commentActions.loadCommentSuccess(comments));
 
 }

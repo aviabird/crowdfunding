@@ -10,7 +10,9 @@ export function commentReducer(state: CommentState = initialState, action: Actio
   switch (action.type) {
     case CommentActions.LOAD_COMMENTS_SUCCESS:
       const comments = <Comment[]>action.payload;
-
+      if (!comments) {
+        return initialState;
+      }
       const commentIds = comments.map(comment => comment.id);
       newEntities = comments.reduce((entities: { [id: number]: Comment }, comment: Comment) => {
         return Object.assign(entities, {
@@ -21,41 +23,6 @@ export function commentReducer(state: CommentState = initialState, action: Actio
       return Object.assign({}, state, {
         ids: commentIds,
         entities: newEntities
-      });
-
-    case CommentActions.ADD_COMMENT_SUCCESS:
-      const newComment = <Comment>action.payload;
-
-      return Object.assign({}, state, {
-        ids: [ ...state.ids, newComment.id ],
-        entities: Object.assign({}, state.entities, { [newComment.id]: newComment })
-      });
-
-
-    case CommentActions.EDIT_COMMENT_SUCCESS:
-      const editedComment = <Comment>action.payload;
-      const editedCommentId = editedComment.id;
-
-      newEntities = Object.assign({}, state.entities);
-      newEntities[editedCommentId] = editedComment;
-
-      return Object.assign({}, state, {
-        entities: newEntities
-      });
-
-    case CommentActions.DELETE_COMMENT_SUCCESS:
-      const deletedId = <number>action.payload;
-      const newIds = state.ids.filter(val => val !== deletedId);
-
-      newEntities = newIds.reduce((entities: { [id: string]: Comment }, id: number) => {
-        return Object.assign(entities, {
-          [id]: state.entities[id]
-        });
-      }, {});
-
-      return Object.assign({}, state, {
-        entities: newEntities,
-        ids: newIds
       });
 
     case CommentActions.CLEAR_COMMENTS:

@@ -1,3 +1,4 @@
+import { CommentHttpService } from './../../../services/http/comment-http.service';
 import { getProjectComments } from './../../../reducers/project.selector';
 import { Comment } from './../../../../core/models/comment';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -19,21 +20,27 @@ export class CommentsComponent implements OnInit {
 
   commentForm: FormGroup;
   commentEditForm: FormGroup;
+  commentReplyForm: FormGroup;
 
   comments$: Observable<Comment[]>;
   authStatus$: Observable<boolean>;
   authUser$: Observable<any>;
+  authUser: any;
 
   edited: boolean;
   editedCommentId: number;
+  reply: boolean;
+  replyCommentId: number;
 
   constructor(private store: Store<AppState>,
     private commentActions: CommentActions,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private commentHttpService: CommentHttpService
   ) {
     this.comments$ = this.store.select(getProjectComments);
     this.authStatus$ = this.store.select(getAuthStatus);
     this.authUser$ = this.store.select(getAuthUser);
+    this.authUser$.subscribe((user) => this.authUser = user);
   }
 
   ngOnInit() {
@@ -52,6 +59,7 @@ export class CommentsComponent implements OnInit {
   }
 
   editComment(comment) {
+    this.reply = false;
     this.commentEditForm = this.initEditForm(comment);
     this.editedCommentId = comment.id;
     this.edited = true;
@@ -65,10 +73,27 @@ export class CommentsComponent implements OnInit {
     return false;
   }
 
+  replyToComment(id: number) {
+    this.edited = false;
+    this.commentReplyForm = this.initReplyForm(id);
+    this.replyCommentId = id;
+    this.reply = true;
+  }
+
+  addReplyComment() {
+    const replyComment = this.commentReplyForm.value;
+    this.store.dispatch(this.commentActions.addComment(replyComment));
+    this.reply = false;
+    return false;
+  }
+
   initCommentForm() {
     return this.fb.group({
       'body': ['', Validators.required],
-      'project_id': [this.projectId]
+      'project_id': [this.projectId],
+      'parent_id': ['null'],
+      'author_name': [this.authUser.name],
+      'author_image': [this.authUser.image_url]
     });
   }
 
@@ -76,7 +101,20 @@ export class CommentsComponent implements OnInit {
     return this.fb.group({
       'id': [comment.id],
       'body': [comment.body, Validators.required],
-      'project_id': [this.projectId]
+      'project_id': [this.projectId],
+      'parent_id': [comment.parent_id],
+      'author_name': [this.authUser.name],
+      'author_image': [this.authUser.image_url]
+    });
+  }
+
+  initReplyForm(parent_id) {
+    return this.fb.group({
+      'body': ['', Validators.required],
+      'project_id': [this.projectId],
+      'parent_id': [parent_id],
+      'author_name': [this.authUser.name],
+      'author_image': [this.authUser.image_url]
     });
   }
 

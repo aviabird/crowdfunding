@@ -1,3 +1,4 @@
+import { ToastyService } from 'ng2-toasty';
 import { DateService } from './../../../core/services/date.service';
 import { ProjectHttpService } from './../../services/http/project-http.service';
 import { ProjectActions } from './../../actions/project.actions';
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs/Observable';
 import { AppState } from './../../../app.state';
 import { Store } from '@ngrx/store';
 import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-project-detail',
@@ -25,7 +26,8 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
   selectedTab = 1;
   amount: number;
   safeEmbedUrl: SafeResourceUrl;
-  carouselIndex: number;
+  carouselIndex = 0;
+  reportReason: string;
 
   constructor(
     private store: Store<AppState>,
@@ -35,7 +37,9 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     private projectHttpService: ProjectHttpService,
     private sanitizer: DomSanitizer,
     private zone: NgZone,
-    private dateService: DateService
+    private dateService: DateService,
+    private metaService: Meta,
+    private toastyService: ToastyService
     ) {
     this.routeSub$ = this.route.params.subscribe((params) => {
       const id = params['id'];
@@ -45,6 +49,8 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     this.projectSub$ = this.store.select(getSelectedProject).subscribe((project) => {
       this.project = project;
       if (this.project) {
+        // this.removeMetaTags();
+        this.addMetaTags();
         this.zone.run(() => {
           this.getVideoEmbedUrl(this.project.video_url);
         });
@@ -81,10 +87,24 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     this.dateService.daysBetweenDates(this.project.start_date, this.project.end_date);
   }
 
+  reportProject() {
+    this.projectHttpService.reportProject(this.reportReason, this.project.id).subscribe((res) => {
+      this.toastyService.success(res.message);
+    });
+  }
+
   ngOnDestroy() {
     this.store.dispatch(this.commentActions.clearComments());
     this.projectSub$.unsubscribe();
     this.routeSub$.unsubscribe();
+  }
+
+  removeMetaTags() {
+    this.metaService.removeTag('title');
+  }
+
+  addMetaTags() {
+    this.metaService.addTag({name: 'title',  content: this.project.title});
   }
 
 }

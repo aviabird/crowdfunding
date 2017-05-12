@@ -1,0 +1,27 @@
+<button type="button" (click)="lgModal.show()" class="linksbtn bgclr39df12"><i class="fa fa-share" aria-hidden="true"></i>&nbsp;&nbsp;Share Now</button>
+
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Share</h4>
+        <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <button class="btn-fa btn" (click)="lgModal.hide()" shareButton="facebook">
+          <i class="fa fa-facebook-square"></i>
+          Facebook
+        </button>
+        <button class="btn-tw btn" (click)="lgModal.hide()" shareButton="twitter">
+          <i class="fa fa-twitter-square"></i>
+          Twitter
+        </button>
+        <!--<div class="share-link">
+          <input type="text" [value]="pageFullUrl">
+        </div>-->
+      </div>
+    </div>
+  </div>
+</div>

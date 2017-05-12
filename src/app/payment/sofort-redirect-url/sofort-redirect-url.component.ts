@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class SofortRedirectUrlComponent implements OnInit {
 
   projectId: number;
+  rewardId: number;
   sourceId: string;
   sourceSecret: string;
 
@@ -22,6 +23,7 @@ export class SofortRedirectUrlComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       this.sourceId = params['source'];
       this.sourceSecret = params['client_secret'];
+      this.rewardId = params['reward'];
     });
   }
 
@@ -34,7 +36,7 @@ export class SofortRedirectUrlComponent implements OnInit {
       if (status === 200) {
         if (source.status === 'chargeable') {
           const amount = source.amount / 100;
-          this.stripeService.payBySofortPayments(source.id, this.projectId, amount);
+          this.stripeService.payBySofort(source.id, this.projectId, amount, this.rewardId);
         }
       } else {
         console.log('error', source);

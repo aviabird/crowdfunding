@@ -4,7 +4,7 @@
     <p><strong>{{reward.title}}</strong></p>
     <p class="space20">{{reward.description}}</p>
     <p class="space30"><strong>{{ 'PROJ_DETAIL.ESTIMATED_DELIVERY' | translate }}<br>{{reward.delivery_date | date:'mediumDate'}}</strong></p>
-    <p class="space30">3 backers</p>
+    <p class="space30">{{reward.backers_count}} backers</p>
     <input type="text" class="form-control rewardtype" [(ngModel)]="amount" placeholder="10">
     <button [routerLink]="['/projects', project.id, 'payment']" 
             [queryParams]="{amount: amount, reward: reward.id}"

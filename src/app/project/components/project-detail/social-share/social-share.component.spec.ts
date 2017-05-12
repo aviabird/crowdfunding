@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StripeFormComponent } from './stripe-form.component';
+import { SocialShareComponent } from './social-share.component';
 
-describe('StripeFormComponent', () => {
-  let component: StripeFormComponent;
-  let fixture: ComponentFixture<StripeFormComponent>;
+describe('SocialShareComponent', () => {
+  let component: SocialShareComponent;
+  let fixture: ComponentFixture<SocialShareComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StripeFormComponent ]
+      declarations: [ SocialShareComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StripeFormComponent);
+    fixture = TestBed.createComponent(SocialShareComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

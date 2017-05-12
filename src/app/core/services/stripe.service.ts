@@ -16,19 +16,10 @@ export class StripeService {
     private router: Router
   ) {}
 
-  createCharge(token: string, projectId: number, amount: number) {
+  payBySofort(token: string, projectId: number, amount: number, rewardId: number) {
     console.log('in stripe service create charge');
     return this.http.post(
-      '/api/v1/projects/fund_project', { stripeToken: token, id: projectId, amount: amount }
-    ).subscribe((res: Response) => {
-      console.log('stripe response', res.json());
-    });
-  }
-
-  payBySofortPayments(token: string, projectId: number, amount: number) {
-    console.log('in stripe service create charge');
-    return this.http.post(
-      '/api/v1/pay_by_sofort', { stripeToken: token, id: projectId, amount: amount }
+      '/api/v1/pay_by_sofort', { stripeToken: token, id: projectId, amount: amount, reward_id: rewardId  }
     ).subscribe((res: Response) => {
       const data = res.json();
       if (data.error) {
@@ -50,9 +41,10 @@ export class StripeService {
     });
   }
 
-  fundProject(token: string, projectId: number, amount: number) {
+  payByCard(token: string, projectId: number, amount: number, rewardId: number) {
+    console.log('reward id', rewardId);
     return this.http.post(
-      '/api/v1/projects/fund_project', { stripeToken: token, id: projectId, amount: amount }
+      '/api/v1/pay_by_card', { stripeToken: token, id: projectId, amount: amount, reward_id: rewardId }
     ).subscribe((res: Response) => {
       const data = res.json();
       if (data.error) {

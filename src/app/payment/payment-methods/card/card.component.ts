@@ -15,15 +15,14 @@ export class CardComponent implements OnInit {
 
   constructor(private stripeService: StripeService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   openCheckout() {
     const handler = (<any>window).StripeCheckout.configure({
       key: 'pk_test_M2e5YbVJN53ZL7CWp1KdgNAC',
       locale: 'auto',
       token: (token: any) => {
-        this.stripeService.fundProject(token.id, this.projectId, this.pledgedAmount);
+        this.stripeService.payByCard(token.id, this.projectId, this.pledgedAmount, this.rewardId);
       }
     });
 

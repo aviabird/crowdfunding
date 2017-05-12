@@ -9,38 +9,36 @@
 		<div class="row">
 			<div class="col-md-3 camp_pdng">
 				<div class="campaign_editor">
-					<h2>campaign 
-						 editor
-					</h2>
+					<h2>{{ 'PROJ_CREATE.CAMPAIGN_EDITOR' | translate }}</h2>
 					<div class="campaign_tabs">
 						<ul class="nav nav-tabs responsive" id="campaign_Tabs">
 							<li [ngClass]="{'active': selectedTab == 1}">
-								<a (click)="changeTab(1)">1. Title 
+								<a (click)="changeTab(1)">1. {{ 'PROJ_CREATE.TITLE' | translate }} 
 								</a>
 							</li>
 							<li [ngClass]="{'active': selectedTab == 2}">
-								<a (click)="changeTab(2)">2. Pouches 
-									<span class="category_camp">pouches are rewards</span>
+								<a (click)="changeTab(2)">2. {{ 'PROJ_CREATE.POUCHES' | translate }} 
+									<span class="category_camp">{{ 'PROJ_CREATE.POUCHES_MSG' | translate }}</span>
 								</a>
 							</li>
 							<li [ngClass]="{'active': selectedTab == 3}">
-								<a (click)="changeTab(3)">3. Story Board 
+								<a (click)="changeTab(3)">3. {{ 'PROJ_CREATE.STORY_BOARD' | translate }} 
 								</a>
 							</li>
 							<li class="faq_boder" [ngClass]="{'active': selectedTab == 4}">
-								<a (click)="changeTab(4)">4. Faqs
+								<a (click)="changeTab(4)">4. {{ 'PROJ_CREATE.FAQS' | translate }}
 								</a>
 							</li>
 							<li [ngClass]="{'active': selectedTab == 5}">
-								<a (click)="changeTab(5)">5. KYC info
+								<a (click)="changeTab(5)">5. {{ 'PROJ_CREATE.KYC_INFO' | translate }}
 								</a>
 							</li>
 							<li [ngClass]="{'active': selectedTab == 6}">
-								<a (click)="changeTab(6)">6. Review 
+								<a (click)="changeTab(6)">6. {{ 'PROJ_CREATE.REVIEW' | translate }} 
 								</a>
 							</li>
 							<li [ngClass]="{'active': selectedTab == 7}">
-								<a (click)="changeTab(8)">7. Events 
+								<a (click)="changeTab(7)">7. {{ 'PROJ_CREATE.EVENTS' | translate }} 
 								</a>
 							</li>
 						</ul>

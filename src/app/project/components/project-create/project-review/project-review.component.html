@@ -1,39 +1,39 @@
 <div class="campaign_create">
-	<h1>Review</h1>
+	<h1>{{ 'PROJ_CREATE.REVIEW' | translate }}</h1>
 	<div class="camp_review">
 		<div *ngIf="project.title">
-			<h3>Campaign Name</h3>
+			<h3>{{ 'PROJ_CREATE.CAMPAIGN_NAME' | translate }}</h3>
 			<p>{{project.title}}</p>
 		</div>
 		<div *ngIf="project.pledged_amount" class="camp_mrg2">
-			<h3>Campaign Pledge</h3>
+			<h3>{{ 'PROJ_CREATE.CAMPAIGN_PLEDGE' | translate }}</h3>
 			<p>{{project.pledged_amount}} {{project.currency}}</p>
 		</div>
 		<div *ngIf="project.pictures?.length > 0" class="camp_mrg2">
-			<h3>Campaign Images</h3>
+			<h3>{{ 'PROJ_CREATE.CAMPAIGN_IMAGE_MSG' | translate }}</h3>
 			<span class="image-div" *ngFor="let picture of project?.pictures; let i = index">
 				<img class="reward-image" [src]="picture.url" alt="img">
 			</span>
 		</div>
 		<div *ngIf="project.video_url" class="camp_mrg2">
-			<h3>Campaign Video</h3>
+			<h3>{{ 'PROJ_CREATE.CAMPAIGN_VIDEO_MSG' | translate }}</h3>
 			<a [href]="project.video_url">{{project.video_url}}</a>
 		</div>
 		<div *ngIf="project.funding_model" class="camp_mrg2">
-			<h3>Campaign Funding Model</h3>
+			<h3>{{ 'PROJ_CREATE.CAMPAIGN_FUNDING_MODEL' | translate }}</h3>
 			<p>{{project.funding_model}}</p>
 		</div>
 		<div *ngIf="project.duration" class="camp_mrg2">
-			<h3>Campaign Duration</h3>
+			<h3>{{ 'PROJ_CREATE.CAMPAIGN_DURATION' | translate }}</h3>
 			<p>{{project.duration}} Days</p>
 		</div>
 		<div *ngIf="project.story">
-			<h3>Campaign Story</h3>
+			<h3>{{ 'PROJ_CREATE.CAMPAIGN_STORY' | translate }}</h3>
 			<div [innerHTML]="project.story.body" class="camp_mrg2"></div>
 		</div>
 		
 		<div *ngIf="project.rewards?.length > 0" class="camp_mrg2">
-			<h3 style="margin-bottom: 16px;">Campaign Pouches</h3>
+			<h3 style="margin-bottom: 16px;">{{ 'PROJ_CREATE.CAMPAIGN_POUCHES' | translate }}</h3>
 			<div *ngFor="let reward of project?.rewards">
 				<h3 *ngIf="reward.title">{{reward.title}}</h3>
 				<h3 *ngIf="reward.amount">$ {{reward.amount}}</h3>
@@ -42,7 +42,7 @@
 			</div>
 		</div>
 		<div *ngIf="project.faqs?.length > 0" class="camp_mrg2">
-			<h3 style="margin-bottom: 16px;">Campaign FAQ's</h3>
+			<h3 style="margin-bottom: 16px;">{{ 'PROJ_CREATE.CAMPAIGN_FAQS' | translate }}</h3>
 			<div style="margin-bottom: 15px;" *ngFor="let faq of project?.faqs; let i = index">
 				<h3 *ngIf="faq.question">{{i+1}}.) {{faq.question}}</h3>
 				<p *ngIf="faq.answer">{{faq.answer}}</p>
@@ -56,10 +56,10 @@
 			</ul>
 		</div>
 		<div class="camp_link">
-			<a *ngIf="!isEditing" (click)="lgModal.show()" class="btnNext pull-right" style="width:48%">Review and Launch</a>
-			<a *ngIf="isEditing" (click)="onUpdate()" class="btnNext pull-right" style="width:48%">Review and Update</a>
+			<a *ngIf="!isEditing" (click)="lgModal.show()" class="btnNext pull-right" style="width:48%">{{ 'PROJ_CREATE.REVIEW_AND_LAUNCH' | translate }}</a>
+			<a *ngIf="isEditing" (click)="onUpdate()" class="btnNext pull-right" style="width:48%">{{ 'PROJ_CREATE.REVIEW_AND_UPDATE' | translate }}</a>
 			<a (click)="onBackToEditor()" class="camp_btn btn-default" style="width:48%">
-				Back to the Editor
+				{{ 'PROJ_CREATE.BACK_TO_EDITOR' | translate }}
 			</a>
 		</div>
 	</div>
@@ -76,16 +76,14 @@
       </div>
       <div class="modal-body">
 				<div>
-					Note: You will not be able to edit Title, Duration, 
-					Goal Amount, Currency, Begin date, Category after 
-					submission. Make sure you have verified all fields
+					{{ 'PROJ_CREATE.REVIEW_NOTE' | translate }}
 				</div>
 				<br>
 				<br>
 				<div class="camp_link">
-					<a (click)="onLaunch()" class="btnNext pull-right" style="width:48%">Launch</a>
+					<a (click)="onLaunch()" class="btnNext pull-right" style="width:48%">{{ 'PROJ_CREATE.LAUNCH' | translate }}</a>
 					<a (click)="lgModal.hide()" class="camp_btn btn-default" style="width:48%">
-						Back to the Editor
+						{{ 'PROJ_CREATE.BACK_TO_EDITOR' | translate }}
 					</a>
 				</div>
 				<br>

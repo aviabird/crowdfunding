@@ -6,12 +6,12 @@
     <div class="fund-info">
       <ul class="row">
         <li class="col-sm-3">
-          <article> <span class="main-tit">${{project.funded_amount}}</span>
+          <article> <span class="main-tit">{{ project?.currency | currencySymbol }}{{project.funded_amount}}</span>
             <p>{{ 'USER_DASHBOARD.FUNDED' | translate }} </p>
           </article>
         </li>
         <li class="col-sm-3">
-          <article> <span class="main-tit">${{project.pledged_amount}}</span>
+          <article> <span class="main-tit">{{ project?.currency | currencySymbol }}{{project.pledged_amount}}</span>
             <p>{{ 'USER_DASHBOARD.FUNDED' | translate }} </p>
           </article>
         </li>
@@ -42,7 +42,7 @@
                 <easy-pie-chart [percent]="percent" [options]="options"></easy-pie-chart>
                 <span class="pie-value">{{project.percent_funded | number:'1.0-0'}}%</span>
               </div>
-              <p>{{ 'USER_DASHBOARD.TOTAL_FUNDED' | translate }} <span>${{project.funded_amount}}</span></p>
+              <p>{{ 'USER_DASHBOARD.TOTAL_FUNDED' | translate }} <span>{{ project?.currency | currencySymbol }}{{project.funded_amount}}</span></p>
             </li>
             
             <!-- Tittle -->
@@ -51,20 +51,20 @@
                 <easy-pie-chart [percent]="percent" [options]="options"></easy-pie-chart>
                 <span class="pie-value">20%</span>
               </div>
-              <p>Tittle  here <span>$200</span></p>
+              <p>Tittle  here <span>{{ project?.currency | currencySymbol }}200</span></p>
             </li>
           </ul>
           
           <!-- Target -->
           <div class="row text-center margin-top-35">
             <div class="col-sm-4">
-              <p>Target <span>${{project.pledged_amount}}</span></p>
+              <p>Target <span>{{ project?.currency | currencySymbol }}{{project.pledged_amount}}</span></p>
             </div>
             <div class="col-sm-4">
-              <p>Tittle  here <span>$200</span></p>
+              <p>Tittle  here <span>{{ project?.currency | currencySymbol }}200</span></p>
             </div>
             <div class="col-sm-4">
-              <p>Tittle  here <span>$200</span></p>
+              <p>Tittle  here <span>{{ project?.currency | currencySymbol }}200</span></p>
             </div>
           </div>
         </article>

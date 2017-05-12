@@ -17,7 +17,7 @@
           <td>{{backer.email}}</td>
           <td>{{backer.address || 'Not Availabe'}}</td>
           <td>{{backer.phone_no || 'Not Availabe'}}</td>
-          <td>${{backer.total_backed_amount}}</td>
+          <td>{{ project?.currency | currencySymbol }}{{backer.total_backed_amount}}</td>
         </tr>
       </tbody>
     </table>

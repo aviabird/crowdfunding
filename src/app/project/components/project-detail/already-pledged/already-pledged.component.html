@@ -4,7 +4,7 @@
       <div class="pouch-big pouch-big-half"></div>
     </div>
     <div class="media-body">
-        <p><span class="fsize40 f500">${{project?.funded_amount}}</span><span class="goals-txt">{{ 'PROJ_DETAIL.PLEDGED_MSG5' | translate }} ${{project?.pledged_amount}} {{ 'PROJ_DETAIL.PLEDGED_MSG6' | translate }}</span></p>
+        <p><span class="fsize40 f500">{{ project?.currency | currencySymbol }} {{project?.funded_amount}}</span><span class="goals-txt">{{ 'PROJ_DETAIL.PLEDGED_MSG5' | translate }} {{ project?.currency | currencySymbol }} {{project?.pledged_amount}} {{ 'PROJ_DETAIL.PLEDGED_MSG6' | translate }}</span></p>
         <p class="text-right created">{{ 'PROJ_DETAIL.PLEDGED_MSG7' | translate }} {{project?.start_date | date: 'longDate' }}</p>
     </div>
     <div class="media">
@@ -28,7 +28,7 @@
           {{ 'PROJ_DETAIL.PLEDGED_MSG1' | translate }} </p>
       </li>
       <li>
-        <p>${{project?.pledged_amount}}
+        <p>{{ project?.currency | currencySymbol }} {{project?.pledged_amount}}
           {{ 'PROJ_DETAIL.PLEDGED_MSG2' | translate }}</p>
       </li>
       <li>

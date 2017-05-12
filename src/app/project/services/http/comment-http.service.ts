@@ -38,8 +38,7 @@ export class CommentHttpService {
     return this.http.delete(
       `/api/v1/comments/${id}`, {}
     ).map((res: Response) => {
-      console.log('response', res.json());
-      return res.json().id;
+      return res.json();
     });
   }
 

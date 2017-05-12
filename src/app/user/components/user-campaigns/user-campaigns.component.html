@@ -17,8 +17,8 @@
           <td>23-04-2017</td>
           <td class="center">28-04-2018</td>
           <td class="center">{{project.title}}</td>
-          <td class="center">${{project.pledged_amount}}</td>
-          <td class="center">${{project.funded_amount}}</td>
+          <td class="center">{{ project?.currency | currencySymbol }}{{project.pledged_amount}}</td>
+          <td class="center">{{ project?.currency | currencySymbol }}{{project.funded_amount}}</td>
           <td class="center">
             <button class="btn edit-btn" [routerLink]="['/projects', 'edit', project.id]">{{ 'USER_DASHBOARD.EDIT' | translate }}</button>
           </td>

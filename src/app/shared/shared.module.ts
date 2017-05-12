@@ -1,3 +1,4 @@
+import { CurrencyConverterPipe } from './currency';
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -25,10 +26,12 @@ import { DatepickerModule } from 'ngx-bootstrap/datepicker';
     ReactiveFormsModule,
     ImageUploadComponent,
     TooltipModule,
-    DatepickerModule
+    DatepickerModule,
+    CurrencyConverterPipe
   ],
   declarations: [
     ImageUploadComponent,
+    CurrencyConverterPipe
   ]
 })
 export class SharedModule { }

@@ -112,7 +112,7 @@
                 funded </h2>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-6 space15">
-              <h2>${{trendingProject.pledged_amount}}<br>
+              <h2>{{ project?.currency | currencySymbol }} {{trendingProject.pledged_amount}}<br>
                 plegded</h2>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-6 space15">
@@ -164,7 +164,7 @@
                     </p>
                   </div>
                   <div class="col-md-3 col-sm-6 col-xs-6 space15">
-                    <p class="fsize11">${{project.pledged_amount}}<br>
+                    <p class="fsize11">{{ project?.currency | currencySymbol }} {{project.pledged_amount}}<br>
                       plegded
                     </p>
                   </div>

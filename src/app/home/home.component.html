@@ -68,7 +68,7 @@
               </div>
               <div class="percent">{{project.percent_funded | number:'1.0-0'}}%</div>
             </li>
-            <li> <i class="fi flaticon-target"></i> <span>${{project.pledged_amount}}</span> </li>
+            <li> <i class="fi flaticon-target"></i> <span>{{ project?.currency | currencySymbol }}{{project.pledged_amount}}</span> </li>
             <li class="backers-info"> <i class="fi flaticon-user"></i> <span>{{project.total_backers}}</span> </li>
             <li> <i class="fi flaticon-alarm-clock"></i> <span>{{daysToGo(project.end_date)}}</span> </li>
           </ul>

@@ -41,6 +41,7 @@ import { AlreadyPledgedComponent } from './components/project-detail/already-ple
 import { PledgeMoreComponent } from './components/project-detail/pledge-more/pledge-more.component';
 import { ProjectUserKycInfoComponent } from './components/project-create/project-user-kyc-info/project-user-kyc-info.component';
 import { SocialShareComponent } from './components/project-detail/social-share/social-share.component';
+import { ReportProjectComponent } from './components/project-detail/report-project/report-project.component';
 
 @NgModule({
   imports: [
@@ -71,7 +72,8 @@ import { SocialShareComponent } from './components/project-detail/social-share/s
     AlreadyPledgedComponent,
     PledgeMoreComponent,
     ProjectUserKycInfoComponent,
-    SocialShareComponent
+    SocialShareComponent,
+    ReportProjectComponent
   ],
   providers: [
     ProjectFormService,

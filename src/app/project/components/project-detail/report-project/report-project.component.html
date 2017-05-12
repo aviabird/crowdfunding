@@ -1,0 +1,23 @@
+<div class="col-md-12 report">
+  <button type="button" (click)="lgModal.show()" class="btn report-btn linksbtn bgclr5cc5d3">
+    <i class="fa fa-flag-checkered" aria-hidden="true"></i>
+    Report this project
+  </button>
+</div>
+
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Report a project</h4>
+        <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <textarea [(ngModel)]="reportReason" class="report-reason" type="text" placeholder="why are you reporting this project"></textarea>
+        <button class="send" (click)="reportProject()" type="button">Report</button>
+      </div>
+    </div>
+  </div>
+</div>

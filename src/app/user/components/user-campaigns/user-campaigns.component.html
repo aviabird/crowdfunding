@@ -1,5 +1,5 @@
 <div class="tab-pane">
-  <h2> Campaigns</h2>
+  <h2>{{ 'USER_DASHBOARD.CAMPAIGNS' | translate }}</h2>
   <div class="comp_table">
     <table class="table">
       <thead>
@@ -20,11 +20,11 @@
           <td class="center">${{project.pledged_amount}}</td>
           <td class="center">${{project.funded_amount}}</td>
           <td class="center">
-            <button class="btn edit-btn" [routerLink]="['/projects', 'edit', project.id]">Edit</button>
+            <button class="btn edit-btn" [routerLink]="['/projects', 'edit', project.id]">{{ 'USER_DASHBOARD.EDIT' | translate }}</button>
           </td>
         </tr>
       </tbody>
     </table>
-    <div *ngIf="isAuthUser()" class="text-center"> <a [routerLink]="['/projects','new']" class="btn">add a campaign</a> </div>
+    <div *ngIf="isAuthUser()" class="text-center"> <a [routerLink]="['/projects','new']" class="btn">{{ 'USER_DASHBOARD.ADD_CAMPAIGN' | translate }}</a> </div>
   </div>
 </div>

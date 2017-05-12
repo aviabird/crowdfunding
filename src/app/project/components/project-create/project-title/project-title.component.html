@@ -1,31 +1,31 @@
 <div class="campaign_create">
-  <h1>Create a campaign</h1>
+  <h1>{{ 'PROJ_CREATE.CREATE_CAMPAIGN' | translate }}</h1>
   <div class="camp_create_box">
     <form [formGroup]="projectForm">
       <div class="form-group">
         <div *ngIf="!isEditing">
-          <label for="usr">Campaign Title *</label>
+          <label for="usr">{{ 'PROJ_CREATE.CAMPAIGN_TITLE' | translate }} *</label>
           <input type="text" class="form-control" placeholder="Enter title" formControlName="title">
           <p *ngIf="projectForm.get('title').hasError('required') && (projectForm.get('title').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
         </div>
         <div *ngIf="isEditing" class="no-edit">
-          <h2>Campaign Title</h2>
+          <h2>{{ 'PROJ_CREATE.CAMPAIGN_TITLE' | translate }}</h2>
           {{project.title}}
         </div>
       </div>
       <div class="form-group">
         <div *ngIf="!isEditing">
-          <label for="comment">Campaign Category *</label>
+          <label for="comment">{{ 'PROJ_CREATE.CAMPAIGN_CATEGORY' | translate }} *</label>
           <select class="form-control" formControlName="category_id">
             <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
           </select>
         </div>
         <div *ngIf="isEditing" class="no-edit">
-          <h2>Campaign Category</h2>          
+          <h2>{{ 'PROJ_CREATE.CAMPAIGN_CATEGORY' | translate }}</h2>          
           {{project.category_name}}
         </div>
       </div>
-      <h2>Upload your Campaign Images</h2>
+      <h2>{{ 'PROJ_CREATE.CAMPAIGN_IMAGES' | translate }}</h2>
 			<div formArrayName="pictures_attributes">
 				<span class="image-div" *ngFor="let picture of getPictures(); let i = index">
 					<span (click)="removePictureAttribue(i)" class="fa fa-times cross"></span>
@@ -38,18 +38,18 @@
 			</div>
 			<app-image-upload #imageUpload (click)="uploadImage()" (image)="setImageData($event)">
 				<img src="assets/img/camera-img.png" alt="img">
-				<h4>Upload Image</h4>
+				<h4>{{ 'PROJ_CREATE.UPLOAD_IMAGE' | translate }}</h4>
 			</app-image-upload>
       <br>
-      <h2>Video URL</h2>
-      <p>Enter a URL to appear at the top of your campaign page.</p>
+      <h2>{{ 'PROJ_CREATE.VIDEO_URL' | translate }}</h2>
+      <p>{{ 'PROJ_CREATE.VIDEO_MSG' | translate }}</p>
       <div class="form-group">
         <input type="text" class="form-control" placeholder="https:\\.." formControlName="video_url">
         <p *ngIf="projectForm.get('video_url').hasError('validateURL') && projectForm.get('video_url').touched" class="value-err show">Video Url is invalid</p>
       </div>
       <div *ngIf="!isEditing">
-        <h2>Campaign Goal *</h2>
-        <p>How much money would you like to raise for this campaign? </p>
+        <h2>{{ 'PROJ_CREATE.CAMPAIGN_GOAL' | translate }} *</h2>
+        <p>{{ 'PROJ_CREATE.CAMPAIGN_GOAL_MSG' | translate }} </p>
         <div class="row">
           <div class="col-xs-6">
             <div class="form-group">
@@ -71,51 +71,51 @@
         </div>
       </div>
       <div *ngIf="isEditing" class="no-edit padding-bottom">
-        <h2>Campaign Goal</h2>
+        <h2>{{ 'PROJ_CREATE.CAMPAIGN_GOAL' | translate }}</h2>
         {{project.pledged_amount}} {{project.currency}}
       </div>
       <div *ngIf="!isEditing" class="camp_flexi">
-        <h2>Funding Model *</h2>
-        <div class="col-xs-6" tooltip="Flexible Funding: Keep Your Money No Matter What" placement="top">
+        <h2>{{ 'PROJ_CREATE.FUNDING_MODEL' | translate }} *</h2>
+        <div class="col-xs-6" tooltip="{{ 'PROJ_CREATE.FLEXI_TOOLTIP' | translate }}" placement="top">
           <div class="radio">
             <input type="radio" id="boxi" name="funding_model" formControlName="funding_model" value="flexi">
             <label for="boxi">
-            <h2>Flexi <img src="assets/img/fixed-icon-1.png" alt="img"> </h2>
+            <h2>{{ 'PROJ_CREATE.FLEXI_MODEL' | translate }} <img src="assets/img/fixed-icon-1.png" alt="img"> </h2>
             </label>
           </div>
         </div>
-        <div class="col-xs-6" tooltip="Fixed Funding: Keep Your Money Only if You Meet Your Goal" placement="top">
+        <div class="col-xs-6" tooltip="{{ 'PROJ_CREATE.FIXED_TOOLTIP' | translate }}" placement="top">
           <div class="radio">
             <input type="radio" id="boxi-1" name="funding_model" formControlName="funding_model" value="fixed">
             <label for="boxi-1">
-            <h2>Fixed <img src="assets/img/fixed-icon.png" alt="img"> </h2>
+            <h2>{{ 'PROJ_CREATE.FIXED_MODEL' | translate }} <img src="assets/img/fixed-icon.png" alt="img"> </h2>
             </label>
           </div>
         </div>
       </div>
       <div *ngIf="isEditing" class="no-edit padding-bottom">
-        <h2>Funding Model</h2>
+        <h2>{{ 'PROJ_CREATE.FUNDING_MODEL' | translate }}</h2>
         {{projectForm.get('funding_model').value}}
       </div>
 			<div *ngIf="!isEditing" style="display:inline-block; min-height:290px;">
-        <h2>Begin Date *</h2>
+        <h2>{{ 'PROJ_CREATE.BEGIN_DATE' | translate }} *</h2>
 				<datepicker [(ngModel)]="selectedDate" [ngModelOptions]="{standalone: true}"></datepicker>
 			</div>
       <div *ngIf="isEditing" class="no-edit padding-bottom">
-        <h2>Begin Date</h2>        
+        <h2>{{ 'PROJ_CREATE.BEGIN_DATE' | translate }}</h2>        
         {{project.start_date | date: 'longDate'}}
       </div>
       <div *ngIf="!isEditing" class="camp_duration">
-        <h2>Begin Duration *</h2>
+        <h2>{{ 'PROJ_CREATE.BEGIN_DURATION' | translate }} *</h2>
         <input type="number" placeholder="Duration" min="1" max="60" class="form-control" formControlName="duration">
         <p *ngIf="projectForm.get('duration').hasError('required') && (projectForm.get('duration').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
         <p *ngIf="projectForm.get('duration').hasError('validateNumber') && (projectForm.get('duration').touched || formSubmit)" class="value-err show">Duration must between 1 and 60 days</p>
       </div>
       <div *ngIf="isEditing" class="no-edit padding-bottom">
-        <h2>Begin Duration</h2>        
+        <h2>{{ 'PROJ_CREATE.BEGIN_DURATION' | translate }}</h2>        
         {{projectForm.get('duration').value}} days
       </div>
-      <div class="camp_link"> <a (click)="submitProject()" class="btnNext">NEXT</a> </div>
+      <div class="camp_link"> <a (click)="submitProject()" class="btnNext">{{ 'PROJ_CREATE.NEXT' | translate }}</a> </div>
     </form>
   </div>
 </div>

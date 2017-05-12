@@ -7,17 +7,17 @@
       <ul class="row">
         <li class="col-sm-3">
           <article> <span class="main-tit">${{project.funded_amount}}</span>
-            <p>Funded </p>
+            <p>{{ 'USER_DASHBOARD.FUNDED' | translate }} </p>
           </article>
         </li>
         <li class="col-sm-3">
           <article> <span class="main-tit">${{project.pledged_amount}}</span>
-            <p>Plegded </p>
+            <p>{{ 'USER_DASHBOARD.FUNDED' | translate }} </p>
           </article>
         </li>
         <li class="col-sm-3">
           <article> <span class="main-tit">{{project.total_backers}}</span>
-            <p>Backers</p>
+            <p>{{ 'USER_DASHBOARD.BACKERS' | translate }}</p>
           </article>
         </li>
         <li class="col-sm-3">
@@ -32,7 +32,7 @@
       <div class="col-md-6">
         <article class="funded-graph">
           <div class="head-info">
-            <h6>total funded</h6>
+            <h6>{{ 'USER_DASHBOARD.TOTAL_FUNDED' | translate }}</h6>
           </div>
           
           <!-- Total Funded -->
@@ -42,7 +42,7 @@
                 <easy-pie-chart [percent]="percent" [options]="options"></easy-pie-chart>
                 <span class="pie-value">{{project.percent_funded | number:'1.0-0'}}%</span>
               </div>
-              <p>Total Funded <span>${{project.funded_amount}}</span></p>
+              <p>{{ 'USER_DASHBOARD.TOTAL_FUNDED' | translate }} <span>${{project.funded_amount}}</span></p>
             </li>
             
             <!-- Tittle -->
@@ -74,7 +74,7 @@
       <div class="col-md-6">
         <article class="funded-graph bcakers">
           <div class="head-info">
-            <h6>statistics</h6>
+            <h6>{{ 'USER_DASHBOARD.STATISTICS' | translate }}</h6>
           </div>
           <div class="row"> 
             
@@ -83,7 +83,7 @@
               <div class="backers-c">
                 <span *ngFor="let dot of totalDots()" class="backer-num"></span>
               </div>
-              <p>Total Backers <span>{{project.total_backers}}</span></p>
+              <p>{{ 'USER_DASHBOARD.TOTAL_BACKERS' | translate }} <span>{{project.total_backers}}</span></p>
             </div>
             
             <!-- Backers  Bar -->

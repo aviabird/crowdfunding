@@ -3,40 +3,39 @@
     <div class="row">
       <div class="col-md-4">
         <div class="sub-c">
-          <h4>Got it? Subscribe to our newsletter 
-            now !</h4>
-          <span>We don’t send spam emails, promise.</span>
+          <h4>{{ 'FOOTER.SUBSRCIBE_NOW' | translate }}</h4>
+          <span>{{ 'FOOTER.PROMISE_MSG' | translate }}</span>
           <form>
             <input type="email" placeholder="Email Address">
-            <button type="submit">Send</button>
+            <button type="submit">{{ 'FOOTER.EMAIL_SEND' | translate }}</button>
           </form>
-          <h4>Follow Us</h4>
+          <h4>{{ 'FOOTER.FOLLOW_US' | translate }}</h4>
           <div class="social"> <a href="#."><i class="fa fa-facebook"></i></a> <a href="#."><i class="fa fa-twitter"></i></a> <a href="#."><i class="fa fa-youtube"></i></a> <a href="#."><i class="fa fa-linkedin"></i></a> </div>
         </div>
       </div>
       <div class="col-md-4">
         <div class="links">
           <ul>
-            <li><a [routerLink]="['/about-us']">About Us</a></li>
-            <li><a [routerLink]="['/jobs']">Jobs</a></li>
-            <li><a [routerLink]="['/press']">Press</a></li>
-            <li><a [routerLink]="['/statistics']">Statistics</a></li>
-            <li><a [routerLink]="['/newsletter']">Newsletter</a></li>
-            <li><a [routerLink]="['/support']">Support</a></li>
-            <li><a [routerLink]="['/partners']">Partners</a></li>
-            <li><a [routerLink]="['/tutorials']">Tutorial</a></li>
+            <li><a [routerLink]="['/about-us']">{{'FOOTER.ABOUT_US' | translate}}</a></li>
+            <li><a [routerLink]="['/jobs']">{{'FOOTER.JOBS' | translate}}</a></li>
+            <li><a [routerLink]="['/press']">{{'FOOTER.PRESS' | translate}}</a></li>
+            <li><a [routerLink]="['/statistics']">{{'FOOTER.STATISTICS' | translate}}</a></li>
+            <li><a [routerLink]="['/newsletter']">{{'FOOTER.NEWSLETTER' | translate}}</a></li>
+            <li><a [routerLink]="['/support']">{{'FOOTER.SUPPORT' | translate}}</a></li>
+            <li><a [routerLink]="['/partners']">{{'FOOTER.PARTNERS' | translate}}</a></li>
+            <li><a [routerLink]="['/tutorials']">{{'FOOTER.TUTORIAL' | translate}}</a></li>
           </ul>
           <ul>
             <li><a>Blog</a></li>
-            <li><a [routerLink]="['/faqs']">FAQ</a></li>
-            <li><a [routerLink]="['/rulebook']">Rulebook</a></li>
-            <li><a [routerLink]="['/events']">Events</a></li>
-            <li><a [routerLink]="['/trust']">Trust & Safety</a></li>
+            <li><a [routerLink]="['/faqs']">{{'FOOTER.FAQ' | translate}}</a></li>
+            <li><a [routerLink]="['/rulebook']">{{'FOOTER.RULEBOOK' | translate}}</a></li>
+            <li><a [routerLink]="['/events']">{{'FOOTER.EVENTS' | translate}}</a></li>
+            <li><a [routerLink]="['/trust']">{{'FOOTER.TRUST' | translate}}</a></li>
           </ul>
         </div>
       </div>
       <div class="col-md-4 about-foot"> <img src="assets/img/logo=footer.jpg" alt="" > <br>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation..</p>
+        <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation..</p>-->
       </div>
     </div>
   </div>
@@ -45,20 +44,16 @@
       <div class="row">
         <div class="col-md-8">
           <p>Copyright 2017 Crowd Pouch</p>
-          <a [routerLink]="['/privacy']"> Privacy Policy </a>
-					<a [routerLink]="['/terms']">Term & Condition </a>
-					<a [routerLink]="['/cookies']"> Cookie Policy </a>
+          <a [routerLink]="['/privacy']">{{'FOOTER.PRIVACY_POLICY' | translate}}</a>
+					<a [routerLink]="['/terms']">{{'FOOTER.TERMS_AND_CONDITION' | translate}}</a>
+					<a [routerLink]="['/cookies']">{{'FOOTER.COOKIE_POLICY' | translate}}</a>
 				</div>
         <div class="col-md-4">
           <div class="row">
             <div class="col-md-6"> <img class="margin-top-10" src="assets/img/Bitmap.png" alt="icon"> </div>
             <div class="col-md-6">
-              <select class="form-control mydropdown">
-                <option>Language</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+              <select #langSelect class="form-control mydropdown" (change)="translate.use(langSelect.value)">
+                <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ language[lang].longLan }}</option>
               </select>
             </div>
           </div>

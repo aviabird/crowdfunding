@@ -1,4 +1,4 @@
-// import { HomeService } from './services/home.service';
+import { SharedModule } from './../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { routes } from './home.routes';
 import { HomeComponent } from './home.component';
@@ -9,7 +9,8 @@ import { CommonModule } from '@angular/common';
   imports: [
     RouterModule.forChild(routes),
     CommonModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   declarations: [
     HomeComponent

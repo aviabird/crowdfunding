@@ -1,13 +1,13 @@
 <div class="campaign_create">
-	<h1>Verification</h1>
+	<h1>{{ 'PROJ_CREATE.VERIFICATION' | translate }}</h1>
 	<div class="camp_create_box">
 		<form [formGroup]="kycForm">
-			<h2>Add a document to be verified</h2>
+			<h2>{{ 'PROJ_CREATE.KYC_MSG1' | translate }}</h2>
 			<app-image-upload #imageUpload (click)="uploadImage()" (image)="setImageData($event)">
 				<img src="assets/img/camera-img.png" alt="img">
-				<h4>Upload Image</h4>
+				<h4>{{ 'PROJ_CREATE.KYC_IMAGE_UPLOAD' | translate }}</h4>
 			</app-image-upload>
-			<h2>Type of ID</h2>
+			<h2>{{ 'PROJ_CREATE.ID_TYPE' | translate }}</h2>
 			<div class="row">
 				<div class="col-xs-6">
 					<div class="form-group">
@@ -17,17 +17,17 @@
 				<div class="col-xs-6">
 					<div class="camp_select slate">
 						<select formControlName="document_type">
-							<option>DRIVING LICENCE</option>
-							<option>PASSPORT</option>
+							<option>{{ 'PROJ_CREATE.DRIVING_LICENCE' | translate }}</option>
+							<option>{{ 'PROJ_CREATE.PASSPORT' | translate }}</option>
 						</select>
 					</div>
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="usr">Name on Doc</label>
-				<input type="text" class="form-control" placeholder="Your Name and Surname" formControlName="name">
+				<label for="usr">{{ 'PROJ_CREATE.NAME_ON_DOC' | translate }}</label>
+				<input type="text" class="form-control" placeholder="{{ 'PROJ_CREATE.NAME_AND_SURNAME' | translate }}" formControlName="name">
 			</div>
-			<h2>Nationality</h2>
+			<h2>{{ 'PROJ_CREATE.NATIONALITY' | translate }}</h2>
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="camp_select2">
@@ -37,11 +37,11 @@
 					</div>
 				</div>
 			</div>
-			<h2>Birth Date</h2>
+			<h2>{{ 'PROJ_CREATE.BIRTH_DATE' | translate }}</h2>
 			<div style="display:inline-block; min-height:290px;">
 				<datepicker [(ngModel)]="selectedDate" [ngModelOptions]="{standalone: true}"></datepicker>
 			</div>
-			<div class="camp_link"> <a (click)="submitKyc()" class="btnNext">SAVE</a> </div>
+			<div class="camp_link"> <a (click)="submitKyc()" class="btnNext">{{ 'PROJ_CREATE.SAVE' | translate }}</a> </div>
 		</form>
 	</div>
 </div>

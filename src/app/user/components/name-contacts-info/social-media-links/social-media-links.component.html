@@ -1,7 +1,7 @@
 <div class="col-md-6 social_media">
   <article>
     <div class="head-info">
-      <h6>social media links</h6>
+      <h6>{{ 'USER_DASHBOARD.SOCIAL_MEDIA_LINKS' | translate }}</h6>
       <div class="edit-info">
         <i *ngIf="isAuthUser() && !edited" (click)="editSocialLinks()" class="fa fa-pencil-square-o" aria-hidden="true"></i>
         <button *ngIf="edited" (click)="saveSocialLinks()" class="save-button">Save</button>
@@ -10,32 +10,32 @@
     <div *ngIf="!edited" class="social_media_box">
       <ul>
         <li *ngIf="user?.facebook_url"> <a class="facebook-linked" [href]="user.facebook_url" target="_blank"><span><i class="fa fa-facebook" aria-hidden="true"></i></span> </a>
-          <p>Linked</p>
+          <p>{{ 'USER_DASHBOARD.LINKED' | translate }}</p>
         </li>
         <li *ngIf="!user?.facebook_url"> <a><span><i class="fa fa-facebook" aria-hidden="true"></i></span> </a>
-          <p>Not linked</p>
+          <p>{{ 'USER_DASHBOARD.NOT_LINKED' | translate }}</p>
         </li>
         <li *ngIf="user?.twitter_url"> <a class="twitter-linked" [href]="user.twitter_url" target="_blank"><span><i class="fa fa-twitter" aria-hidden="true"></i></span> </a>
-          <p>Linked</p>
+          <p>{{ 'USER_DASHBOARD.LINKED' | translate }}</p>
         </li>
         <li *ngIf="!user?.twitter_url"> <a><span><i class="fa fa-twitter" aria-hidden="true"></i></span> </a>
-          <p>Not linked</p>
+          <p>{{ 'USER_DASHBOARD.NOT_LINKED' | translate }}</p>
         </li>
         <li *ngIf="user?.instagram_url"> <a class="insta-linked" [href]="user.instagram_url" target="_blank"><span><i class="fa fa-instagram" aria-hidden="true"></i></span> </a>
-          <p>Linked</p>
+          <p>{{ 'USER_DASHBOARD.LINKED' | translate }}</p>
         </li>
         <li *ngIf="!user?.instagram_url"> <a><span><i class="fa fa-instagram" aria-hidden="true"></i></span> </a>
-          <p>Not linked</p>
+          <p>{{ 'USER_DASHBOARD.NOT_LINKED' | translate }}</p>
         </li>
         <li *ngIf="user?.google_plus_url"> <a class="gplus-linked" [href]="user.google_plus_url" target="_blank"><span><i class="fa fa-google-plus" aria-hidden="true"></i></span> </a>
-          <p>Linked</p>
+          <p>{{ 'USER_DASHBOARD.LINKED' | translate }}</p>
         </li>
         <li *ngIf="!user?.google_plus_url"> <a><span><i class="fa fa-google-plus" aria-hidden="true"></i></span> </a>
-          <p>Not linked</p>
+          <p>{{ 'USER_DASHBOARD.NOT_LINKED' | translate }}</p>
         </li>
       </ul>
     </div>
-    <p>Connect to all your friends and spread the love!</p>
+    <p>{{ 'USER_DASHBOARD.SOCIAL_MEDIA_MSG' | translate }}</p>
     <div *ngIf="edited" class="social-links">
       <form [formGroup]="socialLinkForm">
         <div class="input-group">

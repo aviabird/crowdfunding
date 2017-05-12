@@ -1,8 +1,8 @@
 <!-- Sub Bnr -->
 <div class="sub-bnr-flat">
   <div class="container">
-    <h2>User Dashboard</h2>
-    <p>Edit all your informations Lorem Ipsum</p>
+    <h2>{{ 'USER_DASHBOARD.DASHBOARD_TITLE' | translate }}</h2>
+    <p>{{ 'USER_DASHBOARD.DASHBOARD_MSG1' | translate }}</p>
   </div>
 </div>
 
@@ -17,30 +17,30 @@
         <!-- Dashboard Navigation -->
         <div class="col-md-3">
           <div class="dashboard_nav">
-            <h2>Profile Info</h2>
+            <h2>{{ 'USER_DASHBOARD.PROFILE_INFO' | translate }}</h2>
             <div class="nav-side-menu">
               <div class="menu-list">
                 <ul class="nav nav-tabs responsive" id="dashboard_tabs">
                   <li [ngClass]="{'active': selectedTab == 1}">
-                    <a (click)="changeTab(1)"><i class="fa fa-user-o"></i> Names & Contacts</a>
+                    <a (click)="changeTab(1)"><i class="fa fa-user-o"></i> {{ 'USER_DASHBOARD.NAME_CONTACTS' | translate }}</a>
                   </li>
                   <li *ngIf="isCreator()" [ngClass]="{'active': selectedTab == 2}">
-                    <a (click)="changeTab(2)"><i class="fa fa-eye"></i> Quick view</a>
+                    <a (click)="changeTab(2)"><i class="fa fa-eye"></i> {{ 'USER_DASHBOARD.QUICK_VIEW' | translate }}</a>
                   </li>
                   <li *ngIf="isCreator()" [ngClass]="{'active': selectedTab == 3}">
-                    <a (click)="changeTab(3)"><i class="fa fa-heart"></i> Backers </a>
+                    <a (click)="changeTab(3)"><i class="fa fa-heart"></i> {{ 'USER_DASHBOARD.BACKERS' | translate }} </a>
                   </li>
                   <li [ngClass]="{'active': selectedTab == 4}">
-                    <a (click)="changeTab(4)"><i class="fa fa-podcast"></i> Projects I backed</a>
+                    <a (click)="changeTab(4)"><i class="fa fa-podcast"></i> {{ 'USER_DASHBOARD.BACKED_PROJECT' | translate }}</a>
                   </li>
                   <li *ngIf="isAuthUser()" [ngClass]="{'active': selectedTab == 5}">
-                    <a (click)="changeTab(5)"><i class="fa fa-envelope-o"></i> Notifications</a>
+                    <a (click)="changeTab(5)"><i class="fa fa-envelope-o"></i> {{ 'USER_DASHBOARD.NOTIFICATIONS' | translate }}</a>
                   </li>
                   <li [ngClass]="{'active': selectedTab == 6}">
-                    <a (click)="changeTab(6)"><i class="fa fa-bullhorn"></i> Campaigns</a>
+                    <a (click)="changeTab(6)"><i class="fa fa-bullhorn"></i> {{ 'USER_DASHBOARD.CAMPAIGNS' | translate }}</a>
                   </li>
                   <li [ngClass]="{'active': selectedTab == 7}">
-                    <a (click)="changeTab(7)"><i class="fa fa-calendar-o"></i> <small>Coming Soon</small></a>
+                    <a (click)="changeTab(7)"><i class="fa fa-calendar-o"></i> <small>{{ 'USER_DASHBOARD.COMING_SOON' | translate }}</small></a>
                   </li>
                 </ul>
               </div>

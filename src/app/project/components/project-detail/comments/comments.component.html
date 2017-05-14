@@ -30,17 +30,6 @@
             <button (click)="saveEditedComment()" class="edit-button">Save</button>
           </form>
         </div>
-        <div *ngIf="reply && comment.id == replyCommentId">
-          <form class="add-comment" [formGroup]="commentReplyForm">
-            <label for="comment">
-              <span>
-                <img [src]="(authUser$ | async).image_url">
-              </span>
-              <textarea formControlName="body" id="comment" rows="1" placeholder=""></textarea>
-            </label>
-            <button (click)="addReplyComment()" class="save-button">Save</button>
-          </form>
-        </div>
       </div>
       <div class="user-actions">
         <span>
@@ -51,6 +40,17 @@
           <i (click)="editComment(comment)" class="fa fa-pencil-square-o" aria-hidden="true"></i>
         </span>
       </div>
+    </div>
+    <div *ngIf="reply && comment.id == replyCommentId" class="new-comment">
+      <form class="add-comment" [formGroup]="commentReplyForm">
+        <label for="comment">
+          <span>
+            <img [src]="(authUser$ | async).image_url">
+          </span>
+          <textarea formControlName="body" id="comment" rows="1" placeholder=""></textarea>
+        </label>
+        <button (click)="addReplyComment()" class="save-button">Save</button>
+      </form>
     </div>
     <div *ngIf="comment.child_comments" class="child-comments">
       <div *ngFor="let comment of comment.child_comments">
@@ -70,17 +70,6 @@
               <form  [formGroup]="commentEditForm">
                 <textarea formControlName="body" id="comment" rows="1"></textarea>
                 <button (click)="saveEditedComment()" class="edit-button">Save</button>
-              </form>
-            </div>
-            <div *ngIf="reply && comment.id == replyCommentId">
-              <form class="add-comment" [formGroup]="commentReplyForm">
-                <label for="comment">
-                  <span>
-                    <img [src]="(authUser$ | async).image_url">
-                  </span>
-                  <textarea formControlName="body" id="comment" rows="1" placeholder=""></textarea>
-                </label>
-                <button (click)="addReplyComment()" class="save-button">Save</button>
               </form>
             </div>
           </div>

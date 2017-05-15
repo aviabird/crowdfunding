@@ -5,10 +5,12 @@
 }
 
 .content{
-    width:60%;
-    height:60%;
+    width:85px;
+    height:85px;
     border-radius: 100%;
     border: 1px solid #d3d3d3;
+    object-fit: cover;
+    object-position: center;
 }
 
 .card_content{

@@ -21,6 +21,11 @@ export class ProjectRewardComponent implements OnInit, OnDestroy {
   formSubmit = false;
   rewardForm: FormGroup;
   selectedDate: Date[] = [];
+  countries = [
+    'Australia', 'Canada', 'Denmark', 'Finland', 'France', 'Ireland', 'Japan', 'Norway', 'Singapore',
+    'Spain', 'Sweden', 'United Kingdom', 'United States', 'Austria', 'Belgium', 'Germany', 'Hong Kong',
+    'Italy', 'Luxembourg', 'Netherlands', 'New Zealand', 'Portugal', 'Switzerland', 'Brazil', 'Mexico'
+  ];
 
   constructor(
     private rewardFormService: RewardFormService,
@@ -49,8 +54,6 @@ export class ProjectRewardComponent implements OnInit, OnDestroy {
     if (!id) {
       this.selectedDate.pop();
       (<FormArray>this.rewardForm.controls['rewards_attributes']).removeAt(index);
-      console.log('dates', this.selectedDate);
-      console.log('form', this.rewardForm.value);
       return;
     }
 
@@ -77,8 +80,6 @@ export class ProjectRewardComponent implements OnInit, OnDestroy {
     this.setDeliveryDates();
     this.formSubmit = true;
     const data = this.rewardForm.value;
-    console.log('dates', this.selectedDate);
-    console.log('form', this.rewardForm.value);
     if (this.rewardForm.valid && this.validatePouchDates()) {
       if (!this.isEditing) {
         this.store.dispatch(this.actions.saveDraft(data));
@@ -86,6 +87,17 @@ export class ProjectRewardComponent implements OnInit, OnDestroy {
         this.store.dispatch(this.actions.updateProject(data));
       }
     }
+  }
+
+  addNewLocation(index) {
+    (<FormArray>(<FormArray>this.rewardForm.controls['rewards_attributes'])
+      .controls[index]
+      .get('shipping_locations_attributes'))
+      .push(this.fb.group({
+        'id': [null],
+        'location': ['', Validators.required],
+        'shipping_fee': ['', Validators.required]
+      }));
   }
 
   validatePouchDates() {

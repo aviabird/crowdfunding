@@ -61,6 +61,51 @@
 										<datepicker [(ngModel)]="selectedDate[i]" [ngModelOptions]="{standalone: true}"></datepicker>
 										<p *ngIf="validateDeliveryDate(i)" class="value-err show">Pouch delivery date should be greater than campaign start date</p>
 									</div>
+									<div class="form-group">
+										<h2>Pouch Shipping Locations</h2>
+										<p>Does this pouch contain items that you need to ship?</p>
+										<div class="col-xs-12 no-locations">
+											<input name="contain_shipping_locations" formControlName="contain_shipping_locations" type="radio" id="no" value="false">
+											<label>
+												No, this pouch does not contain items that need to be shipped.
+											</label>
+										</div>
+										<div class="col-xs-12 yes-locations">
+											<input name="contain_shipping_locations" formControlName="contain_shipping_locations" type="radio" id="yes" value="true">
+											<label>
+												Yes, this pouch contains items that need to be shipped.
+											</label>
+										</div>
+										<div *ngIf="reward.get('contain_shipping_locations').value">
+											<div class="row">
+												<div class="col-xs-6">
+													Shipping locations this perk ships to
+												</div>
+												<div class="col-xs-6">
+													Shipping fee added during checkout
+												</div>
+											</div>
+											<div formArrayName="shipping_locations_attributes" class="row">
+												<div *ngFor="let location of reward.get('shipping_locations_attributes').value; let li = index">
+													<div formGroupName="{{li}}">
+														<div class="col-xs-6 camp_select slate">
+															<select formControlName="location">
+																<option value="anywhere">Rest of the world</option>
+																<option *ngFor="let country of countries" [value]="country">{{country}}</option>
+															</select>
+														</div>
+														<div class="col-xs-6 form-group">
+															<input formControlName="shipping_fee" type="number" class="form-control">
+														</div>
+													</div>
+												</div>
+											</div>
+											<div (click)="addNewLocation(i)" class="add-location">
+												<i class="fa fa-plus-circle" aria-hidden="true"></i>
+												<span>Add Another Location</span>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>

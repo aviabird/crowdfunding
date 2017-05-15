@@ -1,3 +1,4 @@
+import { ShippingLocation } from './../../../core/models/shipping_location';
 import { Project } from './../../../core/models/project';
 import { DateService } from './../../../core/services/date.service';
 import { Reward } from './../../../core/models/reward';
@@ -35,6 +36,7 @@ export class RewardFormService {
   }
 
   initFormGroup(reward) {
+    console.log('reward', reward);
     return this.fb.group({
       'id': [reward.id],
       'title': [reward.title, Validators.required],
@@ -43,8 +45,31 @@ export class RewardFormService {
       'quantity': [reward.quantity, [Validators.required, this.validateRewardQuantity.bind(this)]],
       'amount': [reward.amount, [Validators.required, this.validateRewardAmount.bind(this)]],
       'currency': [reward.currency || 'USD'],
+      'contain_shipping_locations': [reward.contain_shipping_locations || false],
+      'shipping_locations_attributes': this.fb.array(this.initShippingLocations(reward)),
       '_destroy': [false]
     });
+  }
+
+  initShippingLocations(reward) {
+    let shippingLocations = reward.shipping_locations;
+    if (shippingLocations.length === 0) {
+      shippingLocations = [new ShippingLocation];
+    }
+
+    const locations_attributes_array = [];
+    shippingLocations.forEach((location) => {
+      locations_attributes_array.push(
+        this.fb.group({
+          'id': [location.id],
+          'location': [location.location || 'anywhere', Validators.required],
+          'shipping_fee': [location.shipping_fee, Validators.required]
+        })
+      );
+    });
+
+    return locations_attributes_array;
+
   }
 
   descriptionValidator(control: FormControl) {

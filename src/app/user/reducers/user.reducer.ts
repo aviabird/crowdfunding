@@ -9,7 +9,6 @@ export function userReducer(state: UserState = initialState, action: Action): Us
 
     case UserActions.LOAD_USER_SUCCESS:
     case UserActions.UPDATE_USER_SUCCESS:
-      console.log('payload', action.payload);
       const user = action.payload;
       return Object.assign({}, state, {
         user: user

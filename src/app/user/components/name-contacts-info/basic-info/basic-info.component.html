@@ -48,8 +48,10 @@
             <input type="text" formControlName="postcode" class="form-control">
             <p>Postcode</p>
           </div>
-          <div class="input-group">
-            <input type="text" formControlName="country" class="form-control">
+          <div class="input-group camp_select slate">
+            <select formControlName="country">
+              <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+            </select>
             <p>Country</p>
           </div>
         </div>

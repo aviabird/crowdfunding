@@ -17,6 +17,11 @@ export class BasicInfoComponent implements OnInit {
   @Input() user: User;
   basicInfoForm: FormGroup;
   edited: boolean;
+  countries = [
+    'Australia', 'Canada', 'Denmark', 'Finland', 'France', 'Ireland', 'Japan', 'Norway', 'Singapore',
+    'Spain', 'Sweden', 'United Kingdom', 'United States', 'Austria', 'Belgium', 'Germany', 'Hong Kong',
+    'Italy', 'Luxembourg', 'Netherlands', 'New Zealand', 'Portugal', 'Switzerland', 'Brazil', 'Mexico'
+  ];
 
   constructor(
     private fb: FormBuilder,
@@ -51,7 +56,7 @@ export class BasicInfoComponent implements OnInit {
         'street_address': [address.street_address, Validators.required],
         'city': [address.city, Validators.required],
         'postcode': [address.postcode, Validators.required],
-        'country': [address.country, Validators.required]
+        'country': [address.country || 'Australia', Validators.required]
       })
     });
   }

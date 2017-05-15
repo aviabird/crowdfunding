@@ -1,3 +1,4 @@
+import { UserService } from './../../../../user/services/user.service';
 import { UserActions } from './../../../../user/actions/user.actions';
 import { AppState } from './../../../../app.state';
 import { Store } from '@ngrx/store';
@@ -22,12 +23,18 @@ export class PledgeMoreComponent implements OnInit {
   addressForm: FormGroup;
   @ViewChild('lgModal') lgModal;
   selectedRewardIndex: number;
+  countries = [
+    'Australia', 'Canada', 'Denmark', 'Finland', 'France', 'Ireland', 'Japan', 'Norway', 'Singapore',
+    'Spain', 'Sweden', 'United Kingdom', 'United States', 'Austria', 'Belgium', 'Germany', 'Hong Kong',
+    'Italy', 'Luxembourg', 'Netherlands', 'New Zealand', 'Portugal', 'Switzerland', 'Brazil', 'Mexico'
+  ];
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
     private store: Store<AppState>,
-    private userActions: UserActions
+    private userActions: UserActions,
+    private userService: UserService
   ) {
     this.isAmountValid = true;
   }
@@ -61,7 +68,9 @@ export class PledgeMoreComponent implements OnInit {
       id: this.project.user.id
     });
     const address = this.addressForm.value;
-    this.store.dispatch(this.userActions.updateUser(address));
+    this.userService.updateUser(address).subscribe((user) => {
+      console.log('user', user);
+    });
     this.onContinue(this.selectedRewardIndex);
   }
 
@@ -77,7 +86,7 @@ export class PledgeMoreComponent implements OnInit {
         'street_address': ['', Validators.required],
         'city': ['', Validators.required],
         'postcode': ['', Validators.required],
-        'country': ['', Validators.required]
+        'country': ['Australia', Validators.required]
       })
     });
   }

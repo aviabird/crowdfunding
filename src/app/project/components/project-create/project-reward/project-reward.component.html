@@ -65,13 +65,13 @@
 										<h2>Pouch Shipping Locations</h2>
 										<p>Does this pouch contain items that you need to ship?</p>
 										<div class="col-xs-12 no-locations">
-											<input name="contain_shipping_locations" formControlName="contain_shipping_locations" type="radio" id="no" value="false">
+											<input name="contain_shipping_locations" formControlName="contain_shipping_locations" type="radio" id="no" [value]="false">
 											<label>
 												No, this pouch does not contain items that need to be shipped.
 											</label>
 										</div>
 										<div class="col-xs-12 yes-locations">
-											<input name="contain_shipping_locations" formControlName="contain_shipping_locations" type="radio" id="yes" value="true">
+											<input name="contain_shipping_locations" formControlName="contain_shipping_locations" type="radio" id="yes" [value]="true">
 											<label>
 												Yes, this pouch contains items that need to be shipped.
 											</label>
@@ -95,15 +95,15 @@
 															</select>
 														</div>
 														<div class="col-xs-6 form-group">
-															<input formControlName="shipping_fee" type="number" class="form-control">
+															<input type="text" formControlName="shipping_fee" class="form-control">
 														</div>
 													</div>
 												</div>
 											</div>
-											<div (click)="addNewLocation(i)" class="add-location">
+											<span (click)="addNewLocation(i)" class="add-location">
 												<i class="fa fa-plus-circle" aria-hidden="true"></i>
 												<span>Add Another Location</span>
-											</div>
+											</span>
 										</div>
 									</div>
 								</div>

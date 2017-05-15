@@ -1,3 +1,4 @@
+import { UserService } from './../user/services/user.service';
 import { KycFormService } from './services/forms/kyc-form.service';
 import { SharedModule } from './../shared/shared.module';
 import { EffectsModule } from '@ngrx/effects';
@@ -82,7 +83,8 @@ import { ReportProjectComponent } from './components/project-detail/report-proje
     FaqFormService,
     LinkFormService,
     CommentHttpService,
-    KycFormService
+    KycFormService,
+    UserService
   ]
 })
 export class ProjectModule { }

@@ -1645,6 +1645,9 @@ footer li a:hover {
 .pouch-big-half{
 	background:url(../img/pouch-big-light-half.png) no-repeat;
 }
+.pouch-big-almost-full{
+	background:url(../img/pouch-big-light-almost.png) no-repeat;
+}
 .pouch-big-full{
 	background:url(../img/pouch-big-light-full.png) no-repeat;
 }

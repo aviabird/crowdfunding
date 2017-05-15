@@ -1,7 +1,7 @@
 <div class="col-md-12">
   <div class="pledged_div">
     <div class="media-left">
-      <div class="pouch-big pouch-big-half"></div>
+      <div class="pouch-big" [ngClass]="selectPouchImage()"></div>
     </div>
     <div class="media-body">
         <p><span class="fsize40 f500">{{ project?.currency | currencySymbol }} {{project?.funded_amount}}</span><span class="goals-txt">{{ 'PROJ_DETAIL.PLEDGED_MSG5' | translate }} {{ project?.currency | currencySymbol }} {{project?.pledged_amount}} {{ 'PROJ_DETAIL.PLEDGED_MSG6' | translate }}</span></p>
@@ -10,14 +10,14 @@
     <div class="media">
       <div class="media-left">
         <a href="#">
-          <img class="media-object" src="assets/img/img20.png" alt="image">
+          <img class="media-object user_pic" src="{{project?.user?.image_url}}" alt="image">
         </a>
       </div>
       <div class="media-body">
         <h4 class="media-heading">{{project?.user_name}}</h4>
         <p class="space20">on behalf of {{project?.user_name}}</p>
-        <p class="space15"><span><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;Newyork, United States of America</span></p>
-        <p class="space15"><span><i class="fa fa-tag" aria-hidden="true"></i>&nbsp;&nbsp;{{project?.category_name}}</span></p>
+        <p class="space15"><span><i class="fa fa-map-marker" aria-hidden="true"></i>  {{project?.user?.address?.city}} {{project?.user?.address?.country}}</span></p>
+        <p class="space15"><span><i class="fa fa-tag" aria-hidden="true"></i>  {{project?.category_name}}</span></p>
       </div>
     </div>
   </div>

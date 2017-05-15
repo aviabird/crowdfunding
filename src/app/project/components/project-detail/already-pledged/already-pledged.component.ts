@@ -11,13 +11,26 @@ export class AlreadyPledgedComponent implements OnInit {
 
   @Input() project: Project;
 
-  constructor(private dateService: DateService) {}
+  constructor(private dateService: DateService) { }
 
   ngOnInit() {
   }
 
   daysToGo() {
     return this.dateService.daysBetweenDates(new Date(), this.project.end_date);
+  }
+
+  selectPouchImage() {
+    const fundingPercentile: number = +this.project.percent_funded;
+    if (fundingPercentile < 1) {
+      return 'pouch-big-empty';
+    } else if (fundingPercentile >= 1 && fundingPercentile <= 50) {
+      return 'pouch-big-half';
+    } else if (fundingPercentile >= 51 && fundingPercentile <= 99) {
+      return 'pouch-big-almost-full';
+    } else if (fundingPercentile > 99) {
+      return 'pouch-big-full';
+    }
   }
 
 }

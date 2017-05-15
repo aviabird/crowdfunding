@@ -38,12 +38,12 @@ export class PledgeMoreComponent implements OnInit {
 
   onContinue(index) {
     const reward: Reward = this.project.rewards[index];
-    this.isAmountValid = this.amount < reward.amount || typeof this.amount === 'undefined'  ? false : true;
+    this.isAmountValid = this.amount < reward.amount || typeof this.amount === 'undefined' ? false : true;
 
     if (this.isAmountValid) {
       this.router.navigate(['/projects', this.project.id, 'payment'], {
         queryParams: {
-          'amount': reward.amount,
+          'amount': this.amount,
           'reward': reward.id
         }
       });
@@ -80,6 +80,21 @@ export class PledgeMoreComponent implements OnInit {
         'country': ['', Validators.required]
       })
     });
+  }
+
+  isRewardValid(index: number) {
+    return this.getLeftRewards(index) > 0 ? true : false;
+  }
+
+  getLeftRewards(index: number) {
+    const reward: Reward = this.project.rewards[index];
+    const rewardsLeft = reward.quantity - reward.backers_count;
+    return rewardsLeft;
+  }
+
+  printRewardCount(index: number) {
+    const reward: Reward = this.project.rewards[index];
+    return `Limited (${this.getLeftRewards(index)} left of ${reward.quantity})`;
   }
 
 }

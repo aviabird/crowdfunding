@@ -1,0 +1,32 @@
+.card{
+    padding: 40px;
+    border: 1px solid #d3d3d3;
+    margin: 5px
+}
+
+.content{
+    width:85px;
+    height:85px;
+    border-radius: 100%;
+    border: 1px solid #d3d3d3;
+    object-fit: cover;
+    object-position: center;
+}
+
+.card_content{
+    text-align: center;
+}
+
+.card_content img{
+    margin-bottom: 25px;
+}
+
+.backer_name{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.backer_msg{
+    text-align: center;
+}

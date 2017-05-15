@@ -3,10 +3,11 @@
     <div class="profile_pic">
       <div class="head-info">
         <h6>{{ 'USER_DASHBOARD.PROFILE_PIC' | translate }}</h6>
-        <div *ngIf="isAuthUser()" class="edit-info"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></div>
+        <app-image-upload #imageUpload *ngIf="isAuthUser()" (image)="updateProfileImage($event)">
+          <div class="edit-info"><i class="fa fa-pencil-square-o" (click)="onUploadImage()" aria-hidden="true"></i></div>
+        </app-image-upload>
       </div>
     </div>
     <div class="text-center"> <img [src]="user?.image_url" class="img-responsive" alt="img"> </div>
-    <app-image-upload *ngIf="isAuthUser()" (image)="updateProfileImage($event)"></app-image-upload>
   </article>
 </div>

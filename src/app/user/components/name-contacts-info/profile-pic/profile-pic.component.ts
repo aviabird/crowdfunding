@@ -1,9 +1,10 @@
+import { ImageUploadComponent } from './../../../../shared/components/image-upload/image-upload.component';
 import { UserService } from './../../../services/user.service';
 import { User } from './../../../../core/models/user';
 import { UserActions } from './../../../actions/user.actions';
 import { AppState } from './../../../../app.state';
 import { Store } from '@ngrx/store';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-profile-pic',
@@ -13,6 +14,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ProfilePicComponent implements OnInit {
 
   @Input() user: User;
+  @ViewChild('imageUpload') imageUpload: ImageUploadComponent;
 
   constructor(
     private store: Store<AppState>,
@@ -30,6 +32,10 @@ export class ProfilePicComponent implements OnInit {
 
   isAuthUser() {
     return this.userService.isLoggedInUser(this.user);
+  }
+
+  onUploadImage() {
+    this.imageUpload.showImageBrowseDlg();
   }
 
 }

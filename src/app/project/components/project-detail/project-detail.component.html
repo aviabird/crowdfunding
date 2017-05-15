@@ -62,7 +62,7 @@
                 <app-comments [projectId]="project?.id"></app-comments>
 						  </ng-template>
 						  <ng-template [ngSwitchCase]="'4'" ngSwitchDefault> 
-							  <app-community></app-community>
+							  <app-community [projectId]="project?.id"></app-community>
 						  </ng-template>
             </div>
           </div>

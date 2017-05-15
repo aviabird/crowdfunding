@@ -1,3 +1,4 @@
+import { User } from './user';
 import { Picture } from './picture';
 import { Story } from './story';
 import { Event } from './event';
@@ -16,6 +17,7 @@ export class Project {
   funding_model = '';
   category_name = '';
   user_id: null;
+  user: User;
   user_name = '';
   total_backers = '';
   percent_funded = '';

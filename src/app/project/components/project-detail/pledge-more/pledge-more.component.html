@@ -7,6 +7,43 @@
     <p class="space30">{{reward.backers_count}} backers</p>
     <input type="text" class="form-control rewardtype" [(ngModel)]="amount" placeholder="10">
     <p *ngIf="!isAmountValid" class="error">Please enter pledge amout more than {{reward.amount}}</p>
-    <button type="button" class="linksbtn bgclr5cc5d3 space30" (click)="onContinue(i)">{{ 'PROJ_DETAIL.CONTINUE' | translate }}</button>
+    <button *ngIf="ifAddressPresent()" type="button" class="linksbtn bgclr5cc5d3 space30" (click)="onContinue(i)">{{ 'PROJ_DETAIL.CONTINUE' | translate }}</button>
+    <button *ngIf="!ifAddressPresent()" type="button" class="linksbtn bgclr5cc5d3 space30" (click)="enterAddress(i)">{{ 'PROJ_DETAIL.CONTINUE' | translate }}</button>
+  </div>
+</div>
+
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Delivery Address</h4>
+        <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addressForm">
+          <div formGroupName="address_attributes">
+            <div class="input-group">
+              <p>Street Address</p>
+              <input type="text" formControlName="street_address" class="form-control">
+            </div>
+            <div class="input-group">
+              <p>City</p>
+              <input type="text" formControlName="city" class="form-control">
+            </div>
+            <div class="input-group">
+              <p>Postcode</p>
+              <input type="text" formControlName="postcode" class="form-control">
+            </div>
+            <div class="input-group">
+              <p>Country</p>
+              <input type="text" formControlName="country" class="form-control">
+            </div>
+          </div>
+        </form>
+        <button class="save-address" (click)="saveAddress()" type="button">Save</button>
+      </div>
+    </div>
   </div>
 </div>

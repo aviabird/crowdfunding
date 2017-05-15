@@ -30,7 +30,6 @@ export class BasicInfoComponent implements OnInit {
 
   editBasicInfo() {
     this.basicInfoForm = this.initForm();
-    console.log('form', this.basicInfoForm.value);
     this.edited = true;
   }
 

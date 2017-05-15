@@ -7,7 +7,7 @@
           <div class="p-img"> <img [src]="project.image_url" alt="" > </div>
           <div class="text-part"> <a href="#.">{{project.title}}</a> </div>
           <ul>
-            <li class="pouch-info"> <i class="pouch"></i> <span>{{project.percent_funded}}%</span> </li>
+            <li class="pouch-info"> <i class="pouch"></i> <span>{{project.percent_funded  | number:'1.0-0'}}%</span> </li>
             <li> <i class="flaticon-target"></i> <span>${{project.pledged_amount}}</span> </li>
             <li> <i class="flaticon-user"></i> <span>{{project.total_backers}}</span> </li>
             <li> <i class="flaticon-alarm-clock"></i> <span>{{project.duration}}</span> </li>

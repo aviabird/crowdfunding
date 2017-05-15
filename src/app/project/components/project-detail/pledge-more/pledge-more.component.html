@@ -1,12 +1,35 @@
 <div class="col-md-12">
-  <div *ngFor="let reward of project?.rewards;let i=index" class="pledgemore_right">
-    <h4 class="clr42a7b3">{{ 'PROJ_DETAIL.PLEDGE_MORE_MSG1' | translate }} {{ project?.currency | currencySymbol }} {{reward.amount}} {{ 'PROJ_DETAIL.PLEDGE_MORE_MSG2' | translate }}</h4>
-    <p><strong>{{reward.title}}</strong></p>
-    <p class="space20">{{reward.description}}</p>
-    <p class="space30"><strong>{{ 'PROJ_DETAIL.ESTIMATED_DELIVERY' | translate }}<br>{{reward.delivery_date | date:'mediumDate'}}</strong></p>
-    <p class="space30">{{reward.backers_count}} backers</p>
-    <input type="text" class="form-control rewardtype" [(ngModel)]="amount" placeholder="10">
-    <p *ngIf="!isAmountValid" class="error">Please enter pledge amout more than {{reward.amount}}</p>
-    <button type="button" class="linksbtn bgclr5cc5d3 space30" (click)="onContinue(i)">{{ 'PROJ_DETAIL.CONTINUE' | translate }}</button>
+  
+  <div *ngFor="let reward of project?.rewards;let i=index">
+    <div *ngIf="isRewardValid(i)" class="pledgemore_right">
+      <h4 class="clr42a7b3">{{ 'PROJ_DETAIL.PLEDGE_MORE_MSG1' | translate }} {{ project?.currency | currencySymbol }} {{reward.amount}} {{ 'PROJ_DETAIL.PLEDGE_MORE_MSG2'
+        | translate }}</h4>
+      <p><strong>{{reward.title}}</strong></p>
+      <p class="space20">{{reward.description}}</p>
+      <p class="space30"><strong>{{ 'PROJ_DETAIL.ESTIMATED_DELIVERY' | translate }}<br>{{reward.delivery_date | date:'mediumDate'}}</strong></p>
+      <p *ngIf="isRewardValid(i)" class="space30 error">{{printRewardCount(i)}}</p>
+      <p *ngIf="!isRewardValid(i)" class="space30 pledge_limit">Reward no longer available</p>
+      <p class="space3">{{reward.backers_count}} backers</p>
+      <input *ngIf="isRewardValid(i)" type="text" class="form-control rewardtype" [(ngModel)]="amount" placeholder="10">
+      <p *ngIf="!isAmountValid" class="error">Please enter pledge amout more than {{reward.amount}}</p>
+      <button *ngIf="isRewardValid(i)" type="button" class="linksbtn bgclr5cc5d3 space30" (click)="onContinue(i)">{{ 'PROJ_DETAIL.CONTINUE' | translate }}</button>
+    </div>
   </div>
+
+  <div class="reward_heading"> All Gone!</div>
+
+  <div *ngFor="let reward of project?.rewards;let i=index">
+      <div *ngIf="!isRewardValid(i)" class="pledgemore_right">
+        <div>
+          <h4 class="clr42a7b3">{{ 'PROJ_DETAIL.PLEDGE_MORE_MSG1' | translate }} {{ project?.currency | currencySymbol }} {{reward.amount}} {{ 'PROJ_DETAIL.PLEDGE_MORE_MSG2'
+            | translate }}</h4>
+          <p><strong>{{reward.title}}</strong></p>
+          <p class="space20">{{reward.description}}</p>
+          <p class="space30"><strong>{{ 'PROJ_DETAIL.ESTIMATED_DELIVERY' | translate }}<br>{{reward.delivery_date | date:'mediumDate'}}</strong></p>
+          <p *ngIf="!isRewardValid(i)" class="space30 pledge_limit">Reward no longer available</p>
+          <p class="space3">{{reward.backers_count}} backers</p>
+        </div>
+    </div>
+  </div>
+
 </div>

@@ -126,4 +126,12 @@ export class ProjectHttpService {
     });
   }
 
+  fetchProjectBackers(projectId: number) {
+     return this.http.get(
+      `/api/v1/projects/get_project_backers?id=${projectId}`
+    ).map((res) => {
+      return res.json();
+    });
+  }
+
 }

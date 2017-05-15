@@ -1,4 +1,13 @@
-<div id="Community" class="tabcontent">
-  <h3>Community</h3>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer iaculis dolor vel aliquam lobortis. Nulla facilisi. Maecenas hendrerit lacus sit amet molestie interdum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam faucibus nisi nisi, eget pretium justo vehicula sed. Mauris maximus diam quis enim vulputate molestie. Fusce id nibh id felis euismod ultrices.</p>
+<div class="row">
+  <div class="col-md-4" *ngFor="let backer of backers">
+    <div class="card">
+      <div class="card_content">
+        <img class="content" src="{{backer.image_url}}">
+        <div class="backer_name">{{backer.name}}</div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="backers?.length === 0" class="backer_msg">
+    <h5>There are no backers for this project</h5>
+  </div>
 </div>

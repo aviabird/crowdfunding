@@ -1,53 +1,18 @@
-.mini-bag-summary {
-	position: relative;
-	padding: none;
-	border-bottom: 1px solid #eaeaec;
-	.lbl {
-		font-size: 12px;
-		font-weight: 600;
-		color: #94969f;
-		height: 35px;
-		line-height: 48px;
-	}
-	.items {
-		font-size: 12px;
-		font-weight: 600;
-		padding-top: 5px;
-	}
-	.order-total, .shipping {
-		font-size: 14px;
-		padding-top: 6px;
-		padding-bottom: 20px;
-		height: 22px;
+.total-amount {
+	.amount {
 		position: relative;
-		span {
-			color: #535766;
+		h5 {
+			display: inline-block;
+		}
+		.value {
+			position: absolute;
+			right: 0px;
+			margin-top: 10px;
+			margin-bottom: 10px;
 		}
 	}
-	.shipping {
-		height: 36px;
-	}
-	.order-total > .value,
-	.shipping > .shipping-fee {
-		position: absolute;
-		right: 0;
-		text-align: right;
-		color: #596062;
-	}
-	.shipping > .c-green {
-		color: #20bd99;
-	}
 }
-.pay-lbl-total {
-	padding: 10px 0;
-	.pay-lbl, .pay-total {
-		font-weight: 600;
-		font-size: 14px;
-	}
-	.pay-total {
-		float: right;
-	}
-}
+
 .address-summary {
 	.address-lbl {
 		font-weight: 600;

@@ -8,10 +8,10 @@
 			</span>
 		</div>
 		<div class="pay-body">
-			<app-payment-methods [projectId]="projectId" [rewardId]="selectedRewardId" [pledgedAmount]="pledgedAmount"></app-payment-methods>
+			<app-payment-methods [projectId]="projectId" [rewardId]="selectedRewardId" [pledgedAmount]="totalAmount"></app-payment-methods>
 		</div>
 	</div>
 	<div class="right">
-		<app-selected-reward [reward]="selectedReward" [pledgedAmount]="pledgedAmount"></app-selected-reward>
+		<app-selected-reward [reward]="selectedReward" [totalAmount]="totalAmount" [shippingAmount]="shippingAmount" [pledgedAmount]="pledgedAmount"></app-selected-reward>
 	</div>
 </div>

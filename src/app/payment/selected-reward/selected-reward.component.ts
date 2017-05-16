@@ -10,10 +10,11 @@ export class SelectedRewardComponent implements OnInit {
 
   @Input() reward: Reward;
   @Input() pledgedAmount: number;
+  @Input() shippingAmount: number;
+  @Input() totalAmount: number;
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

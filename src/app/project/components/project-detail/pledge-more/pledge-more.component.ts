@@ -1,3 +1,4 @@
+import { Address } from './../../../../core/models/address';
 import { UserService } from './../../../../user/services/user.service';
 import { UserActions } from './../../../../user/actions/user.actions';
 import { AppState } from './../../../../app.state';
@@ -23,6 +24,8 @@ export class PledgeMoreComponent implements OnInit {
   addressForm: FormGroup;
   @ViewChild('lgModal') lgModal;
   selectedRewardIndex: number;
+  address: Address;
+
   countries = [
     'Australia', 'Canada', 'Denmark', 'Finland', 'France', 'Ireland', 'Japan', 'Norway', 'Singapore',
     'Spain', 'Sweden', 'United Kingdom', 'United States', 'Austria', 'Belgium', 'Germany', 'Hong Kong',
@@ -48,9 +51,11 @@ export class PledgeMoreComponent implements OnInit {
     this.isAmountValid = this.amount < reward.amount || typeof this.amount === 'undefined' ? false : true;
 
     if (this.isAmountValid) {
+      const shippingAmount = this.findShippingAmount(index);
       this.router.navigate(['/projects', this.project.id, 'payment'], {
         queryParams: {
           'amount': this.amount,
+          'shippingAmount': shippingAmount,
           'reward': reward.id
         }
       });
@@ -69,9 +74,9 @@ export class PledgeMoreComponent implements OnInit {
     });
     const address = this.addressForm.value;
     this.userService.updateUser(address).subscribe((user) => {
-      console.log('user', user);
+      this.address = user.address;
+      this.onContinue(this.selectedRewardIndex);
     });
-    this.onContinue(this.selectedRewardIndex);
   }
 
   ifAddressPresent() {
@@ -89,6 +94,21 @@ export class PledgeMoreComponent implements OnInit {
         'country': ['Australia', Validators.required]
       })
     });
+  }
+
+  findShippingAmount(index) {
+    let shippingAmount;
+    const shippingCountry = this.address ? this.address.country : this.project.user.address.country;
+    const shippingLocations = this.project.rewards[index].shipping_locations;
+    shippingLocations.forEach((location) => {
+      if (location.location === shippingCountry) {
+        shippingAmount = location.shipping_fee;
+        return;
+      } else if (location.location === 'anywhere') {
+        shippingAmount = location.shipping_fee;
+      }
+    });
+    return shippingAmount;
   }
 
   isRewardValid(index: number) {

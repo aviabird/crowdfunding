@@ -10,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentComponent implements OnInit {
 
-  pledgedAmount: number;
+  pledgedAmount: string;
+  shippingAmount: string;
+  totalAmount: number;
   selectedRewardId: number;
   projectId: number;
   selectedReward: Reward;
@@ -25,11 +27,14 @@ export class PaymentComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       this.selectedRewardId = params['reward'];
       this.pledgedAmount = params['amount'];
+      this.shippingAmount = params['shippingAmount'];
       this.getSelectedReward(this.selectedRewardId);
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.totalAmount = parseInt(this.pledgedAmount, 10) + parseInt(this.shippingAmount, 10);
+  }
 
   getSelectedReward(id) {
     if (id) {

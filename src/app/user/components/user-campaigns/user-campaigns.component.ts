@@ -1,6 +1,8 @@
+import { ToastyService } from 'ng2-toasty';
+import { ProjectHttpService } from './../../../project/services/http/project-http.service';
 import { UserService } from './../../services/user.service';
 import { User } from './../../../core/models/user';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-user-campaigns',
@@ -10,9 +12,14 @@ import { Component, OnInit, Input } from '@angular/core';
 export class UserCampaignsComponent implements OnInit {
 
   @Input() user: User;
+  projectId: number;
+  description: string;
+  @ViewChild('lgModal') lgModal;
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private projectHttpServie: ProjectHttpService,
+    private toastyService: ToastyService
   ) { }
 
   ngOnInit() {
@@ -20,6 +27,13 @@ export class UserCampaignsComponent implements OnInit {
 
   isAuthUser() {
     return this.userService.isLoggedInUser(this.user);
+  }
+
+  sendNotification() {
+    this.lgModal.hide();
+    this.projectHttpServie.sendNotification(this.projectId, this.description).subscribe((res) => {
+      this.toastyService.success(res.message);
+    });
   }
 
 }

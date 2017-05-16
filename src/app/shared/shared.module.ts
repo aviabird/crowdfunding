@@ -9,6 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { DatepickerModule } from 'ngx-bootstrap/datepicker';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { DatepickerModule } from 'ngx-bootstrap/datepicker';
     FormsModule,
     ReactiveFormsModule,
     TooltipModule.forRoot(),
-    DatepickerModule.forRoot()
+    DatepickerModule.forRoot(),
+    ModalModule.forRoot()
   ],
   exports: [
     CommonModule,
@@ -27,6 +29,7 @@ import { DatepickerModule } from 'ngx-bootstrap/datepicker';
     ImageUploadComponent,
     TooltipModule,
     DatepickerModule,
+    ModalModule,
     CurrencyConverterPipe
   ],
   declarations: [

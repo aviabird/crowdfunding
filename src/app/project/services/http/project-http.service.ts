@@ -134,4 +134,12 @@ export class ProjectHttpService {
     });
   }
 
+  sendNotification(projectId: number, description: string) {
+    return this.http.post(
+      `/api/v1/projects/send_notifications_to_backers`, { description: description, id: projectId }
+    ).map((res) => {
+      return res.json();
+    });
+  }
+
 }

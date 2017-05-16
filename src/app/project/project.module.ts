@@ -8,7 +8,6 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-import { ModalModule } from 'ngx-bootstrap/modal';
 import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 import {ShareButtonsModule} from 'ngx-sharebuttons';
 
@@ -50,7 +49,6 @@ import { ReportProjectComponent } from './components/project-detail/report-proje
     CarouselModule.forRoot(),
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
-    ModalModule.forRoot(),
     ShareButtonsModule.forRoot(),
     EffectsModule.run(CommentEffects),
     SharedModule

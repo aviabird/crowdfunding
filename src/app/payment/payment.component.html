@@ -4,7 +4,7 @@
 			<span class="lbl">Choose Payment Mode</span>
 			<span class="amt you-pay">
 				<span class="amt">You Pledged</span>
-				<span class="you-pay">${{pledgedAmount | number:'1.2-2'}}</span>
+				<span class="you-pay">{{currency | currencySymbol}}{{pledgedAmount | number:'1.2-2'}}</span>
 			</span>
 		</div>
 		<div class="pay-body">
@@ -12,6 +12,6 @@
 		</div>
 	</div>
 	<div class="right">
-		<app-selected-reward [reward]="selectedReward" [totalAmount]="totalAmount" [shippingAmount]="shippingAmount" [pledgedAmount]="pledgedAmount"></app-selected-reward>
+		<app-selected-reward [currency]="currency" [reward]="selectedReward" [totalAmount]="totalAmount" [shippingAmount]="shippingAmount" [pledgedAmount]="pledgedAmount"></app-selected-reward>
 	</div>
 </div>

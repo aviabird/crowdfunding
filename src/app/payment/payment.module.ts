@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { PaymentService } from './services/payment.service';
 import { routes } from './payment.routes';
 import { PaymentComponent } from './payment.component';
@@ -15,7 +16,8 @@ import { SelectedRewardComponent } from './selected-reward/selected-reward.compo
   imports: [
     RouterModule.forChild(routes),
     CommonModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   declarations: [
     PaymentComponent,

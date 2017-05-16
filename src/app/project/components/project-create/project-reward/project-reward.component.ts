@@ -95,8 +95,8 @@ export class ProjectRewardComponent implements OnInit, OnDestroy {
       .get('shipping_locations_attributes'))
       .push(this.fb.group({
         'id': [null],
-        'location': ['', Validators.required],
-        'shipping_fee': ['', Validators.required]
+        'location': [''],
+        'shipping_fee': ['']
       }));
   }
 

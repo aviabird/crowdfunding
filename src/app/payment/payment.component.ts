@@ -16,6 +16,7 @@ export class PaymentComponent implements OnInit {
   selectedRewardId: number;
   projectId: number;
   selectedReward: Reward;
+  currency;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,6 +29,7 @@ export class PaymentComponent implements OnInit {
       this.selectedRewardId = params['reward'];
       this.pledgedAmount = params['amount'];
       this.shippingAmount = params['shippingAmount'];
+      this.currency = params['currency'];
       this.getSelectedReward(this.selectedRewardId);
     });
   }

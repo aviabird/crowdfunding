@@ -54,7 +54,6 @@
 									<div class="form-group">
 										<label for="usr">{{ 'PROJ_CREATE.POUCH_QUANTITY' | translate }}</label>
 										<input type="number" class="form-control" placeholder="Enter quantity" formControlName="quantity">
-										<p *ngIf="reward.get('quantity').hasError('required') && (reward.get('quantity').touched || formSubmit)" class="value-err show">This is a mandatory field</p>
 									</div>
 									<h2>{{ 'PROJ_CREATE.POUCH_DELIVERY_DATE' | translate }}</h2>
 									<div style="display:inline-block; min-height:290px;">

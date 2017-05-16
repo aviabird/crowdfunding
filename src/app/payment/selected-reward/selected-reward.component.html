@@ -1,15 +1,15 @@
 <div class="total-amount">
   <div class="amount">
     <h5>Pledged Amount</h5>
-    <span class="value">${{pledgedAmount | number:'1.2-2'}}</span>
+    <span class="value">{{currency | currencySymbol}}{{pledgedAmount | number:'1.2-2'}}</span>
   </div>
-  <div class="amount">
+  <div *ngIf="shippingAmount" class="amount">
     <h5>Shipping Amount</h5>
-    <span class="value">${{shippingAmount | number:'1.2-2'}}</span>
+    <span class="value">{{currency | currencySymbol}}{{shippingAmount | number:'1.2-2'}}</span>
   </div>
-  <div class="amount">
+  <div *ngIf="totalAmount" class="amount">
     <h5>Total Amount</h5>
-    <span class="value">${{totalAmount | number:'1.2-2'}}</span>
+    <span class="value">{{currency | currencySymbol}}{{totalAmount | number:'1.2-2'}}</span>
   </div>
 </div>
 <div *ngIf="reward" class="address-summary">

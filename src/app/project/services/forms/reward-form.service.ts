@@ -43,7 +43,7 @@ export class RewardFormService {
       'description': [reward.description, [Validators.required, this.descriptionValidator]],
       'delivery_date': [],
       'quantity': [reward.quantity, [Validators.required, this.validateRewardQuantity.bind(this)]],
-      'amount': [reward.amount, [Validators.required, this.validateRewardAmount.bind(this)]],
+      'amount': [reward.amount, [this.validateRewardAmount.bind(this)]],
       'currency': [reward.currency || 'USD'],
       'contain_shipping_locations': [reward.contain_shipping_locations || false],
       'shipping_locations_attributes': this.fb.array(this.initShippingLocations(reward)),
@@ -62,8 +62,8 @@ export class RewardFormService {
       locations_attributes_array.push(
         this.fb.group({
           'id': [location.id],
-          'location': [location.location || 'anywhere', Validators.required],
-          'shipping_fee': [location.shipping_fee, Validators.required]
+          'location': [location.location || 'anywhere'],
+          'shipping_fee': [location.shipping_fee]
         })
       );
     });
@@ -91,7 +91,7 @@ export class RewardFormService {
   }
 
   validateRewardQuantity(c: FormControl) {
-    if (!c.parent || !this.project.pledged_amount) {
+    if (!c.value || !c.parent || !this.project.pledged_amount) {
       return null;
     }
     const goal_amount = +this.project.pledged_amount;

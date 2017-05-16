@@ -94,7 +94,7 @@
                 <h3>{{ 'PROJ_DETAIL.PROJECT_BACK_MSG3' | translate }}</h3>
                 <input type="text" class="form-control rewardtype" [(ngModel)]="amount" placeholder="10">
                 <button [routerLink]="['/projects', project.id, 'payment']" 
-                        [queryParams]="{amount: amount}"
+                        [queryParams]="{amount: amount, shippingAmount: 0, currency: project.currency}"
                         type="button" class="linksbtn bgclr5cc5d3 space30">{{ 'PROJ_DETAIL.CONTINUE' | translate }}
                 </button>
               </div>

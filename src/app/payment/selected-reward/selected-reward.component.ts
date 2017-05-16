@@ -12,6 +12,7 @@ export class SelectedRewardComponent implements OnInit {
   @Input() pledgedAmount: number;
   @Input() shippingAmount: number;
   @Input() totalAmount: number;
+  @Input() currency;
 
   constructor() { }
 

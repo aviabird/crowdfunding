@@ -56,6 +56,7 @@ export class PledgeMoreComponent implements OnInit {
         queryParams: {
           'amount': this.amount,
           'shippingAmount': shippingAmount,
+          'currency': this.project.currency,
           'reward': reward.id
         }
       });
@@ -83,6 +84,10 @@ export class PledgeMoreComponent implements OnInit {
     return this.project.user.address ? true : false;
   }
 
+  isDeliveryRequired(index) {
+    return this.project.rewards[index].contain_shipping_locations;
+  }
+
   initAddressForm() {
     return this.fb.group({
       'id': [null],
@@ -97,7 +102,11 @@ export class PledgeMoreComponent implements OnInit {
   }
 
   findShippingAmount(index) {
-    let shippingAmount;
+    let shippingAmount = 0;
+    if (!this.isDeliveryRequired(index)) {
+      return shippingAmount;
+    }
+
     const shippingCountry = this.address ? this.address.country : this.project.user.address.country;
     const shippingLocations = this.project.rewards[index].shipping_locations;
     shippingLocations.forEach((location) => {

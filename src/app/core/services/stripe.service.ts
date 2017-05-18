@@ -41,6 +41,13 @@ export class StripeService {
     });
   }
 
+  getUserStripeCredentials(code) {
+    return this.http.get(`/api/v1/get_user_stripe_credentials/${code}`)
+      .map((res) => {
+        return res.json();
+      });
+  }
+
   payByCard(token: string, projectId: number, amount: number, rewardId: number) {
     console.log('reward id', rewardId);
     return this.http.post(

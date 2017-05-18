@@ -17,6 +17,7 @@ export class User {
   instagram_url: string;
   google_plus_url: string;
   total_backed_amount: number;
+  is_stripe_connected: boolean;
   address: Address;
   projects: LiteProject[];
   project_backers: any;

@@ -46,8 +46,7 @@ import { StripeOauthRedirectComponent } from './components/stripe-oauth-redirect
     SocialMediaLinksComponent,
     ProfilePicComponent,
     UserNotificationsComponent,
-    TruncatePipe,
-    StripeOauthRedirectComponent
+    TruncatePipe
   ],
   providers: [
     UserService,

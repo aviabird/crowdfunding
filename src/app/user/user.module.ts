@@ -22,8 +22,6 @@ import { SocialMediaLinksComponent } from './components/name-contacts-info/socia
 import { ProfilePicComponent } from './components/name-contacts-info/profile-pic/profile-pic.component';
 import { UserNotificationsComponent } from './components/user-notifications/user-notifications.component';
 import { TruncatePipe } from './../core/pipes/truncate';
-import { StripeOauthRedirectComponent } from './components/stripe-oauth-redirect/stripe-oauth-redirect.component';
-
 
 @NgModule({
   imports: [

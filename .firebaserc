@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "crd-test"
+    "default": "crd-test",
+    "croudpouch": "crd-test-65d3d"
   }
 }

@@ -42,10 +42,10 @@
     "reselect": "^2.5.4",
     "rxjs": "^5.1.0",
     "select": "^1.1.2",
-    "zone.js": "^0.8.4"
+    "zone.js": "0.8.14"
   },
   "devDependencies": {
-    "@angular/cli": "1.0.0",
+    "@angular/cli": "1.2.4",
     "@angular/compiler-cli": "^4.0.0",
     "@ngrx/store-devtools": "^3.2.4",
     "@types/jasmine": "2.5.38",
